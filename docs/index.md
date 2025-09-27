@@ -17,7 +17,7 @@ hero:
       link: /about/
 
 features:
-  - icon: 
+  - icon:
       src: /icons/article.svg
       alt: 技术博文
       width: 72
@@ -25,6 +25,7 @@ features:
     title: 技术博文
     details: 分享Java、Spring、微服务、架构设计等技术文章
     link: /articles/
+    class: active
   - icon:
       src: /icons/project.svg
       alt: 实战项目
@@ -69,66 +70,51 @@ features:
 ---
 
 <style>
-/* 现代化特性卡片布局 */
+/* 现代化特性卡片布局 - 网格风格 */
 .VPFeatures {
-  background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 100%);
-  padding: 4rem 1.5rem;
+  background: var(--vp-c-bg);
+  padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
 }
 
-.VPFeatures::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(62, 175, 124, 0.03) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .VPFeatures .container {
-  max-width: 1400px;
+  max-width: 1200px;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .VPFeatures .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2.5rem;
+  max-width: 1100px;
+  margin: 3rem auto 0;
   padding: 0 1rem;
   justify-content: center;
 }
 
 .VPFeatures .item {
   position: relative;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 2rem;
   border-radius: 20px;
-  background: linear-gradient(145deg, var(--vp-c-bg), var(--vp-c-bg-soft));
-  border: 1px solid var(--vp-c-divider);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  min-height: 280px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  min-height: 200px;
   height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   text-align: center;
   width: 100%;
+  cursor: pointer;
 }
 
 .VPFeatures .item::before {
@@ -137,35 +123,67 @@ features:
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3), var(--vp-c-brand-1));
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
-}
-
-.VPFeatures .item:hover::before {
-  transform: scaleX(1);
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.05), rgba(62, 175, 124, 0.02));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 20px;
 }
 
 .VPFeatures .item:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(62, 175, 124, 0.15);
-  border-color: var(--vp-c-brand-1);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(62, 175, 124, 0.25);
+  border-color: rgba(62, 175, 124, 0.4);
+}
+
+.VPFeatures .item:hover::before {
+  opacity: 1;
+}
+
+.VPFeatures .item.active {
+  background: rgba(62, 175, 124, 0.08);
+  border-color: rgba(62, 175, 124, 0.5);
+  box-shadow: 0 12px 40px rgba(62, 175, 124, 0.3);
+}
+
+.VPFeatures .item.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3eaf7c, #2c9d6e);
+  border-radius: 20px 20px 0 0;
 }
 
 .VPFeatures .icon {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 1.5rem;
-  background: linear-gradient(135deg, var(--vp-c-brand-dimm), rgba(62, 175, 124, 0.1));
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.2), rgba(62, 175, 124, 0.1));
   border-radius: 20px;
   transition: all 0.4s ease;
+  margin-bottom: 1.25rem;
+  color: #3eaf7c;
   position: relative;
   overflow: hidden;
-  flex-shrink: 0;
+  border: 1px solid rgba(62, 175, 124, 0.2);
+}
+
+.VPFeatures .icon img,
+.VPFeatures .icon svg {
+  width: 36px;
+  height: 36px;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.VPFeatures .icon svg {
+  stroke: currentColor;
+  stroke-width: 1.5;
 }
 
 .VPFeatures .icon::before {
@@ -175,16 +193,17 @@ features:
   left: 50%;
   width: 0;
   height: 0;
-  background: radial-gradient(circle, var(--vp-c-brand-1), transparent);
+  background: radial-gradient(circle, rgba(62, 175, 124, 0.3), transparent);
   transition: all 0.4s ease;
   transform: translate(-50%, -50%);
   border-radius: 50%;
 }
 
 .VPFeatures .item:hover .icon {
-  transform: scale(1.1) rotate(10deg);
-  background: linear-gradient(135deg, rgba(62, 175, 124, 0.2), rgba(62, 175, 124, 0.1));
-  box-shadow: 0 10px 30px rgba(62, 175, 124, 0.3);
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.3), rgba(62, 175, 124, 0.2));
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(62, 175, 124, 0.4);
+  border-color: rgba(62, 175, 124, 0.4);
 }
 
 .VPFeatures .item:hover .icon::before {
@@ -192,58 +211,74 @@ features:
   height: 100%;
 }
 
+.VPFeatures .item:hover .icon img,
+.VPFeatures .item:hover .icon svg {
+  transform: scale(1.1);
+}
+
+.VPFeatures .item.active .icon {
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.35), rgba(62, 175, 124, 0.25));
+  box-shadow: 0 8px 25px rgba(62, 175, 124, 0.35);
+  border-color: rgba(62, 175, 124, 0.5);
+}
+
 .VPFeatures .title {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+  text-align: center;
+  color: var(--vp-c-text-1);
+  line-height: 1.3;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  position: relative;
+  z-index: 2;
+}
+
+.VPFeatures .subtitle {
+  font-size: 0.85rem;
+  font-weight: 400;
   margin: 0 0 1rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  position: relative;
+  color: var(--vp-c-text-2);
   line-height: 1.4;
+  opacity: 0.8;
+  position: relative;
+  z-index: 2;
 }
 
 .VPFeatures .details {
   text-align: center;
-  color: var(--vp-c-text-1);
-  line-height: 1.6;
-  font-size: 0.95rem;
-  margin: 1rem 0 1.5rem;
-  flex-grow: 1;
-  display: block;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+  font-size: 0.9rem;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   word-wrap: break-word;
   hyphens: auto;
+  opacity: 0.7;
+  position: relative;
+  z-index: 2;
 }
 
+/* 移除按钮样式，改为整体卡片可点击 */
 .VPFeatures .item a {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
+  display: block;
+  width: 100%;
+  height: 100%;
   text-decoration: none;
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(10px);
+  color: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
-.VPFeatures .item:hover a {
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.4);
-}
-
-.VPFeatures .item:hover a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(62, 175, 124, 0.5);
-}
-
-/* 响应式设计 */
+/* 响应式设计 - 网格布局 */
 @media (max-width: 640px) {
   .VPFeatures {
     padding: 3rem 1rem;
@@ -251,13 +286,14 @@ features:
   
   .VPFeatures .items {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 2rem;
+    max-width: 400px;
   }
   
   .VPFeatures .item {
-    padding: 1.5rem 1rem;
-    min-height: 260px;
+    padding: 2rem 1.5rem;
+    min-height: 160px;
   }
   
   .VPFeatures .icon {
@@ -266,122 +302,140 @@ features:
     margin-bottom: 1rem;
   }
   
-  .VPFeatures .title {
-    font-size: 1.1rem;
-    margin-bottom: 0.8rem;
-  }
-  
-  .VPFeatures .details {
-    font-size: 0.85rem;
-    margin: 0.8rem 0 1rem;
-    line-height: 1.5;
-  }
-}
-
-@media (min-width: 641px) and (max-width: 768px) {
-  .VPFeatures .items {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 0 0.5rem;
-  }
-  
-  .VPFeatures .item {
-    padding: 2rem 1.5rem;
-    min-height: 280px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .VPFeatures .icon {
-    width: 70px;
-    height: 70px;
+  .VPFeatures .icon img,
+  .VPFeatures .icon svg {
+    width: 30px;
+    height: 30px;
   }
   
   .VPFeatures .title {
     font-size: 1.2rem;
   }
   
+  .VPFeatures .subtitle {
+    font-size: 0.8rem;
+  }
+  
   .VPFeatures .details {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .VPFeatures .items {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 700px;
+  }
+  
+  .VPFeatures .item {
+    padding: 2.25rem 1.75rem;
+    min-height: 180px;
+  }
+  
+  .VPFeatures .icon {
+    width: 68px;
+    height: 68px;
+    margin-bottom: 1.125rem;
+  }
+  
+  .VPFeatures .icon img,
+  .VPFeatures .icon svg {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .VPFeatures .title {
+    font-size: 1.25rem;
+  }
+  
+  .VPFeatures .subtitle {
+    font-size: 0.82rem;
+  }
+  
+  .VPFeatures .details {
+    font-size: 0.875rem;
+    -webkit-line-clamp: 2;
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .VPFeatures .items {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 0 1rem;
-  }
-  
-  .VPFeatures .item {
-    padding: 2rem 1.5rem;
-    min-height: 300px;
-  }
-  
-  .VPFeatures .icon {
-    width: 75px;
-    height: 75px;
-  }
-  
-  .VPFeatures .title {
-    font-size: 1.3rem;
-  }
-  
-  .VPFeatures .details {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-}
-
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .VPFeatures .items {
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
-  
-  .VPFeatures .item {
-    padding: 2rem 1.5rem;
-    min-height: 300px;
-  }
-  
-  .VPFeatures .icon {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .VPFeatures .title {
-    font-size: 1.3rem;
-  }
-  
-  .VPFeatures .details {
-    font-size: 0.9rem;
-  }
-}
-
-@media (min-width: 1201px) {
-  .VPFeatures .items {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    max-width: 1200px;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2.25rem;
+    max-width: 950px;
   }
   
   .VPFeatures .item {
     padding: 2.5rem 2rem;
-    min-height: 320px;
+    min-height: 200px;
   }
   
   .VPFeatures .icon {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .VPFeatures .icon img,
+  .VPFeatures .icon svg {
+    width: 36px;
+    height: 36px;
   }
   
   .VPFeatures .title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
+  }
+  
+  .VPFeatures .subtitle {
+    font-size: 0.85rem;
   }
   
   .VPFeatures .details {
-    font-size: 0.95rem;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (min-width: 1025px) {
+  .VPFeatures .items {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2.5rem;
+    max-width: 1100px;
+  }
+  
+  .VPFeatures .item {
+    padding: 2.5rem 2rem;
+    min-height: 200px;
+  }
+  
+  .VPFeatures .icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 1.25rem;
+  }
+  
+  .VPFeatures .icon img,
+  .VPFeatures .icon svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .VPFeatures .title {
+    font-size: 1.3rem;
+  }
+  
+  .VPFeatures .subtitle {
+    font-size: 0.85rem;
+  }
+  
+  .VPFeatures .details {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
   }
 }
 </style>
