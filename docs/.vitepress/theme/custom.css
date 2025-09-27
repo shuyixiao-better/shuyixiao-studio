@@ -1,0 +1,456 @@
+/**
+ * 自定义主题样式
+ */
+
+:root {
+  --vp-c-brand-1: #3eaf7c;
+  --vp-c-brand-2: #2c9d6e;
+  --vp-c-brand-3: #207a54;
+  --vp-c-brand-soft: rgba(62, 175, 124, 0.1);
+  --vp-c-brand-dimm: rgba(62, 175, 124, 0.08);
+
+  /* 添加过渡效果到所有元素 */
+  scroll-behavior: smooth;
+}
+
+/* 全局布局优化 */
+.VPContent {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.VPContent .container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* 确保内容区域有足够的空间 */
+.VPHome .VPContent {
+  padding: 0;
+}
+
+/* 优化页面滚动 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* 全局微妙动画 */
+@keyframes fadeInStagger {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.VPFeatures .item {
+  animation: fadeInStagger 0.6s ease-out both;
+  animation-delay: calc(var(--stagger-delay, 0s) + var(--stagger-index, 0) * 0.1s);
+  --stagger-delay: 0.1s;
+}
+
+.VPFeatures .item:nth-child(1) { --stagger-index: 1; }
+.VPFeatures .item:nth-child(2) { --stagger-index: 2; }
+.VPFeatures .item:nth-child(3) { --stagger-index: 3; }
+.VPFeatures .item:nth-child(4) { --stagger-index: 4; }
+.VPFeatures .item:nth-child(5) { --stagger-index: 5; }
+.VPFeatures .item:nth-child(6) { --stagger-index: 6; }
+
+/* 全局动画效果 */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.VPContent {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* 主页布局 */
+.VPHome {
+  padding-bottom: 4rem;
+}
+
+/* 导航栏样式 */
+.VPNav {
+  border-bottom: 1px solid var(--vp-c-divider);
+  backdrop-filter: blur(10px);
+  background: rgba(var(--vp-c-bg-rgb), 0.8);
+}
+
+.VPNav .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.VPNav .title {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.VPNav .nav {
+  gap: 2rem;
+}
+
+.VPNav .nav a {
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.VPNav .nav a:hover {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* 现代化英雄区域样式 */
+.VPHero {
+  padding: 8rem 0 4rem;
+  background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 50%, var(--vp-c-bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.VPHero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(62, 175, 124, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.VPHero .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.VPHero .name,
+.VPHero .text {
+  font-size: 3.2rem !important;
+  line-height: 1.1 !important;
+  font-weight: 800 !important;
+  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, var(--vp-c-brand-3) 50%, var(--vp-c-brand-1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem !important;
+  text-align: center;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.VPHero .name::after,
+.VPHero .text::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  transform: translateX(-50%);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+.VPHero .tagline {
+  font-size: 1.4rem !important;
+  max-width: 700px;
+  margin: 2rem auto 3rem !important;
+  text-align: center;
+  color: var(--vp-c-text-1);
+  line-height: 1.6;
+  font-weight: 400;
+  position: relative;
+}
+
+.VPHero .tagline::before {
+  content: '✨';
+  position: absolute;
+  left: -2rem;
+  top: 0;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.VPHero .tagline::after {
+  content: '✨';
+  position: absolute;
+  right: -2rem;
+  top: 0;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.VPHero .image-bg {
+  opacity: 0.6;
+  filter: blur(30px);
+  animation: pulse 8s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* 特性部分样式 */
+.VPFeatures {
+  padding: 3rem 1.5rem;
+  background-color: var(--vp-c-bg);
+}
+
+/* 文章内容样式 */
+.vp-doc h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.vp-doc h2 {
+  font-size: 1.8rem;
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--vp-c-divider);
+}
+
+.vp-doc h3 {
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+}
+
+.vp-doc p {
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.vp-doc a {
+  text-decoration: none;
+  color: var(--vp-c-brand-1);
+  transition: color 0.2s;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration: underline;
+}
+
+.vp-doc blockquote {
+  border-left: 4px solid var(--vp-c-brand-1);
+  padding: 0.75rem 1.5rem;
+  background-color: var(--vp-c-brand-dimm);
+  margin: 1.5rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.vp-doc code {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 0.2em 0.4em;
+  background-color: var(--vp-c-mute);
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.vp-doc pre code {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  font-size: 0.85em;
+}
+
+.vp-doc table {
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+}
+
+.vp-doc tr {
+  border-top: 1px solid var(--vp-c-divider);
+  transition: background-color 0.2s;
+}
+
+.vp-doc tr:nth-child(2n) {
+  background-color: var(--vp-c-bg-soft);
+}
+
+.vp-doc th,
+.vp-doc td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 0.6rem 1rem;
+  text-align: left;
+}
+
+.vp-doc th {
+  font-weight: 600;
+  background-color: var(--vp-c-bg-soft);
+}
+
+/* 英雄区域按钮样式 */
+.VPHero .actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.VPHero .action {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.VPHero .action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.VPHero .action:hover::before {
+  left: 100%;
+}
+
+.VPHero .action.brand {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.VPHero .action.brand:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(62, 175, 124, 0.4);
+}
+
+.VPHero .action.alt {
+  background: transparent;
+  color: var(--vp-c-brand-1);
+  border: 2px solid var(--vp-c-brand-1);
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.VPHero .action.alt:hover {
+  background: var(--vp-c-brand-1);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px rgba(62, 175, 124, 0.3);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .VPHero {
+    padding: 6rem 0 3rem;
+  }
+  
+  .VPHero .name,
+  .VPHero .text {
+    font-size: 2.2rem !important;
+  }
+
+  .VPHero .tagline {
+    font-size: 1.1rem !important;
+    padding: 0 1rem;
+    margin: 1.5rem auto 2.5rem !important;
+  }
+  
+  .VPHero .tagline::before,
+  .VPHero .tagline::after {
+    display: none;
+  }
+  
+  .VPHero .actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .VPHero .action {
+    width: 200px;
+  }
+
+  .VPFeatures .items {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .VPFeatures .item {
+    padding: 2rem 1.5rem;
+    min-height: 280px;
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .recent-posts {
+    margin: 2rem 1rem;
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .VPFeatures .items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .VPFeatures .items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .post-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  .VPFeatures .items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 1200px;
+  }
+
+  .post-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+}
+
