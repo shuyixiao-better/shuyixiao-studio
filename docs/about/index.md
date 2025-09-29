@@ -60,9 +60,16 @@ description: 个人简介与联系方式
 
 ## 联系方式
 
-- **Email**: contact@shuyixiaobutuotou.com
+- **Email**: yixiaoshu88@163.com
 - **GitHub**: [github.com/shuyixiaobutuotou](https://github.com/shuyixiaobutuotou)
-- **掘金**: [juejin.cn/user/shuyixiaobutuotou](https://juejin.cn/user/shuyixiaobutuotou)
+- **CSDN**: [https://blog.csdn.net/weixin_50503886?spm=1000.2115.3001.5343](https://blog.csdn.net/weixin_50503886?spm=1000.2115.3001.5343)
+- **掘金**: [https://juejin.cn/user/4257747754552599](https://juejin.cn/user/4257747754552599)
+- **51博客**: [https://blog.51cto.com/u_16656615](https://blog.51cto.com/u_16656615)
+- **segmentfault思否**: [https://segmentfault.com/u/shuyixiaobututou](https://segmentfault.com/u/shuyixiaobututou)
+- **腾讯云社区**: [https://cloud.tencent.com/developer/user/10690481](https://cloud.tencent.com/developer/user/10690481)
+- **知乎**: [https://www.zhihu.com/people/ya-ba-3-32](https://www.zhihu.com/people/ya-ba-3-32)
+- **开源中国**: [https://my.oschina.net/u/8066011](https://my.oschina.net/u/8066011)
+- **墨天轮**: [https://www.modb.pro/u/652398](https://www.modb.pro/u/652398)
 
 ---
 
