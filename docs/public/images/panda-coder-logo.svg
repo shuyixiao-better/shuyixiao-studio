@@ -1,0 +1,25 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 熊猫脸 -->
+  <circle cx="100" cy="100" r="90" fill="#FFFFFF" stroke="#000000" stroke-width="2"/>
+
+  <!-- 熊猫眼睛 -->
+  <ellipse cx="65" cy="80" rx="25" ry="22" fill="#000000"/>
+  <ellipse cx="135" cy="80" rx="25" ry="22" fill="#000000"/>
+
+  <!-- 熊猫眼睛亮点 -->
+  <circle cx="72" cy="73" r="6" fill="#FFFFFF"/>
+  <circle cx="142" cy="73" r="6" fill="#FFFFFF"/>
+
+  <!-- 熊猫鼻子 -->
+  <ellipse cx="100" cy="110" rx="15" ry="10" fill="#000000"/>
+
+  <!-- 熊猫嘴巴 -->
+  <path d="M85,120 Q100,130 115,120" stroke="#000000" stroke-width="2" fill="transparent"/>
+
+  <!-- 代码符号 -->
+  <text x="70" y="155" font-family="monospace" font-size="30" font-weight="bold" fill="#3eaf7c">&lt;/&gt;</text>
+
+  <!-- 熊猫耳朵 -->
+  <circle cx="35" cy="40" r="20" fill="#000000"/>
+  <circle cx="165" cy="40" r="20" fill="#000000"/>
+</svg>

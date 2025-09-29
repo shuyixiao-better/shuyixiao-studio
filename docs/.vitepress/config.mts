@@ -26,6 +26,12 @@ export default defineConfig({
       },
       { text: '实战项目', link: '/projects/' },
       { text: '面试宝典', link: '/interview/' },
+      { 
+        text: '我的工具', 
+        items: [
+          { text: 'PandaCoder', link: '/articles/panda-coder-intro' },
+        ]
+      },
       { text: '关于我', link: '/about/' }
     ],
 
