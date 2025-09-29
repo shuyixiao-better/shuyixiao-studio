@@ -49,19 +49,19 @@ description: 个人简介与联系方式
 
 一款智能代码生成与补全插件，帮助开发者提高编码效率。
 
-- GitHub: [github.com/shuyixiaobutuotou/pandacoder](https://github.com/shuyixiaobutuotou/pandacoder)
+- GitHub: [https://github.com/shuyixiao-better/pandacoder](https://https://github.com/shuyixiao-better/pandacoder)
 - 插件市场: [plugins.jetbrains.com/plugin/pandacoder](https://plugins.jetbrains.com/plugin/pandacoder)
 
 ### Spring Boot Starter集合
 
 一系列实用的Spring Boot Starter组件，简化开发流程。
 
-- GitHub: [github.com/shuyixiaobutuotou/spring-boot-starters](https://github.com/shuyixiaobutuotou/spring-boot-starters)
+- GitHub: [https://github.com/shuyixiao-better/spring-boot-starters](https://https://github.com/shuyixiao-better/spring-boot-starters)
 
 ## 联系方式
 
 - **Email**: yixiaoshu88@163.com
-- **GitHub**: [github.com/shuyixiaobutuotou](https://github.com/shuyixiaobutuotou)
+- **GitHub**: [https://github.com/shuyixiao-better](https://https://github.com/shuyixiao-better)
 - **CSDN**: [https://blog.csdn.net/weixin_50503886?spm=1000.2115.3001.5343](https://blog.csdn.net/weixin_50503886?spm=1000.2115.3001.5343)
 - **掘金**: [https://juejin.cn/user/4257747754552599](https://juejin.cn/user/4257747754552599)
 - **51博客**: [https://blog.51cto.com/u_16656615](https://blog.51cto.com/u_16656615)
