@@ -6,6 +6,17 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 
 # 技术博文
 
+<div class="wechat-card">
+  <div class="wechat-info">
+    <h3 class="wechat-title">关注我的微信公众号</h3>
+    <h2 class="wechat-name">舒一笑的架构笔记</h2>
+    <p class="wechat-desc">分享更多Java、架构设计、微服务等原创技术内容</p>
+  </div>
+  <div class="wechat-qrcode">
+    <img src="/wxgzh.gif" alt="微信公众号:舒一笑的架构笔记" />
+  </div>
+</div>
+
 <div class="article-list">
   <div class="article-card">
     <div class="article-date">2025-09-27</div>
@@ -95,6 +106,112 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 </div>
 
 <style>
+/* 微信公众号卡片 */
+.wechat-card {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--vp-c-brand-dimm);
+  border: 2px solid var(--vp-c-brand-1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* 好处网格布局 */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.benefit-card {
+  background: var(--vp-c-bg-soft);
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border-top: 3px solid var(--vp-c-brand-1);
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.benefit-card h3 {
+  color: var(--vp-c-brand-1);
+  margin: 0 0 1rem 0;
+  font-size: 1.3rem;
+}
+
+.benefit-card p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.wechat-info {
+  flex: 1;
+}
+
+.wechat-title {
+  font-size: 1rem;
+  color: var(--vp-c-brand-1);
+  margin: 0 0 0.5rem;
+}
+
+.wechat-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0 0 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.wechat-desc {
+  font-size: 1rem;
+  color: var(--vp-c-text-2);
+  margin: 0;
+}
+
+.wechat-qrcode {
+  width: 120px;
+  height: 120px;
+  margin-left: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wechat-qrcode img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+  .wechat-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+  }
+
+  .wechat-qrcode {
+    margin: 1.5rem 0 0;
+    width: 140px;
+    height: 140px;
+  }
+
+  .wechat-name {
+    font-size: 1.5rem;
+  }
+}
+
 .article-list {
   display: flex;
   flex-direction: column;

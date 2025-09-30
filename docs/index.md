@@ -18,6 +18,15 @@ hero:
 
 features:
   - icon:
+      src: /wxgzh.gif
+      alt: 舒一笑的架构笔记
+      width: 72
+      height: 72
+    title: 关注公众号
+    details: 关注「舒一笑的架构笔记」获取更多Java与架构设计知识
+    link: /about/wechat
+    class: highlighted
+  - icon:
       src: /icons/article.svg
       alt: 技术博文
       width: 72

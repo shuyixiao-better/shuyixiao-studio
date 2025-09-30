@@ -15,6 +15,7 @@ export default defineConfig({
     // 导航栏
     nav: [
       { text: '首页', link: '/' },
+      { text: '关注公众号', link: '/about/wechat/' },
       { 
         text: '专栏教程', 
         items: [
