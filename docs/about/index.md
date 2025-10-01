@@ -50,7 +50,7 @@ description: 个人简介与联系方式
 一款智能代码生成与补全插件，帮助开发者提高编码效率。
 
 - GitHub: [https://github.com/shuyixiao-better/pandacoder](https://github.com/shuyixiao-better/pandacoder)
-- 插件市场: [plugins.jetbrains.com/plugin/pandacoder](https://plugins.jetbrains.com/plugin/pandacoder)
+- 插件市场: [plugins.jetbrains.com/plugin/pandacoder](https://plugins.jetbrains.com/plugin/27533-pandacoder)
 
 ### Spring Boot Starter集合
 
