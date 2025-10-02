@@ -5,9 +5,6 @@ hero:
   name: "舒一笑不秃头"
   text: "技术博客"
   tagline: 代码是我的文字，程序是我的诗篇，我不是程序员，我是诗人 ✨
-  image:
-    src: /logo.png
-    alt: shuyixiaobutuotou-studio
   actions:
     - theme: brand
       text: 🚀 开始阅读
