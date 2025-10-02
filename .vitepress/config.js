@@ -51,5 +51,6 @@ export default withMermaid(
         }
       ]
     }
-  })
+  }
+})
 )
