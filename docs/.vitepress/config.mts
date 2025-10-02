@@ -22,7 +22,8 @@ export default defineConfig({
           { text: 'Java核心', link: '/tutorials/java/' },
           { text: 'Spring全家桶', link: '/tutorials/spring/' },
           { text: '微服务架构', link: '/tutorials/microservice/' },
-          { text: '设计模式', link: '/tutorials/design-pattern/' }
+          { text: '设计模式', link: '/tutorials/design-pattern/' },
+          { text: 'Elasticsearch', link: '/tutorials/es/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -79,6 +80,19 @@ export default defineConfig({
             { text: 'Java面试题', link: '/interview/java' },
             { text: '数据库面试题', link: '/interview/database' },
             { text: '系统设计面试题', link: '/interview/system-design' },
+          ]
+        }
+      ],
+      '/tutorials/es/': [
+        {
+          text: 'Elasticsearch',
+          collapsed: false,
+          items: [
+            { text: 'ES基础概念', link: '/tutorials/es/basics' },
+            { text: '索引和文档', link: '/tutorials/es/index-document' },
+            { text: '查询和搜索', link: '/tutorials/es/query-search' },
+            { text: '聚合分析', link: '/tutorials/es/aggregation' },
+            { text: '性能优化', link: '/tutorials/es/performance' },
           ]
         }
       ],
