@@ -1,0 +1,42 @@
+/* Mermaid 图表容器样式 */
+.mermaid-wrapper {
+  text-align: center;
+  margin: 2rem 0;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.dark .mermaid-wrapper {
+  background: #1e1e1e;
+  border-color: #374151;
+}
+
+/* Mermaid图表本身 */
+.mermaid-wrapper .mermaid {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.mermaid-wrapper .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 错误提示样式 */
+.mermaid-error {
+  color: #ef4444;
+  padding: 1rem;
+  background: #fee2e2;
+  border-radius: 4px;
+  font-family: monospace;
+  text-align: left;
+}
+
+.dark .mermaid-error {
+  background: #450a0a;
+  color: #fca5a5;
+}
+
