@@ -24,7 +24,8 @@ export default defineConfig({
           { text: '微服务架构', link: '/tutorials/microservice/' },
           { text: '设计模式', link: '/tutorials/design-pattern/' },
           { text: 'Elasticsearch', link: '/tutorials/es/' },
-          { text: '每周一道算法题', link: '/tutorials/algorithm/' }
+          { text: '每周一道算法题', link: '/tutorials/algorithm/' },
+          { text: '代码与人生', link: '/tutorials/insights/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -89,11 +90,56 @@ export default defineConfig({
           text: 'Elasticsearch',
           collapsed: false,
           items: [
-            { text: 'ES基础概念', link: '/tutorials/es/ES基础概念' },
-            { text: '索引和文档', link: '/tutorials/es/index-document' },
-            { text: '查询和搜索', link: '/tutorials/es/query-search' },
-            { text: '聚合分析', link: '/tutorials/es/aggregation' },
-            { text: '性能优化', link: '/tutorials/es/performance' },
+            {
+              text: '基础入门',
+              collapsed: true,
+              items: [
+                { text: 'ES基础概念', link: '/tutorials/es/ES基础概念' },
+                { text: 'Elasticsearch安装配置', link: '/tutorials/es/basics/installation' },
+                { text: '集群架构详解', link: '/tutorials/es/basics/cluster-architecture' },
+                { text: '节点类型与角色', link: '/tutorials/es/basics/node-types' }
+              ]
+            },
+            {
+              text: '索引与文档',
+              collapsed: true,
+              items: [
+                { text: '索引和文档', link: '/tutorials/es/index-document' },
+                { text: '索引管理最佳实践', link: '/tutorials/es/index-document/index-management' },
+                { text: '文档CRUD操作', link: '/tutorials/es/index-document/document-crud' },
+                { text: '映射与字段类型', link: '/tutorials/es/index-document/mapping-types' }
+              ]
+            },
+            {
+              text: '查询与搜索',
+              collapsed: true,
+              items: [
+                { text: '查询和搜索', link: '/tutorials/es/query-search' },
+                { text: 'DSL查询语法详解', link: '/tutorials/es/query-search/dsl-query' },
+                { text: '全文搜索与匹配', link: '/tutorials/es/query-search/full-text-search' },
+                { text: '复合查询与过滤器', link: '/tutorials/es/query-search/compound-queries' }
+              ]
+            },
+            {
+              text: '聚合分析',
+              collapsed: true,
+              items: [
+                { text: '聚合分析', link: '/tutorials/es/aggregation' },
+                { text: '指标聚合详解', link: '/tutorials/es/aggregation/metric-aggregations' },
+                { text: '桶聚合与分组', link: '/tutorials/es/aggregation/bucket-aggregations' },
+                { text: '管道聚合应用', link: '/tutorials/es/aggregation/pipeline-aggregations' }
+              ]
+            },
+            {
+              text: '性能优化',
+              collapsed: true,
+              items: [
+                { text: '性能优化', link: '/tutorials/es/performance' },
+                { text: '索引性能调优', link: '/tutorials/es/performance/index-optimization' },
+                { text: '查询性能优化', link: '/tutorials/es/performance/query-optimization' },
+                { text: '集群监控与运维', link: '/tutorials/es/performance/cluster-monitoring' }
+              ]
+            }
           ]
         }
       ],
@@ -102,13 +148,155 @@ export default defineConfig({
           text: '每周一道算法题',
           collapsed: false,
           items: [
-            { text: '数组与字符串', link: '/tutorials/algorithm/array-string' },
-            { text: '链表操作', link: '/tutorials/algorithm/linked-list' },
-            { text: '树与图', link: '/tutorials/algorithm/tree-graph' },
-            { text: '动态规划', link: '/tutorials/algorithm/dynamic-programming' },
-            { text: '贪心算法', link: '/tutorials/algorithm/greedy' },
-            { text: '回溯算法', link: '/tutorials/algorithm/backtracking' },
-            { text: '排序与搜索', link: '/tutorials/algorithm/sort-search' },
+            {
+              text: '数组与字符串',
+              collapsed: true,
+              items: [
+                { text: '两数之和', link: '/tutorials/algorithm/array-string/two-sum' },
+                { text: '最长无重复子串', link: '/tutorials/algorithm/array-string/longest-substring' },
+                { text: '盛最多水的容器', link: '/tutorials/algorithm/array-string/container-with-most-water' },
+                { text: '三数之和', link: '/tutorials/algorithm/array-string/three-sum' }
+              ]
+            },
+            {
+              text: '链表操作',
+              collapsed: true,
+              items: [
+                { text: '反转链表', link: '/tutorials/algorithm/linked-list/reverse-linked-list' },
+                { text: '合并两个有序链表', link: '/tutorials/algorithm/linked-list/merge-two-sorted-lists' },
+                { text: '环形链表检测', link: '/tutorials/algorithm/linked-list/linked-list-cycle' },
+                { text: '删除链表的倒数第N个节点', link: '/tutorials/algorithm/linked-list/remove-nth-node' }
+              ]
+            },
+            {
+              text: '树与图',
+              collapsed: true,
+              items: [
+                { text: '二叉树的最大深度', link: '/tutorials/algorithm/tree-graph/maximum-depth-of-binary-tree' },
+                { text: '验证二叉搜索树', link: '/tutorials/algorithm/tree-graph/validate-binary-search-tree' },
+                { text: '路径总和', link: '/tutorials/algorithm/tree-graph/path-sum' },
+                { text: '岛屿数量', link: '/tutorials/algorithm/tree-graph/number-of-islands' }
+              ]
+            },
+            {
+              text: '动态规划',
+              collapsed: true,
+              items: [
+                { text: '爬楼梯', link: '/tutorials/algorithm/dynamic-programming/climbing-stairs' },
+                { text: '最长递增子序列', link: '/tutorials/algorithm/dynamic-programming/longest-increasing-subsequence' },
+                { text: '零钱兑换', link: '/tutorials/algorithm/dynamic-programming/coin-change' },
+                { text: '编辑距离', link: '/tutorials/algorithm/dynamic-programming/edit-distance' }
+              ]
+            },
+            {
+              text: '贪心算法',
+              collapsed: true,
+              items: [
+                { text: '买卖股票的最佳时机', link: '/tutorials/algorithm/greedy/best-time-to-buy-and-sell-stock' },
+                { text: '跳跃游戏', link: '/tutorials/algorithm/greedy/jump-game' },
+                { text: '加油站', link: '/tutorials/algorithm/greedy/gas-station' },
+                { text: '分发饼干', link: '/tutorials/algorithm/greedy/assign-cookies' }
+              ]
+            },
+            {
+              text: '回溯算法',
+              collapsed: true,
+              items: [
+                { text: '全排列', link: '/tutorials/algorithm/backtracking/permutations' },
+                { text: '组合总和', link: '/tutorials/algorithm/backtracking/combination-sum' },
+                { text: 'N皇后问题', link: '/tutorials/algorithm/backtracking/n-queens' },
+                { text: '单词搜索', link: '/tutorials/algorithm/backtracking/word-search' }
+              ]
+            },
+            {
+              text: '排序与搜索',
+              collapsed: true,
+              items: [
+                { text: '快速排序实现', link: '/tutorials/algorithm/sort-search/quick-sort' },
+                { text: '归并排序实现', link: '/tutorials/algorithm/sort-search/merge-sort' },
+                { text: '二分查找', link: '/tutorials/algorithm/sort-search/binary-search' },
+                { text: '寻找旋转排序数组中的最小值', link: '/tutorials/algorithm/sort-search/find-minimum-in-rotated-sorted-array' }
+              ]
+            }
+          ]
+        }
+      ],
+      '/tutorials/insights/': [
+        {
+          text: '代码与人生',
+          collapsed: false,
+          items: [
+            {
+              text: '技术成长感悟',
+              collapsed: true,
+              items: [
+                { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
+                { text: '技术选型的艺术与哲学', link: '/tutorials/insights/growth/technology-selection' },
+                { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
+                { text: '技术债务的思考', link: '/tutorials/insights/growth/technical-debt' }
+              ]
+            },
+            {
+              text: '职场人生思考',
+              collapsed: true,
+              items: [
+                { text: '程序员的职业规划', link: '/tutorials/insights/career/career-planning' },
+                { text: '技术管理者的修炼', link: '/tutorials/insights/career/tech-management' },
+                { text: '团队协作的艺术', link: '/tutorials/insights/career/team-collaboration' },
+                { text: '职场沟通技巧', link: '/tutorials/insights/career/workplace-communication' }
+              ]
+            },
+            {
+              text: '学习心得分享',
+              collapsed: true,
+              items: [
+                { text: '如何高效学习新技术', link: '/tutorials/insights/learning/learn-new-tech' },
+                { text: '阅读源码的正确姿势', link: '/tutorials/insights/learning/read-source-code' },
+                { text: '技术博客写作心得', link: '/tutorials/insights/learning/tech-blog-writing' },
+                { text: '知识体系的构建', link: '/tutorials/insights/learning/knowledge-system' }
+              ]
+            },
+            {
+              text: '生活智慧点滴',
+              collapsed: true,
+              items: [
+                { text: '程序员的健康生活', link: '/tutorials/insights/life-wisdom/healthy-living' },
+                { text: '工作与生活的平衡', link: '/tutorials/insights/life-wisdom/work-life-balance' },
+                { text: '时间管理的艺术', link: '/tutorials/insights/life-wisdom/time-management' },
+                { text: '兴趣爱好的培养', link: '/tutorials/insights/life-wisdom/hobbies' }
+              ]
+            },
+            {
+              text: '创业与梦想',
+              collapsed: true,
+              items: [
+                { text: '技术创业的思考', link: '/tutorials/insights/entrepreneurship/tech-startup' },
+                { text: '产品思维的重要性', link: '/tutorials/insights/entrepreneurship/product-thinking' },
+                { text: '产品思维的重要性之技术文章', link: '/tutorials/insights/entrepreneurship/产品思维的重要性之技术文章' },
+                { text: '从技术到商业的转变', link: '/tutorials/insights/entrepreneurship/tech-to-business' },
+                { text: '创业路上的坑与收获', link: '/tutorials/insights/entrepreneurship/startup-journey' }
+              ]
+            },
+            {
+              text: '时间与效率',
+              collapsed: true,
+              items: [
+                { text: '番茄工作法的实践', link: '/tutorials/insights/time-efficiency/pomodoro-technique' },
+                { text: '深度工作的力量', link: '/tutorials/insights/time-efficiency/deep-work' },
+                { text: '任务优先级管理', link: '/tutorials/insights/time-efficiency/task-priority' },
+                { text: '效率工具的使用心得', link: '/tutorials/insights/time-efficiency/efficiency-tools' }
+              ]
+            },
+            {
+              text: '心态与格局',
+              collapsed: true,
+              items: [
+                { text: '程序员的格局修炼', link: '/tutorials/insights/mindset/developer-mindset' },
+                { text: '面对挫折的心态调整', link: '/tutorials/insights/mindset/dealing-with-failure' },
+                { text: '持续学习的内驱力', link: '/tutorials/insights/mindset/continuous-learning' },
+                { text: '技术人的价值观', link: '/tutorials/insights/mindset/tech-values' }
+              ]
+            }
           ]
         }
       ],
