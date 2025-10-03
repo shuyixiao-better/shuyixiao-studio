@@ -23,7 +23,8 @@ export default defineConfig({
           { text: 'Spring全家桶', link: '/tutorials/spring/' },
           { text: '微服务架构', link: '/tutorials/microservice/' },
           { text: '设计模式', link: '/tutorials/design-pattern/' },
-          { text: 'Elasticsearch', link: '/tutorials/es/' }
+          { text: 'Elasticsearch', link: '/tutorials/es/' },
+          { text: '每周一道算法题', link: '/tutorials/algorithm/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -93,6 +94,21 @@ export default defineConfig({
             { text: '查询和搜索', link: '/tutorials/es/query-search' },
             { text: '聚合分析', link: '/tutorials/es/aggregation' },
             { text: '性能优化', link: '/tutorials/es/performance' },
+          ]
+        }
+      ],
+      '/tutorials/algorithm/': [
+        {
+          text: '每周一道算法题',
+          collapsed: false,
+          items: [
+            { text: '数组与字符串', link: '/tutorials/algorithm/array-string' },
+            { text: '链表操作', link: '/tutorials/algorithm/linked-list' },
+            { text: '树与图', link: '/tutorials/algorithm/tree-graph' },
+            { text: '动态规划', link: '/tutorials/algorithm/dynamic-programming' },
+            { text: '贪心算法', link: '/tutorials/algorithm/greedy' },
+            { text: '回溯算法', link: '/tutorials/algorithm/backtracking' },
+            { text: '排序与搜索', link: '/tutorials/algorithm/sort-search' },
           ]
         }
       ],
