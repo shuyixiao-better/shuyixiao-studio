@@ -88,7 +88,7 @@ export default defineConfig({
           text: 'Elasticsearch',
           collapsed: false,
           items: [
-            { text: 'ES基础概念', link: '/tutorials/es/basics' },
+            { text: 'ES基础概念', link: '/tutorials/es/ES基础概念' },
             { text: '索引和文档', link: '/tutorials/es/index-document' },
             { text: '查询和搜索', link: '/tutorials/es/query-search' },
             { text: '聚合分析', link: '/tutorials/es/aggregation' },
