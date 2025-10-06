@@ -1,0 +1,40 @@
+文章统计功能使用说明
+===================
+
+功能已实现：
+1. 阅读量统计（自动，每个session只计数一次）
+2. 点赞功能（可点击切换）
+3. 收藏功能（可点击切换）
+
+访问地址：
+---------
+• 管理面板：/admin/stats
+  查看所有文章的统计数据总览和详细列表
+
+• 导出CSV：/.netlify/functions/export-stats
+  下载所有统计数据的CSV文件
+
+• 查看API：/.netlify/functions/article-stats-admin
+  JSON格式查看所有统计数据
+
+文件说明：
+---------
+• docs/.vitepress/theme/components/ArticleStats.vue - 文章统计显示组件
+• docs/.vitepress/theme/components/StatsAdmin.vue - 管理面板组件
+• docs/.vitepress/theme/utils/stats-api.js - API工具类
+• netlify/functions/article-stats.mjs - 主统计API
+• netlify/functions/article-stats-admin.mjs - 管理查看API
+• netlify/functions/export-stats.mjs - CSV导出API
+• data/article-stats.json - 统计数据存储（生产环境）
+
+环境支持：
+---------
+• 开发环境：使用 localStorage 模拟数据存储
+• 生产环境：使用 Netlify Functions + JSON文件持久化存储
+
+数据安全：
+---------
+• 用户行为（点赞/收藏状态）存储在浏览器 localStorage
+• 统计数据存储在服务器端（生产）或浏览器端（开发）
+• 阅读量使用 sessionStorage 防止重复计数
+
