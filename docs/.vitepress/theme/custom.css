@@ -454,3 +454,37 @@ body {
   }
 }
 
+/* 图片缩放功能样式 */
+.main img:not(.no-zoom) {
+  cursor: zoom-in;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+}
+
+.main img:not(.no-zoom):hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* medium-zoom 覆盖层样式 */
+.medium-zoom-overlay {
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.medium-zoom-image {
+  cursor: zoom-out !important;
+  z-index: 101;
+  border-radius: 8px;
+}
+
+/* 添加图片加载效果 */
+.vp-doc img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+

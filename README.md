@@ -21,11 +21,13 @@ npm run docs:dev
 
 - **VitePress** `1.6.4` - 现代化的静态站点生成器
 - **Mermaid** `11.12.0` - 流程图和图表渲染
+- **Medium Zoom** `1.1.0` - 图片点击放大功能
 - **Node.js** `22.16.0` - 运行环境
 
 ## ✨ 特性
 
 - ✅ 支持 Mermaid 图表自动渲染
+- ✅ 图片点击放大查看功能
 - ✅ 响应式设计，移动端友好
 - ✅ 暗色模式支持
 - ✅ 快速热更新
@@ -34,7 +36,6 @@ npm run docs:dev
 ## 📖 文档
 
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
-- 📊 [Mermaid 使用说明](./MERMAID_USAGE.md) - Mermaid 图表使用指南
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
 
 ## 🔨 可用命令
@@ -84,6 +85,186 @@ graph TB
 \`\`\`
 ```
 
+### 使用图片缩放功能
+
+在 Markdown 中插入图片，点击自动放大查看：
+
+```markdown
+![图片描述](./path/to/image.png)
+```
+
+禁用特定图片的缩放（如小图标）：
+
+```html
+<img src="./icon.png" alt="图标" class="no-zoom" />
+```
+
+## 📊 Mermaid 图表详细说明
+
+### 环境要求
+
+- **Node.js 版本**: 22.16.0 或更高
+- 使用 `nvm use 22.16.0` 切换到正确版本
+
+### 流程图示例
+
+\`\`\`mermaid
+graph TB
+    A[开始] --> B[处理]
+    B --> C{判断}
+    C -->|是| D[结果1]
+    C -->|否| E[结果2]
+    
+    style A fill:#e1f5fe
+    style D fill:#e8f5e8
+    style E fill:#fff3e0
+\`\`\`
+
+### 时序图示例
+
+\`\`\`mermaid
+sequenceDiagram
+    participant 客户端
+    participant 服务器
+    客户端->>服务器: 请求数据
+    服务器-->>客户端: 返回数据
+\`\`\`
+
+### 类图示例
+
+\`\`\`mermaid
+classDiagram
+    class 用户 {
+        +String name
+        +String email
+        +login()
+        +logout()
+    }
+\`\`\`
+
+### 状态图示例
+
+\`\`\`mermaid
+stateDiagram-v2
+    [*] --> 空闲
+    空闲 --> 处理中: 开始处理
+    处理中 --> 成功: 处理完成
+    处理中 --> 失败: 出现错误
+    成功 --> [*]
+    失败 --> [*]
+\`\`\`
+
+### 自定义样式
+
+可以在 Mermaid 代码中添加样式：
+
+\`\`\`mermaid
+graph TB
+    A[节点A]
+    B[节点B]
+    C[节点C]
+    A --> B
+    B --> C
+    
+    style A fill:#e1f5fe
+    style B fill:#f3e5f5
+    style C fill:#e8f5e8
+\`\`\`
+
+### Mermaid 常见问题
+
+#### 1. 图表不显示
+
+**解决方案**:
+- 确保 Node 版本为 22.16.0: `node --version`
+- 重启开发服务器: `Ctrl+C` 然后 `npm run docs:dev`
+- 硬刷新浏览器: `Ctrl+Shift+R` (Windows/Linux) 或 `Cmd+Shift+R` (Mac)
+
+#### 2. 图表显示为代码
+
+**原因**: Mermaid 插件未正确加载
+
+**解决方案**:
+- 检查是否正确安装了依赖: `npm install`
+- 确保 `.vitepress/config.js` 中正确导入了 `withMermaid`
+- 查看浏览器控制台是否有错误信息
+
+#### 3. 样式不生效
+
+**解决方案**:
+- 样式定义要放在 Mermaid 代码块的最后
+- 使用正确的 CSS 颜色格式（如 `#e1f5fe`）
+- 确保节点 ID 正确
+
+### Mermaid 更多资源
+
+- [Mermaid 官方文档](https://mermaid.js.org/)
+- [Mermaid 在线编辑器](https://mermaid.live/)
+- [VitePress Plugin Mermaid](https://github.com/emersonbottero/vitepress-plugin-mermaid)
+
+## 🖼️ 图片缩放功能说明
+
+### 功能特点
+
+1. **自动启用**：所有文章中的图片都会自动支持点击放大
+2. **优雅动画**：平滑的缩放过渡效果
+3. **智能背景**：半透明黑色背景，带模糊效果
+4. **鼠标提示**：
+   - 鼠标悬停在图片上时，显示放大镜图标（zoom-in）
+   - 图片会轻微放大并显示阴影效果
+5. **关闭方式**：
+   - 点击放大后的图片
+   - 点击背景区域
+   - 按 ESC 键
+
+### 基本使用
+
+在 Markdown 文档中正常插入图片即可：
+
+```markdown
+![图片描述](./path/to/image.png)
+```
+
+或者使用 HTML：
+
+```html
+<img src="./path/to/image.png" alt="图片描述" />
+```
+
+### 禁用特定图片的缩放
+
+如果某些图片不希望支持点击放大（比如小图标），可以添加 `no-zoom` class：
+
+```html
+<img src="./icon.png" alt="图标" class="no-zoom" />
+```
+
+### 配置说明
+
+图片缩放功能已经预配置了以下参数：
+
+- **背景色**：`rgba(0, 0, 0, 0.8)` - 80% 透明度的黑色
+- **边距**：`48px` - 放大图片与屏幕边缘的距离
+- **滚动偏移**：`40px` - 滚动时的偏移量
+
+如需修改配置，可编辑 `docs/.vitepress/theme/index.js` 文件中的 `mediumZoom` 配置。
+
+### 技术实现
+
+本功能使用了以下技术：
+
+1. **medium-zoom** - 轻量级的图片缩放库
+2. **Vue 3** - VitePress 的底层框架
+3. **CSS 过渡** - 优雅的动画效果
+
+### 响应式支持
+
+图片缩放功能在所有设备上都能良好工作：
+
+- 桌面浏览器：完整的缩放和动画效果
+- 平板设备：自适应边距和缩放比例
+- 移动设备：触摸支持，双击返回
+
 ## 🎨 自定义配置
 
 主要配置文件：
@@ -92,6 +273,11 @@ graph TB
 - `docs/` - 文档内容
 
 ## 📦 最近更新
+
+### 2025-10-06
+- ✅ 新增图片点击放大查看功能
+- ✅ 集成 medium-zoom 库
+- ✅ 优化图片展示体验
 
 ### 2025-01-27
 - ✅ 升级 VitePress 到最新版本 (1.6.4)
