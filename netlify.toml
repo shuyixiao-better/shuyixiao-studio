@@ -5,6 +5,3 @@
 [build.environment]
   NODE_VERSION = "22"
   PNPM_VERSION = "10.17.1"
-
-[functions]
-  directory = "netlify/functions"

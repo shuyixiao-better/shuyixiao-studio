@@ -5,16 +5,13 @@ import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import './custom.css'
 import NotFound from './NotFound.vue'
-import ArticleStats from './components/ArticleStats.vue'
 
 export default {
   extends: DefaultTheme,
   // 通过 Layout 的 not-found 插槽接管 404
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'not-found': () => h(NotFound),
-      // 在文档内容底部添加统计组件
-      'doc-after': () => h(ArticleStats)
+      'not-found': () => h(NotFound)
     })
   },
   enhanceApp({ app, router, siteData }) {
