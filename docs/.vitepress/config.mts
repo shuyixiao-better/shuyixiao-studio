@@ -152,6 +152,7 @@ export default defineConfig({
               text: '数组与字符串',
               collapsed: true,
               items: [
+                { text: '加一', link: '/tutorials/algorithm/array-string/加一' },
                 { text: '两数之和', link: '/tutorials/algorithm/array-string/two-sum' },
                 { text: '最长无重复子串', link: '/tutorials/algorithm/array-string/longest-substring' },
                 { text: '盛最多水的容器', link: '/tutorials/algorithm/array-string/container-with-most-water' },
