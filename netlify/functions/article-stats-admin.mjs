@@ -1,21 +1,20 @@
-import { getStore } from '@netlify/blobs'
+import { promises as fs } from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-// 获取Blob存储实例
-function getBlobStore() {
-  return getStore({
-    name: 'article-stats',
-    siteID: process.env.SITE_ID,
-    token: process.env.NETLIFY_TOKEN || process.env.NETLIFY_ACCESS_TOKEN
-  })
-}
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// 数据存储路径
+const DATA_DIR = path.join(__dirname, '..', '..', 'data')
+const STATS_FILE = path.join(DATA_DIR, 'article-stats.json')
 
 // 读取所有统计数据
-async function readAllStats(store) {
+async function readAllStats() {
   try {
-    const data = await store.get('stats', { type: 'json' })
-    return data || {}
+    const data = await fs.readFile(STATS_FILE, 'utf-8')
+    return JSON.parse(data)
   } catch (error) {
-    console.error('Read stats error:', error)
     return {}
   }
 }
@@ -48,8 +47,7 @@ export async function handler(event, context) {
   }
 
   try {
-    const store = getBlobStore()
-    const allStats = await readAllStats(store)
+    const allStats = await readAllStats()
     
     // 计算总体统计
     const totalStats = {
@@ -87,3 +85,4 @@ export async function handler(event, context) {
     }
   }
 }
+

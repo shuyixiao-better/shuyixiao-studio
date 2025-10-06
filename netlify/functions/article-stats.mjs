@@ -1,34 +1,39 @@
-import { getStore } from '@netlify/blobs'
+import { promises as fs } from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
-// 获取Blob存储实例
-function getBlobStore() {
-  return getStore({
-    name: 'article-stats',
-    siteID: process.env.SITE_ID,
-    token: process.env.NETLIFY_TOKEN || process.env.NETLIFY_ACCESS_TOKEN
-  })
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+// 数据存储路径
+const DATA_DIR = path.join(__dirname, '..', '..', 'data')
+const STATS_FILE = path.join(DATA_DIR, 'article-stats.json')
+
+// 确保数据目录存在
+async function ensureDataDir() {
+  try {
+    await fs.access(DATA_DIR)
+  } catch {
+    await fs.mkdir(DATA_DIR, { recursive: true })
+  }
 }
 
 // 读取统计数据
-async function readStats(store) {
+async function readStats() {
   try {
-    const data = await store.get('stats', { type: 'json' })
-    return data || {}
+    await ensureDataDir()
+    const data = await fs.readFile(STATS_FILE, 'utf-8')
+    return JSON.parse(data)
   } catch (error) {
-    console.error('Read stats error:', error)
+    // 文件不存在或解析错误，返回空对象
     return {}
   }
 }
 
 // 写入统计数据
-async function writeStats(store, stats) {
-  try {
-    await store.set('stats', JSON.stringify(stats))
-    return true
-  } catch (error) {
-    console.error('Write stats error:', error)
-    return false
-  }
+async function writeStats(stats) {
+  await ensureDataDir()
+  await fs.writeFile(STATS_FILE, JSON.stringify(stats, null, 2), 'utf-8')
 }
 
 // 获取文章统计
@@ -62,8 +67,7 @@ export async function handler(event, context) {
   }
 
   try {
-    const store = getBlobStore()
-    const stats = await readStats(store)
+    const stats = await readStats()
 
     // GET 请求：获取统计数据
     if (event.httpMethod === 'GET') {
@@ -127,15 +131,7 @@ export async function handler(event, context) {
 
       // 保存更新后的统计数据
       stats[articleId] = articleStats
-      const saved = await writeStats(store, stats)
-
-      if (!saved) {
-        return {
-          statusCode: 500,
-          headers,
-          body: JSON.stringify({ error: 'Failed to save stats' })
-        }
-      }
+      await writeStats(stats)
 
       return {
         statusCode: 200,
@@ -163,3 +159,4 @@ export async function handler(event, context) {
     }
   }
 }
+
