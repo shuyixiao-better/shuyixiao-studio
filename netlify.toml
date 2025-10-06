@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install && pnpm run docs:build"
+  command = "corepack enable && pnpm install && pnpm run docs:build"
   publish = "docs/.vitepress/dist"
 
 [build.environment]
