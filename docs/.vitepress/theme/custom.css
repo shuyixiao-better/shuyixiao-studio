@@ -456,7 +456,7 @@ body {
 
 /* 图片缩放功能样式 */
 .main img:not(.no-zoom) {
-  cursor: zoom-in;
+  cursor: zoom-in !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-radius: 8px;
 }
@@ -470,12 +470,33 @@ body {
 .medium-zoom-overlay {
   z-index: 100;
   backdrop-filter: blur(4px);
+  cursor: zoom-out !important;
 }
 
 .medium-zoom-image {
   cursor: zoom-out !important;
   z-index: 101;
   border-radius: 8px;
+}
+
+/* 确保放大后的图片显示正确的光标 */
+.medium-zoom-image--opened {
+  cursor: zoom-out !important;
+}
+
+/* 确保普通图片始终显示放大光标 */
+.medium-zoom-image:not(.medium-zoom-image--opened) {
+  cursor: zoom-in !important;
+}
+
+/* 强制重置图片光标样式，确保状态正确 */
+.main img:not(.no-zoom):not(.medium-zoom-image--opened) {
+  cursor: zoom-in !important;
+}
+
+/* 当图片从放大状态恢复时，确保光标正确 */
+.main img:not(.no-zoom).medium-zoom-image:not(.medium-zoom-image--opened) {
+  cursor: zoom-in !important;
 }
 
 /* 添加图片加载效果 */
