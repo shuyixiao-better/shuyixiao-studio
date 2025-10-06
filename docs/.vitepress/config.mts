@@ -233,7 +233,8 @@ export default defineConfig({
                 { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
                 { text: '技术选型的艺术与哲学', link: '/tutorials/insights/growth/technology-selection' },
                 { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
-                { text: '技术债务的思考', link: '/tutorials/insights/growth/technical-debt' }
+                { text: '技术债务的思考', link: '/tutorials/insights/growth/technical-debt' },
+                { text: '程序员如何学习技术', link: '/tutorials/insights/growth/technical-debt' }
               ]
             },
             {
