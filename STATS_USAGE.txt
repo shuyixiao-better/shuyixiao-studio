@@ -22,19 +22,22 @@
 • docs/.vitepress/theme/components/ArticleStats.vue - 文章统计显示组件
 • docs/.vitepress/theme/components/StatsAdmin.vue - 管理面板组件
 • docs/.vitepress/theme/utils/stats-api.js - API工具类
-• netlify/functions/article-stats.mjs - 主统计API
+• netlify/functions/article-stats.mjs - 主统计API（使用Netlify Blobs）
 • netlify/functions/article-stats-admin.mjs - 管理查看API
 • netlify/functions/export-stats.mjs - CSV导出API
-• data/article-stats.json - 统计数据存储（生产环境）
 
 环境支持：
 ---------
 • 开发环境：使用 localStorage 模拟数据存储
-• 生产环境：使用 Netlify Functions + JSON文件持久化存储
+• 生产环境：使用 Netlify Blobs 持久化存储（可靠且自动备份）
 
-数据安全：
+数据存储：
 ---------
 • 用户行为（点赞/收藏状态）存储在浏览器 localStorage
-• 统计数据存储在服务器端（生产）或浏览器端（开发）
+• 统计数据存储在 Netlify Blobs（生产）或 localStorage（开发）
 • 阅读量使用 sessionStorage 防止重复计数
+
+部署说明：
+---------
+详细部署步骤请查看 DEPLOYMENT_GUIDE.md 文件
 
