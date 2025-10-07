@@ -27,20 +27,28 @@
 
 /* 优化文档页面布局 - 让内容区域和目录都有更多空间 */
 .VPDoc.has-aside {
-  max-width: 1680px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 /* 优化主要内容区域宽度 */
 .VPDoc .container {
-  max-width: 1680px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* 调整文档内容区域宽度 - 大幅增加内容宽度 */
+.vp-doc {
+  max-width: 1200px;
+  width: 100%;
+  padding: 48px 48px 96px;
   margin: 0 auto;
 }
 
-/* 调整文档内容区域宽度 */
-.vp-doc {
-  max-width: 920px;
-  padding: 48px 32px 96px;
+/* 调整整体文档布局，让内容和侧边栏更好地分配空间 */
+.VPDoc.has-aside .content-container {
+  max-width: 100%;
 }
 
 /* 优化右侧目录样式 */
@@ -51,8 +59,10 @@
 
 /* 右侧目录容器样式优化 */
 .VPDocAside {
-  padding-left: 32px;
+  padding-left: 48px;
+  padding-right: 32px;
   width: 280px;
+  min-width: 280px;
   flex-shrink: 0;
 }
 
@@ -109,6 +119,45 @@
   top: calc(var(--vp-nav-height) + 24px);
   max-height: calc(100vh - var(--vp-nav-height) - 48px);
   overflow-y: auto;
+}
+
+/* 覆盖VitePress默认的内容宽度限制 */
+@media (min-width: 1440px) {
+  .vp-doc {
+    max-width: 1400px !important;
+  }
+}
+
+@media (min-width: 1680px) {
+  .vp-doc {
+    max-width: 1600px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .vp-doc {
+    max-width: 1800px !important;
+  }
+}
+
+/* 确保文档容器使用flex布局并充分利用空间 */
+.VPDoc .container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+/* 让内容区域占据更多空间 */
+.VPDoc .content {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* 调整侧边栏区域 */
+aside.VPDocAside {
+  position: relative;
 }
 
 /* 确保内容区域有足够的空间 */
