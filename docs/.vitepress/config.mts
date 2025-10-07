@@ -97,6 +97,7 @@ export default defineConfig({
                 { text: 'ES基础概念', link: '/tutorials/es/ES基础概念' },
                 { text: 'Elasticsearch安装配置', link: '/tutorials/es/basics/installation' },
                 { text: 'Elasticsearch如何查看索引列表', link: '/tutorials/es/basics/Elasticsearch如何查看索引列表' },
+                { text: 'Elasticsearch分片的基本策略', link: '/tutorials/es/basics/Elasticsearch分片的基本策略' },
                 { text: '集群架构详解', link: '/tutorials/es/basics/cluster-architecture' },
                 { text: '节点类型与角色', link: '/tutorials/es/basics/node-types' }
               ]
