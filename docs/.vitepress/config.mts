@@ -108,7 +108,8 @@ export default defineConfig({
                 { text: 'Elasticsearch健康值检查', link: '/tutorials/es/basics/Elasticsearch健康值检查' },
                 { text: '为什么在ES不能简单地说索引等于表', link: '/tutorials/es/basics/为什么在ES不能简单地说索引等于表' },
                 { text: 'Elasticsearch元数据与源数据详解', link: '/tutorials/es/basics/Elasticsearch元数据与源数据详解' },
-                { text: '映射的基本概念', link: '/tutorials/es/basics/映射的基本概念' }
+                { text: '映射的基本概念', link: '/tutorials/es/basics/映射的基本概念' },
+                { text: 'ES字段数据类型降解基础版', link: '/tutorials/es/basics/ES字段数据类型降解基础版' }
               ]
             },
             {
