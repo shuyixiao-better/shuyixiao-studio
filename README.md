@@ -4,10 +4,11 @@
 
 ## 🌐 在线访问
 
-- **GitHub Pages**: [https://shuyixiao.github.io](https://shuyixiao.github.io)
+- **自定义域名**: [https://www.shuyixiao.top](https://www.shuyixiao.top) ⭐ 主站
+- **GitHub Pages**: `https://shuyixiao-better.github.io/shuyixiao-studio/`
 - **Netlify**: 查看 [DEPLOY.md](./DEPLOY.md) 配置说明
 
-![GitHub deployments](https://img.shields.io/github/deployments/shuyixiao/shuyixiao.github.io/github-pages?label=GitHub%20Pages)
+![GitHub deployments](https://img.shields.io/github/deployments/shuyixiao-better/shuyixiao-studio/github-pages?label=GitHub%20Pages)
 ![Node version](https://img.shields.io/badge/node-22.x-brightgreen)
 ![VitePress](https://img.shields.io/badge/VitePress-1.0.0-blue)
 
@@ -46,6 +47,7 @@ npm run docs:dev
 
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
 - 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
+- 🌐 [自定义域名配置](./CUSTOM_DOMAIN.md) - 配置 www.shuyixiao.top 域名
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
 
 ## 🔨 可用命令
