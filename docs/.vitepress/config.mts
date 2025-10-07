@@ -118,6 +118,7 @@ export default defineConfig({
               items: [
                 { text: '索引命名规范', link: '/tutorials/es/index-document/索引命名规范' },
                 { text: '索引的不可变性解决方案', link: '/tutorials/es/index-document/索引的不可变性解决方案' },
+                { text: '查询索引&特定索引', link: '/tutorials/es/index-document/查询索引&特定索引' },
                 { text: '文档CRUD操作', link: '/tutorials/es/index-document/document-crud' },
                 { text: '映射与字段类型', link: '/tutorials/es/index-document/mapping-types' }
               ]
