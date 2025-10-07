@@ -2,6 +2,15 @@
 
 > IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证 | 人生程序设计程序员 境是人非叶落处，焕景深处已向春~ 代码是我的文字，程序是我的诗篇，我不是程序员，我是诗人。大浪淘沙，去伪存真，破后而立，否极泰来。 真正的有所成，只能是慢慢来...
 
+## 🌐 在线访问
+
+- **GitHub Pages**: [https://shuyixiao.github.io](https://shuyixiao.github.io)
+- **Netlify**: 查看 [DEPLOY.md](./DEPLOY.md) 配置说明
+
+![GitHub deployments](https://img.shields.io/github/deployments/shuyixiao/shuyixiao.github.io/github-pages?label=GitHub%20Pages)
+![Node version](https://img.shields.io/badge/node-22.x-brightgreen)
+![VitePress](https://img.shields.io/badge/VitePress-1.0.0-blue)
+
 ## 🚀 快速开始
 
 ```bash
@@ -36,6 +45,7 @@ npm run docs:dev
 ## 📖 文档
 
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
+- 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
 
 ## 🔨 可用命令
@@ -273,6 +283,12 @@ graph TB
 - `docs/` - 文档内容
 
 ## 📦 最近更新
+
+### 2025-10-07
+- ✅ 新增 GitHub Pages 自动部署工作流
+- ✅ 支持 GitHub Pages 和 Netlify 双平台部署
+- ✅ 添加详细的部署指南文档
+- ✅ 完善 README 文档结构
 
 ### 2025-10-06
 - ✅ 新增图片点击放大查看功能
