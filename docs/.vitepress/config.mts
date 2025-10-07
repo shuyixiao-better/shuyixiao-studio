@@ -115,7 +115,8 @@ export default defineConfig({
                 { text: 'ES常用Keywords类型故事版', link: '/tutorials/es/basics/ES常用Keywords类型故事版' },
                 { text: 'ES常用Dates（时间类型）故事版', link: '/tutorials/es/basics/ES常用Dates（时间类型）故事版' },
                 { text: 'ES常用对象类型故事版', link: '/tutorials/es/basics/ES常用对象类型故事版' },
-                { text: 'ES常用空间数据类型故事版', link: '/tutorials/es/basics/ES常用空间数据类型故事版' }
+                { text: 'ES常用空间数据类型故事版', link: '/tutorials/es/basics/ES常用空间数据类型故事版' },
+                { text: 'ES常用文档排名类型故事版', link: '/tutorials/es/basics/ES常用文档排名类型故事版' }
               ]
             },
             {
