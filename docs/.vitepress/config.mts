@@ -112,7 +112,8 @@ export default defineConfig({
                 { text: 'ES字段数据类型降解基础版', link: '/tutorials/es/basics/ES字段数据类型降解基础版' },
                 { text: 'ES常用数字类型故事版', link: '/tutorials/es/basics/ES常用数字类型故事版' },
                 { text: 'ES常用基本数据类型故事版', link: '/tutorials/es/basics/ES常用基本数据类型故事版' },
-                { text: 'ES常用Keywords类型故事版', link: '/tutorials/es/basics/ES常用Keywords类型故事版' }
+                { text: 'ES常用Keywords类型故事版', link: '/tutorials/es/basics/ES常用Keywords类型故事版' },
+                { text: 'ES常用Dates（时间类型）故事版', link: '/tutorials/es/basics/ES常用Dates（时间类型）故事版' }
               ]
             },
             {
