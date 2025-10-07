@@ -15,14 +15,100 @@
 
 /* 全局布局优化 */
 .VPContent {
-  max-width: 1400px;
+  max-width: 1680px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .VPContent .container {
-  max-width: 1400px;
+  max-width: 1680px;
   margin: 0 auto;
+}
+
+/* 优化文档页面布局 - 让内容区域和目录都有更多空间 */
+.VPDoc.has-aside {
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+/* 优化主要内容区域宽度 */
+.VPDoc .container {
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+/* 调整文档内容区域宽度 */
+.vp-doc {
+  max-width: 920px;
+  padding: 48px 32px 96px;
+}
+
+/* 优化右侧目录样式 */
+.VPDocAsideOutline {
+  padding-left: 16px;
+  max-width: 280px;
+}
+
+/* 右侧目录容器样式优化 */
+.VPDocAside {
+  padding-left: 32px;
+  width: 280px;
+  flex-shrink: 0;
+}
+
+/* 目录标题样式 */
+.VPDocAsideOutline .outline-title {
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: var(--vp-c-text-1);
+  padding: 8px 0 16px;
+}
+
+/* 目录链接样式 */
+.VPDocAsideOutline .outline-link {
+  font-size: 13px;
+  line-height: 28px;
+  color: var(--vp-c-text-2);
+  font-weight: 500;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+  border-left: 2px solid transparent;
+  padding-left: 16px;
+  margin-left: -16px;
+}
+
+.VPDocAsideOutline .outline-link:hover {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-soft);
+  border-left-color: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline .outline-link.active {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+  border-left-color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-brand-dimm);
+}
+
+/* 目录层级缩进 */
+.VPDocAsideOutline .outline-link.nested {
+  padding-left: 28px;
+  font-size: 12px;
+}
+
+/* 目录区域背景和边框 */
+.VPDocAside.has-outline {
+  border-left: 1px solid var(--vp-c-divider-light);
+  background-color: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  padding: 24px 16px;
+  margin-top: 48px;
+  position: sticky;
+  top: calc(var(--vp-nav-height) + 24px);
+  max-height: calc(100vh - var(--vp-nav-height) - 48px);
+  overflow-y: auto;
 }
 
 /* 确保内容区域有足够的空间 */

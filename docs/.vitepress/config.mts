@@ -326,9 +326,9 @@ export default defineConfig({
       provider: 'local'
     },
 
-    // 大纲设置
+    // 大纲设置（从h2到h4）
     outline: {
-      level: [2, 3],
+      level: [2, 4],
       label: '目录'
     },
 
