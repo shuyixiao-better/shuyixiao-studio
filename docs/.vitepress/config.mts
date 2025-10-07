@@ -117,7 +117,7 @@ export default defineConfig({
               collapsed: true,
               items: [
                 { text: '索引命名规范', link: '/tutorials/es/index-document/索引命名规范' },
-                { text: '索引管理最佳实践', link: '/tutorials/es/index-document/index-management' },
+                { text: '索引的不可变性解决方案', link: '/tutorials/es/index-document/索引的不可变性解决方案' },
                 { text: '文档CRUD操作', link: '/tutorials/es/index-document/document-crud' },
                 { text: '映射与字段类型', link: '/tutorials/es/index-document/mapping-types' }
               ]
