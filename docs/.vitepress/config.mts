@@ -1,7 +1,13 @@
 import { defineConfig } from 'vitepress'
 
+// 根据部署环境自动设置 base 路径
+// GitHub Pages 项目站点需要 /仓库名/，Netlify 根域名部署则用 /
+const base = process.env.NETLIFY === 'true' ? '/' : '/shuyixiao-studio/'
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base,
+  
   title: "舒一笑不秃头的博客",
   description: "IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
   head: [
