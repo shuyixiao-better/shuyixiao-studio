@@ -99,6 +99,7 @@ export default defineConfig({
                 { text: 'Elasticsearch如何查看索引列表', link: '/tutorials/es/basics/Elasticsearch如何查看索引列表' },
                 { text: 'Elasticsearch分片的基本策略', link: '/tutorials/es/basics/Elasticsearch分片的基本策略' },
                 { text: 'Elasticsearch健康值检查', link: '/tutorials/es/basics/Elasticsearch健康值检查' },
+                { text: '为什么在ES不能简单地说索引等于表', link: '/tutorials/es/basics/为什么在ES不能简单地说索引等于表' },
                 { text: '集群架构详解', link: '/tutorials/es/basics/cluster-architecture' },
                 { text: '节点类型与角色', link: '/tutorials/es/basics/node-types' }
               ]
