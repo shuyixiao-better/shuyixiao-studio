@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
 
 // 根据部署环境自动设置 base 路径
-// GitHub Pages 项目站点需要 /仓库名/，Netlify 根域名部署则用 /
-const base = process.env.NETLIFY === 'true' ? '/' : '/shuyixiao-studio/'
+// 使用自定义域名时，GitHub Pages 和 Netlify 都部署到根路径
+// 如果未来不使用自定义域名，需要改为：'/shuyixiao-studio/'
+const base = '/'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
