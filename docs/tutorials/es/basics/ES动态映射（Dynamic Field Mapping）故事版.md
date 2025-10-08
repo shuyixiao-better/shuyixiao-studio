@@ -380,3 +380,333 @@ PUT /my_index
    - 日期字段指定格式 `"format": "yyyy-MM-dd"`
 
 通过理解动态映射机制，你可以更好地利用 Elasticsearch 的灵活性，同时在生产环境中保持数据的一致性和可靠性！
+
+
+
+> ## 3.2 显示映射 Expllcit field mapping
+>
+> ```json
+> PUT /product
+> {
+>   "mappings": {
+>     "properties": {
+>       "field": {
+>         "mapping_parameter": "parameter_value",
+> 		...
+>       },
+> 	  ...
+>     }
+>   }
+> }
+> ```
+>
+> 课程演示DSL：
+>
+> ```java
+> #手工创建mapping（fields的mapping只能创建，无法修改）
+> #语法
+> delete /product
+> GET product/_mapping
+> PUT /product
+> {
+>    "mappings" : {
+>       "properties" : {
+>         "count" : {
+>           "type" : "long"
+>         },
+>         "date" : {
+>           "type" : "date"
+>         },
+>         "desc" : {
+>           "type" : "text",
+>           "fields" : {
+>             "keyword" : {
+>               "type" : "keyword",
+>               "ignore_above" : 256
+>             }
+>           }
+>         },
+>         "isdel" : {
+>           "type" : "boolean"
+>         },
+>         "name" : {
+>           "type" : "text",
+>           "fields" : {
+>             "keyword" : {
+>               "type" : "keyword",
+>               "ignore_above" : 256
+>             }
+>           }
+>         },
+>         "price" : {
+>           "type" : "float"
+>         },
+>         "tags" : {
+>           "type" : "text",
+>           "fields" : {
+>             "keyword" : {
+>               "type" : "keyword",
+>               "ignore_above" : 256
+>             }
+>           }
+>         }
+>       }
+>     }
+> }
+> 
+> 
+> PUT /product/_doc/1{
+>   "name": "xiaomi phone",
+>   "desc": "shouji zhong de zhandouji",
+>   "count": 123456,
+>   "price": 123.123,
+>   "date": "2020-05-20",
+>   "isdel": false
+> }
+> ```
+># Elasticsearch 显式映射详解
+
+让我们深入探讨显式映射（Explicit Field Mapping）的概念，并通过实际示例演示其应用。
+
+## 显式映射的核心概念
+
+显式映射是 Elasticsearch 中**手动定义字段类型和属性**的方式，与动态映射相对。它提供了对数据结构的精确控制，是生产环境的最佳实践。
+
+### 基本语法结构
+```json
+PUT /index_name
+{
+  "mappings": {
+    "properties": {
+      "field_name": {
+        "type": "field_type",
+        "parameter1": "value1",
+        "parameter2": "value2"
+      },
+      // 更多字段定义...
+    }
+  }
+}
+```
+
+## 课程示例解析
+
+### 1. 创建索引并定义显式映射
+```json
+PUT /product
+{
+  "mappings": {
+    "properties": {
+      "count": {"type": "long"},
+      "date": {"type": "date"},
+      "desc": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "isdel": {"type": "boolean"},
+      "name": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      },
+      "price": {"type": "float"},
+      "tags": {
+        "type": "text",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### 2. 插入文档
+```json
+PUT /product/_doc/1
+{
+  "name": "xiaomi phone",
+  "desc": "shouji zhong de zhandouji",
+  "count": 123456,
+  "price": 123.123,
+  "date": "2020-05-20",
+  "isdel": false
+}
+```
+
+## 显式映射的核心优势
+
+1. **精确控制字段类型**
+   - 避免动态映射的误判
+   - 确保特殊类型正确识别（如geo_point, ip等）
+
+2. **优化存储和性能**
+   - 设置合适的索引选项
+   - 配置字段压缩方式
+   - 控制分词器行为
+
+3. **多字段支持**
+   ```json
+   "name": {
+     "type": "text",          // 用于全文搜索
+     "fields": {
+       "raw": {"type": "keyword"},  // 用于精确匹配
+       "english": {           // 用于特定语言分析
+         "type": "text",
+         "analyzer": "english"
+       }
+     }
+   }
+   ```
+
+4. **防止映射爆炸**
+   - 通过显式映射限制字段数量
+   - 避免动态创建过多字段
+
+## 常用映射参数详解
+
+### 1. 核心参数
+- `type`: 字段类型（text, keyword, long, date等）
+- `index`: 是否索引（`true`/`false`）
+- `doc_values`: 是否启用列式存储（用于排序和聚合）
+
+### 2. 文本字段参数
+- `analyzer`: 指定分词器（如standard, ik_smart等）
+- `search_analyzer`: 指定搜索时使用的分词器
+- `norms`: 是否存储长度信息（影响评分）
+- `index_options`: 控制索引内容（docs, freqs, positions, offsets）
+
+### 3. 数值字段参数
+- `coerce`: 是否尝试转换数据类型（如字符串转数字）
+- `ignore_malformed`: 是否忽略格式错误的值
+- `scaling_factor`: 缩放因子（用于scaled_float）
+
+### 4. 日期字段参数
+- `format`: 自定义日期格式（如"yyyy-MM-dd HH:mm:ss"）
+- `ignore_malformed`: 忽略格式错误的日期
+
+## 显式映射最佳实践
+
+### 1. 生产环境必须使用显式映射
+```json
+PUT /ecommerce
+{
+  "mappings": {
+    "properties": {
+      "product_id": {"type": "keyword"},
+      "product_name": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "fields": {
+          "raw": {"type": "keyword"}
+        }
+      },
+      "price": {"type": "scaled_float", "scaling_factor": 100},
+      "created_at": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      },
+      "location": {"type": "geo_point"}
+    }
+  }
+}
+```
+
+### 2. 动态模板结合显式映射
+```json
+PUT /logs
+{
+  "mappings": {
+    "dynamic_templates": [
+      {
+        "strings_as_keywords": {
+          "match_mapping_type": "string",
+          "mapping": {
+            "type": "keyword"
+          }
+        }
+      }
+    ],
+    "properties": {
+      "@timestamp": {"type": "date"},
+      "message": {"type": "text"},
+      "severity": {"type": "keyword"}
+    }
+  }
+}
+```
+
+### 3. 映射更新策略
+- **已有字段无法修改类型**：只能创建新索引并重新导入数据
+- **可以添加新字段**：使用PUT mapping API
+  ```json
+  PUT /product/_mapping
+  {
+    "properties": {
+      "new_field": {"type": "integer"}
+    }
+  }
+  ```
+
+## 常见问题解决方案
+
+### 问题1：如何修改已有字段类型？
+**解决方案**：创建新索引 → 定义新映射 → 使用_reindex API迁移数据
+
+```json
+POST _reindex
+{
+  "source": {"index": "old_index"},
+  "dest": {"index": "new_index"}
+}
+```
+
+### 问题2：如何处理动态字段？
+**解决方案**：使用动态模板控制未知字段的行为
+
+```json
+"dynamic_templates": [
+  {
+    "unindexed_fields": {
+      "match": "*",
+      "unmatch": "timestamp",
+      "mapping": {
+        "index": false  // 不索引未知字段
+      }
+    }
+  }
+]
+```
+
+### 问题3：如何优化大文本字段？
+**解决方案**：禁用norms和doc_values
+```json
+"description": {
+  "type": "text",
+  "norms": false,
+  "doc_values": false
+}
+```
+
+## 总结
+
+显式映射是 Elasticsearch 数据建模的核心技能：
+1. **生产环境必须使用**：确保数据一致性和性能
+2. **提供精细控制**：字段类型、分词器、索引选项等
+3. **支持复杂数据结构**：对象、嵌套类型、多字段等
+4. **结合动态模板**：灵活处理未知字段
+5. **需要预先规划**：字段类型一旦设置无法直接修改
+
+通过掌握显式映射，您可以构建高性能、可扩展的 Elasticsearch 数据模型，为各种搜索和分析场景提供坚实基础。
