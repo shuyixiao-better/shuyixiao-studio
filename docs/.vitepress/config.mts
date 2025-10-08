@@ -132,7 +132,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中ignore_malformed参数故事版', link: '/tutorials/es/basics/ES中ignore_malformed参数故事版' },
                 { text: 'ES中index参数故事版', link: '/tutorials/es/basics/ES中index参数故事版' },
                 { text: 'ES中index_options参数故事版', link: '/tutorials/es/basics/ES中index_options参数故事版' },
-                { text: 'ES中norms参数故事版', link: '/tutorials/es/basics/ES中norms参数故事版' }
+                { text: 'ES中norms参数故事版', link: '/tutorials/es/basics/ES中norms参数故事版' },
+                { text: 'ES中null_value参数故事版', link: '/tutorials/es/basics/ES中null_value参数故事版' }
               ]
             },
             {
