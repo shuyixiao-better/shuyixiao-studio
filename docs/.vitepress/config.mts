@@ -143,7 +143,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中_analyze API故事版', link: '/tutorials/es/basics/ES中_analyze API故事版' },
                 { text: 'ES中分词器组成故事版', link: '/tutorials/es/basics/ES中分词器组成故事版' },
                 { text: 'ES中在映射中定义分词器故事版', link: '/tutorials/es/basics/ES中在映射中定义分词器故事版' },
-                { text: 'ES客户端', link: '/tutorials/es/basics/ES客户端' }
+                { text: 'ES客户端', link: '/tutorials/es/basics/ES客户端' },
+                { text: 'ES聚合查询', link: '/tutorials/es/basics/ES聚合查询' }
               ]
             },
             {
