@@ -23,7 +23,7 @@
 >
 > ### HTML 标签过滤器
 >
-> 字符过滤器会去除 HTML 标签和转义 HTML 元素，如 <b>、&amp;
+> 字符过滤器会去除 HTML 标签和转义 HTML 元素，如 `<b>`、&amp;
 >
 > ```
 > PUT test_char_filter
