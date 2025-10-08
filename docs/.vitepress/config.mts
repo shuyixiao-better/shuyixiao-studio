@@ -119,7 +119,8 @@ export default defineConfig({
                 { text: 'ES常用文档排名类型故事版', link: '/tutorials/es/basics/ES常用文档排名类型故事版' },
                 { text: 'ES常用文本搜索类型故事版', link: '/tutorials/es/basics/ES常用文本搜索类型故事版' },
                 { text: 'ES动态映射（Dynamic Field Mapping）故事版', link: '/tutorials/es/basics/ES动态映射（Dynamic Field Mapping）故事版' },
-                { text: 'ES中Text vs Keyword故事版', link: '/tutorials/es/basics/ES中Text vs Keyword故事版' }
+                { text: 'ES中Text vs Keyword故事版', link: '/tutorials/es/basics/ES中Text vs Keyword故事版' },
+                { text: 'ES中映射参数故事版', link: '/tutorials/es/basics/ES中映射参数故事版' }
               ]
             },
             {
