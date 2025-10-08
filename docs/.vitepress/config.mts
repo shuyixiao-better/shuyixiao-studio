@@ -121,7 +121,8 @@ export default defineConfig({
                 { text: 'ES动态映射（Dynamic Field Mapping）故事版', link: '/tutorials/es/basics/ES动态映射（Dynamic Field Mapping）故事版' },
                 { text: 'ES中Text vs Keyword故事版', link: '/tutorials/es/basics/ES中Text vs Keyword故事版' },
                 { text: 'ES中映射参数故事版', link: '/tutorials/es/basics/ES中映射参数故事版' },
-                { text: 'ES中分析器（Analyzer）故事版', link: '/tutorials/es/basics/ES中分析器（Analyzer）故事版' }
+                { text: 'ES中分析器（Analyzer）故事版', link: '/tutorials/es/basics/ES中分析器（Analyzer）故事版' },
+                { text: 'ES中Boost参数故事版', link: '/tutorials/es/basics/ES中Boost参数故事版' }
               ]
             },
             {
