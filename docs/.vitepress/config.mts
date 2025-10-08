@@ -128,7 +128,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中Copy_to 参数故事版', link: '/tutorials/es/basics/ES中Copy_to参数故事版' },
                 { text: 'ES中Doc_Values 与 Fielddata 故事版', link: '/tutorials/es/basics/ES中Doc_Values 与 Fielddata 故事版' },
                 { text: 'ES中Dynamic 参数故事版', link: '/tutorials/es/basics/ES中Dynamic 参数故事版' },
-                { text: 'ES中ignore_above参数故事版', link: '/tutorials/es/basics/ES中ignore_above参数故事版' }
+                { text: 'ES中ignore_above参数故事版', link: '/tutorials/es/basics/ES中ignore_above参数故事版' },
+                { text: 'ES中ignore_malformed参数故事版', link: '/tutorials/es/basics/ES中ignore_malformed参数故事版' }
               ]
             },
             {
