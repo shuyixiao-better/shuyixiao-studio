@@ -189,3 +189,194 @@ PUT /my_index
 3. **适时干预**：在重要场合亲自指定映射，避免意外
 
 这样，你就能在享受动态映射便利的同时，避免掉进映射错误的坑里！🎯
+
+> #Dynamic mapping
+> DELETE product_mapping
+> GET product_mapping/_mapping
+> PUT /product_mapping/_doc/1
+> {
+>   "name": "xiaomi phone",
+>   "desc": "shouji zhong de zhandouji",
+>   "count": 123456,
+>   "price": 123.123,
+>   "date": "2020-05-20",
+>   "isdel": false,
+>   "tags": [
+>     "xingjiabi",
+>     "fashao",
+>     "buka"
+>   ]
+> }
+>
+> GET product_mapping/_search
+> {
+>   "query": {
+>     "match": {
+>       "name.keyword": "xiaomi phone"
+>     }
+>   }
+> }
+
+让我们详细分析这段 Elasticsearch 操作，理解动态映射的实际应用：
+
+### 操作流程解析
+
+1. **删除索引（清理环境）**
+   ```bash
+   DELETE product_mapping
+   ```
+   - 删除名为 `product_mapping` 的索引（如果存在）
+   - 相当于数字村的"拆迁队"，清空场地准备重建
+
+2. **查看映射（此时索引不存在）**
+   ```bash
+   GET product_mapping/_mapping
+   ```
+   - 尝试查看映射，但索引已被删除，会返回错误
+   - 相当于查看"仓库设计图"，但仓库已被拆除
+
+3. **创建文档（触发动态映射）**
+   ```bash
+   PUT /product_mapping/_doc/1
+   {
+     "name": "xiaomi phone",
+     "desc": "shouji zhong de zhandouji",
+     "count": 123456,
+     "price": 123.123,
+     "date": "2020-05-20",
+     "isdel": false,
+     "tags": ["xingjiabi", "fashao", "buka"]
+   }
+   ```
+   - **动叔（动态映射）开始工作**：
+     - `name`: 字符串 → `text` + `keyword` 类型
+     - `desc`: 字符串 → `text` + `keyword` 类型
+     - `count`: 整数 → `long` 类型
+     - `price`: 小数 → `float` 类型
+     - `date`: 日期格式字符串 → `date` 类型
+     - `isdel`: 布尔值 → `boolean` 类型
+     - `tags`: 字符串数组 → `text` + `keyword` 类型
+
+4. **执行查询（验证动态映射结果）**
+   ```bash
+   GET product_mapping/_search
+   {
+     "query": {
+       "match": {
+         "name.keyword": "xiaomi phone"
+       }
+     }
+   }
+   ```
+   - 使用 `name.keyword` 进行精确匹配查询
+   - 验证动态映射是否创建了 `keyword` 子字段
+
+### 动态映射的实际效果
+
+执行上述操作后，Elasticsearch 会自动创建如下映射：
+
+```json
+{
+  "product_mapping": {
+    "mappings": {
+      "properties": {
+        "count": {"type": "long"},
+        "date": {"type": "date"},
+        "desc": {
+          "type": "text",
+          "fields": {"keyword": {"type": "keyword", "ignore_above": 256}}
+        },
+        "isdel": {"type": "boolean"},
+        "name": {
+          "type": "text",
+          "fields": {"keyword": {"type": "keyword", "ignore_above": 256}}
+        },
+        "price": {"type": "float"},
+        "tags": {
+          "type": "text",
+          "fields": {"keyword": {"type": "keyword", "ignore_above": 256}}
+        }
+      }
+    }
+  }
+}
+```
+
+### 关键知识点解析
+
+1. **为什么使用 `name.keyword`？**
+   - 动态映射为字符串字段同时创建了：
+     - `text` 类型：用于全文搜索（会被分词）
+     - `keyword` 类型：用于精确匹配（不会被分词）
+   - 查询 `"xiaomi phone"` 需要完全匹配，所以使用 `keyword` 类型
+
+2. **`ignore_above: 256` 的含义**
+   - 当字符串长度超过 256 字符时，`keyword` 字段将不被索引
+   - 防止长文本占用过多存储空间
+   - 可以通过显式映射修改这个值
+
+3. **日期字段的智能识别**
+   - `"2020-05-20"` 被正确识别为日期类型
+   - Elasticsearch 支持多种日期格式的自动识别
+
+### 动态映射的潜在问题
+
+1. **数字字符串的误判**
+   ```json
+   PUT /product_mapping/_doc/2
+   {
+     "product_id": "10001"  // 会被识别为 long 类型！
+   }
+   ```
+   - 解决方案：提前显式声明为 `keyword` 类型
+
+2. **特殊类型无法自动识别**
+   - 如果需要 `geo_point`、`ip` 等特殊类型，必须显式声明
+
+3. **字段类型不一致**
+   - 如果后续文档中同一字段出现不同类型数据：
+     ```json
+     // 第一个文档
+     {"price": 199.9}      // → float
+     
+     // 第二个文档
+     {"price": "199.9"}    // → text + keyword
+     ```
+   - 会导致映射冲突和索引失败
+
+### 最佳实践建议
+
+1. **生产环境使用显式映射**
+   ```json
+   PUT /product_mapping
+   {
+     "mappings": {
+       "properties": {
+         "product_id": {"type": "keyword"},
+         "name": {
+           "type": "text",
+           "fields": {"raw": {"type": "keyword"}}
+         },
+         "price": {"type": "scaled_float", "scaling_factor": 100}
+       }
+     }
+   }
+   ```
+
+2. **控制动态映射行为**
+   ```json
+   PUT /product_mapping
+   {
+     "mappings": {
+       "dynamic": "strict",  // 禁止未定义的字段
+       "properties": {...}
+     }
+   }
+   ```
+
+3. **重要字段显式声明**
+   - 标识字段（ID、编码等）设为 `keyword`
+   - 数值字段明确指定 `float`/`double`/`integer`
+   - 日期字段指定格式 `"format": "yyyy-MM-dd"`
+
+通过理解动态映射机制，你可以更好地利用 Elasticsearch 的灵活性，同时在生产环境中保持数据的一致性和可靠性！
