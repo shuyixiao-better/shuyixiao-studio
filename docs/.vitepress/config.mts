@@ -126,7 +126,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中Boost 参数故事版', link: '/tutorials/es/basics/ES中Boost参数故事版' },
                 { text: 'ES中Coerce 参数故事版', link: '/tutorials/es/basics/ES中Coerce参数故事版' },
                 { text: 'ES中Copy_to 参数故事版', link: '/tutorials/es/basics/ES中Copy_to参数故事版' },
-                { text: 'ES中Doc_Values 与 Fielddata 故事版', link: '/tutorials/es/basics/ES中Doc_Values 与 Fielddata 故事版' }
+                { text: 'ES中Doc_Values 与 Fielddata 故事版', link: '/tutorials/es/basics/ES中Doc_Values 与 Fielddata 故事版' },
+                { text: 'ES中Dynamic 参数故事版', link: '/tutorials/es/basics/ES中Dynamic 参数故事版' }
               ]
             },
             {
