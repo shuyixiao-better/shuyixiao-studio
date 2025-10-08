@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // 根据部署环境自动设置 base 路径
 // 使用自定义域名时，GitHub Pages 和 Netlify 都部署到根路径
@@ -6,7 +7,7 @@ import { defineConfig } from 'vitepress'
 const base = '/'
 
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
+export default withMermaid(defineConfig({
   base,
   
   title: "舒一笑不秃头的博客",
@@ -373,5 +374,13 @@ export default defineConfig({
       pattern: 'https://github.com/shuyixiaobutuotou/blog/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页'
     }
+  },
+
+  // Mermaid 配置
+  mermaid: {
+    // 可选配置项
+  },
+  mermaidPlugin: {
+    class: "mermaid my-class" // 设置额外类名，可选
   }
-})
+}))
