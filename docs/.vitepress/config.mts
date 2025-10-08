@@ -134,7 +134,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中index_options参数故事版', link: '/tutorials/es/basics/ES中index_options参数故事版' },
                 { text: 'ES中norms参数故事版', link: '/tutorials/es/basics/ES中norms参数故事版' },
                 { text: 'ES中null_value参数故事版', link: '/tutorials/es/basics/ES中null_value参数故事版' },
-                { text: 'ES中position_increment_gap参数故事版', link: '/tutorials/es/basics/ES中position_increment_gap参数故事版' }
+                { text: 'ES中position_increment_gap参数故事版', link: '/tutorials/es/basics/ES中position_increment_gap参数故事版' },
+                { text: 'ES中similarity参数故事版', link: '/tutorials/es/basics/ES中similarity参数故事版' }
               ]
             },
             {
