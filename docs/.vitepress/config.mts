@@ -140,7 +140,8 @@ export default withMermaid(defineConfig({
                 { text: 'ES中enable参数故事版', link: '/tutorials/es/basics/ES中enable参数故事版' },
                 { text: 'ES中动态模板故事版', link: '/tutorials/es/basics/ES中动态模板故事版' },
                 { text: 'ES中分词器故事版', link: '/tutorials/es/basics/ES中分词器故事版' },
-                { text: 'ES中_analyze API故事版', link: '/tutorials/es/basics/ES中_analyze API故事版' }
+                { text: 'ES中_analyze API故事版', link: '/tutorials/es/basics/ES中_analyze API故事版' },
+                { text: 'ES中分词器组成故事版', link: '/tutorials/es/basics/ES中分词器组成故事版' }
               ]
             },
             {
