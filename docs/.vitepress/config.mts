@@ -123,7 +123,8 @@ export default defineConfig({
                 { text: 'ES中映射参数故事版', link: '/tutorials/es/basics/ES中映射参数故事版' },
                 { text: 'ES中分析器（Analyzer）故事版', link: '/tutorials/es/basics/ES中分析器（Analyzer）故事版' },
                 { text: 'ES中Boost 参数故事版', link: '/tutorials/es/basics/ES中Boost参数故事版' },
-                { text: 'ES中Coerce 参数故事版', link: '/tutorials/es/basics/ES中Coerce参数故事版' }
+                { text: 'ES中Coerce 参数故事版', link: '/tutorials/es/basics/ES中Coerce参数故事版' },
+                { text: 'ES中Copy_to 参数故事版', link: '/tutorials/es/basics/ES中Copy_to参数故事版' }
               ]
             },
             {
