@@ -439,6 +439,233 @@ features:
 
 <div class="section-divider">
   <div class="divider-line"></div>
+  <div class="divider-icon">✨</div>
+  <div class="divider-line"></div>
+</div>
+
+<div class="why-write-section">
+  <div class="why-write-container">
+    <h2 class="why-write-title">为何而写</h2>
+    <div class="why-write-content">
+      <p class="why-write-lead">在浩瀚的互联网星河中，我想留下一颗属于自己的微尘。</p>
+      <div class="why-write-text">
+        <p>或许这些文字只是数字世界里微不足道的一隅，但对我而言，每一行代码、每一篇笔记，都是时光的印记。</p>
+        <p>我写下技术的思考，不仅为了记录成长的足迹，更希望这些文字能在某个深夜，为同样在代码世界里探索的你，点亮一盏微光。</p>
+        <p>这里没有喧嚣，只有对技术的纯粹热爱；这里没有浮华，只有沉淀下来的真实思考。</p>
+        <p class="why-write-signature">—— 愿每一次敲击键盘，都是与这个世界温柔的对话 ✨</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* 为何而写板块样式 */
+.why-write-section {
+  margin: 5rem auto;
+  padding: 0 2rem;
+  max-width: 900px;
+  position: relative;
+}
+
+.why-write-container {
+  position: relative;
+  padding: 4rem 3.5rem;
+  background: linear-gradient(135deg, 
+    rgba(62, 175, 124, 0.03) 0%, 
+    rgba(62, 175, 124, 0.08) 50%,
+    rgba(62, 175, 124, 0.03) 100%);
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(62, 175, 124, 0.15);
+  overflow: hidden;
+}
+
+.why-write-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent,
+    var(--vp-c-brand-1),
+    var(--vp-c-brand-3),
+    var(--vp-c-brand-1),
+    transparent);
+}
+
+.why-write-container::after {
+  content: '✍️';
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-size: 4rem;
+  opacity: 0.08;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.why-write-title {
+  margin: 0 0 2.5rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  letter-spacing: 2px;
+}
+
+.why-write-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.why-write-content {
+  position: relative;
+  z-index: 1;
+}
+
+.why-write-lead {
+  font-size: 1.35rem;
+  line-height: 2;
+  color: var(--vp-c-text-1);
+  text-align: center;
+  margin: 0 0 2rem;
+  font-weight: 500;
+  font-style: italic;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.why-write-lead::before,
+.why-write-lead::after {
+  content: '"';
+  font-size: 2.5rem;
+  color: var(--vp-c-brand-1);
+  opacity: 0.3;
+  line-height: 0;
+  position: absolute;
+}
+
+.why-write-lead::before {
+  left: -10px;
+  top: 15px;
+}
+
+.why-write-lead::after {
+  right: -10px;
+  bottom: -5px;
+}
+
+.why-write-text {
+  text-align: justify;
+  line-height: 2;
+}
+
+.why-write-text p {
+  margin: 1.5rem 0;
+  font-size: 1.05rem;
+  color: var(--vp-c-text-2);
+  text-indent: 2em;
+  transition: all 0.3s ease;
+}
+
+.why-write-text p:hover {
+  color: var(--vp-c-text-1);
+  transform: translateX(5px);
+}
+
+.why-write-signature {
+  margin-top: 2.5rem !important;
+  text-align: right !important;
+  font-style: italic;
+  color: var(--vp-c-brand-1) !important;
+  font-size: 1rem !important;
+  text-indent: 0 !important;
+  font-weight: 500;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .why-write-section {
+    margin: 3rem auto;
+    padding: 0 1rem;
+  }
+  
+  .why-write-container {
+    padding: 3rem 2rem;
+    border-radius: 20px;
+  }
+  
+  .why-write-container::after {
+    font-size: 3rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+  
+  .why-write-title {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+  }
+  
+  .why-write-lead {
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .why-write-lead::before {
+    left: -5px;
+    top: 10px;
+    font-size: 2rem;
+  }
+  
+  .why-write-lead::after {
+    right: -5px;
+    font-size: 2rem;
+  }
+  
+  .why-write-text p {
+    font-size: 0.95rem;
+    text-indent: 1.5em;
+  }
+  
+  .why-write-signature {
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .why-write-container {
+    padding: 3.5rem 3rem;
+  }
+  
+  .why-write-title {
+    font-size: 2.2rem;
+  }
+  
+  .why-write-lead {
+    font-size: 1.25rem;
+  }
+  
+  .why-write-text p {
+    font-size: 1rem;
+  }
+}
+</style>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
   <div class="divider-icon">🔍</div>
   <div class="divider-line"></div>
 </div>
