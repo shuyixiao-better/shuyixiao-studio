@@ -4,7 +4,8 @@
 
 ## 🌐 在线访问
 
-- **自定义域名**: [https://www.shuyixiao.top](https://www.shuyixiao.top) ⭐ 主站
+- **自定义域名**: [https://www.shuyixiao.top](https://www.shuyixiao.top) ⭐ 主站  
+  <sub>站点栖息于大洋彼岸，国内访问建议借助网络加速工具，以获得更为流畅的阅读体验</sub>
 - **GitHub Pages**: `https://shuyixiao-better.github.io/shuyixiao-studio/`
 - **Netlify**: 查看 [DEPLOY.md](./DEPLOY.md) 配置说明
 

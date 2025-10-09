@@ -44,3 +44,7 @@ Thumbs.db
 # package-lock.json
 # yarn.lock
 # pnpm-lock.yaml  # 保留 lock 文件以确保构建一致性
+
+
+#Ignore cursor AI rules
+.cursor\rules\codacy.mdc
