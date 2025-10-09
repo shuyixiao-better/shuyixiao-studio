@@ -10,7 +10,7 @@
         <p class="page-subtitle">探索技术深度，记录成长轨迹</p>
         <div class="page-stats">
           <div class="stat-item">
-            <span class="stat-number">{{ posts.length }}</span>
+            <span class="stat-number">{{ filteredPosts.length }}</span>
             <span class="stat-label">篇文章</span>
           </div>
           <div class="stat-divider"></div>
@@ -34,7 +34,7 @@
         <input 
           type="text" 
           v-model="searchQuery" 
-          placeholder="搜索文章标题或描述..." 
+          placeholder="搜索文章标题、描述、标签或作者（支持多关键词）..." 
           class="search-input"
         />
         <button v-if="searchQuery" @click="searchQuery = ''" class="clear-btn">✕</button>
@@ -216,13 +216,25 @@ const popularTags = computed(() => {
 const filteredPosts = computed(() => {
   let result = posts
   
-  // 搜索过滤
+  // 搜索过滤 - 增强的模糊搜索
   if (searchQuery.value) {
-    const query = searchQuery.value.toLowerCase()
-    result = result.filter(post => 
-      post.title.toLowerCase().includes(query) ||
-      (post.description && post.description.toLowerCase().includes(query))
-    )
+    const query = searchQuery.value.toLowerCase().trim()
+    
+    // 支持多关键词搜索（空格分隔）
+    const keywords = query.split(/\s+/).filter(k => k.length > 0)
+    
+    result = result.filter(post => {
+      // 准备所有可搜索的内容
+      const searchableContent = [
+        post.title || '',
+        post.description || '',
+        post.author || '',
+        ...(post.tags || [])
+      ].map(item => item.toLowerCase()).join(' ')
+      
+      // 所有关键词都要匹配（AND逻辑）
+      return keywords.every(keyword => searchableContent.includes(keyword))
+    })
   }
   
   // 标签过滤
@@ -235,7 +247,7 @@ const filteredPosts = computed(() => {
   return result
 })
 
-// 总页数
+// 总页数（根据搜索结果动态变化）
 const totalPages = computed(() => {
   return Math.ceil(filteredPosts.value.length / pageSize)
 })
