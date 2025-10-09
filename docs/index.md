@@ -20,7 +20,7 @@ features:
       width: 72
       height: 72
     title: 技术博文
-    details: Java、Spring、微服务技术分享
+    details: 后端技术干货分享
     link: /articles/
     class: active
   - icon:

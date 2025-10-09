@@ -297,8 +297,8 @@
   
   /* 超宽屏悬停效果 */
   .VPFeatures .item:hover .details {
-    max-height: 180px;
-    padding: 1.75rem 1.5rem;
+    height: 120px;
+    padding: 0;
     font-size: 1.05rem;
     line-height: 1.75;
     letter-spacing: 0.4px;
@@ -679,7 +679,7 @@ body {
 .VPFeatures .item {
   position: relative;
   padding: 2.5rem 2rem 2rem 2rem;
-  border-radius: 20px;
+  border-radius: 28px;
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -687,11 +687,12 @@ body {
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  min-height: 200px;
-  height: 200px;
+  min-height: 220px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   text-align: center;
   width: 100%;
   cursor: pointer;
@@ -708,7 +709,7 @@ body {
   background: linear-gradient(135deg, rgba(62, 175, 124, 0.05), rgba(62, 175, 124, 0.02));
   opacity: 0;
   transition: opacity 0.4s ease;
-  border-radius: 20px;
+  border-radius: 28px;
   z-index: 0;
 }
 
@@ -739,7 +740,7 @@ body {
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, #3eaf7c, #2c9d6e);
-  border-radius: 20px 20px 0 0;
+  border-radius: 28px 28px 0 0;
 }
 
 .VPFeatures .icon {
@@ -749,7 +750,7 @@ body {
   width: 72px;
   height: 72px;
   background: linear-gradient(135deg, rgba(62, 175, 124, 0.2), rgba(62, 175, 124, 0.1));
-  border-radius: 20px;
+  border-radius: 24px;
   transition: all 0.4s ease;
   margin-bottom: 1.25rem;
   color: #3eaf7c;
@@ -862,7 +863,7 @@ body {
   right: 0;
   transform: translateY(0);
   opacity: 1;
-  max-height: 150px;
+  height: 100px;
   width: 100%;
   color: white;
   font-weight: 500;
@@ -872,8 +873,8 @@ body {
     rgba(44, 157, 110, 0.95) 50%,
     rgba(62, 175, 124, 0.92) 100%
   );
-  padding: 1.5rem 1.25rem;
-  border-radius: 0 0 20px 20px;
+  padding: 0;
+  border-radius: 0 0 28px 28px;
   margin: 0;
   box-shadow: 
     0 -8px 32px rgba(0, 0, 0, 0.2),
@@ -1436,8 +1437,8 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 130px;
-    padding: 1.35rem 1.15rem;
+    height: 95px;
+    padding: 0;
     font-size: 0.875rem;
     line-height: 1.65;
   }
@@ -1555,8 +1556,8 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 140px;
-    padding: 1.4rem 1.2rem;
+    height: 100px;
+    padding: 0;
     font-size: 0.9rem;
     line-height: 1.7;
   }
@@ -1607,8 +1608,8 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 145px;
-    padding: 1.45rem 1.2rem;
+    height: 100px;
+    padding: 0;
     font-size: 0.9rem;
     line-height: 1.7;
   }
@@ -1659,8 +1660,8 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 150px;
-    padding: 1.5rem 1.25rem;
+    height: 100px;
+    padding: 0;
     font-size: 0.9rem;
     line-height: 1.65;
   }
@@ -1714,8 +1715,8 @@ body {
   
   /* 2560分辨率下的悬停效果优化 */
   .VPFeatures .item:hover .details {
-    max-height: 160px;
-    padding: 1.6rem 1.4rem;
+    height: 110px;
+    padding: 0;
     font-size: 1rem;
     line-height: 1.7;
     letter-spacing: 0.35px;
