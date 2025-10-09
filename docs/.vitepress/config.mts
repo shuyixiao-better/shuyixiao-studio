@@ -33,7 +33,8 @@ export default withMermaid(defineConfig({
           { text: '设计模式', link: '/tutorials/design-pattern/' },
           { text: 'Elasticsearch', link: '/tutorials/es/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
-          { text: '代码与人生', link: '/tutorials/insights/' }
+          { text: '代码与人生', link: '/tutorials/insights/' },
+          { text: '拾遗录', link: '/tutorials/explorations/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -347,6 +348,17 @@ export default withMermaid(defineConfig({
                 { text: '技术人的价值观', link: '/tutorials/insights/mindset/tech-values' }
               ]
             }
+          ]
+        }
+      ],
+      '/tutorials/explorations/': [
+        {
+          text: '拾遗录',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/explorations/' },
+            { text: '文章模板', link: '/tutorials/explorations/template' },
+            { text: '初探 Rust', link: '/tutorials/explorations/rust-first-try' }
           ]
         }
       ],
