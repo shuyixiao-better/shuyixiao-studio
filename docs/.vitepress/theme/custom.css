@@ -101,30 +101,45 @@
   padding: 8px 0 16px;
 }
 
-/* 目录链接样式 */
+/* 目录链接样式 - 修复绿条重叠问题 */
 .VPDocAsideOutline .outline-link {
   font-size: 13px;
   line-height: 28px;
   color: var(--vp-c-text-2);
   font-weight: 500;
-  padding: 4px 0;
+  padding: 4px 0 4px 16px;
   transition: all 0.2s ease;
-  border-left: 2px solid transparent;
-  padding-left: 16px;
-  margin-left: -16px;
+  border-left: 2px solid transparent !important;
+  position: relative;
 }
 
 .VPDocAsideOutline .outline-link:hover {
   color: var(--vp-c-brand-1);
   background-color: var(--vp-c-brand-soft);
-  border-left-color: var(--vp-c-brand-1);
+  border-left-color: var(--vp-c-brand-1) !important;
 }
 
 .VPDocAsideOutline .outline-link.active {
   color: var(--vp-c-brand-1);
   font-weight: 600;
-  border-left-color: var(--vp-c-brand-1);
+  border-left-color: var(--vp-c-brand-1) !important;
   background-color: var(--vp-c-brand-dimm);
+}
+
+/* 覆盖VitePress默认的outline样式，防止边框重叠 */
+.VPDocAsideOutline .outline-link::before,
+.VPDocAsideOutline .outline-link::after {
+  display: none !important;
+}
+
+/* 确保outline-link及其子元素不会产生额外的边框 */
+.VPDocAsideOutline .outline-link * {
+  border-left: none !important;
+}
+
+/* 重置outline-marker的样式 */
+.VPDocAsideOutline .outline-marker {
+  display: none !important;
 }
 
 /* 目录层级缩进 */
