@@ -135,36 +135,55 @@
       </div>
     </div>
 
-    <!-- 分页 -->
-    <div class="pagination" v-if="totalPages > 1">
-      <button 
-        class="pagination-btn" 
-        :disabled="currentPage === 1"
-        @click="goToPage(currentPage - 1)"
-      >
-        ← 上一页
-      </button>
-      
-      <div class="pagination-numbers">
-        <button
-          v-for="page in displayPages"
-          :key="page"
-          class="pagination-number"
-          :class="{ active: page === currentPage, ellipsis: page === '...' }"
-          @click="page !== '...' && goToPage(page)"
-          :disabled="page === '...'"
+    <!-- 分页和每页数量选择 -->
+    <div class="pagination-wrapper">
+      <!-- 每页数量选择器 -->
+      <div class="page-size-selector">
+        <span class="selector-label">每页显示：</span>
+        <div class="size-options">
+          <button 
+            v-for="size in [10, 20, 50, 100]"
+            :key="size"
+            class="size-option"
+            :class="{ active: pageSize === size }"
+            @click="changePageSize(size)"
+          >
+            {{ size }}
+          </button>
+        </div>
+      </div>
+
+      <!-- 分页 -->
+      <div class="pagination" v-if="totalPages > 1">
+        <button 
+          class="pagination-btn" 
+          :disabled="currentPage === 1"
+          @click="goToPage(currentPage - 1)"
         >
-          {{ page }}
+          ← 上一页
+        </button>
+        
+        <div class="pagination-numbers">
+          <button
+            v-for="page in displayPages"
+            :key="page"
+            class="pagination-number"
+            :class="{ active: page === currentPage, ellipsis: page === '...' }"
+            @click="page !== '...' && goToPage(page)"
+            :disabled="page === '...'"
+          >
+            {{ page }}
+          </button>
+        </div>
+        
+        <button 
+          class="pagination-btn" 
+          :disabled="currentPage === totalPages"
+          @click="goToPage(currentPage + 1)"
+        >
+          下一页 →
         </button>
       </div>
-      
-      <button 
-        class="pagination-btn" 
-        :disabled="currentPage === totalPages"
-        @click="goToPage(currentPage + 1)"
-      >
-        下一页 →
-      </button>
     </div>
   </div>
 </template>
@@ -173,8 +192,8 @@
 import { data as posts } from '../utils/posts.data.js'
 import { ref, computed } from 'vue'
 
-// 每页显示的文章数量
-const pageSize = 10
+// 每页显示的文章数量（可选：10、20、50、100）
+const pageSize = ref(10)
 
 // 当前页码
 const currentPage = ref(1)
@@ -249,13 +268,13 @@ const filteredPosts = computed(() => {
 
 // 总页数（根据搜索结果动态变化）
 const totalPages = computed(() => {
-  return Math.ceil(filteredPosts.value.length / pageSize)
+  return Math.ceil(filteredPosts.value.length / pageSize.value)
 })
 
 // 当前页的文章
 const currentPosts = computed(() => {
-  const start = (currentPage.value - 1) * pageSize
-  const end = start + pageSize
+  const start = (currentPage.value - 1) * pageSize.value
+  const end = start + pageSize.value
   return filteredPosts.value.slice(start, end)
 })
 
@@ -337,9 +356,20 @@ const resetFilters = () => {
   currentPage.value = 1
 }
 
+// 改变每页显示数量
+const changePageSize = (size) => {
+  pageSize.value = size
+  currentPage.value = 1
+}
+
 // 监听筛选变化，重置到第一页
 import { watch } from 'vue'
 watch([searchQuery, selectedTag], () => {
+  currentPage.value = 1
+})
+
+// 监听每页数量变化，重置到第一页
+watch(pageSize, () => {
   currentPage.value = 1
 })
 </script>
@@ -901,14 +931,66 @@ watch([searchQuery, selectedTag], () => {
   box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
 }
 
+/* 分页包装器 */
+.pagination-wrapper {
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+/* 每页数量选择器 */
+.page-size-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed var(--vp-c-divider);
+}
+
+.selector-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+}
+
+.size-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.size-option {
+  min-width: 50px;
+  padding: 0.5rem 1rem;
+  background: var(--vp-c-bg-soft);
+  border: 2px solid var(--vp-c-divider);
+  border-radius: 10px;
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.size-option:hover {
+  background: var(--vp-c-brand-soft);
+  border-color: var(--vp-c-brand-1);
+  transform: translateY(-2px);
+}
+
+.size-option.active {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  border-color: var(--vp-c-brand-1);
+  color: white;
+  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+}
+
 /* 分页 */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  margin-top: 3rem;
-  padding: 2rem 0;
 }
 
 .pagination-btn {
@@ -1035,6 +1117,26 @@ watch([searchQuery, selectedTag], () => {
     font-size: 0.9rem;
   }
   
+  .page-size-selector {
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
+  }
+
+  .selector-label {
+    font-size: 0.9rem;
+  }
+
+  .size-options {
+    gap: 0.4rem;
+  }
+
+  .size-option {
+    min-width: 45px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
   .pagination {
     flex-wrap: wrap;
     gap: 0.5rem;
