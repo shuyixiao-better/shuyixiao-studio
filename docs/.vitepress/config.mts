@@ -358,6 +358,7 @@ export default withMermaid(defineConfig({
           items: [
             { text: '专栏介绍', link: '/tutorials/explorations/' },
             { text: '文章模板', link: '/tutorials/explorations/template' },
+            { text: '如何使用LangGraph开发Agent', link: '/tutorials/explorations/如何使用LangGraph开发Agent' },
             { text: '初探 Rust', link: '/tutorials/explorations/rust-first-try' }
           ]
         }
