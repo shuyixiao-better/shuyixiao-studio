@@ -273,11 +273,11 @@
   
   /* 超宽屏悬停效果 */
   .VPFeatures .item:hover .details {
-    font-size: 1.1rem;
-    max-height: 550px;
-    padding: 0.85rem 0.75rem;
-    line-height: 1.9;
-    letter-spacing: 0.5px;
+    max-height: 180px;
+    padding: 1.75rem 1.5rem;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    letter-spacing: 0.4px;
   }
   
   .VPHero .name,
@@ -834,38 +834,56 @@ body {
   text-overflow: ellipsis;
 }
 
-/* 悬停时文字完整展开 - 悬浮在卡片中下方横向展示 */
+/* 悬停时的优雅效果 - 从底部滑入展示详细信息 */
 .VPFeatures .item:hover .details {
   position: absolute;
-  top: 50%;
-  left: 1rem;
-  right: 1rem;
-  transform: translateY(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(0);
   opacity: 1;
-  max-height: 1000px;
-  width: auto;
+  max-height: 150px;
+  width: 100%;
   color: white;
   font-weight: 500;
-  background: linear-gradient(135deg, rgba(62, 175, 124, 0.98), rgba(44, 157, 110, 0.98));
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
+  background: linear-gradient(
+    to top,
+    rgba(62, 175, 124, 0.97) 0%,
+    rgba(44, 157, 110, 0.95) 50%,
+    rgba(62, 175, 124, 0.92) 100%
+  );
+  padding: 1.5rem 1.25rem;
+  border-radius: 0 0 20px 20px;
   margin: 0;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 -8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
   -webkit-line-clamp: unset;
-  line-height: 1.7;
-  letter-spacing: 0.4px;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  line-height: 1.65;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   white-space: normal;
   word-wrap: break-word;
   z-index: 200;
   font-size: 0.9rem;
   text-align: center;
-  min-height: 60px;
+  animation: slideUpFade 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 添加滑入动画 */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* 移除按钮样式，改为整体卡片可点击 */
@@ -1074,8 +1092,10 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 400px;
-    line-height: 1.7;
+    max-height: 120px;
+    padding: 1.25rem 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
   }
 }
 
@@ -1119,8 +1139,10 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 450px;
-    line-height: 1.75;
+    max-height: 130px;
+    padding: 1.35rem 1.15rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
   }
 }
 
@@ -1206,8 +1228,10 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 500px;
-    line-height: 1.8;
+    max-height: 140px;
+    padding: 1.4rem 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   .post-grid {
@@ -1256,8 +1280,10 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 500px;
-    line-height: 1.8;
+    max-height: 145px;
+    padding: 1.45rem 1.2rem;
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   .post-grid {
@@ -1306,8 +1332,10 @@ body {
   }
   
   .VPFeatures .item:hover .details {
-    max-height: 500px;
-    line-height: 1.8;
+    max-height: 150px;
+    padding: 1.5rem 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
   }
 
   .post-grid {
@@ -1359,11 +1387,11 @@ body {
   
   /* 2560分辨率下的悬停效果优化 */
   .VPFeatures .item:hover .details {
+    max-height: 160px;
+    padding: 1.6rem 1.4rem;
     font-size: 1rem;
-    padding: 0.75rem 0.75rem;
-    max-height: 500px;
-    line-height: 1.85;
-    letter-spacing: 0.4px;
+    line-height: 1.7;
+    letter-spacing: 0.35px;
   }
 
   .post-grid {

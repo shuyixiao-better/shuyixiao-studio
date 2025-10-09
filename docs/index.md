@@ -20,7 +20,7 @@ features:
       width: 72
       height: 72
     title: 技术博文
-    details: 分享Java、Spring、微服务、架构设计等技术文章
+    details: Java、Spring、微服务技术分享
     link: /articles/
     class: active
   - icon:
@@ -29,7 +29,7 @@ features:
       width: 72
       height: 72
     title: 实战项目
-    details: 从零开始，手把手教你构建完整应用
+    details: 手把手构建完整应用
     link: /projects/
   - icon:
       src: /icons/roadmap.svg
@@ -37,7 +37,7 @@ features:
       width: 72
       height: 72
     title: 学习路线
-    details: 体系化的技术学习指南，助你成长为技术专家
+    details: 体系化技术成长指南
     link: /roadmap/
   - icon:
       src: /icons/interview.svg
@@ -45,7 +45,7 @@ features:
       width: 72
       height: 72
     title: 面试精选
-    details: 高质量的技术面试题解析，助你拿到理想offer
+    details: 技术面试题精讲
     link: /interview/
   - icon:
       src: /icons/tools.svg
@@ -53,7 +53,7 @@ features:
       width: 72
       height: 72
     title: 开发工具
-    details: 提升效率的开发工具与插件推荐
+    details: 效率工具与插件推荐
     link: /tools/
   - icon:
       src: /icons/resources.svg
@@ -61,7 +61,7 @@ features:
       width: 72
       height: 72
     title: 资源导航
-    details: 精选优质学习资源，一站式技术导航
+    details: 优质学习资源导航
     link: /resources/
 
 ---
