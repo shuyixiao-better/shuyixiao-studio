@@ -548,38 +548,3 @@ public class CommunicationMonitor {
   </div>
 </div>
 
-<style>
-.article-footer {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--vp-c-divider);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.article-tags {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.tag {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 16px;
-  background-color: var(--vp-c-brand-dimm);
-  color: var(--vp-c-brand-1);
-}
-
-.article-share {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-2);
-}
-
-.share-link {
-  margin-left: 0.5rem;
-  color: var(--vp-c-brand-1);
-}
-</style>

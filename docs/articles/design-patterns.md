@@ -159,3 +159,18 @@ public class PaymentService {
 通过本文的例子，我们看到了策略模式如何在支付系统中发挥作用，同样的思路也可以应用到其他类似场景，如订单处理、优惠计算、通知推送等业务功能中。
 
 最后，记住设计模式是手段而非目的，选择合适的设计模式应当基于实际业务需求，避免过度设计。
+
+---
+
+<div class="article-footer">
+  <div class="article-tags">
+    <span class="tag">设计模式</span>
+    <span class="tag">Java</span>
+    <span class="tag">策略模式</span>
+  </div>
+  <div class="article-share">
+    分享到：
+    <a href="#" class="share-link">微信</a>
+    <a href="#" class="share-link">微博</a>
+  </div>
+</div>

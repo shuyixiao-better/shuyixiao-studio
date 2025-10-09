@@ -91,4 +91,28 @@ PandaCoder 高度重视代码隐私和数据安全，提供本地模型运行选
 
 ## 安装与配置
 
-1. 在IDEA插件市场搜索
+1. 在 IntelliJ IDEA 插件市场搜索 "PandaCoder"
+2. 点击安装并重启 IDE
+3. 配置 API Key（如需使用云端功能）
+4. 开始享受智能编程体验
+
+## 总结
+
+PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能够提升编码效率，更能够帮助开发者学习和成长。无论您是独立开发者还是团队成员，PandaCoder 都能成为您编程路上的得力助手。
+
+未来，我们将持续优化和迭代 PandaCoder，加入更多实用功能，为开发者提供更加智能、便捷的编程体验。欢迎使用并提出宝贵意见！
+
+---
+
+<div class="article-footer">
+  <div class="article-tags">
+    <span class="tag">IDEA插件</span>
+    <span class="tag">AI编程助手</span>
+    <span class="tag">开发工具</span>
+  </div>
+  <div class="article-share">
+    分享到：
+    <a href="#" class="share-link">微信</a>
+    <a href="#" class="share-link">微博</a>
+  </div>
+</div>
