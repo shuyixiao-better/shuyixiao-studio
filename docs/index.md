@@ -66,6 +66,16 @@ features:
 
 ---
 
+<div class="access-notice">
+  <div class="notice-container">
+    <div class="notice-icon">🌏</div>
+    <div class="notice-content">
+      <div class="notice-title">温馨提示</div>
+      <div class="notice-text">站点栖息于大洋彼岸，国内访问建议借助网络加速工具，以获得更为流畅的阅读体验</div>
+    </div>
+  </div>
+</div>
+
 <div class="section-divider">
   <div class="divider-line"></div>
   <div class="divider-icon">✨</div>

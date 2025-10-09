@@ -1712,6 +1712,163 @@ body {
   box-shadow: 0 12px 35px rgba(62, 175, 124, 0.4);
 }
 
+/* 温馨提示样式 */
+.access-notice {
+  max-width: 1200px;
+  margin: -2rem auto 3rem;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.notice-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(255, 193, 7, 0.08) 0%, 
+    rgba(255, 152, 0, 0.12) 50%,
+    rgba(255, 193, 7, 0.08) 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  box-shadow: 0 8px 32px rgba(255, 193, 7, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notice-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 193, 7, 0.8),
+    rgba(255, 152, 0, 0.8),
+    rgba(255, 193, 7, 0.8),
+    transparent);
+}
+
+.notice-container::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 193, 7, 0.15), transparent);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.notice-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(255, 193, 7, 0.25);
+  border-color: rgba(255, 193, 7, 0.5);
+}
+
+.notice-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  animation: rotate-globe 20s linear infinite;
+  filter: drop-shadow(0 4px 8px rgba(255, 193, 7, 0.3));
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes rotate-globe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.notice-content {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.notice-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f57c00;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(255, 152, 0, 0.1);
+}
+
+.notice-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-1);
+  opacity: 0.9;
+}
+
+/* VitePress features 包装器 */
+.vp-features-wrapper {
+  width: 100%;
+}
+
+/* 响应式 - 温馨提示 */
+@media (max-width: 768px) {
+  .access-notice {
+    margin: -1rem auto 2rem;
+    padding: 0 1rem;
+  }
+  
+  .notice-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.5rem 1.5rem;
+  }
+  
+  .notice-container::after {
+    width: 80px;
+    height: 80px;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+  
+  .notice-icon {
+    font-size: 2rem;
+  }
+  
+  .notice-title {
+    font-size: 1rem;
+  }
+  
+  .notice-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .access-notice {
+    margin: -1.5rem auto 2.5rem;
+  }
+  
+  .notice-container {
+    padding: 1.5rem 1.75rem;
+    gap: 1.25rem;
+  }
+  
+  .notice-icon {
+    font-size: 2.25rem;
+  }
+  
+  .notice-title {
+    font-size: 1.05rem;
+  }
+}
+
 /* 响应式设计 - 为何而写和文章板块 */
 @media (max-width: 768px) {
   .why-write-section {
