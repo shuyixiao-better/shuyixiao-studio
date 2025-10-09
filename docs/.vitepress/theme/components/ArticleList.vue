@@ -640,9 +640,9 @@ watch([searchQuery, selectedTag], () => {
 }
 
 .qrcode-wrapper {
-  width: 120px;
-  height: 120px;
-  padding: 8px;
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
   background: white;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -657,7 +657,8 @@ watch([searchQuery, selectedTag], () => {
 .qrcode-wrapper img {
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  object-fit: cover;
+  display: block;
 }
 
 .scan-tip {
