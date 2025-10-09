@@ -1,3 +1,16 @@
+---
+layout: doc
+title: ES聚合查询
+description: >-
+  聚合（Aggregations）是 Elasticsearch
+  中用于对数据进行**统计、分析和汇总**的核心功能。它允许你从大量数据中提取信息并生成复杂的分析结果，而不仅仅是返回匹配的文档。其功能类似于 SQL 中的
+  `GROUP BY` 结合 `COUNT()`, `SUM()`, `AVG()
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 ## 一、聚合查询概述
 
 ### 1. 什么是聚合？

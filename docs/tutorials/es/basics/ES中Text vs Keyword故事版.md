@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中Text vs Keyword故事版
+description: 想象一下，你面前有一个巨大的图书馆（Elasticsearch索引），里面有成千上万本书（文档）。每本书都有**书名**（title字段）。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中Text vs Keyword故事版
 
 > 刚开始学习 Elasticsearch 的人经常会混淆Text 和Keyword数据类型。 它们之间的区别很简单，但非常关键。

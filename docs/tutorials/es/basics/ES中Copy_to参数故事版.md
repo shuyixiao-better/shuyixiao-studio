@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中Copy_to参数故事版
+description: >-
+  想象数字村有多个部门（字段），每个部门都有自己的情报档案。但村长发现每次查资料都要跑遍所有部门太麻烦了！于是成立了**中央情报局（copy_to字段）**，把各部门的重要情报都复制一份到这里，方便统一查询。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中Copy_to参数故事版
 
 > ## copy_to

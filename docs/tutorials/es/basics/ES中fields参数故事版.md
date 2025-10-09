@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中fields参数故事版
+description: >-
+  想象数字村的超市里，每件商品都有一个**智能标签机**，可以同时生成多种不同用途的标签！这就是Elasticsearch的fields参数——让一个字段拥有多重身份！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中fields参数故事版
 
 > ## fields

@@ -2,6 +2,14 @@
 layout: doc
 title: 微信公众号
 description: 舒一笑的架构笔记 - 分享Java、架构设计与微服务知识
+date: '2025-10-09'
+tags:
+  - Java
+  - Spring Boot
+  - 微服务
+  - 架构设计
+  - AI
+author: 舒一笑不秃头
 ---
 
 # 关注我的微信公众号

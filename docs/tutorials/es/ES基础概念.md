@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES基础概念
+description: 想象一下，你开了一家超大的网店，每天有海量包裹要处理，这四位就是你的智能物流天团：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 ## Elastic Stack 四大金刚
 
 > 用取快递的流程来比喻这“四大金刚”，保准你秒懂！

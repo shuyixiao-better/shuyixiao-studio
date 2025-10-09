@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中enable参数故事版
+description: >-
+  想象数字村的超市里有个**万能扫描枪**，能瞬间找到任何商品的位置。而`enable`参数就是这把扫描枪的**总电源开关**，决定了是否要激活商品的定位功能！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中enable参数故事版
 
 > ## enable

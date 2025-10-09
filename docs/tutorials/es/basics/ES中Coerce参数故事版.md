@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中Coerce参数故事版
+description: 想象数字村有两个仓库，它们存放物品的规则完全不同，这取决于仓库的"门卫"有多严格！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中Coerce参数故事版
 
 > ## coerce

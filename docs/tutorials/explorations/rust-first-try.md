@@ -1,3 +1,16 @@
+---
+layout: doc
+title: Rust First Try
+description: >-
+  作为一名长期使用 Java 和 Python 的开发者，我对 Rust 的好奇始于它在 Stack Overflow
+  开发者调查中连续多年被评为"最受喜爱的编程语言"。
+date: '2025-10-09'
+tags:
+  - 技术探索
+  - Java
+  - Rust
+author: 舒一笑不秃头
+---
 # 初探 Rust：系统编程语言的诗与远方
 
 > 记录时间：2024-03  

@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中position_increment_gap参数故事版
+description: >-
+  想象数字村有个大型超市，商品按类别放在不同货架上。顾客想找**组合商品**（比如"牛奶+麦片"），但管理员故意在货架间留了**超宽通道（默认100步）**，防止顾客误把不同货架的商品当成组合！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中position_increment_gap参数故事版
 
 > ## position_increment_gap

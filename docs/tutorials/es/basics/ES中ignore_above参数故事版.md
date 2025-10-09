@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中ignore_above参数故事版
+description: 想象数字村的居民们都有一个**身份名牌（keyword字段）**，但村里规定：名牌超过一定长度就要被**打上特殊标记**，不再享受快速查询服务！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中ignore_above参数故事版
 
 > ## ignore_above

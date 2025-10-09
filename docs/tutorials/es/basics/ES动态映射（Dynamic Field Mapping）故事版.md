@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES动态映射（Dynamic Field Mapping）故事版
+description: 好的，让我们用数字村的故事来讲解这个非常重要的概念——**动态映射（Dynamic Field Mapping）**！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES动态映射（Dynamic Field Mapping）故事版
 
 > ## 3.1 自动映射：Dynamic field mapping

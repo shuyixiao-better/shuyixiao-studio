@@ -1,3 +1,13 @@
+---
+layout: doc
+title: Two Sum
+description: 给定一个整数数组 `nums` 和一个整数目标值 `target`，请你在该数组中找出和为目标值 `target` 的那两个整数，并返回它们的数组下标。
+date: '2025-10-09'
+tags:
+  - 算法
+  - Java
+author: 舒一笑不秃头
+---
 # 两数之和
 
 > 这是LeetCode上的经典题目，也是算法入门必刷题之一。通过这道题，我们可以学习到哈希表的使用技巧。

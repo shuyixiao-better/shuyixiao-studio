@@ -1,3 +1,14 @@
+---
+layout: doc
+title: 如何使用LangGraph开发Agent
+description: 在 PyCharm 中使用 Poetry 之前，需要先在 Windows 系统上安装它。以下是两种主流且可靠的方法。
+date: '2025-10-09'
+tags:
+  - 技术探索
+  - Java
+  - AI
+author: 舒一笑不秃头
+---
 # 如何使用LangGraph开发Agent
 
 > 项目地址：https://github.com/shuyixiao-better/shuyixiao-agent

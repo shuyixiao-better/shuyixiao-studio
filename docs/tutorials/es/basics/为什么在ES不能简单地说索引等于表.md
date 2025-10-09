@@ -1,3 +1,12 @@
+---
+layout: doc
+title: 为什么在ES不能简单地说索引等于表
+description: '**为什么说 ES 的索引不简单等同于 MySQL 的表？**'
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 为什么在ES不能简单地说索引等于表
 
 > 想象一下，你管理着两个不同的**图书馆**：

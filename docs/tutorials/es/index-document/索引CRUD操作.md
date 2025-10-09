@@ -1,3 +1,12 @@
+---
+layout: doc
+title: 索引CRUD操作
+description: '**将 JSON 文档添加到指定的数据流或索引并使其可被检索。如果目标是索引并且文档已经存在，则请求更新文档并增加其版本号。**'
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 索引CRUD操作
 
 # **索引文档**

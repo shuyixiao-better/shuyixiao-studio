@@ -1,3 +1,13 @@
+---
+layout: doc
+title: Template
+description: 为什么会想要尝试这个技术？是工作需要？个人兴趣？还是偶然发现的宝藏？
+date: '2025-10-09'
+tags:
+  - 技术探索
+  - Java
+author: 舒一笑不秃头
+---
 # 【示例】初探某技术
 
 > 记录时间：YYYY-MM-DD  

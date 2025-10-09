@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES中Doc_Values 与 Fielddata 故事版
+description: 让我们用数字村的**档案馆**和**实时翻译站**来比喻这两个关键概念：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中Doc_Values 与 Fielddata 故事版
 
 > ## doc_values 和 fielddata

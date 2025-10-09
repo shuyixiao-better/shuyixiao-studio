@@ -1,3 +1,14 @@
+---
+layout: doc
+title: Elasticsearch元数据与源数据详解
+description: >-
+  对于 Elasticsearch (ES) 新手来说，理解返回数据中的**元数据** 和**源数据** 是关键的第一步。下图是一个典型的 ES
+  文档返回结果，我们可以通过一个生动的比喻来彻底理解它。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # Elasticsearch 元数据与源数据详解
 
 ## 一、概述

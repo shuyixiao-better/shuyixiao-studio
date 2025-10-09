@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES中Dynamic 参数故事版
+description: 想象数字村就像一个快速发展的城市，而 `dynamic` 参数就是**城市规划局**制定的土地开发政策，决定了新来的居民（字段）能否在村里自由建房：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中Dynamic 参数故事版
 
 > ## dynamic

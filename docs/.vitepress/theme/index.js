@@ -5,6 +5,8 @@ import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import './custom.css'
 import NotFound from './NotFound.vue'
+import RecentPosts from './components/RecentPosts.vue'
+import ArticleList from './components/ArticleList.vue'
 
 export default {
   extends: DefaultTheme,
@@ -15,7 +17,9 @@ export default {
     })
   },
   enhanceApp({ app, router, siteData }) {
-    // 可在此注册全局组件
+    // 注册全局组件
+    app.component('RecentPosts', RecentPosts)
+    app.component('ArticleList', ArticleList)
   },
   setup() {
     const route = useRoute()

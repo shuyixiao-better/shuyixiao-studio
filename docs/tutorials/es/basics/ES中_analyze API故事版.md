@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中_analyze API故事版
+description: >-
+  想象数字村的文字厨房里有个神奇的**食材检测仪**，任何文本食材放进去，都能立即看到会被切菜机处理成什么样子！这就是Elasticsearch的_analyze
+  API！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中_analyze API故事版
 
 > # _analyze API

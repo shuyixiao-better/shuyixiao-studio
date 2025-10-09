@@ -1,3 +1,14 @@
+---
+layout: doc
+title: ES中null_value参数故事版
+description: >-
+  想象数字村有一片住宅区，每栋房子都挂着**门牌（字段值）**。但有些房子是**空置（null）**的，村长想了个妙招：给空房挂上**特殊标识牌（null_value）**，让普查员能统计到它们！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中null_value参数故事版
 
 > ## null_value

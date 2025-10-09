@@ -5,6 +5,8 @@
   "type": "module",
   "packageManager": "pnpm@10.17.1",
   "devDependencies": {
+    "globby": "^15.0.0",
+    "gray-matter": "^4.0.3",
     "mermaid": "^11.12.0",
     "typescript": "^5.9.0",
     "vitepress": "^1.0.0",

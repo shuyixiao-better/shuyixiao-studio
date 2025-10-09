@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES常用Dates（时间类型）故事版
+description: 咱们继续用数字村的故事，这次村里要处理“时间”这个神奇又重要的维度！村里开了一家专业的“时间管理局”，专门处理两种不同精度的时间记录需求：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES常用Dates（时间类型）故事版
 
 > - **date**：JSON 没有日期数据类型，因此 Elasticsearch 中的日期可以是以下三种

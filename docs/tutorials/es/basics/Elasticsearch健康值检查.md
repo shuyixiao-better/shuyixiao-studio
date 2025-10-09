@@ -1,3 +1,12 @@
+---
+layout: doc
+title: Elasticsearch健康值检查
+description: 好的，我们来用大白话和比喻解释一下 `GET _cat/health?v` 这个命令和它返回的结果，特别是那个 `epoch`。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # Elasticsearch健康值检查
 
 > 命令：GET _cat/health?v

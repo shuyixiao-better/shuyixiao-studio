@@ -1,3 +1,15 @@
+---
+layout: doc
+title: ES中ignore_malformed参数故事版
+description: >-
+  想象数字村有个**海关质检站**，所有进口货物（数据）都要在这里接受检查。而 `ignore_malformed`
+  参数就是质检员的工作模式开关，决定了如何处理不合格的货物：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中ignore_malformed参数故事版
 
 > ## ignore_malformed

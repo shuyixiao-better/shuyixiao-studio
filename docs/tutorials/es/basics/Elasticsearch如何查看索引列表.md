@@ -1,3 +1,13 @@
+---
+layout: doc
+title: Elasticsearch如何查看索引列表
+description: '**最常用和推荐的方式：**'
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # Elasticsearch如何查看索引列表
 
 > 在 Elasticsearch 中，查看集群中存在的**索引列表**（即有哪些索引）的标准 DSL 命令是使用 `_cat/indices`API。这个命令会返回一个包含索引名称、状态、健康度、文档数、大小等信息的易读表格。

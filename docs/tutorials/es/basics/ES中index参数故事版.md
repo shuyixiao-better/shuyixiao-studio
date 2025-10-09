@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中index参数故事版
+description: 想象数字村有个大型超市，每件商品都有**条形码（索引）**。超市经理发现有些商品根本不需要扫码，于是设计了灵活的**扫码开关系统（index参数）**：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中index参数故事版
 
 > ## index

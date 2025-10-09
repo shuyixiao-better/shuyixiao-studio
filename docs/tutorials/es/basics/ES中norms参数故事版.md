@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES中norms参数故事版
+description: 想象一下，你是一家大型超市的经理，超市里有成千上万种商品，每个商品都有**商品描述标签**。顾客通过搜索框来查找他们需要的商品。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中norms参数故事版
 
 > ## norms

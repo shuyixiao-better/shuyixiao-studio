@@ -1,3 +1,15 @@
+---
+layout: doc
+title: ES中Boost参数故事版
+description: >-
+  想象数字村有一个公告栏，村民们会发布各种消息。但有些消息特别重要，需要更显眼的位置！Elasticsearch 的 `boost`
+  参数就像给这些重要消息装上了"放大镜"，让它们在搜索结果中更加突出。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中Boost参数故事版
 
 > ## boost

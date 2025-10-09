@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中分析器（Analyzer）故事版
+description: 想象数字村是一个国际化的村庄，村民说着不同的语言（中文、英文等）。村里有一位**语言翻译官**，他的工作是把各种语言的内容翻译成村里通用的"搜索语言"。
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中分析器（Analyzer）故事版
 
 > ## analyzer

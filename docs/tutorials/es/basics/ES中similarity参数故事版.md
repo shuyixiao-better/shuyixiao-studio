@@ -1,3 +1,12 @@
+---
+layout: doc
+title: ES中similarity参数故事版
+description: 想象数字村每年举办一次**美食评分大赛**，三位风格迥异的评委用不同的标准给菜品打分。这就是Elasticsearch的三种相似度评分模型！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中similarity参数故事版
 
 > ## similarity

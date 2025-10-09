@@ -1,3 +1,13 @@
+---
+layout: doc
+title: Installation
+description: '- **内存**：至少4GB，推荐8GB以上'
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # Elasticsearch安装配置
 
 > 工欲善其事，必先利其器。正确的安装配置是学习Elasticsearch的第一步。

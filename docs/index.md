@@ -103,40 +103,4 @@ features:
   <div class="divider-line"></div>
 </div>
 
-<div class="recent-posts">
-  <h2>最新文章</h2>
-  <div class="post-list">
-    <div class="post-grid">
-      <div class="post-item">
-        <div class="post-date">2025-09-27</div>
-        <h3 class="post-title"><a href="/articles/spring-boot-starter">手把手教你开发一个Spring Boot Starter</a></h3>
-        <div class="post-desc">Spring Boot Starter机制详解，从零开始开发自己的Starter组件</div>
-        <div class="post-meta">
-          <span class="post-tag">Spring Boot</span>
-          <span class="post-tag">Java</span>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-date">2025-09-25</div>
-        <h3 class="post-title"><a href="/articles/design-patterns">设计模式实战：策略模式在业务中的应用</a></h3>
-        <div class="post-desc">通过实际业务场景，深入理解策略模式的应用与实现</div>
-        <div class="post-meta">
-          <span class="post-tag">设计模式</span>
-          <span class="post-tag">Java</span>
-        </div>
-      </div>
-      <div class="post-item">
-        <div class="post-date">2025-09-20</div>
-        <h3 class="post-title"><a href="/articles/microservice-communication">微服务架构下的通信方案选型</a></h3>
-        <div class="post-desc">详解微服务间通信的几种主流方案及其适用场景</div>
-        <div class="post-meta">
-          <span class="post-tag">微服务</span>
-          <span class="post-tag">架构设计</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="view-more">
-    <a href="/articles/">查看更多文章 →</a>
-  </div>
-</div>
+<RecentPosts />

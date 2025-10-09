@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中映射参数故事版
+description: 让我们用一个生动的故事来理解 `index` 这个重要的映射参数！
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+  - Java
+author: 舒一笑不秃头
+---
 # ES中映射参数故事版
 
 > # 映射参数

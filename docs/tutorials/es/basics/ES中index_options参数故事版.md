@@ -1,3 +1,13 @@
+---
+layout: doc
+title: ES中index_options参数故事版
+description: >-
+  想象数字村的图书馆里有个超级管理员，他负责记录每本书的关键词位置。`index_options`就是他的**笔记精细度等级**，决定了记录关键词时要写多详细：
+date: '2025-10-09'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # ES中index_options参数故事版
 
 > ## index_options
