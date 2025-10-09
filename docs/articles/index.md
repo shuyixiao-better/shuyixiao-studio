@@ -110,49 +110,32 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 .wechat-card {
   display: flex;
   flex-direction: row;
-  background-color: var(--vp-c-brand-dimm);
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.05) 0%, rgba(62, 175, 124, 0.1) 100%);
+  border: 1.5px solid var(--vp-c-brand-1);
+  border-radius: 16px;
   padding: 1.5rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2.5rem;
+  box-shadow: 0 6px 24px rgba(62, 175, 124, 0.15);
   align-items: center;
   justify-content: space-between;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-/* 好处网格布局 */
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+.wechat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
 }
 
-.benefit-card {
-  background: var(--vp-c-bg-soft);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
-  border-top: 3px solid var(--vp-c-brand-1);
-}
-
-.benefit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.benefit-card h3 {
-  color: var(--vp-c-brand-1);
-  margin: 0 0 1rem 0;
-  font-size: 1.3rem;
-}
-
-.benefit-card p {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.95rem;
-  line-height: 1.5;
+.wechat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(62, 175, 124, 0.25);
 }
 
 .wechat-info {
@@ -160,98 +143,173 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 }
 
 .wechat-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--vp-c-brand-1);
   margin: 0 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .wechat-name {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0 0 0.8rem;
   color: var(--vp-c-text-1);
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .wechat-desc {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--vp-c-text-2);
   margin: 0;
+  line-height: 1.5;
 }
 
 .wechat-qrcode {
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
   margin-left: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .wechat-qrcode img {
   max-width: 100%;
   max-height: 100%;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* 移动端微信卡片优化 */
 @media (max-width: 640px) {
   .wechat-card {
     flex-direction: column;
     text-align: center;
-    padding: 1.25rem;
+    padding: 1.5rem 1rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+  }
+
+  .wechat-title {
+    font-size: 0.85rem;
+  }
+
+  .wechat-name {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .wechat-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
   }
 
   .wechat-qrcode {
-    margin: 1.5rem 0 0;
-    width: 140px;
-    height: 140px;
+    margin: 1.2rem auto 0;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* 平板端微信卡片 */
+@media (min-width: 641px) and (max-width: 768px) {
+  .wechat-card {
+    padding: 1.5rem 1.25rem;
   }
 
   .wechat-name {
     font-size: 1.5rem;
   }
+
+  .wechat-qrcode {
+    width: 100px;
+    height: 100px;
+    margin-left: 1rem;
+  }
 }
 
+/* 文章列表 */
 .article-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .article-card {
   padding: 1.5rem;
-  border-radius: 8px;
-  background-color: var(--vp-c-bg-soft);
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover::before {
+  transform: scaleX(1);
 }
 
 .article-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(62, 175, 124, 0.2);
+  border-color: var(--vp-c-brand-1);
 }
 
 .article-date {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.article-date::before {
+  content: '📅';
+  font-size: 0.75rem;
 }
 
 .article-title {
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
+  margin: 0.5rem 0 0.8rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  font-weight: 600;
 }
 
 .article-title a {
-  color: var(--vp-c-brand-1);
+  color: var(--vp-c-text-1);
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.article-title a:hover {
+  color: var(--vp-c-brand-1);
 }
 
 .article-desc {
   margin: 0.5rem 0 1rem;
-  color: var(--vp-c-text-1);
-  font-size: 1rem;
+  color: var(--vp-c-text-2);
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
@@ -260,7 +318,10 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--vp-c-divider);
 }
 
 .article-tags {
@@ -270,18 +331,28 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 }
 
 .article-tag {
-  font-size: 0.8rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 16px;
-  background-color: var(--vp-c-brand-dimm);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--vp-c-brand-dimm), rgba(62, 175, 124, 0.1));
   color: var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-brand-1);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.article-tag:hover {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  color: white;
+  transform: translateY(-2px);
 }
 
 .article-stats {
   display: flex;
   gap: 1rem;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--vp-c-text-2);
+  font-weight: 500;
 }
 
 /* 图标样式 */
@@ -298,5 +369,114 @@ description: 分享Java、Spring、微服务、架构设计等技术文章
 .icon-message::before {
   content: '💬';
   margin-right: 0.25rem;
+}
+
+/* 移动端文章卡片优化 */
+@media (max-width: 640px) {
+  .article-list {
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .article-card {
+    padding: 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(62, 175, 124, 0.18);
+  }
+
+  .article-date {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-title {
+    font-size: 1.15rem;
+    margin: 0.4rem 0 0.6rem;
+    line-height: 1.35;
+  }
+
+  .article-desc {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  .article-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+  }
+
+  .article-tags {
+    width: 100%;
+  }
+
+  .article-tag {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.7rem;
+  }
+
+  .article-stats {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .article-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+/* 平板端文章卡片 */
+@media (min-width: 641px) and (max-width: 768px) {
+  .article-list {
+    gap: 1.3rem;
+  }
+
+  .article-card {
+    padding: 1.35rem;
+  }
+
+  .article-title {
+    font-size: 1.3rem;
+  }
+
+  .article-desc {
+    font-size: 0.9rem;
+  }
+
+  .article-tag {
+    font-size: 0.73rem;
+  }
+
+  .article-stats {
+    font-size: 0.78rem;
+  }
+}
+
+/* 暗色模式优化 */
+.dark .article-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .article-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 12px 28px rgba(66, 211, 146, 0.15);
+}
+
+.dark .wechat-card {
+  background: linear-gradient(135deg, rgba(66, 211, 146, 0.08) 0%, rgba(66, 211, 146, 0.12) 100%);
+  border-color: var(--vp-c-brand-1);
 }
 </style>
