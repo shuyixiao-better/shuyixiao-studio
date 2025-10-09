@@ -70,8 +70,8 @@ description: 舒一笑的架构笔记 - 分享Java、架构设计与微服务知
 }
 
 .wechat-qrcode {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
   margin-bottom: 1rem;
