@@ -312,9 +312,9 @@ Spring Boot官方Starter命名为`spring-boot-starter-xxx`，而非官方Starter
 
 <style>
 .article-footer {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 2px dashed var(--vp-c-divider);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -325,23 +325,125 @@ Spring Boot官方Starter命名为`spring-boot-starter-xxx`，而非官方Starter
 .article-tags {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .tag {
   font-size: 0.8rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 16px;
-  background-color: var(--vp-c-brand-dimm);
+  padding: 0.35rem 0.85rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--vp-c-brand-dimm), rgba(62, 175, 124, 0.1));
   color: var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-brand-1);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tag:hover {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
 }
 
 .article-share {
   font-size: 0.9rem;
   color: var(--vp-c-text-2);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .share-link {
-  margin-left: 0.5rem;
   color: var(--vp-c-brand-1);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
+  background: var(--vp-c-brand-dimm);
+  font-weight: 500;
+}
+
+.share-link:hover {
+  background: var(--vp-c-brand-1);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+}
+
+/* 移动端文章底部优化 */
+@media (max-width: 640px) {
+  .article-footer {
+    margin-top: 2rem;
+    padding-top: 1.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .article-tags {
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .article-share {
+    width: 100%;
+    font-size: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .share-link {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+/* 平板端文章底部 */
+@media (min-width: 641px) and (max-width: 768px) {
+  .article-footer {
+    margin-top: 2.5rem;
+    padding-top: 1.3rem;
+  }
+
+  .tag {
+    font-size: 0.78rem;
+    padding: 0.32rem 0.8rem;
+  }
+
+  .share-link {
+    font-size: 0.88rem;
+    padding: 0.32rem 0.8rem;
+  }
+}
+
+/* 暗色模式优化 */
+.dark .article-footer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .tag {
+  background: linear-gradient(135deg, rgba(66, 211, 146, 0.15), rgba(66, 211, 146, 0.1));
+  border-color: var(--vp-c-brand-1);
+}
+
+.dark .tag:hover {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  color: white;
+}
+
+.dark .share-link {
+  background: rgba(66, 211, 146, 0.15);
+}
+
+.dark .share-link:hover {
+  background: var(--vp-c-brand-1);
+  color: white;
 }
 </style>
