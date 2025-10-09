@@ -363,7 +363,6 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   width: 100%;
   max-width: 100vw;
 }
@@ -379,14 +378,11 @@ body {
 .VPFeatures,
 .recent-posts {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 /* 导航栏区域保持visible以显示下拉菜单 */
 .VPNav {
   max-width: 100vw;
-  overflow-x: hidden;
-  overflow-y: visible !important;
 }
 
 /* 全局微妙动画 */
