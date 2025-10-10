@@ -78,9 +78,7 @@ export default withMermaid(defineConfig({
           text: '实战项目',
           collapsed: false,
           items: [
-            { text: 'shuyixiao-agent：AI Agent 项目', link: '/projects/shuyixiao-agent' },
-            { text: '电商系统设计', link: '/projects/e-commerce' },
-            { text: '支付系统开发', link: '/projects/payment' },
+            { text: 'shuyixiao-agent：AI Agent 项目', link: '/projects/shuyixiao-agent' }
           ]
         }
       ],
