@@ -850,9 +850,16 @@ body {
   overflow: hidden;
   padding: 0;
   display: -webkit-box;
+  display: -moz-box;
+  display: box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* autoprefixer: off */
   -webkit-box-orient: vertical;
+  /* autoprefixer: on */
+  box-orient: vertical;
   text-overflow: ellipsis;
+  white-space: normal;
 }
 
 /* 悬停时的优雅效果 - 从底部滑入展示详细信息 */
