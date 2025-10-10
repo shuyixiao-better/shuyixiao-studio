@@ -291,7 +291,8 @@
   
   .VPFeatures .details {
     font-size: 1rem;
-    max-height: none;
+    height: 3.2em;
+    max-height: 3.2em;
   }
   
   /* 超宽屏悬停效果 */
@@ -844,8 +845,9 @@ body {
   position: relative;
   z-index: 3;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: none;
-  overflow: visible;
+  height: 2.9em;
+  max-height: 2.9em;
+  overflow: hidden;
   padding: 0;
   display: block;
   white-space: normal;
@@ -1335,11 +1337,12 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
+    height: auto;
     max-height: none;
+    overflow: visible;
     opacity: 0.85;
     color: var(--vp-c-text-2);
     display: block;
-    overflow: visible;
     margin-top: 0.5rem;
     line-height: 1.5;
   }
@@ -1349,7 +1352,9 @@ body {
     position: static;
     transform: none;
     opacity: 0.85;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
     background: none;
     padding: 0;
     margin-top: 0.5rem;
@@ -1426,7 +1431,9 @@ body {
   
   .VPFeatures .details {
     font-size: 0.875rem;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
     opacity: 0.8;
   }
   
@@ -1545,7 +1552,9 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
   }
   
   .VPFeatures .item:hover .details {
@@ -1596,7 +1605,9 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
   }
   
   .VPFeatures .item:hover .details {
@@ -1647,7 +1658,9 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
   }
   
   .VPFeatures .item:hover .details {
@@ -1700,7 +1713,9 @@ body {
   .VPFeatures .details {
     font-size: 0.95rem;
     line-height: 1.6;
-    max-height: none;
+    height: 2.8em;
+    max-height: 2.8em;
+    overflow: hidden;
   }
   
   /* 2560分辨率下的悬停效果优化 */
