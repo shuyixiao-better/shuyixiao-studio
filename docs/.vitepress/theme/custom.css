@@ -291,8 +291,7 @@
   
   .VPFeatures .details {
     font-size: 1rem;
-    max-height: 3.5em;
-    -webkit-line-clamp: 2;
+    max-height: none;
   }
   
   /* 超宽屏悬停效果 */
@@ -841,24 +840,14 @@ body {
   font-size: 0.9rem;
   margin: 0.75rem 0 0 0;
   word-wrap: break-word;
-  hyphens: auto;
   opacity: 0.7;
   position: relative;
   z-index: 3;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 3em;
-  overflow: hidden;
+  max-height: none;
+  overflow: visible;
   padding: 0;
-  display: -webkit-box;
-  display: -moz-box;
-  display: box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-  /* autoprefixer: off */
-  -webkit-box-orient: vertical;
-  /* autoprefixer: on */
-  box-orient: vertical;
-  text-overflow: ellipsis;
+  display: block;
   white-space: normal;
 }
 
@@ -1347,7 +1336,6 @@ body {
   .VPFeatures .details {
     font-size: 0.9rem;
     max-height: none;
-    -webkit-line-clamp: unset;
     opacity: 0.85;
     color: var(--vp-c-text-2);
     display: block;
@@ -1438,8 +1426,7 @@ body {
   
   .VPFeatures .details {
     font-size: 0.875rem;
-    max-height: 3em;
-    -webkit-line-clamp: 2;
+    max-height: none;
     opacity: 0.8;
   }
   
@@ -1558,8 +1545,7 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: 3em;
-    -webkit-line-clamp: 2;
+    max-height: none;
   }
   
   .VPFeatures .item:hover .details {
@@ -1610,8 +1596,7 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: 3em;
-    -webkit-line-clamp: 2;
+    max-height: none;
   }
   
   .VPFeatures .item:hover .details {
@@ -1662,8 +1647,7 @@ body {
   
   .VPFeatures .details {
     font-size: 0.9rem;
-    max-height: 3em;
-    -webkit-line-clamp: 2;
+    max-height: none;
   }
   
   .VPFeatures .item:hover .details {
@@ -1716,8 +1700,7 @@ body {
   .VPFeatures .details {
     font-size: 0.95rem;
     line-height: 1.6;
-    max-height: 3.2em;
-    -webkit-line-clamp: 2;
+    max-height: none;
   }
   
   /* 2560分辨率下的悬停效果优化 */
