@@ -403,7 +403,7 @@ export default withMermaid(defineConfig({
 
     // 编辑链接
     editLink: {
-      pattern: 'https://github.com/shuyixiaobutuotou/blog/edit/main/docs/:path',
+      pattern: 'https://github.com/shuyixiao-better/shuyixiao-studio/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页'
     }
   },
