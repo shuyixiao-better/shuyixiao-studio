@@ -98,7 +98,7 @@
             </div>
             <div class="article-read-time">
               <span class="time-icon">⏱️</span>
-              <span>{{ estimateReadTime(post.description) }} 分钟阅读</span>
+              <span>{{ estimateReadTime(post.wordCount) }} 分钟阅读</span>
             </div>
           </div>
           
@@ -327,8 +327,9 @@ const formatDate = (date) => {
 }
 
 // 估算阅读时间（假设每分钟阅读300字）
-const estimateReadTime = (description) => {
-  const words = description ? description.length : 500
+const estimateReadTime = (wordCount) => {
+  // 使用文章实际字数计算阅读时间
+  const words = wordCount || 500
   return Math.max(1, Math.ceil(words / 300))
 }
 
