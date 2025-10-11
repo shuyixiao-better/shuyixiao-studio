@@ -82,6 +82,31 @@ features:
   <div class="divider-line"></div>
 </div>
 
+<div class="learning-investment-section">
+  <div class="learning-card">
+    <div class="card-icon">📚</div>
+    <h2 class="card-title">持续学习，方能远行</h2>
+    <div class="card-content">
+      <p class="highlight-text">知识投资，需要定期投入最低限度的时间量</p>
+      <div class="wisdom-text">
+        <p>养成习惯，无论是在家中的书桌前，还是在咖啡馆的角落里。</p>
+        <p>并非每次学习都能立竿见影，但只要定期坚持，时间会给你答案。</p>
+        <p class="emphasis">如果你一直在等待空闲时间，或等待灵感的突现，那么它永远都不会发生。</p>
+      </div>
+      <div class="card-footer">
+        <span class="footer-icon">💡</span>
+        <span class="footer-text">不积跬步，无以至千里 — 与君共勉</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">✨</div>
+  <div class="divider-line"></div>
+</div>
+
 <div class="why-write-section">
   <div class="why-write-container">
     <h2 class="why-write-title">为何而写</h2>
