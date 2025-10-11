@@ -92,6 +92,7 @@ features:
         <p>养成习惯，无论是在家中的书桌前，还是在咖啡馆的角落里。</p>
         <p>并非每次学习都能立竿见影，但只要定期坚持，时间会给你答案。</p>
         <p class="emphasis">如果你一直在等待空闲时间，或等待灵感的突现，那么它永远都不会发生。</p>
+        <p class="emphasis">将每一个忙碌、充实的日子，累积成酣畅淋漓的生命。</p>
       </div>
       <div class="card-footer">
         <span class="footer-icon">💡</span>
