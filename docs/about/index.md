@@ -280,4 +280,52 @@ description: 个人简介与联系方式
 }
 </style>
 
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">🍎</div>
+  <div class="divider-line"></div>
+</div>
+
+<JobsQuotes />
+
+<style scoped>
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4rem auto;
+  max-width: 600px;
+}
+
+.divider-line {
+  flex-grow: 1;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--vp-c-brand-1), transparent);
+  border-radius: 1px;
+}
+
+.divider-icon {
+  font-size: 2rem;
+  margin: 0 2rem;
+  color: var(--vp-c-brand-1);
+  animation: pulse-divider 2s infinite;
+}
+
+@keyframes pulse-divider {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+@media (max-width: 768px) {
+  .section-divider {
+    margin: 3rem auto;
+  }
+  
+  .divider-icon {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+  }
+}
+</style>
+
 > 让我们一起用代码改变世界。
