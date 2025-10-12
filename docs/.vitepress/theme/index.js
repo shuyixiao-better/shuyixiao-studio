@@ -7,6 +7,7 @@ import './custom.css'
 import NotFound from './NotFound.vue'
 import RecentPosts from './components/RecentPosts.vue'
 import ArticleList from './components/ArticleList.vue'
+import JobsQuotes from './components/JobsQuotes.vue'
 
 export default {
   extends: DefaultTheme,
@@ -20,6 +21,7 @@ export default {
     // 注册全局组件
     app.component('RecentPosts', RecentPosts)
     app.component('ArticleList', ArticleList)
+    app.component('JobsQuotes', JobsQuotes)
   },
   setup() {
     const route = useRoute()
