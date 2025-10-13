@@ -220,7 +220,7 @@ description: 深入理解认证授权的核心概念与设计原则
 
 如果你在认证授权方面有任何问题或经验分享，欢迎：
 - 在文章下方留言讨论
-- 关注我的[公众号](/about/wechat/)获取更多内容
+- 关注我的[公众号](/about/wechat)获取更多内容
 - 访问我的[GitHub](https://github.com/shuyixiao-better)查看示例代码
 
 ---

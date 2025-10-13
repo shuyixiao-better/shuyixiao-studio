@@ -118,7 +118,7 @@ description: 架构设计方案与实现
 专栏会持续更新，欢迎关注。如果你有任何建议或想法，欢迎通过以下方式与我交流：
 
 - 📧 邮箱：[在关于页面查看](/about/)
-- 💬 公众号：[关注我的公众号](/about/wechat/)
+- 💬 公众号：[关注我的公众号](/about/wechat)
 - 🐙 GitHub：[@shuyixiao-better](https://github.com/shuyixiao-better)
 
 ---
