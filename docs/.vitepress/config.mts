@@ -282,6 +282,7 @@ export default withMermaid(defineConfig({
               text: '技术成长感悟',
               collapsed: true,
               items: [
+                { text: '超越编码：程序员的核心竞争力思考', link: '/tutorials/insights/growth/beyond-coding-core-competitiveness' },
                 { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
                 { text: '技术选型的艺术与哲学', link: '/tutorials/insights/growth/technology-selection' },
                 { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
