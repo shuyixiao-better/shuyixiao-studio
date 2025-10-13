@@ -34,7 +34,8 @@ export default withMermaid(defineConfig({
           { text: 'Elasticsearch', link: '/tutorials/es/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
           { text: '代码与人生', link: '/tutorials/insights/' },
-          { text: '拾遗录', link: '/tutorials/explorations/' }
+          { text: '拾遗录', link: '/tutorials/explorations/' },
+          { text: '筑·匠', link: '/tutorials/architecture/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -360,6 +361,75 @@ export default withMermaid(defineConfig({
             { text: '文章模板', link: '/tutorials/explorations/template' },
             { text: '如何使用LangGraph开发Agent', link: '/tutorials/explorations/如何使用LangGraph开发Agent' },
             { text: '初探 Rust', link: '/tutorials/explorations/rust-first-try' }
+          ]
+        }
+      ],
+      '/tutorials/architecture/': [
+        {
+          text: '筑·匠',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/architecture/' },
+            {
+              text: '系统架构设计',
+              collapsed: true,
+              items: [
+                { text: '分布式系统架构设计', link: '/tutorials/architecture/system/distributed-system' },
+                { text: '微服务架构设计实践', link: '/tutorials/architecture/system/microservice-design' },
+                { text: '高并发系统架构方案', link: '/tutorials/architecture/system/high-concurrency' },
+                { text: '领域驱动设计(DDD)实战', link: '/tutorials/architecture/system/ddd-practice' }
+              ]
+            },
+            {
+              text: '技术选型与方案',
+              collapsed: true,
+              items: [
+                { text: '缓存架构设计', link: '/tutorials/architecture/solution/cache-architecture' },
+                { text: '消息队列选型与实践', link: '/tutorials/architecture/solution/message-queue' },
+                { text: '数据库架构设计', link: '/tutorials/architecture/solution/database-architecture' },
+                { text: '搜索引擎架构方案', link: '/tutorials/architecture/solution/search-engine' }
+              ]
+            },
+            {
+              text: '性能优化实战',
+              collapsed: true,
+              items: [
+                { text: 'JVM性能调优实践', link: '/tutorials/architecture/performance/jvm-tuning' },
+                { text: '数据库性能优化方案', link: '/tutorials/architecture/performance/database-optimization' },
+                { text: '接口性能优化实战', link: '/tutorials/architecture/performance/api-optimization' },
+                { text: '前端性能优化方案', link: '/tutorials/architecture/performance/frontend-optimization' }
+              ]
+            },
+            {
+              text: '稳定性保障',
+              collapsed: true,
+              items: [
+                { text: '限流降级熔断设计', link: '/tutorials/architecture/stability/rate-limit-downgrade' },
+                { text: '灰度发布方案设计', link: '/tutorials/architecture/stability/gray-release' },
+                { text: '容灾与高可用设计', link: '/tutorials/architecture/stability/disaster-recovery' },
+                { text: '监控告警体系建设', link: '/tutorials/architecture/stability/monitoring-system' }
+              ]
+            },
+            {
+              text: '安全架构设计',
+              collapsed: true,
+              items: [
+                { text: '认证授权体系设计', link: '/tutorials/architecture/security/auth-system' },
+                { text: '数据加密方案设计', link: '/tutorials/architecture/security/data-encryption' },
+                { text: '接口安全防护方案', link: '/tutorials/architecture/security/api-security' },
+                { text: '安全审计系统设计', link: '/tutorials/architecture/security/audit-system' }
+              ]
+            },
+            {
+              text: '项目实战案例',
+              collapsed: true,
+              items: [
+                { text: '电商系统架构设计', link: '/tutorials/architecture/cases/ecommerce-system' },
+                { text: '社交平台架构方案', link: '/tutorials/architecture/cases/social-platform' },
+                { text: '支付系统架构设计', link: '/tutorials/architecture/cases/payment-system' },
+                { text: '内容管理系统设计', link: '/tutorials/architecture/cases/cms-system' }
+              ]
+            }
           ]
         }
       ],
