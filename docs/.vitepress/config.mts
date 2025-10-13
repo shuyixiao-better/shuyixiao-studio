@@ -2,8 +2,9 @@ import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
 // 根据部署环境自动设置 base 路径
-// 使用自定义域名时，GitHub Pages 和 Netlify 都部署到根路径
-// 如果未来不使用自定义域名，需要改为：'/shuyixiao-studio/'
+// GitHub Pages (write分支) 使用自定义域名: www.shuyixiao.top
+// Netlify (main分支) 使用自定义域名: www.shuyixiao.cn
+// 两个平台都使用自定义域名，所以 base 都是根路径
 const base = '/'
 
 // https://vitepress.dev/reference/site-config
