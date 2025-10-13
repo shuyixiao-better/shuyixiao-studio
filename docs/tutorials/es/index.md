@@ -1,3 +1,12 @@
+---
+layout: doc
+title: Elasticsearch 专栏
+description: 欢迎来到 Elasticsearch 专栏！这里将分享 Elasticsearch 相关的技术文章和实战经验。
+date: '2025-10-13'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # Elasticsearch 专栏
 
 欢迎来到 Elasticsearch 专栏！这里将分享 Elasticsearch 相关的技术文章和实战经验。

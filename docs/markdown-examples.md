@@ -1,3 +1,14 @@
+---
+layout: doc
+title: Markdown Extension Examples
+description: >-
+  This page demonstrates some of the built-in markdown extensions provided by
+  VitePress.
+date: '2025-10-13'
+tags:
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # Markdown Extension Examples
 
 This page demonstrates some of the built-in markdown extensions provided by VitePress.

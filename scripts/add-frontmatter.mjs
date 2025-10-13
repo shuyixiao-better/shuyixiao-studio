@@ -17,7 +17,7 @@ import { globby } from 'globby';
 const DEFAULT_CONFIG = {
   layout: 'doc',
   author: '舒一笑不秃头',
-  defaultTags: ['算法', 'Java'],
+  defaultTags: ['技术'], // 改为更通用的默认标签
 };
 
 /**
@@ -81,39 +81,96 @@ function extractDescription(content) {
  */
 function inferTags(filePath) {
   const tags = new Set();
+  const lowerPath = filePath.toLowerCase();
   
-  // 根据路径推断标签
-  if (filePath.includes('algorithm')) {
-    tags.add('算法');
-  }
-  if (filePath.includes('java')) {
-    tags.add('Java');
-  }
-  if (filePath.includes('spring')) {
-    tags.add('Spring');
-  }
-  if (filePath.includes('es') || filePath.includes('elasticsearch')) {
-    tags.add('Elasticsearch');
-  }
-  if (filePath.includes('microservice')) {
-    tags.add('微服务');
-  }
-  if (filePath.includes('design-pattern')) {
-    tags.add('设计模式');
-  }
-  if (filePath.includes('insights')) {
-    tags.add('技术感悟');
-  }
-  if (filePath.includes('explorations')) {
-    tags.add('探索');
-  }
+  // 编程语言和框架
+  if (lowerPath.includes('java')) tags.add('Java');
+  if (lowerPath.includes('python')) tags.add('Python');
+  if (lowerPath.includes('javascript') || lowerPath.includes('js/')) tags.add('JavaScript');
+  if (lowerPath.includes('typescript') || lowerPath.includes('ts/')) tags.add('TypeScript');
+  if (lowerPath.includes('rust')) tags.add('Rust');
+  if (lowerPath.includes('go/') || lowerPath.includes('golang')) tags.add('Go');
+  
+  // 框架和技术栈
+  if (lowerPath.includes('spring')) tags.add('Spring Boot');
+  if (lowerPath.includes('react')) tags.add('React');
+  if (lowerPath.includes('vue')) tags.add('Vue');
+  if (lowerPath.includes('elasticsearch') || lowerPath.includes('/es/')) tags.add('Elasticsearch');
+  
+  // 算法相关
+  if (lowerPath.includes('algorithm')) tags.add('算法');
+  if (lowerPath.includes('leetcode')) tags.add('LeetCode');
+  if (lowerPath.includes('backtracking')) tags.add('回溯算法');
+  if (lowerPath.includes('dynamic-programming')) tags.add('动态规划');
+  if (lowerPath.includes('greedy')) tags.add('贪心算法');
+  if (lowerPath.includes('linked-list')) tags.add('链表');
+  if (lowerPath.includes('tree')) tags.add('树');
+  if (lowerPath.includes('graph')) tags.add('图');
+  
+  // 架构相关
+  if (lowerPath.includes('architecture')) tags.add('系统架构');
+  if (lowerPath.includes('microservice')) tags.add('微服务');
+  if (lowerPath.includes('distributed')) tags.add('分布式');
+  if (lowerPath.includes('high-concurrency')) tags.add('高并发');
+  if (lowerPath.includes('design-pattern')) tags.add('设计模式');
+  if (lowerPath.includes('ddd')) tags.add('领域驱动设计');
+  
+  // 安全和认证
+  if (lowerPath.includes('security')) tags.add('安全');
+  if (lowerPath.includes('auth')) tags.add('认证鉴权');
+  if (lowerPath.includes('sso')) tags.add('单点登录');
+  if (lowerPath.includes('oauth')) tags.add('OAuth');
+  if (lowerPath.includes('jwt')) tags.add('JWT');
+  if (lowerPath.includes('rbac')) tags.add('权限管理');
+  if (lowerPath.includes('encryption')) tags.add('加密');
+  
+  // 性能和稳定性
+  if (lowerPath.includes('performance')) tags.add('性能优化');
+  if (lowerPath.includes('optimization')) tags.add('性能优化');
+  if (lowerPath.includes('jvm')) tags.add('JVM调优');
+  if (lowerPath.includes('monitoring')) tags.add('监控');
+  if (lowerPath.includes('stability')) tags.add('系统稳定性');
+  if (lowerPath.includes('rate-limit')) tags.add('限流降级');
+  
+  // 数据库和存储
+  if (lowerPath.includes('database')) tags.add('数据库');
+  if (lowerPath.includes('mysql')) tags.add('MySQL');
+  if (lowerPath.includes('redis')) tags.add('Redis');
+  if (lowerPath.includes('mongodb')) tags.add('MongoDB');
+  if (lowerPath.includes('cache')) tags.add('缓存');
+  
+  // 消息队列和搜索
+  if (lowerPath.includes('message-queue') || lowerPath.includes('mq')) tags.add('消息队列');
+  if (lowerPath.includes('kafka')) tags.add('Kafka');
+  if (lowerPath.includes('rabbitmq')) tags.add('RabbitMQ');
+  if (lowerPath.includes('search-engine')) tags.add('搜索引擎');
+  
+  // 案例和实战
+  if (lowerPath.includes('cases')) tags.add('项目实战');
+  if (lowerPath.includes('ecommerce')) tags.add('电商系统');
+  if (lowerPath.includes('payment')) tags.add('支付系统');
+  if (lowerPath.includes('cms')) tags.add('内容管理');
+  if (lowerPath.includes('social')) tags.add('社交平台');
+  
+  // 技术感悟和成长
+  if (lowerPath.includes('insights')) tags.add('技术感悟');
+  if (lowerPath.includes('career')) tags.add('职业发展');
+  if (lowerPath.includes('growth')) tags.add('个人成长');
+  if (lowerPath.includes('learning')) tags.add('学习方法');
+  if (lowerPath.includes('entrepreneurship')) tags.add('创业思考');
+  
+  // 探索和实验
+  if (lowerPath.includes('explorations')) tags.add('技术探索');
+  if (lowerPath.includes('langgraph') || lowerPath.includes('agent')) tags.add('AI Agent');
   
   // 如果没有推断出任何标签，使用默认标签
   if (tags.size === 0) {
     return DEFAULT_CONFIG.defaultTags;
   }
   
-  return Array.from(tags);
+  // 限制标签数量，最多5个
+  const tagsArray = Array.from(tags);
+  return tagsArray.slice(0, 5);
 }
 
 /**
