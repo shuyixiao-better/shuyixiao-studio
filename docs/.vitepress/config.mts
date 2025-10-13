@@ -414,7 +414,23 @@ export default withMermaid(defineConfig({
               text: '安全架构设计',
               collapsed: true,
               items: [
-                { text: '认证授权体系设计', link: '/tutorials/architecture/security/auth-system' },
+                { 
+                  text: '认证授权体系设计', 
+                  collapsed: true,
+                  items: [
+                    { text: '认证授权概述', link: '/tutorials/architecture/security/auth-system/' },
+                    { text: 'SSO单点网页内嵌登录设计', link: '/tutorials/architecture/security/auth-system/SSO单点网页内嵌登录设计' },
+                    { text: 'Session认证机制', link: '/tutorials/architecture/security/auth-system/session-auth' },
+                    { text: 'JWT令牌认证实践', link: '/tutorials/architecture/security/auth-system/jwt-auth' },
+                    { text: 'OAuth2.0授权框架', link: '/tutorials/architecture/security/auth-system/oauth2' },
+                    { text: 'SSO单点登录设计', link: '/tutorials/architecture/security/auth-system/sso' },
+                    { text: 'RBAC权限模型设计', link: '/tutorials/architecture/security/auth-system/rbac' },
+                    { text: 'ABAC属性访问控制', link: '/tutorials/architecture/security/auth-system/abac' },
+                    { text: '多因素认证(MFA)', link: '/tutorials/architecture/security/auth-system/mfa' },
+                    { text: '第三方登录集成', link: '/tutorials/architecture/security/auth-system/third-party-login' },
+                    { text: '微服务认证授权方案', link: '/tutorials/architecture/security/auth-system/microservice-auth' }
+                  ]
+                },
                 { text: '数据加密方案设计', link: '/tutorials/architecture/security/data-encryption' },
                 { text: '接口安全防护方案', link: '/tutorials/architecture/security/api-security' },
                 { text: '安全审计系统设计', link: '/tutorials/architecture/security/audit-system' }

@@ -64,7 +64,16 @@ description: 架构设计方案与实现
 - [监控告警体系建设](/tutorials/architecture/stability/monitoring-system)
 
 ### 🔐 安全架构设计
-- [认证授权体系设计](/tutorials/architecture/security/auth-system)
+- [认证授权体系设计](/tutorials/architecture/security/auth-system/)
+  - [Session认证机制](/tutorials/architecture/security/auth-system/session-auth)
+  - [JWT令牌认证实践](/tutorials/architecture/security/auth-system/jwt-auth)
+  - [OAuth2.0授权框架](/tutorials/architecture/security/auth-system/oauth2)
+  - [SSO单点登录设计](/tutorials/architecture/security/auth-system/sso)
+  - [RBAC权限模型设计](/tutorials/architecture/security/auth-system/rbac)
+  - [ABAC属性访问控制](/tutorials/architecture/security/auth-system/abac)
+  - [多因素认证(MFA)](/tutorials/architecture/security/auth-system/mfa)
+  - [第三方登录集成](/tutorials/architecture/security/auth-system/third-party-login)
+  - [微服务认证授权方案](/tutorials/architecture/security/auth-system/microservice-auth)
 - [数据加密方案设计](/tutorials/architecture/security/data-encryption)
 - [接口安全防护方案](/tutorials/architecture/security/api-security)
 - [安全审计系统设计](/tutorials/architecture/security/audit-system)

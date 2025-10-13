@@ -1863,6 +1863,85 @@ body {
   cursor: zoom-in !important;
 }
 
+/* Mermaid 图表缩放功能样式 */
+.vp-doc [class*="mermaid"] {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 12px;
+  border: 1px solid var(--vp-c-divider);
+  margin: 2rem 0;
+  overflow: visible;
+}
+
+.vp-doc [class*="mermaid"] svg {
+  cursor: zoom-in !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.vp-doc [class*="mermaid"] svg:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.vp-doc [class*="mermaid"]::before {
+  content: '🔍 点击放大查看';
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.vp-doc [class*="mermaid"]:hover::before {
+  opacity: 0.8;
+}
+
+/* Mermaid 缩放标记 */
+.mermaid-zoom-enabled {
+  cursor: zoom-in !important;
+}
+
+/* 暗色模式下的 Mermaid 样式优化 */
+.dark .vp-doc [class*="mermaid"] {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .vp-doc [class*="mermaid"]::before {
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 移动端 Mermaid 优化 */
+@media (max-width: 768px) {
+  .vp-doc [class*="mermaid"] {
+    padding: 1rem;
+    margin: 1.5rem 0;
+  }
+  
+  .vp-doc [class*="mermaid"]::before {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .vp-doc [class*="mermaid"] svg {
+    max-width: 100%;
+  }
+}
+
 /* 添加图片加载效果 */
 .vp-doc img {
   max-width: 100%;
