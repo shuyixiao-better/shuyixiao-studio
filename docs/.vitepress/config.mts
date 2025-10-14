@@ -469,7 +469,8 @@ export default withMermaid(defineConfig({
               text: '随笔草稿',
               collapsed: true,
               items: [
-                { text: '示例：写作草稿存放', link: '/tutorials/musings/drafts/example' }
+                { text: '示例：写作草稿存放', link: '/tutorials/musings/drafts/example' },
+                { text: '草稿存放', link: '/tutorials/musings/drafts/草稿存放' }
               ]
             },
             {
