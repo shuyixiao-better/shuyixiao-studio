@@ -461,17 +461,23 @@ export default withMermaid(defineConfig({
             {
               text: '思考笔记',
               collapsed: true,
-              items: []
+              items: [
+                { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' }
+              ]
             },
             {
               text: '随笔草稿',
               collapsed: true,
-              items: []
+              items: [
+                { text: '示例：写作草稿存放', link: '/tutorials/musings/drafts/example' }
+              ]
             },
             {
               text: '灵感瞬间',
               collapsed: true,
-              items: []
+              items: [
+                { text: '示例：捕捉灵感的瞬间', link: '/tutorials/musings/inspirations/example' }
+              ]
             }
           ]
         }
