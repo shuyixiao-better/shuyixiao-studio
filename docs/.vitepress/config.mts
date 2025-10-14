@@ -464,7 +464,7 @@ export default withMermaid(defineConfig({
     // 页脚
     footer: {
       message: '用代码书写人生 | <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">This site is powered by Netlify</a>',
-      copyright: 'Copyright © 2023-present 舒一笑不秃头'
+      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新</span>'
     },
 
     // 搜索
