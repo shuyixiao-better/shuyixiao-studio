@@ -36,7 +36,8 @@ export default withMermaid(defineConfig({
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
           { text: '代码与人生', link: '/tutorials/insights/' },
           { text: '拾遗录', link: '/tutorials/explorations/' },
-          { text: '筑·匠', link: '/tutorials/architecture/' }
+          { text: '筑·匠', link: '/tutorials/architecture/' },
+          { text: '漫思录', link: '/tutorials/musings/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -447,6 +448,30 @@ export default withMermaid(defineConfig({
                 { text: '支付系统架构设计', link: '/tutorials/architecture/cases/payment-system' },
                 { text: '内容管理系统设计', link: '/tutorials/architecture/cases/cms-system' }
               ]
+            }
+          ]
+        }
+      ],
+      '/tutorials/musings/': [
+        {
+          text: '漫思录',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/musings/' },
+            {
+              text: '思考笔记',
+              collapsed: true,
+              items: []
+            },
+            {
+              text: '随笔草稿',
+              collapsed: true,
+              items: []
+            },
+            {
+              text: '灵感瞬间',
+              collapsed: true,
+              items: []
             }
           ]
         }
