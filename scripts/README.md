@@ -56,20 +56,75 @@ author: 舒一笑不秃头
 
 ### 智能标签推断
 
-脚本会根据文件路径自动推断标签：
+脚本会根据文件路径自动推断标签（支持 90+ 种路径关键词匹配）：
 
+#### 编程语言和框架
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `java` | Java |
+| `python` | Python |
+| `rust` | Rust |
+| `spring` | Spring Boot |
+| `react` | React |
+| `vue` | Vue |
+| `elasticsearch` / `/es/` | Elasticsearch |
+
+#### 算法相关
 | 路径关键词 | 推断标签 |
 |-----------|---------|
 | `algorithm` | 算法 |
-| `java` | Java |
-| `spring` | Spring |
-| `es` / `elasticsearch` | Elasticsearch |
-| `microservice` | 微服务 |
-| `design-pattern` | 设计模式 |
-| `insights` | 技术感悟 |
-| `explorations` | 探索 |
+| `dynamic-programming` | 动态规划 |
+| `backtracking` | 回溯算法 |
+| `linked-list` | 链表 |
+| `tree` | 树 |
 
-如果无法推断，会使用默认标签：`['算法', 'Java']`
+#### 架构相关
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `architecture` | 系统架构 |
+| `microservice` | 微服务 |
+| `distributed` | 分布式 |
+| `design-pattern` | 设计模式 |
+| `ddd` | 领域驱动设计 |
+
+#### 安全和认证
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `security` | 安全 |
+| `auth` | 认证鉴权 |
+| `sso` | 单点登录 |
+| `oauth` | OAuth |
+| `jwt` | JWT |
+| `rbac` | 权限管理 |
+
+#### 性能和稳定性
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `performance` / `optimization` | 性能优化 |
+| `jvm` | JVM调优 |
+| `monitoring` | 监控 |
+| `rate-limit` | 限流降级 |
+
+#### 数据库和存储
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `database` | 数据库 |
+| `cache` | 缓存 |
+| `redis` | Redis |
+| `mysql` | MySQL |
+
+#### 其他
+| 路径关键词 | 推断标签 |
+|-----------|---------|
+| `message-queue` | 消息队列 |
+| `insights` | 技术感悟 |
+| `explorations` | 技术探索 |
+| `agent` / `langgraph` | AI Agent |
+
+> 📝 **智能特性**：
+> - 自动限制标签数量为 5 个，避免标签过多
+> - 如果无法推断出任何标签，使用默认标签：`['技术']`
+> - 支持路径不区分大小写匹配
 
 ### 注意事项
 

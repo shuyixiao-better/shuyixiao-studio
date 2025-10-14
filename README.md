@@ -66,7 +66,75 @@ npm run docs:preview
 
 ## 📝 写作指南
 
-### 创建新文章
+### 自动生成 Frontmatter
+
+项目提供了自动生成 frontmatter 的脚本，可以大大简化文章创建流程：
+
+#### 📦 首次使用前
+
+确保已安装脚本所需的依赖：
+
+```bash
+# 使用 pnpm（推荐）
+pnpm install
+
+# 或使用 npm
+npm install
+```
+
+> 💡 脚本依赖 `gray-matter` 和 `globby` 包，安装后即可使用。
+
+#### 🔧 使用方法
+
+**1. 处理单个文件**
+```bash
+node scripts/add-frontmatter.mjs docs/articles/your-article.md
+```
+
+**2. 扫描整个 docs 目录**
+```bash
+node scripts/add-frontmatter.mjs --scan
+```
+
+**3. 处理指定目录**
+```bash
+node scripts/add-frontmatter.mjs --dir docs/tutorials/algorithm
+```
+
+#### ✨ 自动功能
+
+脚本会自动完成以下工作：
+- 📖 从文章中提取标题（第一个 `#` 或 `##` 标题）
+- 📝 生成描述（提取文章前 200 字符）
+- 🏷️ 根据文件路径智能推断标签
+- 📅 添加当前日期
+- 👤 添加作者信息
+
+#### 🎯 智能标签推断规则
+
+脚本支持 **90+ 种路径关键词匹配**，自动推断出最合适的标签：
+
+| 分类 | 路径示例 | 自动标签 |
+|------|---------|---------|
+| **编程语言** | `java`, `python`, `rust` | Java, Python, Rust |
+| **框架** | `spring`, `react`, `vue` | Spring Boot, React, Vue |
+| **算法** | `algorithm`, `dynamic-programming` | 算法, 动态规划 |
+| **架构** | `architecture`, `microservice`, `distributed` | 系统架构, 微服务, 分布式 |
+| **安全** | `security`, `auth`, `sso`, `oauth` | 安全, 认证鉴权, 单点登录, OAuth |
+| **性能** | `performance`, `jvm`, `monitoring` | 性能优化, JVM调优, 监控 |
+| **数据库** | `database`, `redis`, `mysql` | 数据库, Redis, MySQL |
+| **其他** | `message-queue`, `insights` | 消息队列, 技术感悟 |
+
+**特点**：
+- ✅ 自动限制标签数量为 5 个
+- ✅ 路径不区分大小写
+- ✅ 默认标签：`['技术']`（当无法推断时）
+
+> 💡 **提示**：脚本只会处理没有 frontmatter 的文件，已有 frontmatter 的文件会自动跳过。
+> 
+> 📚 **详细文档**：更多配置和使用说明请查看 [scripts/README.md](./scripts/README.md)
+
+### 手动创建新文章
 
 1. 在 `docs/articles/` 目录下创建新的 `.md` 文件
 2. 添加 frontmatter:

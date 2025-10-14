@@ -1,3 +1,12 @@
+---
+layout: doc
+title: 拾遗录
+description: '> 探索未知，记录初心'
+date: '2025-10-13'
+tags:
+  - 探索
+author: 舒一笑不秃头
+---
 # 拾遗录
 
 > 探索未知，记录初心
