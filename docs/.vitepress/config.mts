@@ -463,7 +463,8 @@ export default withMermaid(defineConfig({
               text: '思考笔记',
               collapsed: true,
               items: [
-                { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' }
+                { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' },
+                { text: '如何用AI的方式给自己助力', link: '/tutorials/musings/thoughts/如何用AI的方式给自己助力' }
               ]
             },
             {
