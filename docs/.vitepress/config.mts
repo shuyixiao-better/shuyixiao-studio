@@ -41,6 +41,7 @@ export default withMermaid(defineConfig({
         ]
       },
       { text: '实战项目', link: '/projects/' },
+      { text: '拾珍录', link: '/tutorials/treasures/' },
       { text: '面试宝典', link: '/interview/' },
       { 
         text: '我的工具', 
@@ -478,6 +479,51 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: '示例：捕捉灵感的瞬间', link: '/tutorials/musings/inspirations/example' }
+              ]
+            }
+          ]
+        }
+      ],
+      '/tutorials/treasures/': [
+        {
+          text: '拾珍录',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/treasures/' },
+            {
+              text: '开发利器',
+              collapsed: true,
+              items: [
+                { text: '编程工具推荐', link: '/tutorials/treasures/tools/dev-tools' },
+                { text: '效率神器集锦', link: '/tutorials/treasures/tools/productivity-tools' },
+                { text: '在线工具箱', link: '/tutorials/treasures/tools/online-tools' }
+              ]
+            },
+            {
+              text: '优质站点',
+              collapsed: true,
+              items: [
+                { text: '技术社区精选', link: '/tutorials/treasures/websites/tech-communities' },
+                { text: '学习资源站', link: '/tutorials/treasures/websites/learning-sites' },
+                { text: '设计素材库', link: '/tutorials/treasures/websites/design-resources' }
+              ]
+            },
+            {
+              text: '精选文章',
+              collapsed: true,
+              items: [
+                { text: '技术好文分享', link: '/tutorials/treasures/articles/tech-articles' },
+                { text: '架构设计案例', link: '/tutorials/treasures/articles/architecture-cases' },
+                { text: '职场成长心得', link: '/tutorials/treasures/articles/career-insights' }
+              ]
+            },
+            {
+              text: '资源宝库',
+              collapsed: true,
+              items: [
+                { text: '开源项目推荐', link: '/tutorials/treasures/resources/open-source' },
+                { text: '电子书资源', link: '/tutorials/treasures/resources/ebooks' },
+                { text: '视频教程精选', link: '/tutorials/treasures/resources/video-courses' }
               ]
             }
           ]
