@@ -400,8 +400,8 @@ watch(pageSize, () => {
 /* 页面头部 */
 .page-header {
   text-align: center;
-  padding: 0 3rem 2rem;
-  margin: 0 auto 2rem;
+  padding: 2rem 3rem 3rem;
+  margin: 0 auto 3rem;
   max-width: 90vw;
   width: 100%;
   position: relative;
@@ -445,16 +445,16 @@ watch(pageSize, () => {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 4px;
+  width: 120px;
+  height: 5px;
   background: linear-gradient(90deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  border-radius: 2px;
+  border-radius: 3px;
 }
 
 .page-title {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin: 0 0 1rem;
+  margin: 0 0 1.5rem;
   background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
   -webkit-background-clip: text;
   background-clip: text;
@@ -462,55 +462,59 @@ watch(pageSize, () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.8rem;
 }
 
 .title-icon {
-  font-size: 2.2rem;
+  font-size: 3.2rem;
   filter: drop-shadow(0 2px 8px rgba(62, 175, 124, 0.3));
 }
 
 .page-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   color: var(--vp-c-text-2);
-  margin: 0 0 2rem;
+  margin: 0 0 2.5rem;
   font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .page-stats {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
-  padding: 1.5rem;
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
   background: var(--vp-c-bg-soft);
-  border-radius: 16px;
-  border: 1px solid var(--vp-c-divider);
-  max-width: 500px;
+  border-radius: 20px;
+  border: 2px solid var(--vp-c-divider);
+  max-width: 700px;
   margin: 0 auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .stat-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.5rem;
 }
 
 .stat-number {
-  font-size: 1.8rem;
+  font-size: 3rem;
   font-weight: 700;
   color: var(--vp-c-brand-1);
+  text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
 }
 
 .stat-label {
-  font-size: 0.85rem;
+  font-size: 1.1rem;
   color: var(--vp-c-text-2);
+  font-weight: 500;
 }
 
 .stat-divider {
-  width: 1px;
-  height: 30px;
+  width: 2px;
+  height: 50px;
   background: var(--vp-c-divider);
 }
 
@@ -1123,7 +1127,7 @@ watch(pageSize, () => {
   }
   
   .page-header {
-    padding: 0 1.5rem 2rem;
+    padding: 1.5rem 1.5rem 2rem;
   }
   
   .filter-section,
@@ -1133,16 +1137,33 @@ watch(pageSize, () => {
   }
 
   .page-title {
+    font-size: 2.2rem;
+  }
+  
+  .title-icon {
     font-size: 2rem;
   }
   
+  .page-subtitle {
+    font-size: 1.2rem;
+  }
+  
   .page-stats {
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 90%;
   }
   
   .stat-number {
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+  }
+  
+  .stat-divider {
+    height: 35px;
   }
   
   .tag-filter {
@@ -1245,7 +1266,7 @@ watch(pageSize, () => {
   }
   
   .page-header {
-    padding: 0 1rem 2rem;
+    padding: 1rem 1rem 2rem;
   }
   
   .filter-section,
@@ -1255,21 +1276,34 @@ watch(pageSize, () => {
   }
   
   .page-title {
+    font-size: 2rem;
+  }
+  
+  .title-icon {
     font-size: 1.8rem;
   }
   
   .page-subtitle {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
   
   .page-stats {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.2rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+  }
+  
+  .stat-label {
+    font-size: 1rem;
   }
   
   .stat-divider {
     width: 100%;
-    height: 1px;
+    height: 2px;
   }
   
   .search-input {
