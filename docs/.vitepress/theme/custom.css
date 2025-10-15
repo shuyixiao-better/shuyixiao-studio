@@ -621,61 +621,88 @@ body {
   display: none;
 }
 
-/* 文章列表页面的父容器样式 - 铺满全屏，内容居中 */
-.VPDoc:has(.article-list-page),
+/* ========== 文章列表页面 - 完全铺满屏幕 ========== */
+
+/* 强制所有祖先容器铺满屏幕 */
+body:has(.article-list-page),
+#app:has(.article-list-page),
+.Layout:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+/* 最外层 VPDoc 容器 */
+.VPDoc:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* 文档内容容器 vp-doc */
 .vp-doc:has(.article-list-page) {
   width: 100% !important;
   max-width: 100vw !important;
   padding: 48px 0 0 !important;
   margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
 }
 
-/* 文章列表页面容器样式 - 铺满全屏，内容居中 */
-.VPDoc:has(.article-list-page) .container {
+/* VPContent 容器 */
+.VPDoc:has(.article-list-page) .VPContent {
   width: 100% !important;
   max-width: 100vw !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  overflow-x: hidden !important;
 }
 
-/* 不同分辨率下文章列表页面保持铺满全屏 */
-@media (min-width: 1440px) {
-  .VPDoc:has(.article-list-page),
-  .vp-doc:has(.article-list-page) {
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
-  
-  .VPDoc:has(.article-list-page) .container {
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
+/* 内部 container */
+.VPDoc:has(.article-list-page) .container,
+.VPDoc:has(.article-list-page) .VPContent .container {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  overflow-x: hidden !important;
 }
 
-@media (min-width: 1920px) {
-  .VPDoc:has(.article-list-page),
-  .vp-doc:has(.article-list-page) {
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
-  
-  .VPDoc:has(.article-list-page) .container {
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
+/* 强制移除所有可能的宽度限制 */
+.VPDoc:has(.article-list-page),
+.VPDoc:has(.article-list-page) *:not(.article-list-page):not(.article-list-page *) {
+  max-width: 100vw !important;
 }
 
-@media (min-width: 2560px) {
+/* 所有分辨率下都保持铺满全屏 - 确保一致性 */
+@media (min-width: 1440px),
+       (min-width: 1920px),
+       (min-width: 2560px) {
+  body:has(.article-list-page),
+  #app:has(.article-list-page),
+  .Layout:has(.article-list-page),
   .VPDoc:has(.article-list-page),
-  .vp-doc:has(.article-list-page) {
+  .vp-doc:has(.article-list-page),
+  .VPDoc:has(.article-list-page) .VPContent,
+  .VPDoc:has(.article-list-page) .container,
+  .VPDoc:has(.article-list-page) .VPContent .container {
     width: 100% !important;
     max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
   }
   
-  .VPDoc:has(.article-list-page) .container {
-    width: 100% !important;
-    max-width: 100vw !important;
+  .vp-doc:has(.article-list-page) {
+    padding: 48px 0 0 !important;
   }
 }
 

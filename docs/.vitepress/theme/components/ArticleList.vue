@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-page" style="width: 100%; max-width: 100vw; padding: 0; margin: 0; box-sizing: border-box;">
+  <div class="article-list-page">
     <!-- 页面头部 -->
     <div class="page-header">
       <div class="header-content">
@@ -388,31 +388,34 @@ watch(pageSize, () => {
 }
 
 .article-list-page {
-  width: 100%;
-  box-sizing: border-box;
-  display: block;
-  padding: 0;
+  width: 100% !important;
+  max-width: 100vw !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: var(--vp-c-bg);
 }
 
 /* 页面头部 */
 .page-header {
   text-align: center;
-  padding: 0 2rem 2rem;
+  padding: 0 3rem 2rem;
   margin: 0 auto 2rem;
-  max-width: 1200px;
+  max-width: 90vw;
   width: 100%;
   position: relative;
   box-sizing: border-box;
 }
 
-/* 不同屏幕尺寸的响应式布局 */
+/* 不同屏幕尺寸的响应式布局 - 使用更大的宽度 */
 @media (min-width: 1440px) {
   .page-header,
   .filter-section,
   .wechat-card,
   .article-list,
   .pagination-wrapper {
-    max-width: 1400px;
+    max-width: 85vw;
   }
 }
 
@@ -422,7 +425,7 @@ watch(pageSize, () => {
   .wechat-card,
   .article-list,
   .pagination-wrapper {
-    max-width: 1600px;
+    max-width: 80vw;
   }
 }
 
@@ -432,7 +435,7 @@ watch(pageSize, () => {
   .wechat-card,
   .article-list,
   .pagination-wrapper {
-    max-width: 1800px;
+    max-width: 75vw;
   }
 }
 
@@ -514,8 +517,8 @@ watch(pageSize, () => {
 /* 搜索和筛选区域 */
 .filter-section {
   margin: 0 auto 2rem;
-  padding: 0 2rem;
-  max-width: 1200px;
+  padding: 0 3rem;
+  max-width: 90vw;
   width: 100%;
   animation: fadeInUp 0.6s ease-out;
   box-sizing: border-box;
@@ -615,9 +618,9 @@ watch(pageSize, () => {
   border-left: 4px solid var(--vp-c-brand-1);
   border-radius: 12px;
   padding: 1.5rem;
-  margin: 0 2rem 2rem;
-  max-width: calc(1200px - 4rem);
-  width: calc(100% - 4rem);
+  margin: 0 3rem 2rem;
+  max-width: calc(90vw - 6rem);
+  width: calc(100% - 6rem);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: space-between;
@@ -757,8 +760,8 @@ watch(pageSize, () => {
   flex-direction: column;
   gap: 1.8rem;
   margin: 0 auto 2rem;
-  padding: 0 2rem;
-  max-width: 1200px;
+  padding: 0 3rem;
+  max-width: 90vw;
   width: 100%;
   box-sizing: border-box;
 }
@@ -979,8 +982,8 @@ watch(pageSize, () => {
 /* 分页包装器 - 优化布局 */
 .pagination-wrapper {
   margin: 3rem auto 2rem;
-  padding: 0 2rem;
-  max-width: 1200px;
+  padding: 0 3rem;
+  max-width: 90vw;
   width: 100%;
   box-sizing: border-box;
 }
