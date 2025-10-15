@@ -22,18 +22,18 @@
   --vp-c-brand-dimm: rgba(66, 211, 146, 0.1);
 }
 
-/* 全局布局优化 */
+/* 全局布局优化 - 充分利用屏幕宽度 */
 .VPContent {
-  max-width: 1680px;
+  max-width: 98vw;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
 .VPContent .container {
-  max-width: 1680px;
+  max-width: 98vw;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -55,41 +55,120 @@
 
 /* 优化主要内容区域宽度 */
 .VPDoc .container {
-  max-width: 100%;
+  max-width: 98vw;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 1rem;
   width: 100%;
   box-sizing: border-box;
 }
 
-/* 调整文档内容区域宽度 - 大幅增加内容宽度 */
+/* 调整文档内容区域宽度 - 充分利用屏幕 */
 .vp-doc {
-  max-width: 1200px;
-  width: 100%;
-  padding: 48px 48px 96px;
+  max-width: none !important;
+  width: 100% !important;
+  padding: 48px 32px 96px;
   margin: 0 auto;
   box-sizing: border-box;
+  flex: 1 1 auto !important;
+}
+
+/* 针对所有可能限制宽度的class */
+[class*="container"],
+[class*="Container"] {
+  max-width: 98vw !important;
 }
 
 /* 调整整体文档布局，让内容和侧边栏更好地分配空间 */
 .VPDoc.has-aside .content-container {
   max-width: 100%;
+  width: 100%;
+}
+
+/* 确保文档容器充分利用空间 */
+.VPDoc .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+  max-width: 98vw;
+  box-sizing: border-box;
 }
 
 /* 优化右侧目录样式 */
 .VPDocAsideOutline {
-  padding-left: 16px;
-  max-width: 280px;
+  padding-left: 8px !important;
+  padding-right: 4px !important;
+  max-width: none !important;
+  width: 100% !important;
+  min-width: 100% !important;
   min-height: auto;
-  overflow: visible;
+  overflow: visible !important;
+  box-sizing: border-box !important;
 }
 
-/* 右侧目录容器样式优化 */
+/* 确保目录内部容器不限制宽度 */
+.VPDocAsideOutline .outline-marker,
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .root,
+.VPDocAsideOutline ul,
+.VPDocAsideOutline li {
+  max-width: none !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* 确保目录链接文字不被截断 */
+.VPDocAsideOutline a {
+  max-width: none !important;
+  width: auto !important;
+  min-width: auto !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* 强制移除VitePress可能的宽度限制 */
+.VPDocAside *,
+.VPDocAsideOutline * {
+  max-width: none !important;
+}
+
+.VPDocAside .outline-link,
+.VPDocAsideOutline .outline-link {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 超强制样式 - 确保目录链接完全显示 */
+.VPDocAside *[class*="outline"] {
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* 针对所有可能的outline相关元素 */
+div[class*="outline"],
+nav[class*="outline"],
+ul[class*="outline"],
+li[class*="outline"],
+a[class*="outline"] {
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* 确保侧边栏所有子元素不限制宽度 */
+aside.VPDocAside * {
+  max-width: none !important;
+}
+
+/* 右侧目录容器样式优化 - 大幅增加宽度以适应2K显示器 */
 .VPDocAside {
-  padding-left: 48px;
-  padding-right: 32px;
-  width: 280px;
-  min-width: 280px;
+  padding-left: 24px;
+  padding-right: 16px;
+  width: 420px;
+  min-width: 420px;
+  max-width: 420px;
   flex-shrink: 0;
 }
 
@@ -105,22 +184,36 @@
 
 /* 目录链接样式 - 修复绿条重叠问题 */
 .VPDocAsideOutline .outline-link {
-  font-size: 13px;
-  line-height: 28px;
+  font-size: 14px !important;
+  line-height: 2 !important;
   color: var(--vp-c-text-2);
   font-weight: 500;
-  padding: 4px 0 4px 16px;
+  padding: 6px 8px 6px 16px !important;
   transition: all 0.2s ease;
   border-left: 2px solid transparent !important;
   position: relative;
-  /* 修复长标题显示不全的问题 */
-  white-space: normal;
-  word-wrap: break-word;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  display: block;
-  width: 100%;
+  /* 单行显示完整文字 */
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
   box-sizing: border-box;
+  min-height: 36px;
+  flex-shrink: 0 !important;
+}
+
+/* 强制目录链接内的文字不换行不截断 */
+.VPDocAsideOutline .outline-link,
+.VPDocAsideOutline .outline-link *,
+.VPDocAsideOutline a,
+.VPDocAsideOutline a * {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
 }
 
 .VPDocAsideOutline .outline-link:hover {
@@ -154,12 +247,15 @@
 
 /* 目录层级缩进 */
 .VPDocAsideOutline .outline-link.nested {
-  padding-left: 28px;
-  font-size: 12px;
-  white-space: normal;
-  word-wrap: break-word;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  padding-left: 32px !important;
+  padding-right: 8px !important;
+  font-size: 13px !important;
+  line-height: 2 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 /* 目录区域背景和边框 */
@@ -173,67 +269,151 @@
   top: calc(var(--vp-nav-height) + 24px);
   max-height: calc(100vh - var(--vp-nav-height) - 48px);
   overflow-y: auto;
+  overflow-x: visible;
+  width: 100%;
+  box-sizing: border-box !important;
+}
+
+/* 移除VitePress可能设置的宽度限制 */
+.VPDocAside nav {
+  max-width: none !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.VPDocAside .content {
+  max-width: none !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* 全局强制 - 移除所有可能的限制 */
+.VPDocAside,
+.VPDocAside *,
+aside[class*="Doc"] *,
+div[class*="Aside"] *,
+nav[class*="Aside"] * {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+.VPDocAside .has-outline,
+.VPDocAside.has-outline,
+.VPDocAside.has-outline * {
+  overflow-x: visible !important;
+}
+
+/* 特别针对可能隐藏内容的元素 */
+.VPDocAside div,
+.VPDocAside nav,
+.VPDocAside ul,
+.VPDocAside li,
+.VPDocAside a {
+  overflow: visible !important;
+  max-width: none !important;
 }
 
 /* 覆盖VitePress默认的内容宽度限制 */
 @media (min-width: 1440px) {
   .vp-doc {
-    max-width: 1400px !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
   }
   
   .VPContent,
   .VPContent .container {
-    max-width: 1600px;
+    max-width: 98vw;
   }
   
   .VPNav .container {
-    max-width: 1600px;
+    max-width: 98vw;
+  }
+  
+  .VPDoc .container {
+    max-width: 98vw;
+  }
+  
+  /* 1440p及以上屏幕，优化目录宽度 */
+  .VPDocAside {
+    width: 450px !important;
+    min-width: 450px !important;
+    max-width: 450px !important;
   }
 }
 
 @media (min-width: 1680px) {
   .vp-doc {
-    max-width: 1600px !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
   }
   
   .VPContent,
   .VPContent .container {
-    max-width: 1800px;
+    max-width: 98vw;
   }
   
   .VPNav .container {
-    max-width: 1800px;
+    max-width: 98vw;
+  }
+  
+  .VPDoc .container {
+    max-width: 98vw;
+  }
+  
+  /* 1680p及以上，优化目录宽度 */
+  .VPDocAside {
+    width: 480px !important;
+    min-width: 480px !important;
+    max-width: 480px !important;
   }
 }
 
 @media (min-width: 1920px) {
   .vp-doc {
-    max-width: 1800px !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
   }
   
   .VPContent,
   .VPContent .container {
-    max-width: 2000px;
+    max-width: 98vw;
   }
   
   .VPNav .container {
-    max-width: 2000px;
+    max-width: 98vw;
+  }
+  
+  .VPDoc .container {
+    max-width: 98vw;
+  }
+  
+  /* 1920p及以上，目录宽度优化 */
+  .VPDocAside {
+    width: 520px !important;
+    min-width: 520px !important;
+    max-width: 520px !important;
   }
 }
 
-/* 超宽屏幕优化 (2560x1440) */
+/* 超宽屏幕优化 (2560x1440 - 2K显示器) */
 @media (min-width: 2560px) {
   .vp-doc {
-    max-width: 2200px !important;
+    max-width: none !important;
+    flex: 1 1 auto !important;
   }
   
   .VPContent,
   .VPContent .container {
-    max-width: 2400px;
+    max-width: calc(100vw - 2rem) !important;
   }
   
   .VPNav .container {
-    max-width: 2400px;
+    max-width: calc(100vw - 2rem) !important;
+  }
+  
+  .VPDoc .container {
+    max-width: calc(100vw - 2rem) !important;
+    width: 100% !important;
   }
   
   .VPFeatures .container {
@@ -247,6 +427,26 @@
   
   .recent-posts {
     max-width: 1800px;
+  }
+  
+  /* 2K显示器下，目录宽度优化 - 充分利用屏幕宽度 */
+  .VPDocAside {
+    width: 550px;
+    min-width: 550px;
+    max-width: 550px;
+  }
+  
+  /* 2K显示器确保文档容器使用全宽 */
+  .VPDoc .container {
+    width: 100%;
+    max-width: 98vw;
+    padding: 0 2rem;
+  }
+  
+  .vp-doc {
+    max-width: none;
+    padding: 48px 24px 96px;
+    flex: 1;
   }
 }
 
@@ -357,37 +557,41 @@
     font-size: 1.5rem;
   }
   
-  /* 调整侧边栏宽度 */
+  /* 超宽屏下，目录宽度进一步优化 */
   .VPDocAside {
-    width: 320px;
-    min-width: 320px;
-  }
-  
-  .VPDocAsideOutline {
-    max-width: 320px;
+    width: 1300px !important;
+    min-width: 1300px !important;
+    max-width: 1300px !important;
   }
 }
 
 /* 确保文档容器使用flex布局并充分利用空间 */
 .VPDoc .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 48px;
   width: 100%;
-  max-width: 100%;
+  max-width: 98vw;
   box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* 针对has-aside和has-sidebar状态 */
+.VPDoc.has-aside .container,
+.VPDoc.has-sidebar .container {
+  width: 100%;
+  max-width: 98vw;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 /* 让内容区域占据更多空间 */
 .VPDoc .content {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* 调整侧边栏区域 */
+/* 调整侧边栏区域 - 确保显示 */
 aside.VPDocAside {
   position: relative;
   box-sizing: border-box;
@@ -420,6 +624,23 @@ body {
 .recent-posts {
   max-width: 100vw;
 }
+
+/* 移除VitePress默认的容器宽度限制 */
+.container,
+.VPContent > .container,
+.VPDoc > .container {
+  max-width: 98vw !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+/* 移除部分宽度限制 */
+.vp-doc {
+  max-width: none;
+}
+
 
 /* 导航栏区域保持visible以显示下拉菜单 */
 .VPNav {
@@ -460,6 +681,18 @@ body {
   padding-bottom: 4rem;
   position: relative;
   z-index: 1;
+  max-width: 98vw;
+  margin: 0 auto;
+}
+
+/* 强制所有页面使用全宽 */
+.Layout,
+.VPDoc,
+.VPHome,
+body,
+#app {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
 }
 
 /* 导航栏样式 */
@@ -474,9 +707,9 @@ body {
 }
 
 .VPNav .container {
-  max-width: 1400px;
+  max-width: 98vw !important;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   width: 100%;
   box-sizing: border-box;
   overflow: visible !important;
