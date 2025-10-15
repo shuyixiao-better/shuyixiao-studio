@@ -352,6 +352,16 @@ export default withMermaid(defineConfig({
                 { text: '持续学习的内驱力', link: '/tutorials/insights/mindset/continuous-learning' },
                 { text: '技术人的价值观', link: '/tutorials/insights/mindset/tech-values' }
               ]
+            },
+            {
+              text: '财富与自由思维',
+              collapsed: true,
+              items: [
+                { text: '纳瓦尔宝典：技术人的财富自由之路', link: '/tutorials/insights/wealth/naval-ravikant-guide' },
+                { text: '专长与杠杆：程序员的核心资产', link: '/tutorials/insights/wealth/leverage-and-expertise' },
+                { text: '从打工思维到资产思维', link: '/tutorials/insights/wealth/asset-mindset' },
+                { text: '构建被动收入系统', link: '/tutorials/insights/wealth/passive-income' }
+              ]
             }
           ]
         }
