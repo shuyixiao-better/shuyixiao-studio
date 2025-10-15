@@ -3,11 +3,12 @@
  */
 
 :root {
-  --vp-c-brand-1: #3eaf7c;
-  --vp-c-brand-2: #2c9d6e;
-  --vp-c-brand-3: #207a54;
-  --vp-c-brand-soft: rgba(62, 175, 124, 0.1);
-  --vp-c-brand-dimm: rgba(62, 175, 124, 0.08);
+  /* 更柔和的绿色配色方案 - 提升可读性 */
+  --vp-c-brand-1: #10b981;
+  --vp-c-brand-2: #059669;
+  --vp-c-brand-3: #047857;
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.12);
+  --vp-c-brand-dimm: rgba(16, 185, 129, 0.08);
 
   /* 添加过渡效果到所有元素 */
   scroll-behavior: smooth;
@@ -15,29 +16,54 @@
 
 /* 暗色模式特定颜色变量 */
 .dark {
-  --vp-c-brand-1: #42d392;
-  --vp-c-brand-2: #35b57a;
-  --vp-c-brand-3: #289462;
-  --vp-c-brand-soft: rgba(66, 211, 146, 0.14);
-  --vp-c-brand-dimm: rgba(66, 211, 146, 0.1);
+  --vp-c-brand-1: #34d399;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #059669;
+  --vp-c-brand-soft: rgba(52, 211, 153, 0.15);
+  --vp-c-brand-dimm: rgba(52, 211, 153, 0.1);
 }
 
-/* 全局布局优化 - 充分利用屏幕宽度 */
-.VPContent {
+/* ==========  全局布局优化 ========== */
+
+/* 首页布局 - 保持原有样式不受限制 */
+.VPHome .VPContent,
+.VPHome .VPContent .container {
   max-width: 100vw;
   margin: 0 auto;
-  padding: 0 0.2rem;
+  width: 100%;
+}
+
+/* 文档页面布局 - 居中显示（排除文章列表页面） */
+.VPDoc:not(:has(.article-list-page)) .VPContent {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0;
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
-.VPContent .container {
-  max-width: 100vw;
+.VPDoc:not(:has(.article-list-page)) .VPContent .container {
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   position: relative;
   z-index: 1;
+}
+
+/* 文章列表页面 - 全屏布局 */
+.VPDoc:has(.article-list-page) .VPContent {
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.VPDoc:has(.article-list-page) .VPContent .container {
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
 }
 
 /* 确保导航栏始终在最上层 */
@@ -53,30 +79,26 @@
   margin: 0 auto;
 }
 
-/* 优化主要内容区域宽度 */
-.VPDoc .container {
-  max-width: none !important;
+/* ==========  文档页面样式 ========== */
+
+/* 文档页面主容器 */
+.VPDoc:not(:has(.article-list-page)) .container {
+  max-width: 1400px !important;
   margin: 0 auto !important;
-  padding: 0 0.2rem !important;
+  padding: 0 2rem !important;
   width: 100% !important;
   box-sizing: border-box !important;
   overflow-x: visible !important;
 }
 
-/* 调整文档内容区域宽度 - 充分利用屏幕 */
-.vp-doc {
-  max-width: none !important;
+/* 文档内容区域 */
+.VPDoc:not(:has(.article-list-page)) .vp-doc {
+  max-width: 1400px !important;
   width: 100% !important;
-  padding: 48px 4px 96px !important;
+  padding: 48px 2rem 96px !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
   flex: 1 1 auto !important;
-}
-
-/* 针对所有可能限制宽度的class */
-[class*="container"],
-[class*="Container"] {
-  max-width: 100vw !important;
 }
 
 /* 调整整体文档布局，让内容和侧边栏更好地分配空间 */
@@ -85,8 +107,8 @@
   width: 100%;
 }
 
-/* 确保文档容器充分利用空间 */
-.VPDoc .container {
+/* 确保文档容器充分利用空间（排除文章列表页面） */
+.VPDoc:not(:has(.article-list-page)) .container {
   display: flex !important;
   justify-content: space-between !important;
   align-items: flex-start !important;
@@ -316,27 +338,22 @@ nav[class*="Aside"] * {
 }
 
 /* 覆盖VitePress默认的内容宽度限制 */
+/* ==========  响应式布局 - 1440px+ ========== */
 @media (min-width: 1440px) {
-  .vp-doc {
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 1600px !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 100vw;
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1600px !important;
   }
   
-  .VPNav .container {
-    max-width: 100vw;
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 1800px !important;
   }
   
-  .VPDoc .container {
-    max-width: 100vw;
-    padding: 0 0.25rem;
-  }
-  
-  /* 1440p及以上屏幕，优化目录宽度 */
+  /* 目录宽度 */
   .VPDocAside {
     width: 300px !important;
     min-width: 300px !important;
@@ -344,27 +361,22 @@ nav[class*="Aside"] * {
   }
 }
 
+/* ==========  响应式布局 - 1680px+ ========== */
 @media (min-width: 1680px) {
-  .vp-doc {
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 1700px !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 100vw;
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1700px !important;
   }
   
-  .VPNav .container {
-    max-width: 100vw;
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 1900px !important;
   }
   
-  .VPDoc .container {
-    max-width: 100vw;
-    padding: 0 0.25rem;
-  }
-  
-  /* 1680p及以上，优化目录宽度 */
+  /* 目录宽度 */
   .VPDocAside {
     width: 320px !important;
     min-width: 320px !important;
@@ -372,27 +384,22 @@ nav[class*="Aside"] * {
   }
 }
 
+/* ==========  响应式布局 - 1920px+ ========== */
 @media (min-width: 1920px) {
-  .vp-doc {
-    max-width: 100% !important;
-    flex: 1 1 auto !important;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 1800px !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 100vw;
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1800px !important;
   }
   
-  .VPNav .container {
-    max-width: 100vw;
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 2000px !important;
   }
   
-  .VPDoc .container {
-    max-width: 100vw;
-    padding: 0 0.25rem;
-  }
-  
-  /* 1920p及以上，目录宽度优化 */
+  /* 目录宽度 */
   .VPDocAside {
     width: 340px !important;
     min-width: 340px !important;
@@ -400,32 +407,22 @@ nav[class*="Aside"] * {
   }
 }
 
-/* 超宽屏幕优化 (2560x1440 - 2K显示器) */
+/* ==========  响应式布局 - 2560px+ (2K) ========== */
 @media (min-width: 2560px) {
-  .vp-doc {
-    max-width: none !important;
-    flex: 1 1 auto !important;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 2000px !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: calc(100vw - 1rem) !important;
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 2000px !important;
   }
   
-  .VPNav .container {
-    max-width: calc(100vw - 1rem) !important;
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 2200px !important;
   }
   
-  .VPDoc .container {
-    max-width: calc(100vw - 0.5rem) !important;
-    width: 100% !important;
-    padding: 0 0.25rem !important;
-  }
-  
-  .VPFeatures .container {
-    max-width: 1600px;
-  }
-  
+  /* 首页元素 */
   .VPFeatures .items {
     max-width: 1500px;
     gap: 3rem;
@@ -435,24 +432,11 @@ nav[class*="Aside"] * {
     max-width: 1800px;
   }
   
-  /* 2K显示器下，目录宽度优化 - 充分利用屏幕宽度 */
+  /* 目录宽度 */
   .VPDocAside {
     width: 360px;
     min-width: 360px;
     max-width: 360px;
-  }
-  
-  /* 2K显示器确保文档容器使用全宽 */
-  .VPDoc .container {
-    width: 100%;
-    max-width: 100vw;
-    padding: 0 0.25rem;
-  }
-  
-  .vp-doc {
-    max-width: none;
-    padding: 48px 12px 96px;
-    flex: 1;
   }
 }
 
@@ -571,22 +555,14 @@ nav[class*="Aside"] * {
   }
 }
 
-/* 确保文档容器使用flex布局并充分利用空间 */
-.VPDoc .container {
+/* 带侧边栏的文档页面 */
+.VPDoc.has-aside:not(:has(.article-list-page)) .container,
+.VPDoc.has-sidebar:not(:has(.article-list-page)) .container {
   width: 100%;
-  max-width: 100vw;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
   box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0 0.25rem;
-}
-
-/* 针对has-aside和has-sidebar状态 */
-.VPDoc.has-aside .container,
-.VPDoc.has-sidebar .container {
-  width: 100%;
-  max-width: 100vw;
-  margin: 0 auto;
-  padding: 0 0.25rem;
 }
 
 /* 让内容区域占据更多空间 */
@@ -631,22 +607,88 @@ body {
   max-width: 100vw;
 }
 
-/* 移除VitePress默认的容器宽度限制 */
-.container,
-.VPContent > .container,
-.VPDoc > .container {
+/* 首页容器 - 不限制宽度 */
+.VPHome .container,
+.VPHome .VPContent > .container {
   max-width: 100vw !important;
-  width: 100% !important;
   margin: 0 auto !important;
-  padding-left: 0.25rem !important;
-  padding-right: 0.25rem !important;
 }
 
-/* 移除部分宽度限制 */
-.vp-doc {
-  max-width: none;
+/* 文档页面居中显示 */
+
+/* 隐藏文章列表页面VitePress自动生成的标题 */
+.vp-doc:has(.article-list-page) h1:first-of-type {
+  display: none;
 }
 
+/* 文章列表页面的父容器样式 - 铺满全屏，内容居中 */
+.VPDoc:has(.article-list-page),
+.vp-doc:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  padding: 48px 0 0 !important;
+  margin: 0 !important;
+}
+
+/* 文章列表页面容器样式 - 铺满全屏，内容居中 */
+.VPDoc:has(.article-list-page) .container {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* 不同分辨率下文章列表页面保持铺满全屏 */
+@media (min-width: 1440px) {
+  .VPDoc:has(.article-list-page),
+  .vp-doc:has(.article-list-page) {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .VPDoc:has(.article-list-page) .container {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .VPDoc:has(.article-list-page),
+  .vp-doc:has(.article-list-page) {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .VPDoc:has(.article-list-page) .container {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .VPDoc:has(.article-list-page),
+  .vp-doc:has(.article-list-page) {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .VPDoc:has(.article-list-page) .container {
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+}
+
+/* 文章列表页面底部元素 - 完全隐藏 */
+.vp-doc:has(.article-list-page) .VPDocFooter,
+.vp-doc:has(.article-list-page) footer,
+.article-list-page ~ .VPDocFooter,
+div:has(.article-list-page) + .VPDocFooter {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
 
 /* 导航栏区域保持visible以显示下拉菜单 */
 .VPNav {
@@ -797,7 +839,7 @@ body,
   z-index: 10000 !important;
 }
 
-/* 现代化英雄区域样式 */
+/* ==========  首页英雄区域样式 ========== */
 .VPHero {
   padding: 8rem 0 4rem;
   background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 50%, var(--vp-c-bg) 100%);
@@ -819,7 +861,7 @@ body,
 }
 
 .VPHero .container {
-  max-width: 1400px;
+  max-width: 100vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -904,7 +946,7 @@ body,
   }
 }
 
-/* 特性部分样式 - 网格风格 */
+/* ==========  首页特性区域样式 ========== */
 .VPFeatures {
   background: var(--vp-c-bg);
   padding: 4rem 2rem;
@@ -917,7 +959,7 @@ body,
 }
 
 .VPFeatures .container {
-  max-width: 1200px;
+  max-width: 100vw;
   position: relative;
   z-index: 1;
   margin: 0 auto;
@@ -1336,10 +1378,17 @@ body,
   color: var(--vp-c-text-2);
 }
 
-/* 移动端文章内容优化 */
+/* ==========  移动端优化 ========== */
 @media (max-width: 640px) {
-  .vp-doc {
-    padding: 24px 16px 48px;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    padding: 24px 16px 48px !important;
+    max-width: 100% !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 100% !important;
+    padding: 0 1rem !important;
   }
 
   .vp-doc h1 {
@@ -1442,10 +1491,17 @@ body,
   }
 }
 
-/* 平板端文章内容优化 */
+/* ==========  平板端优化 ========== */
 @media (min-width: 641px) and (max-width: 768px) {
-  .vp-doc {
-    padding: 32px 24px 64px;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    padding: 32px 24px 64px !important;
+    max-width: 100% !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 100% !important;
+    padding: 0 1.5rem !important;
   }
 
   .vp-doc h1 {
@@ -3439,9 +3495,9 @@ body,
 
 /* 微信公众号页面样式 */
 .wechat-page {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
 }
 
 .wechat-header {

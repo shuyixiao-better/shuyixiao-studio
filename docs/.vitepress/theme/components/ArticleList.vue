@@ -1,5 +1,5 @@
 <template>
-  <div class="article-list-page">
+  <div class="article-list-page" style="width: 100%; max-width: 100vw; padding: 0; margin: 0; box-sizing: border-box;">
     <!-- 页面头部 -->
     <div class="page-header">
       <div class="header-content">
@@ -388,17 +388,52 @@ watch(pageSize, () => {
 }
 
 .article-list-page {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1rem 1.5rem 3rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  padding: 0;
 }
 
 /* 页面头部 */
 .page-header {
   text-align: center;
-  padding: 3rem 1rem 2rem;
-  margin-bottom: 2rem;
+  padding: 0 2rem 2rem;
+  margin: 0 auto 2rem;
+  max-width: 1200px;
+  width: 100%;
   position: relative;
+  box-sizing: border-box;
+}
+
+/* 不同屏幕尺寸的响应式布局 */
+@media (min-width: 1440px) {
+  .page-header,
+  .filter-section,
+  .wechat-card,
+  .article-list,
+  .pagination-wrapper {
+    max-width: 1400px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .page-header,
+  .filter-section,
+  .wechat-card,
+  .article-list,
+  .pagination-wrapper {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .page-header,
+  .filter-section,
+  .wechat-card,
+  .article-list,
+  .pagination-wrapper {
+    max-width: 1800px;
+  }
 }
 
 .page-header::before {
@@ -478,8 +513,12 @@ watch(pageSize, () => {
 
 /* 搜索和筛选区域 */
 .filter-section {
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  width: 100%;
   animation: fadeInUp 0.6s ease-out;
+  box-sizing: border-box;
 }
 
 .search-box {
@@ -560,56 +599,63 @@ watch(pageSize, () => {
 }
 
 .filter-tag.active {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  background: var(--vp-c-brand-1);
   border-color: var(--vp-c-brand-1);
   color: white;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
-/* 微信公众号卡片 */
+/* 微信公众号卡片 - 优化后的低调设计 */
 .wechat-card {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(135deg, rgba(62, 175, 124, 0.08) 0%, rgba(62, 175, 124, 0.15) 100%);
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 20px;
-  padding: 2rem;
-  margin-bottom: 3rem;
-  box-shadow: 0 8px 32px rgba(62, 175, 124, 0.2);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 0 2rem 2rem;
+  max-width: calc(1200px - 4rem);
+  width: calc(100% - 4rem);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   align-items: center;
   justify-content: space-between;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wechat-background {
   position: absolute;
   top: -50%;
   right: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(62, 175, 124, 0.15) 0%, transparent 70%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
 .wechat-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 16px 48px rgba(62, 175, 124, 0.3);
-  border-color: var(--vp-c-brand-3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15);
+  border-left-width: 6px;
 }
 
 .wechat-badge {
   display: inline-block;
-  padding: 0.3rem 0.8rem;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.6rem;
+  background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-  border-radius: 20px;
-  font-size: 0.75rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
   font-weight: 600;
-  margin-bottom: 0.8rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--vp-c-brand-1);
 }
 
 .wechat-info {
@@ -626,42 +672,37 @@ watch(pageSize, () => {
 }
 
 .wechat-name {
-  font-size: 1.8rem;
-  font-weight: 800;
-  margin: 0 0 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
   color: var(--vp-c-text-1);
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .wechat-desc {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--vp-c-text-2);
-  margin: 0 0 1.2rem;
-  line-height: 1.6;
+  margin: 0 0 0.8rem;
+  line-height: 1.5;
 }
 
 .wechat-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  background: var(--vp-c-brand-1);
   color: white;
   text-decoration: none;
-  border-radius: 25px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(62, 175, 124, 0.3);
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
 }
 
 .wechat-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.4);
+  background: var(--vp-c-brand-2);
+  transform: translateX(2px);
 }
 
 .btn-arrow {
@@ -683,18 +724,17 @@ watch(pageSize, () => {
 }
 
 .qrcode-wrapper {
-  width: 260px;
-  height: 260px;
+  width: 180px;
+  height: 180px;
   overflow: hidden;
   background: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .wechat-card:hover .qrcode-wrapper {
-  transform: scale(1.05);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .qrcode-wrapper img {
@@ -716,7 +756,11 @@ watch(pageSize, () => {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
-  margin-bottom: 2rem;
+  margin: 0 auto 2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .article-card {
@@ -932,27 +976,33 @@ watch(pageSize, () => {
   box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
 }
 
-/* 分页包装器 */
+/* 分页包装器 - 优化布局 */
 .pagination-wrapper {
-  margin-top: 3rem;
-  padding: 2rem 0;
+  margin: 3rem auto 2rem;
+  padding: 0 2rem;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* 每页数量选择器 */
+/* 每页数量选择器 - 分离显示 */
 .page-size-selector {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px dashed var(--vp-c-divider);
+  padding: 1rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  border: 1px solid var(--vp-c-divider);
 }
 
 .selector-label {
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--vp-c-text-2);
+  opacity: 0.8;
 }
 
 .size-options {
@@ -980,10 +1030,11 @@ watch(pageSize, () => {
 }
 
 .size-option.active {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  background: var(--vp-c-brand-1);
   border-color: var(--vp-c-brand-1);
   color: white;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
 }
 
 /* 分页 */
@@ -1007,11 +1058,11 @@ watch(pageSize, () => {
 }
 
 .pagination-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  background: var(--vp-c-brand-1);
   color: white;
   border-color: var(--vp-c-brand-1);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
 }
 
 .pagination-btn:disabled {
@@ -1048,10 +1099,12 @@ watch(pageSize, () => {
 }
 
 .pagination-number.active {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
+  background: var(--vp-c-brand-1);
   color: white;
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 16px rgba(62, 175, 124, 0.3);
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  transform: scale(1.05);
 }
 
 .pagination-number.ellipsis {
@@ -1062,6 +1115,20 @@ watch(pageSize, () => {
 
 /* 移动端优化 */
 @media (max-width: 768px) {
+  .article-list-page {
+    padding: 0;
+  }
+  
+  .page-header {
+    padding: 0 1.5rem 2rem;
+  }
+  
+  .filter-section,
+  .article-list,
+  .pagination-wrapper {
+    padding: 0 1.5rem;
+  }
+
   .page-title {
     font-size: 2rem;
   }
@@ -1086,13 +1153,27 @@ watch(pageSize, () => {
   
   .wechat-card {
     flex-direction: column;
-    padding: 1.5rem;
-    margin-bottom: 2rem;
+    padding: 1.25rem;
+    margin: 0 1rem 1.5rem;
+    width: calc(100% - 2rem);
   }
   
   .wechat-qrcode {
     margin-left: 0;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .qrcode-wrapper {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .wechat-name {
+    font-size: 1.2rem;
+  }
+  
+  .wechat-desc {
+    font-size: 0.85rem;
   }
   
   .article-card {
@@ -1157,11 +1238,17 @@ watch(pageSize, () => {
 
 @media (max-width: 480px) {
   .article-list-page {
-    padding: 1rem 0.8rem 2rem;
+    padding: 0;
   }
   
   .page-header {
-    padding: 2rem 0.5rem 1.5rem;
+    padding: 0 1rem 2rem;
+  }
+  
+  .filter-section,
+  .article-list,
+  .pagination-wrapper {
+    padding: 0 1rem;
   }
   
   .page-title {
