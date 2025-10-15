@@ -8,6 +8,7 @@ import NotFound from './NotFound.vue'
 import RecentPosts from './components/RecentPosts.vue'
 import ArticleList from './components/ArticleList.vue'
 import JobsQuotes from './components/JobsQuotes.vue'
+import SiteRuntime from './components/SiteRuntime.vue'
 
 export default {
   extends: DefaultTheme,
@@ -22,6 +23,7 @@ export default {
     app.component('RecentPosts', RecentPosts)
     app.component('ArticleList', ArticleList)
     app.component('JobsQuotes', JobsQuotes)
+    app.component('SiteRuntime', SiteRuntime)
   },
   setup() {
     const route = useRoute()
@@ -197,17 +199,52 @@ export default {
       })
     }
     
+    // 初始化网站运行时间统计
+    let runtimeTimer = null
+    const initSiteRuntime = () => {
+      if (typeof window === 'undefined') return
+      
+      const startDate = new Date('2025-09-17T00:00:00')
+      
+      const updateRuntime = () => {
+        const element = document.getElementById('site-runtime')
+        if (!element) return
+        
+        const now = new Date()
+        const diff = now - startDate
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+        
+        element.textContent = `| 本站运行：${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`
+      }
+      
+      // 避免重复创建定时器
+      if (!runtimeTimer) {
+        // 初始更新
+        setTimeout(() => {
+          updateRuntime()
+          // 每秒更新一次
+          runtimeTimer = setInterval(updateRuntime, 1000)
+        }, 100)
+      }
+    }
+    
     onMounted(() => {
       initZoom()
       initMermaidZoom()
+      initSiteRuntime()
     })
     
-    // 监听路由变化，重新初始化缩放功能
+    // 监听路由变化，重新初始化缩放功能和运行时间
     watch(
       () => route.path,
       () => nextTick(() => {
         initZoom()
         initMermaidZoom()
+        initSiteRuntime()
       }),
       { immediate: true }
     )

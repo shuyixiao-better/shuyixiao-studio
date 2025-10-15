@@ -352,6 +352,16 @@ export default withMermaid(defineConfig({
                 { text: '持续学习的内驱力', link: '/tutorials/insights/mindset/continuous-learning' },
                 { text: '技术人的价值观', link: '/tutorials/insights/mindset/tech-values' }
               ]
+            },
+            {
+              text: '财富与自由思维',
+              collapsed: true,
+              items: [
+                { text: '纳瓦尔宝典：技术人的财富自由之路', link: '/tutorials/insights/wealth/naval-ravikant-guide' },
+                { text: '专长与杠杆：程序员的核心资产', link: '/tutorials/insights/wealth/leverage-and-expertise' },
+                { text: '从打工思维到资产思维', link: '/tutorials/insights/wealth/asset-mindset' },
+                { text: '构建被动收入系统', link: '/tutorials/insights/wealth/passive-income' }
+              ]
             }
           ]
         }
@@ -463,7 +473,8 @@ export default withMermaid(defineConfig({
               text: '思考笔记',
               collapsed: true,
               items: [
-                { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' }
+                { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' },
+                { text: '如何用AI的方式给自己助力', link: '/tutorials/musings/thoughts/如何用AI的方式给自己助力' }
               ]
             },
             {
@@ -542,7 +553,7 @@ export default withMermaid(defineConfig({
     // 页脚
     footer: {
       message: '用代码书写人生 | <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">This site is powered by Netlify</a>',
-      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新</span>'
+      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新 <span id="site-runtime" style="margin-left: 20px;"></span></span>'
     },
 
     // 搜索

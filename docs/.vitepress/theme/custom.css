@@ -3,11 +3,12 @@
  */
 
 :root {
-  --vp-c-brand-1: #3eaf7c;
-  --vp-c-brand-2: #2c9d6e;
-  --vp-c-brand-3: #207a54;
-  --vp-c-brand-soft: rgba(62, 175, 124, 0.1);
-  --vp-c-brand-dimm: rgba(62, 175, 124, 0.08);
+  /* 更柔和的绿色配色方案 - 提升可读性 */
+  --vp-c-brand-1: #10b981;
+  --vp-c-brand-2: #059669;
+  --vp-c-brand-3: #047857;
+  --vp-c-brand-soft: rgba(16, 185, 129, 0.12);
+  --vp-c-brand-dimm: rgba(16, 185, 129, 0.08);
 
   /* 添加过渡效果到所有元素 */
   scroll-behavior: smooth;
@@ -15,29 +16,54 @@
 
 /* 暗色模式特定颜色变量 */
 .dark {
-  --vp-c-brand-1: #42d392;
-  --vp-c-brand-2: #35b57a;
-  --vp-c-brand-3: #289462;
-  --vp-c-brand-soft: rgba(66, 211, 146, 0.14);
-  --vp-c-brand-dimm: rgba(66, 211, 146, 0.1);
+  --vp-c-brand-1: #34d399;
+  --vp-c-brand-2: #10b981;
+  --vp-c-brand-3: #059669;
+  --vp-c-brand-soft: rgba(52, 211, 153, 0.15);
+  --vp-c-brand-dimm: rgba(52, 211, 153, 0.1);
 }
 
-/* 全局布局优化 */
-.VPContent {
-  max-width: 1680px;
+/* ==========  全局布局优化 ========== */
+
+/* 首页布局 - 保持原有样式不受限制 */
+.VPHome .VPContent,
+.VPHome .VPContent .container {
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 0 2rem;
+  width: 100%;
+}
+
+/* 文档页面布局 - 居中显示（排除文章列表页面） */
+.VPDoc:not(:has(.article-list-page)) .VPContent {
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0;
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
-.VPContent .container {
-  max-width: 1680px;
+.VPDoc:not(:has(.article-list-page)) .VPContent .container {
+  max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   position: relative;
   z-index: 1;
+}
+
+/* 文章列表页面 - 全屏布局 */
+.VPDoc:has(.article-list-page) .VPContent {
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.VPDoc:has(.article-list-page) .VPContent .container {
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
 }
 
 /* 确保导航栏始终在最上层 */
@@ -53,41 +79,121 @@
   margin: 0 auto;
 }
 
-/* 优化主要内容区域宽度 */
-.VPDoc .container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 32px;
-  width: 100%;
-  box-sizing: border-box;
+/* ==========  文档页面样式 ========== */
+
+/* 文档页面主容器 */
+.VPDoc:not(:has(.article-list-page)) .container {
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: visible !important;
 }
 
-/* 调整文档内容区域宽度 - 大幅增加内容宽度 */
-.vp-doc {
-  max-width: 1200px;
-  width: 100%;
-  padding: 48px 48px 96px;
-  margin: 0 auto;
-  box-sizing: border-box;
+/* 文档内容区域 */
+.VPDoc:not(:has(.article-list-page)) .vp-doc {
+  max-width: 1400px !important;
+  width: 100% !important;
+  padding: 48px 2rem 96px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  flex: 1 1 auto !important;
 }
 
 /* 调整整体文档布局，让内容和侧边栏更好地分配空间 */
 .VPDoc.has-aside .content-container {
   max-width: 100%;
+  width: 100%;
+}
+
+/* 确保文档容器充分利用空间（排除文章列表页面） */
+.VPDoc:not(:has(.article-list-page)) .container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 0.25rem !important;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  overflow-x: visible !important;
 }
 
 /* 优化右侧目录样式 */
 .VPDocAsideOutline {
-  padding-left: 16px;
-  max-width: 280px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  max-width: none !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  min-height: auto;
+  overflow: visible !important;
+  box-sizing: border-box !important;
 }
 
-/* 右侧目录容器样式优化 */
+/* 确保目录内部容器不限制宽度 */
+.VPDocAsideOutline .outline-marker,
+.VPDocAsideOutline .content,
+.VPDocAsideOutline .root,
+.VPDocAsideOutline ul,
+.VPDocAsideOutline li {
+  max-width: none !important;
+  width: 100% !important;
+  min-width: 100% !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* 确保目录链接文字不被截断 */
+.VPDocAsideOutline a {
+  max-width: none !important;
+  width: auto !important;
+  min-width: auto !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* 强制移除VitePress可能的宽度限制 */
+.VPDocAside *,
+.VPDocAsideOutline * {
+  max-width: none !important;
+}
+
+.VPDocAside .outline-link,
+.VPDocAsideOutline .outline-link {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* 超强制样式 - 确保目录链接完全显示 */
+.VPDocAside *[class*="outline"] {
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* 针对所有可能的outline相关元素 */
+div[class*="outline"],
+nav[class*="outline"],
+ul[class*="outline"],
+li[class*="outline"],
+a[class*="outline"] {
+  max-width: none !important;
+  overflow: visible !important;
+}
+
+/* 确保侧边栏所有子元素不限制宽度 */
+aside.VPDocAside * {
+  max-width: none !important;
+}
+
+/* 右侧目录容器样式优化 - 合理的宽度设置 */
 .VPDocAside {
-  padding-left: 48px;
-  padding-right: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
   width: 280px;
   min-width: 280px;
+  max-width: 280px;
   flex-shrink: 0;
 }
 
@@ -103,14 +209,36 @@
 
 /* 目录链接样式 - 修复绿条重叠问题 */
 .VPDocAsideOutline .outline-link {
-  font-size: 13px;
-  line-height: 28px;
+  font-size: 14px !important;
+  line-height: 2 !important;
   color: var(--vp-c-text-2);
   font-weight: 500;
-  padding: 4px 0 4px 16px;
+  padding: 6px 0px 6px 6px !important;
   transition: all 0.2s ease;
   border-left: 2px solid transparent !important;
   position: relative;
+  /* 单行显示完整文字 */
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  min-height: 36px;
+  flex-shrink: 0 !important;
+}
+
+/* 强制目录链接内的文字不换行不截断 */
+.VPDocAsideOutline .outline-link,
+.VPDocAsideOutline .outline-link *,
+.VPDocAsideOutline a,
+.VPDocAsideOutline a * {
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  max-width: none !important;
 }
 
 .VPDocAsideOutline .outline-link:hover {
@@ -144,8 +272,15 @@
 
 /* 目录层级缩进 */
 .VPDocAsideOutline .outline-link.nested {
-  padding-left: 28px;
-  font-size: 12px;
+  padding-left: 24px !important;
+  padding-right: 0px !important;
+  font-size: 13px !important;
+  line-height: 2 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 /* 目录区域背景和边框 */
@@ -153,79 +288,154 @@
   border-left: 1px solid var(--vp-c-divider-light);
   background-color: var(--vp-c-bg-soft);
   border-radius: 8px;
-  padding: 24px 16px;
+  padding: 20px 8px;
   margin-top: 48px;
   position: sticky;
   top: calc(var(--vp-nav-height) + 24px);
   max-height: calc(100vh - var(--vp-nav-height) - 48px);
   overflow-y: auto;
+  overflow-x: visible;
+  width: 100%;
+  box-sizing: border-box !important;
+}
+
+/* 移除VitePress可能设置的宽度限制 */
+.VPDocAside nav {
+  max-width: none !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.VPDocAside .content {
+  max-width: none !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* 全局强制 - 移除所有可能的限制 */
+.VPDocAside,
+.VPDocAside *,
+aside[class*="Doc"] *,
+div[class*="Aside"] *,
+nav[class*="Aside"] * {
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+}
+
+.VPDocAside .has-outline,
+.VPDocAside.has-outline,
+.VPDocAside.has-outline * {
+  overflow-x: visible !important;
+}
+
+/* 特别针对可能隐藏内容的元素 */
+.VPDocAside div,
+.VPDocAside nav,
+.VPDocAside ul,
+.VPDocAside li,
+.VPDocAside a {
+  overflow: visible !important;
+  max-width: none !important;
 }
 
 /* 覆盖VitePress默认的内容宽度限制 */
+/* ==========  响应式布局 - 1440px+ ========== */
 @media (min-width: 1440px) {
-  .vp-doc {
-    max-width: 1400px !important;
-  }
-  
-  .VPContent,
-  .VPContent .container {
-    max-width: 1600px;
-  }
-  
-  .VPNav .container {
-    max-width: 1600px;
-  }
-}
-
-@media (min-width: 1680px) {
-  .vp-doc {
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
     max-width: 1600px !important;
+    margin: 0 auto !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 1800px;
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1600px !important;
+    margin: 0 auto !important;
   }
   
-  .VPNav .container {
-    max-width: 1800px;
-  }
-}
-
-@media (min-width: 1920px) {
-  .vp-doc {
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 1800px !important;
+    margin: 0 auto !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 2000px;
-  }
-  
-  .VPNav .container {
-    max-width: 2000px;
+  /* 目录宽度 */
+  .VPDocAside {
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
   }
 }
 
-/* 超宽屏幕优化 (2560x1440) */
+/* ==========  响应式布局 - 1680px+ ========== */
+@media (min-width: 1680px) {
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 1700px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1700px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 1900px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* 目录宽度 */
+  .VPDocAside {
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
+  }
+}
+
+/* ==========  响应式布局 - 1920px+ ========== */
+@media (min-width: 1920px) {
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 1800px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 1800px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
+    max-width: 2000px !important;
+    margin: 0 auto !important;
+  }
+  
+  /* 目录宽度 */
+  .VPDocAside {
+    width: 340px !important;
+    min-width: 340px !important;
+    max-width: 340px !important;
+  }
+}
+
+/* ==========  响应式布局 - 2560px+ (2K) ========== */
 @media (min-width: 2560px) {
-  .vp-doc {
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    max-width: 2000px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 2000px !important;
+    margin: 0 auto !important;
+  }
+  
+  .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 2200px !important;
+    margin: 0 auto !important;
   }
   
-  .VPContent,
-  .VPContent .container {
-    max-width: 2400px;
-  }
-  
-  .VPNav .container {
-    max-width: 2400px;
-  }
-  
-  .VPFeatures .container {
-    max-width: 1600px;
-  }
-  
+  /* 首页元素 */
   .VPFeatures .items {
     max-width: 1500px;
     gap: 3rem;
@@ -233,6 +443,13 @@
   
   .recent-posts {
     max-width: 1800px;
+  }
+  
+  /* 目录宽度 */
+  .VPDocAside {
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
   }
 }
 
@@ -343,37 +560,33 @@
     font-size: 1.5rem;
   }
   
-  /* 调整侧边栏宽度 */
+  /* 超宽屏下，目录宽度进一步优化 */
   .VPDocAside {
-    width: 320px;
-    min-width: 320px;
-  }
-  
-  .VPDocAsideOutline {
-    max-width: 320px;
+    width: 400px !important;
+    min-width: 400px !important;
+    max-width: 400px !important;
   }
 }
 
-/* 确保文档容器使用flex布局并充分利用空间 */
-.VPDoc .container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 48px;
+/* 带侧边栏的文档页面 */
+.VPDoc.has-aside:not(:has(.article-list-page)) .container,
+.VPDoc.has-sidebar:not(:has(.article-list-page)) .container {
   width: 100%;
-  max-width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 2rem;
   box-sizing: border-box;
 }
 
 /* 让内容区域占据更多空间 */
 .VPDoc .content {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
   max-width: 100%;
   box-sizing: border-box;
 }
 
-/* 调整侧边栏区域 */
+/* 调整侧边栏区域 - 确保显示 */
 aside.VPDocAside {
   position: relative;
   box-sizing: border-box;
@@ -405,6 +618,116 @@ body {
 .VPFeatures,
 .recent-posts {
   max-width: 100vw;
+}
+
+/* 首页容器 - 不限制宽度 */
+.VPHome .container,
+.VPHome .VPContent > .container {
+  max-width: 100vw !important;
+  margin: 0 auto !important;
+}
+
+/* 文档页面居中显示 */
+
+/* 隐藏文章列表页面VitePress自动生成的标题 */
+.vp-doc:has(.article-list-page) h1:first-of-type {
+  display: none;
+}
+
+/* ========== 文章列表页面 - 完全铺满屏幕 ========== */
+
+/* 强制所有祖先容器铺满屏幕 */
+body:has(.article-list-page),
+#app:has(.article-list-page),
+.Layout:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+/* 最外层 VPDoc 容器 */
+.VPDoc:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* 文档内容容器 vp-doc */
+.vp-doc:has(.article-list-page) {
+  width: 100% !important;
+  max-width: 100vw !important;
+  padding: 48px 0 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* VPContent 容器 */
+.VPDoc:has(.article-list-page) .VPContent {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* 内部 container */
+.VPDoc:has(.article-list-page) .container,
+.VPDoc:has(.article-list-page) .VPContent .container {
+  width: 100% !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+  overflow-x: hidden !important;
+}
+
+/* 强制移除所有可能的宽度限制 */
+.VPDoc:has(.article-list-page),
+.VPDoc:has(.article-list-page) *:not(.article-list-page):not(.article-list-page *) {
+  max-width: 100vw !important;
+}
+
+/* 所有分辨率下都保持铺满全屏 - 确保一致性 */
+@media (min-width: 1440px),
+       (min-width: 1920px),
+       (min-width: 2560px) {
+  body:has(.article-list-page),
+  #app:has(.article-list-page),
+  .Layout:has(.article-list-page),
+  .VPDoc:has(.article-list-page),
+  .vp-doc:has(.article-list-page),
+  .VPDoc:has(.article-list-page) .VPContent,
+  .VPDoc:has(.article-list-page) .container,
+  .VPDoc:has(.article-list-page) .VPContent .container {
+    width: 100% !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+  }
+  
+  .vp-doc:has(.article-list-page) {
+    padding: 48px 0 0 !important;
+  }
+}
+
+/* 文章列表页面底部元素 - 完全隐藏 */
+.vp-doc:has(.article-list-page) .VPDocFooter,
+.vp-doc:has(.article-list-page) footer,
+.article-list-page ~ .VPDocFooter,
+div:has(.article-list-page) + .VPDocFooter {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  overflow: hidden !important;
 }
 
 /* 导航栏区域保持visible以显示下拉菜单 */
@@ -446,6 +769,18 @@ body {
   padding-bottom: 4rem;
   position: relative;
   z-index: 1;
+  max-width: 100vw;
+  margin: 0 auto;
+}
+
+/* 强制所有页面使用全宽 */
+.Layout,
+.VPDoc,
+.VPHome,
+body,
+#app {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
 }
 
 /* 导航栏样式 */
@@ -460,9 +795,9 @@ body {
 }
 
 .VPNav .container {
-  max-width: 1400px;
+  max-width: 100vw !important;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 0.25rem;
   width: 100%;
   box-sizing: border-box;
   overflow: visible !important;
@@ -544,7 +879,7 @@ body {
   z-index: 10000 !important;
 }
 
-/* 现代化英雄区域样式 */
+/* ==========  首页英雄区域样式 ========== */
 .VPHero {
   padding: 8rem 0 4rem;
   background: linear-gradient(135deg, var(--vp-c-bg) 0%, var(--vp-c-bg-soft) 50%, var(--vp-c-bg) 100%);
@@ -566,7 +901,7 @@ body {
 }
 
 .VPHero .container {
-  max-width: 1400px;
+  max-width: 100vw;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -651,7 +986,7 @@ body {
   }
 }
 
-/* 特性部分样式 - 网格风格 */
+/* ==========  首页特性区域样式 ========== */
 .VPFeatures {
   background: var(--vp-c-bg);
   padding: 4rem 2rem;
@@ -664,7 +999,7 @@ body {
 }
 
 .VPFeatures .container {
-  max-width: 1200px;
+  max-width: 100vw;
   position: relative;
   z-index: 1;
   margin: 0 auto;
@@ -1083,10 +1418,17 @@ body {
   color: var(--vp-c-text-2);
 }
 
-/* 移动端文章内容优化 */
+/* ==========  移动端优化 ========== */
 @media (max-width: 640px) {
-  .vp-doc {
-    padding: 24px 16px 48px;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    padding: 24px 16px 48px !important;
+    max-width: 100% !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 100% !important;
+    padding: 0 1rem !important;
   }
 
   .vp-doc h1 {
@@ -1189,10 +1531,17 @@ body {
   }
 }
 
-/* 平板端文章内容优化 */
+/* ==========  平板端优化 ========== */
 @media (min-width: 641px) and (max-width: 768px) {
-  .vp-doc {
-    padding: 32px 24px 64px;
+  /* 文档页面 */
+  .VPDoc:not(:has(.article-list-page)) .vp-doc {
+    padding: 32px 24px 64px !important;
+    max-width: 100% !important;
+  }
+  
+  .VPDoc:not(:has(.article-list-page)) .container {
+    max-width: 100% !important;
+    padding: 0 1.5rem !important;
   }
 
   .vp-doc h1 {
@@ -3186,9 +3535,9 @@ body {
 
 /* 微信公众号页面样式 */
 .wechat-page {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
 }
 
 .wechat-header {
@@ -3280,6 +3629,116 @@ body {
   .wechat-qrcode {
     width: 250px;
     height: 250px;
+  }
+}
+
+/* ========== 优雅的目录显示方案 - 悬浮显示完整标题 ========== */
+
+/* 优化目录容器宽度 - 适中的宽度 */
+.VPDocAside {
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 目录链接样式 - 使用省略号，悬浮时显示完整内容 */
+.VPDocAsideOutline .outline-link {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  max-width: 100% !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 悬浮时显示完整标题 - 使用浮层效果 */
+.VPDocAsideOutline .outline-link:hover {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  background: var(--vp-c-bg-soft) !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding-right: 12px !important;
+  border-radius: 4px !important;
+  transform: translateX(-4px) !important;
+}
+
+/* 可选方案：使用 title 属性的 tooltip 效果 */
+.VPDocAsideOutline .outline-link::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin-left: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--vp-c-divider);
+  font-size: 13px;
+  z-index: 2000;
+  max-width: 500px;
+}
+
+.VPDocAsideOutline .outline-link:hover::after {
+  opacity: 1;
+}
+
+/* 嵌套链接也应用相同效果 */
+.VPDocAsideOutline .outline-link.nested {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.VPDocAsideOutline .outline-link.nested:hover {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  background: var(--vp-c-bg-soft) !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding-right: 12px !important;
+  border-radius: 4px !important;
+}
+
+/* 在较大屏幕上增加目录宽度 */
+@media (min-width: 1440px) {
+  .VPDocAside {
+    width: 380px !important;
+    min-width: 380px !important;
+    max-width: 380px !important;
+  }
+}
+
+@media (min-width: 1680px) {
+  .VPDocAside {
+    width: 420px !important;
+    min-width: 420px !important;
+    max-width: 420px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .VPDocAside {
+    width: 480px !important;
+    min-width: 480px !important;
+    max-width: 480px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .VPDocAside {
+    width: 550px !important;
+    min-width: 550px !important;
+    max-width: 550px !important;
   }
 }
 
