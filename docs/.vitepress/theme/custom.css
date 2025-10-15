@@ -110,11 +110,12 @@
 /* 确保文档容器充分利用空间（排除文章列表页面） */
 .VPDoc:not(:has(.article-list-page)) .container {
   display: flex !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   align-items: flex-start !important;
   gap: 0.25rem !important;
   width: 100% !important;
-  max-width: none !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
   box-sizing: border-box !important;
   overflow-x: visible !important;
 }
@@ -343,14 +344,17 @@ nav[class*="Aside"] * {
   /* 文档页面 */
   .VPDoc:not(:has(.article-list-page)) .vp-doc {
     max-width: 1600px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc:not(:has(.article-list-page)) .container {
     max-width: 1600px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 1800px !important;
+    margin: 0 auto !important;
   }
   
   /* 目录宽度 */
@@ -366,14 +370,17 @@ nav[class*="Aside"] * {
   /* 文档页面 */
   .VPDoc:not(:has(.article-list-page)) .vp-doc {
     max-width: 1700px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc:not(:has(.article-list-page)) .container {
     max-width: 1700px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 1900px !important;
+    margin: 0 auto !important;
   }
   
   /* 目录宽度 */
@@ -389,14 +396,17 @@ nav[class*="Aside"] * {
   /* 文档页面 */
   .VPDoc:not(:has(.article-list-page)) .vp-doc {
     max-width: 1800px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc:not(:has(.article-list-page)) .container {
     max-width: 1800px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 2000px !important;
+    margin: 0 auto !important;
   }
   
   /* 目录宽度 */
@@ -412,14 +422,17 @@ nav[class*="Aside"] * {
   /* 文档页面 */
   .VPDoc:not(:has(.article-list-page)) .vp-doc {
     max-width: 2000px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc:not(:has(.article-list-page)) .container {
     max-width: 2000px !important;
+    margin: 0 auto !important;
   }
   
   .VPDoc.has-aside:not(:has(.article-list-page)) .container {
     max-width: 2200px !important;
+    margin: 0 auto !important;
   }
   
   /* 首页元素 */
