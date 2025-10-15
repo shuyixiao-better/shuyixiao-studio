@@ -24,16 +24,16 @@
 
 /* 全局布局优化 - 充分利用屏幕宽度 */
 .VPContent {
-  max-width: 98vw;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 0.2rem;
   width: 100%;
   position: relative;
   z-index: 1;
 }
 
 .VPContent .container {
-  max-width: 98vw;
+  max-width: 100vw;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -55,27 +55,28 @@
 
 /* 优化主要内容区域宽度 */
 .VPDoc .container {
-  max-width: 98vw;
-  margin: 0 auto;
-  padding: 0 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding: 0 0.2rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: visible !important;
 }
 
 /* 调整文档内容区域宽度 - 充分利用屏幕 */
 .vp-doc {
   max-width: none !important;
   width: 100% !important;
-  padding: 48px 32px 96px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  padding: 48px 4px 96px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
   flex: 1 1 auto !important;
 }
 
 /* 针对所有可能限制宽度的class */
 [class*="container"],
 [class*="Container"] {
-  max-width: 98vw !important;
+  max-width: 100vw !important;
 }
 
 /* 调整整体文档布局，让内容和侧边栏更好地分配空间 */
@@ -86,19 +87,20 @@
 
 /* 确保文档容器充分利用空间 */
 .VPDoc .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-  width: 100%;
-  max-width: 98vw;
-  box-sizing: border-box;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  gap: 0.25rem !important;
+  width: 100% !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  overflow-x: visible !important;
 }
 
 /* 优化右侧目录样式 */
 .VPDocAsideOutline {
-  padding-left: 8px !important;
-  padding-right: 4px !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
   max-width: none !important;
   width: 100% !important;
   min-width: 100% !important;
@@ -162,13 +164,13 @@ aside.VPDocAside * {
   max-width: none !important;
 }
 
-/* 右侧目录容器样式优化 - 大幅增加宽度以适应2K显示器 */
+/* 右侧目录容器样式优化 - 合理的宽度设置 */
 .VPDocAside {
-  padding-left: 24px;
+  padding-left: 16px;
   padding-right: 16px;
-  width: 420px;
-  min-width: 420px;
-  max-width: 420px;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
   flex-shrink: 0;
 }
 
@@ -188,7 +190,7 @@ aside.VPDocAside * {
   line-height: 2 !important;
   color: var(--vp-c-text-2);
   font-weight: 500;
-  padding: 6px 8px 6px 16px !important;
+  padding: 6px 0px 6px 6px !important;
   transition: all 0.2s ease;
   border-left: 2px solid transparent !important;
   position: relative;
@@ -247,8 +249,8 @@ aside.VPDocAside * {
 
 /* 目录层级缩进 */
 .VPDocAsideOutline .outline-link.nested {
-  padding-left: 32px !important;
-  padding-right: 8px !important;
+  padding-left: 24px !important;
+  padding-right: 0px !important;
   font-size: 13px !important;
   line-height: 2 !important;
   white-space: nowrap !important;
@@ -263,7 +265,7 @@ aside.VPDocAside * {
   border-left: 1px solid var(--vp-c-divider-light);
   background-color: var(--vp-c-bg-soft);
   border-radius: 8px;
-  padding: 24px 16px;
+  padding: 20px 8px;
   margin-top: 48px;
   position: sticky;
   top: calc(var(--vp-nav-height) + 24px);
@@ -322,22 +324,23 @@ nav[class*="Aside"] * {
   
   .VPContent,
   .VPContent .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPNav .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPDoc .container {
-    max-width: 98vw;
+    max-width: 100vw;
+    padding: 0 0.25rem;
   }
   
   /* 1440p及以上屏幕，优化目录宽度 */
   .VPDocAside {
-    width: 450px !important;
-    min-width: 450px !important;
-    max-width: 450px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
   }
 }
 
@@ -349,22 +352,23 @@ nav[class*="Aside"] * {
   
   .VPContent,
   .VPContent .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPNav .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPDoc .container {
-    max-width: 98vw;
+    max-width: 100vw;
+    padding: 0 0.25rem;
   }
   
   /* 1680p及以上，优化目录宽度 */
   .VPDocAside {
-    width: 480px !important;
-    min-width: 480px !important;
-    max-width: 480px !important;
+    width: 320px !important;
+    min-width: 320px !important;
+    max-width: 320px !important;
   }
 }
 
@@ -376,22 +380,23 @@ nav[class*="Aside"] * {
   
   .VPContent,
   .VPContent .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPNav .container {
-    max-width: 98vw;
+    max-width: 100vw;
   }
   
   .VPDoc .container {
-    max-width: 98vw;
+    max-width: 100vw;
+    padding: 0 0.25rem;
   }
   
   /* 1920p及以上，目录宽度优化 */
   .VPDocAside {
-    width: 520px !important;
-    min-width: 520px !important;
-    max-width: 520px !important;
+    width: 340px !important;
+    min-width: 340px !important;
+    max-width: 340px !important;
   }
 }
 
@@ -404,16 +409,17 @@ nav[class*="Aside"] * {
   
   .VPContent,
   .VPContent .container {
-    max-width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 1rem) !important;
   }
   
   .VPNav .container {
-    max-width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 1rem) !important;
   }
   
   .VPDoc .container {
-    max-width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 0.5rem) !important;
     width: 100% !important;
+    padding: 0 0.25rem !important;
   }
   
   .VPFeatures .container {
@@ -431,21 +437,21 @@ nav[class*="Aside"] * {
   
   /* 2K显示器下，目录宽度优化 - 充分利用屏幕宽度 */
   .VPDocAside {
-    width: 550px;
-    min-width: 550px;
-    max-width: 550px;
+    width: 360px;
+    min-width: 360px;
+    max-width: 360px;
   }
   
   /* 2K显示器确保文档容器使用全宽 */
   .VPDoc .container {
     width: 100%;
-    max-width: 98vw;
-    padding: 0 2rem;
+    max-width: 100vw;
+    padding: 0 0.25rem;
   }
   
   .vp-doc {
     max-width: none;
-    padding: 48px 24px 96px;
+    padding: 48px 12px 96px;
     flex: 1;
   }
 }
@@ -559,28 +565,28 @@ nav[class*="Aside"] * {
   
   /* 超宽屏下，目录宽度进一步优化 */
   .VPDocAside {
-    width: 1300px !important;
-    min-width: 1300px !important;
-    max-width: 1300px !important;
+    width: 400px !important;
+    min-width: 400px !important;
+    max-width: 400px !important;
   }
 }
 
 /* 确保文档容器使用flex布局并充分利用空间 */
 .VPDoc .container {
   width: 100%;
-  max-width: 98vw;
+  max-width: 100vw;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 0.25rem;
 }
 
 /* 针对has-aside和has-sidebar状态 */
 .VPDoc.has-aside .container,
 .VPDoc.has-sidebar .container {
   width: 100%;
-  max-width: 98vw;
+  max-width: 100vw;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 0.25rem;
 }
 
 /* 让内容区域占据更多空间 */
@@ -629,11 +635,11 @@ body {
 .container,
 .VPContent > .container,
 .VPDoc > .container {
-  max-width: 98vw !important;
+  max-width: 100vw !important;
   width: 100% !important;
   margin: 0 auto !important;
-  padding-left: 1rem !important;
-  padding-right: 1rem !important;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
 }
 
 /* 移除部分宽度限制 */
@@ -681,7 +687,7 @@ body {
   padding-bottom: 4rem;
   position: relative;
   z-index: 1;
-  max-width: 98vw;
+  max-width: 100vw;
   margin: 0 auto;
 }
 
@@ -707,9 +713,9 @@ body,
 }
 
 .VPNav .container {
-  max-width: 98vw !important;
+  max-width: 100vw !important;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 0.25rem;
   width: 100%;
   box-sizing: border-box;
   overflow: visible !important;
@@ -3527,6 +3533,116 @@ body,
   .wechat-qrcode {
     width: 250px;
     height: 250px;
+  }
+}
+
+/* ========== 优雅的目录显示方案 - 悬浮显示完整标题 ========== */
+
+/* 优化目录容器宽度 - 适中的宽度 */
+.VPDocAside {
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  flex-shrink: 0 !important;
+}
+
+/* 目录链接样式 - 使用省略号，悬浮时显示完整内容 */
+.VPDocAsideOutline .outline-link {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+  max-width: 100% !important;
+  position: relative !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 悬浮时显示完整标题 - 使用浮层效果 */
+.VPDocAsideOutline .outline-link:hover {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  background: var(--vp-c-bg-soft) !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding-right: 12px !important;
+  border-radius: 4px !important;
+  transform: translateX(-4px) !important;
+}
+
+/* 可选方案：使用 title 属性的 tooltip 效果 */
+.VPDocAsideOutline .outline-link::after {
+  content: attr(title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--vp-c-bg-elv);
+  color: var(--vp-c-text-1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  margin-left: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--vp-c-divider);
+  font-size: 13px;
+  z-index: 2000;
+  max-width: 500px;
+}
+
+.VPDocAsideOutline .outline-link:hover::after {
+  opacity: 1;
+}
+
+/* 嵌套链接也应用相同效果 */
+.VPDocAsideOutline .outline-link.nested {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.VPDocAsideOutline .outline-link.nested:hover {
+  overflow: visible !important;
+  text-overflow: clip !important;
+  background: var(--vp-c-bg-soft) !important;
+  z-index: 1000 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  padding-right: 12px !important;
+  border-radius: 4px !important;
+}
+
+/* 在较大屏幕上增加目录宽度 */
+@media (min-width: 1440px) {
+  .VPDocAside {
+    width: 380px !important;
+    min-width: 380px !important;
+    max-width: 380px !important;
+  }
+}
+
+@media (min-width: 1680px) {
+  .VPDocAside {
+    width: 420px !important;
+    min-width: 420px !important;
+    max-width: 420px !important;
+  }
+}
+
+@media (min-width: 1920px) {
+  .VPDocAside {
+    width: 480px !important;
+    min-width: 480px !important;
+    max-width: 480px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  .VPDocAside {
+    width: 550px !important;
+    min-width: 550px !important;
+    max-width: 550px !important;
   }
 }
 
