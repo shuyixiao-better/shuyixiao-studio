@@ -80,6 +80,8 @@
 .VPDocAsideOutline {
   padding-left: 16px;
   max-width: 280px;
+  min-height: auto;
+  overflow: visible;
 }
 
 /* 右侧目录容器样式优化 */
@@ -111,6 +113,14 @@
   transition: all 0.2s ease;
   border-left: 2px solid transparent !important;
   position: relative;
+  /* 修复长标题显示不全的问题 */
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .VPDocAsideOutline .outline-link:hover {
@@ -146,6 +156,10 @@
 .VPDocAsideOutline .outline-link.nested {
   padding-left: 28px;
   font-size: 12px;
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* 目录区域背景和边框 */
