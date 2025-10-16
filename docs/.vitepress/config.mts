@@ -578,11 +578,11 @@ export default withMermaid(defineConfig({
       next: '下一篇'
     },
 
-    // 编辑链接
-    editLink: {
-      pattern: 'https://github.com/shuyixiao-better/shuyixiao-studio/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
-    }
+    // 编辑链接（已禁用）
+    // editLink: {
+    //   pattern: 'https://github.com/shuyixiao-better/shuyixiao-studio/edit/main/docs/:path',
+    //   text: '在 GitHub 上编辑此页'
+    // }
   },
 
   // Mermaid 配置
