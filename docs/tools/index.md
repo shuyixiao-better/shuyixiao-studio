@@ -13,10 +13,30 @@ description: 效率工具与插件推荐
   <a href="./avatar-generator/" class="tool-card">
     <div class="tool-icon">🎨</div>
     <h3 class="tool-title">头像生成器</h3>
-    <p class="tool-desc">随机生成独特的个性头像，支持多种风格，一键下载使用</p>
+    <p class="tool-desc">随机生成独特的个性头像，支持22种风格，一键下载使用</p>
     <div class="tool-tags">
       <span class="tool-tag">在线工具</span>
       <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
+  <a href="./code-rain/" class="tool-card">
+    <div class="tool-icon">💚</div>
+    <h3 class="tool-title">代码雨</h3>
+    <p class="tool-desc">黑客帝国风格代码雨动画，支持多种主题，全屏沉浸式体验</p>
+    <div class="tool-tags">
+      <span class="tool-tag">解压神器</span>
+      <span class="tool-tag">炫酷</span>
+    </div>
+  </a>
+
+  <a href="./dev-fortune/" class="tool-card">
+    <div class="tool-icon">🐟</div>
+    <h3 class="tool-title">程序员摸鱼日历</h3>
+    <p class="tool-desc">每日运势黄历，查看今天适合写代码还是摸鱼，科学划水</p>
+    <div class="tool-tags">
+      <span class="tool-tag">每日必看</span>
+      <span class="tool-tag">娱乐</span>
     </div>
   </a>
 
