@@ -305,6 +305,30 @@ description: 值得学习和使用的优质开源项目
 
 ---
 
+### [Snow](https://gitee.com/jcnc-org/snow)
+**面向AI时代的新型编程语言**
+
+- ⭐️ **Gitee Stars**: 持续增长中
+- 💡 **核心价值**:
+  - AI友好的语法设计
+  - 更易被LLM理解和生成
+  - 提升人机协同编程效率
+  - 完整的编译流程实现
+- 🎯 **适用场景**: AI辅助编程、新一代编程语言探索
+- 📝 **学习价值**:
+  - 编译器设计与实现
+  - AI驱动的语言设计思想
+  - 跨平台编程语言开发
+  - 面向未来的编程范式
+- 💻 **技术特点**:
+  - 跨平台支持（Windows/Ubuntu/macOS）
+  - Apache-2.0 开源许可证
+  - 专为LLM优化的语法结构
+  - 国内团队开发维护
+- 🔗 **项目地址**: https://gitee.com/jcnc-org/snow
+
+---
+
 ## 💭 如何参与开源
 
 ::: tip 参与开源的好处
@@ -362,6 +386,7 @@ description: 值得学习和使用的优质开源项目
 ├─ TensorFlow
 ├─ PyTorch
 ├─ LangChain
+├─ Snow
 └─ Hugging Face
 ```
 
