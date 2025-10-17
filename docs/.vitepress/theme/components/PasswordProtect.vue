@@ -38,7 +38,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import { useRoute } from 'vitepress'
 import CryptoJS from 'crypto-js'
 
 const props = defineProps({
@@ -49,12 +50,17 @@ const props = defineProps({
   }
 })
 
+const route = useRoute()
 const isUnlocked = ref(false)
 const inputPassword = ref('')
 const errorMessage = ref('')
 const isChecking = ref(false)
 
-const STORAGE_KEY = 'password_protect_unlock'
+// 为每个页面生成唯一的存储key，包含路径和密码哈希
+const STORAGE_KEY = computed(() => {
+  const path = route.path
+  return `password_protect_${CryptoJS.MD5(path + props.passwordHash).toString()}`
+})
 
 // 计算密码的SHA256哈希
 const hashPassword = (password) => {
@@ -83,7 +89,7 @@ const checkPassword = () => {
         props.passwordHash,
         'shuyixiao-secret-key-v2'
       ).toString()
-      localStorage.setItem(STORAGE_KEY, encrypted)
+      localStorage.setItem(STORAGE_KEY.value, encrypted)
       
       // 成功提示
       setTimeout(() => {
@@ -99,7 +105,7 @@ const checkPassword = () => {
 
 // 页面加载时检查是否已解锁
 onMounted(() => {
-  const stored = localStorage.getItem(STORAGE_KEY)
+  const stored = localStorage.getItem(STORAGE_KEY.value)
   if (stored) {
     try {
       const decrypted = CryptoJS.AES.decrypt(
@@ -112,7 +118,7 @@ onMounted(() => {
       }
     } catch (e) {
       // 解密失败，清除存储
-      localStorage.removeItem(STORAGE_KEY)
+      localStorage.removeItem(STORAGE_KEY.value)
     }
   }
 })
