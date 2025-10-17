@@ -10,6 +10,7 @@ import ArticleList from './components/ArticleList.vue'
 import JobsQuotes from './components/JobsQuotes.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
 import FeaturedTools from './components/FeaturedTools.vue'
+import PasswordProtect from './components/PasswordProtect.vue'
 
 export default {
   extends: DefaultTheme,
@@ -26,6 +27,7 @@ export default {
     app.component('JobsQuotes', JobsQuotes)
     app.component('SiteRuntime', SiteRuntime)
     app.component('FeaturedTools', FeaturedTools)
+    app.component('PasswordProtect', PasswordProtect)
   },
   setup() {
     const route = useRoute()

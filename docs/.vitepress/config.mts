@@ -355,7 +355,8 @@ export default withMermaid(defineConfig({
                 { text: '纳瓦尔宝典：技术人的财富自由之路', link: '/tutorials/insights/wealth/naval-ravikant-guide' },
                 { text: '专长与杠杆：程序员的核心资产', link: '/tutorials/insights/wealth/leverage-and-expertise' },
                 { text: '从打工思维到资产思维', link: '/tutorials/insights/wealth/asset-mindset' },
-                { text: '构建被动收入系统', link: '/tutorials/insights/wealth/passive-income' }
+                { text: '构建被动收入系统', link: '/tutorials/insights/wealth/passive-income' },
+                { text: '技术博客项目的营利分析：纳瓦尔思维实战', link: '/tutorials/insights/wealth/project-monetization-naval' }
               ]
             }
           ]
