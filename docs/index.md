@@ -62,7 +62,7 @@ features:
       height: 72
     title: 资源导航
     details: 优质学习资源导航
-    link: /resources/
+    link: /tutorials/treasures/
 
 ---
 
@@ -73,6 +73,10 @@ features:
       <div class="notice-title">温馨提示</div>
       <div class="notice-text">站点栖息于大洋彼岸，国内访问建议借助网络加速工具，以获得更为流畅的阅读体验</div>
     </div>
+    <a href="https://cdn2.to2cloud.com/zh/auth/signup?referrer=SjVgBuGV" target="_blank" rel="noopener noreferrer" class="acceleration-btn">
+      <span class="btn-icon">⚡</span>
+      <span class="btn-text">获取加速</span>
+    </a>
   </div>
 </div>
 

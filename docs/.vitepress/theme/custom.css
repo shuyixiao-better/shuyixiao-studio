@@ -3396,6 +3396,72 @@ body,
   opacity: 0.9;
 }
 
+/* 加速按钮样式 */
+.acceleration-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.acceleration-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.acceleration-btn:hover::before {
+  left: 100%;
+}
+
+.acceleration-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.6);
+}
+
+.acceleration-btn:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  animation: spark 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes spark {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+  }
+  50% {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  }
+}
+
+.btn-text {
+  letter-spacing: 0.5px;
+}
+
 /* VitePress features 包装器 */
 .vp-features-wrapper {
   width: 100%;
@@ -3438,6 +3504,22 @@ body,
   .notice-text {
     font-size: 0.85rem;
     line-height: 1.5;
+  }
+  
+  .notice-container {
+    flex-wrap: wrap;
+  }
+  
+  .acceleration-btn {
+    width: 100%;
+    justify-content: center;
+    margin-top: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.85rem;
+  }
+  
+  .btn-icon {
+    font-size: 1.1rem;
   }
 }
 
