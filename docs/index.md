@@ -62,7 +62,7 @@ features:
       height: 72
     title: 资源导航
     details: 优质学习资源导航
-    link: /resources/
+    link: /tutorials/treasures/
 
 ---
 
