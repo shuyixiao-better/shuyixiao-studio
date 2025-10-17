@@ -9,6 +9,7 @@ import RecentPosts from './components/RecentPosts.vue'
 import ArticleList from './components/ArticleList.vue'
 import JobsQuotes from './components/JobsQuotes.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
+import FeaturedTools from './components/FeaturedTools.vue'
 
 export default {
   extends: DefaultTheme,
@@ -24,6 +25,7 @@ export default {
     app.component('ArticleList', ArticleList)
     app.component('JobsQuotes', JobsQuotes)
     app.component('SiteRuntime', SiteRuntime)
+    app.component('FeaturedTools', FeaturedTools)
   },
   setup() {
     const route = useRoute()

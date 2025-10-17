@@ -1,0 +1,166 @@
+---
+layout: doc
+title: 开发工具
+description: 效率工具与插件推荐
+---
+
+# 开发工具
+
+精选实用工具，提升开发效率 ⚡
+
+<div class="tools-grid">
+  
+  <a href="./avatar-generator/" class="tool-card">
+    <div class="tool-icon">🎨</div>
+    <h3 class="tool-title">头像生成器</h3>
+    <p class="tool-desc">随机生成独特的个性头像，支持多种风格，一键下载使用</p>
+    <div class="tool-tags">
+      <span class="tool-tag">在线工具</span>
+      <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
+  <a href="/articles/panda-coder-intro" class="tool-card">
+    <div class="tool-icon">🐼</div>
+    <h3 class="tool-title">PandaCoder</h3>
+    <p class="tool-desc">IDEA代码生成插件，智能生成样板代码，提升开发效率</p>
+    <div class="tool-tags">
+      <span class="tool-tag">IDEA插件</span>
+      <span class="tool-tag">开源</span>
+    </div>
+  </a>
+
+</div>
+
+## 🎯 更多工具
+
+正在持续开发中，敬请期待...
+
+<style scoped>
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.tool-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 20px;
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(62, 175, 124, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, 
+    rgba(62, 175, 124, 0.4),
+    rgba(52, 211, 153, 0.3),
+    rgba(62, 175, 124, 0.4));
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 20px;
+  z-index: -1;
+  filter: blur(12px);
+}
+
+.tool-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(62, 175, 124, 0.6);
+  box-shadow: 0 20px 50px rgba(62, 175, 124, 0.2);
+}
+
+.tool-card:hover::before {
+  opacity: 1;
+}
+
+.tool-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  filter: drop-shadow(0 4px 8px rgba(62, 175, 124, 0.2));
+}
+
+.tool-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  background: linear-gradient(135deg, 
+    var(--vp-c-text-1) 0%, 
+    var(--vp-c-brand-1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tool-desc {
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.tool-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tool-tag {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, 
+    var(--vp-c-brand-dimm), 
+    rgba(62, 175, 124, 0.1));
+  color: var(--vp-c-brand-1);
+  border: 1px solid var(--vp-c-brand-1);
+  font-weight: 500;
+}
+
+.dark .tool-card {
+  background: linear-gradient(145deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.04) 100%);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark .tool-card:hover {
+  box-shadow: 0 20px 50px rgba(62, 175, 124, 0.25);
+}
+
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .tool-card {
+    padding: 1.5rem;
+  }
+  
+  .tool-icon {
+    font-size: 2.5rem;
+    height: 60px;
+  }
+}
+</style>
+

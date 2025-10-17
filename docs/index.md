@@ -129,6 +129,14 @@ features:
 
 <div class="section-divider">
   <div class="divider-line"></div>
+  <div class="divider-icon">🛠️</div>
+  <div class="divider-line"></div>
+</div>
+
+<FeaturedTools />
+
+<div class="section-divider">
+  <div class="divider-line"></div>
   <div class="divider-icon">🔍</div>
   <div class="divider-line"></div>
 </div>
