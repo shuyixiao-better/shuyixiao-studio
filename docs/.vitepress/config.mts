@@ -236,7 +236,7 @@ export default withMermaid(defineConfig({
               text: '动态规划',
               collapsed: true,
               items: [
-                { text: '爬楼梯', link: '/tutorials/algorithm/dynamic-programming/climbing-stairs' },
+                { text: '爬楼梯问题', link: '/tutorials/algorithm/dynamic-programming/爬楼梯问题' },
                 { text: '最长递增子序列', link: '/tutorials/algorithm/dynamic-programming/longest-increasing-subsequence' },
                 { text: '零钱兑换', link: '/tutorials/algorithm/dynamic-programming/coin-change' },
                 { text: '编辑距离', link: '/tutorials/algorithm/dynamic-programming/edit-distance' }
