@@ -1,0 +1,10 @@
+# Netlify Dev 本地开发配置
+[dev]
+  # 使用 VitePress 开发服务器
+  command = "pnpm docs:dev"
+  port = 5173
+  targetPort = 5173
+  autoLaunch = false
+  # Functions 目录
+  functions = "netlify/functions"
+

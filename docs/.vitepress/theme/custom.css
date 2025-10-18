@@ -4386,3 +4386,37 @@ body,
   }
 }
 
+
+
+/* ========== 统计组件样式 ========== */
+
+/* 全站访问量组件容器 */
+#site-visits-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* 文章统计组件页面集成 */
+.vp-doc .article-stats {
+  margin: 32px 0;
+}
+
+/* 页脚中的访问量统计 */
+.VPFooter .site-visits {
+  margin: 0;
+  font-size: 12px;
+  padding: 4px 12px;
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
+  #site-visits-container {
+    display: block;
+    margin-top: 8px;
+  }
+  
+  .VPFooter .site-visits {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+}

@@ -1,5 +1,5 @@
 // .vitepress/theme/index.js
-import { h } from 'vue'
+import { h, createApp } from 'vue'
 import { onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
@@ -11,6 +11,8 @@ import JobsQuotes from './components/JobsQuotes.vue'
 import SiteRuntime from './components/SiteRuntime.vue'
 import FeaturedTools from './components/FeaturedTools.vue'
 import PasswordProtect from './components/PasswordProtect.vue'
+import ArticleStats from './components/ArticleStats.vue'
+import SiteVisits from './components/SiteVisits.vue'
 
 export default {
   extends: DefaultTheme,
@@ -28,6 +30,8 @@ export default {
     app.component('SiteRuntime', SiteRuntime)
     app.component('FeaturedTools', FeaturedTools)
     app.component('PasswordProtect', PasswordProtect)
+    app.component('ArticleStats', ArticleStats)
+    app.component('SiteVisits', SiteVisits)
   },
   setup() {
     const route = useRoute()
@@ -236,10 +240,34 @@ export default {
       }
     }
     
+    // 初始化访问量统计显示
+    let siteVisitsApp = null
+    const initSiteVisitsDisplay = () => {
+      if (typeof window === 'undefined') return
+      
+      nextTick(() => {
+        const container = document.getElementById('site-visits-container')
+        if (!container) return
+        
+        // 避免重复挂载
+        if (siteVisitsApp) {
+          siteVisitsApp.unmount()
+        }
+        
+        // 清空容器
+        container.innerHTML = ''
+        
+        // 创建并挂载 SiteVisits 组件
+        siteVisitsApp = createApp(SiteVisits)
+        siteVisitsApp.mount(container)
+      })
+    }
+    
     onMounted(() => {
       initZoom()
       initMermaidZoom()
       initSiteRuntime()
+      initSiteVisitsDisplay()
     })
     
     // 监听路由变化，重新初始化缩放功能和运行时间
@@ -249,6 +277,7 @@ export default {
         initZoom()
         initMermaidZoom()
         initSiteRuntime()
+        initSiteVisitsDisplay()
       }),
       { immediate: true }
     )

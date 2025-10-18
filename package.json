@@ -18,6 +18,8 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
+    "@netlify/blobs": "^8.1.0",
+    "@netlify/functions": "^2.8.2",
     "crypto-js": "^4.2.0",
     "medium-zoom": "^1.1.0"
   }
