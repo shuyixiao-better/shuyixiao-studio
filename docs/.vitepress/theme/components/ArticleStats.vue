@@ -506,13 +506,13 @@ watch(currentPath, async (newPath, oldPath) => {
   opacity: 0;
 }
 
-/* 数字变化动画 - 优雅版 */
+/* 数字变化动画 - 快速版（点赞反馈） */
 .number-change-enter-active {
-  transition: opacity 0.35s ease;
+  transition: opacity 0.15s ease;
 }
 
 .number-change-leave-active {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.1s ease;
 }
 
 .number-change-enter-from,
@@ -520,13 +520,13 @@ watch(currentPath, async (newPath, oldPath) => {
   opacity: 0;
 }
 
-/* 图标变化动画 - 优雅版 */
+/* 图标变化动画 - 快速版（点赞反馈） */
 .icon-change-enter-active {
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }
 
 .icon-change-leave-active {
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
 .icon-change-enter-from,
