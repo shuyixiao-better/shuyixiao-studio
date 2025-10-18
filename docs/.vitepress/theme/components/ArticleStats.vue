@@ -1,17 +1,36 @@
 <template>
   <div class="article-stats" v-if="isNetlifyEnv">
-    <div class="stats-meta">
-      <span class="stat-item">
-        <span class="stat-icon">📖</span>
-        <span class="stat-text">{{ views }} 阅读</span>
-      </span>
-      <span class="stat-separator">·</span>
-      <span class="stat-item stat-clickable" @click="toggleLike" :class="{ 'liked': hasLiked }">
-        <span class="stat-icon">{{ hasLiked ? '❤️' : '🤍' }}</span>
-        <span class="stat-text">{{ likes }} {{ hasLiked ? '已赞' : '点赞' }}</span>
-      </span>
-      <span v-if="loading" class="stat-loading">⏳</span>
-    </div>
+    <transition name="stats-fade" mode="out-in">
+      <div v-if="isDataLoading" key="loading" class="stats-meta stats-loading-state">
+        <span class="stat-item">
+          <span class="stat-icon">📖</span>
+          <span class="stat-text stat-skeleton">— 阅读</span>
+        </span>
+        <span class="stat-separator">·</span>
+        <span class="stat-item">
+          <span class="stat-icon">🤍</span>
+          <span class="stat-text stat-skeleton">— 点赞</span>
+        </span>
+      </div>
+      <div v-else key="loaded" class="stats-meta">
+        <span class="stat-item">
+          <span class="stat-icon">📖</span>
+          <transition name="number-change" mode="out-in">
+            <span :key="views" class="stat-text">{{ views }} 阅读</span>
+          </transition>
+        </span>
+        <span class="stat-separator">·</span>
+        <span class="stat-item stat-clickable" @click="toggleLike" :class="{ 'liked': hasLiked }">
+          <transition name="icon-change" mode="out-in">
+            <span :key="hasLiked" class="stat-icon">{{ hasLiked ? '❤️' : '🤍' }}</span>
+          </transition>
+          <transition name="number-change" mode="out-in">
+            <span :key="`${likes}-${hasLiked}`" class="stat-text">{{ likes }} {{ hasLiked ? '已赞' : '点赞' }}</span>
+          </transition>
+        </span>
+        <span v-if="loading" class="stat-loading">⏳</span>
+      </div>
+    </transition>
 
     <!-- 点赞提示 -->
     <transition name="toast">
@@ -23,7 +42,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed, watch } from 'vue';
 import { useData } from 'vitepress';
 
 const { page } = useData();
@@ -33,10 +52,15 @@ const views = ref(0);
 const likes = ref(0);
 const hasLiked = ref(false);
 const loading = ref(false);
+const isDataLoading = ref(false); // 数据加载状态（用于过渡动画）
 const showToast = ref(false);
 const toastMessage = ref('');
 const toastType = ref('success');
 const isNetlifyEnv = ref(true); // 是否为 Netlify 环境
+
+// 数据缓存（全局存储，避免重复请求）
+const statsCache = new Map();
+const CACHE_DURATION = 5 * 60 * 1000; // 缓存5分钟
 
 // 获取当前页面路径
 const currentPath = computed(() => page.value.relativePath || '');
@@ -123,9 +147,58 @@ const checkNetlifyEnv = async () => {
   }
 };
 
-// 获取统计数据
-const fetchStats = async () => {
+// 从缓存获取数据
+const getCachedStats = (path) => {
+  const cached = statsCache.get(path);
+  if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+    return cached.data;
+  }
+  return null;
+};
+
+// 保存到缓存
+const setCachedStats = (path, data) => {
+  statsCache.set(path, {
+    data: data,
+    timestamp: Date.now()
+  });
+};
+
+// 预加载统计数据（后台静默加载）
+const prefetchStats = async (path) => {
+  if (!path || getCachedStats(path)) return; // 已有缓存则跳过
+  
+  try {
+    const response = await fetch(`${API_BASE}?action=get_all_stats&path=${encodeURIComponent(path)}`, {
+      headers: getRequestHeaders()
+    });
+    const data = await response.json();
+    setCachedStats(path, data);
+    console.log('📦 Prefetched stats for:', path);
+  } catch (error) {
+    console.error('Failed to prefetch stats:', error);
+  }
+};
+
+// 获取统计数据（优先使用缓存）
+const fetchStats = async (useCache = true) => {
   if (!currentPath.value) return;
+
+  // 先检查缓存
+  if (useCache) {
+    const cached = getCachedStats(currentPath.value);
+    if (cached) {
+      console.log('✨ Using cached stats for:', currentPath.value);
+      views.value = cached.views || 0;
+      likes.value = cached.likes || 0;
+      hasLiked.value = cached.hasLiked || false;
+      saveLocalLikeStatus(hasLiked.value);
+      return; // 直接使用缓存，无需加载动画
+    }
+  }
+
+  // 显示加载状态
+  isDataLoading.value = true;
 
   // 先检测环境
   const hasNetlifyFunctions = await checkNetlifyEnv();
@@ -133,6 +206,7 @@ const fetchStats = async () => {
   
   if (!hasNetlifyFunctions) {
     console.info('统计功能仅在 Netlify 部署时可用');
+    isDataLoading.value = false;
     return;
   }
 
@@ -141,6 +215,14 @@ const fetchStats = async () => {
       headers: getRequestHeaders()
     });
     const data = await response.json();
+    
+    // 保存到缓存
+    setCachedStats(currentPath.value, data);
+    
+    // 只在非缓存情况下延迟
+    if (!useCache) {
+      await new Promise(resolve => setTimeout(resolve, 300));
+    }
     
     views.value = data.views || 0;
     likes.value = data.likes || 0;
@@ -156,6 +238,8 @@ const fetchStats = async () => {
   } catch (error) {
     console.error('Failed to fetch stats:', error);
     isNetlifyEnv.value = false;
+  } finally {
+    isDataLoading.value = false;
   }
 };
 
@@ -221,6 +305,14 @@ const toggleLike = async () => {
       // 同步到本地存储
       saveLocalLikeStatus(hasLiked.value);
       
+      // 更新缓存
+      const cachedData = getCachedStats(currentPath.value);
+      if (cachedData) {
+        cachedData.likes = likes.value;
+        cachedData.hasLiked = hasLiked.value;
+        setCachedStats(currentPath.value, cachedData);
+      }
+      
       console.log(`✅ Like toggled: hasLiked=${hasLiked.value}, likes=${likes.value}`);
       
       showToastMessage(hasLiked.value ? '感谢点赞！❤️' : '已取消点赞', 'success');
@@ -237,6 +329,35 @@ const toggleLike = async () => {
 onMounted(async () => {
   await fetchStats();
   await incrementViews();
+  
+  // 设置预加载：监听侧边栏链接的悬停事件
+  if (typeof window !== 'undefined') {
+    setTimeout(() => {
+      const sidebarLinks = document.querySelectorAll('.VPSidebar a[href], .VPDocAsideOutline a[href]');
+      sidebarLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+          const href = link.getAttribute('href');
+          if (href && href.endsWith('.html')) {
+            // 提取文章路径（去掉 .html）
+            const articlePath = href.replace(/^\//, '').replace('.html', '.md');
+            prefetchStats(articlePath);
+          }
+        });
+      });
+      console.log('🔗 Prefetch listeners attached to', sidebarLinks.length, 'links');
+    }, 1000);
+  }
+});
+
+// 监听路由变化，重新获取统计数据（优先使用缓存）
+watch(currentPath, async (newPath, oldPath) => {
+  if (newPath && newPath !== oldPath) {
+    console.log(`📄 Article changed: ${oldPath} → ${newPath}`);
+    
+    // 获取数据（会自动使用缓存）
+    await fetchStats(true); // true表示优先使用缓存
+    await incrementViews();
+  }
 });
 </script>
 
@@ -354,6 +475,64 @@ onMounted(async () => {
 .toast-leave-to {
   opacity: 0;
   transform: translateX(-50%) translateY(-10px);
+}
+
+/* 加载状态 */
+.stats-loading-state {
+  opacity: 0.6;
+}
+
+.stat-skeleton {
+  color: var(--vp-c-text-3);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* 整体淡入淡出动画 - 优雅版 */
+.stats-fade-enter-active {
+  transition: opacity 0.4s ease;
+}
+
+.stats-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.stats-fade-enter-from,
+.stats-fade-leave-to {
+  opacity: 0;
+}
+
+/* 数字变化动画 - 优雅版 */
+.number-change-enter-active {
+  transition: opacity 0.35s ease;
+}
+
+.number-change-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.number-change-enter-from,
+.number-change-leave-to {
+  opacity: 0;
+}
+
+/* 图标变化动画 - 优雅版 */
+.icon-change-enter-active {
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.icon-change-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-change-enter-from,
+.icon-change-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
 }
 
 /* 响应式设计 */
