@@ -16,10 +16,13 @@ import SiteVisits from './components/SiteVisits.vue'
 
 export default {
   extends: DefaultTheme,
-  // 通过 Layout 的 not-found 插槽接管 404
+  // 通过 Layout 插槽自定义布局
   Layout() {
     return h(DefaultTheme.Layout, null, {
-      'not-found': () => h(NotFound)
+      // 404 页面
+      'not-found': () => h(NotFound),
+      // 文档内容顶部（标题后，目录前）自动插入统计组件
+      'doc-top': () => h(ArticleStats)
     })
   },
   enhanceApp({ app, router, siteData }) {

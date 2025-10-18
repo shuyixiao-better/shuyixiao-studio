@@ -1,26 +1,16 @@
 <template>
-  <div class="article-stats">
-    <div class="stats-container">
-      <!-- 阅读数 -->
-      <div class="stat-item">
-        <span class="stat-icon">👁️</span>
-        <span class="stat-label">阅读</span>
-        <span class="stat-value">{{ views }}</span>
-      </div>
-
-      <!-- 点赞按钮 -->
-      <div class="stat-item stat-action" @click="toggleLike">
-        <span class="stat-icon" :class="{ 'liked': hasLiked }">
-          {{ hasLiked ? '❤️' : '🤍' }}
-        </span>
-        <span class="stat-label">{{ hasLiked ? '已点赞' : '点赞' }}</span>
-        <span class="stat-value">{{ likes }}</span>
-      </div>
-
-      <!-- 加载状态 -->
-      <div v-if="loading" class="loading-indicator">
-        <span class="loading-spinner">⏳</span>
-      </div>
+  <div class="article-stats" v-if="isNetlifyEnv">
+    <div class="stats-meta">
+      <span class="stat-item">
+        <span class="stat-icon">📖</span>
+        <span class="stat-text">{{ views }} 阅读</span>
+      </span>
+      <span class="stat-separator">·</span>
+      <span class="stat-item stat-clickable" @click="toggleLike" :class="{ 'liked': hasLiked }">
+        <span class="stat-icon">{{ hasLiked ? '❤️' : '🤍' }}</span>
+        <span class="stat-text">{{ likes }} {{ hasLiked ? '已赞' : '点赞' }}</span>
+      </span>
+      <span v-if="loading" class="stat-loading">⏳</span>
     </div>
 
     <!-- 点赞提示 -->
@@ -46,12 +36,30 @@ const loading = ref(false);
 const showToast = ref(false);
 const toastMessage = ref('');
 const toastType = ref('success');
+const isNetlifyEnv = ref(true); // 是否为 Netlify 环境
 
 // 获取当前页面路径
 const currentPath = computed(() => page.value.relativePath || '');
 
 // API基础URL
 const API_BASE = '/api/stats';
+
+// 开发模式（本地测试）- 生产环境自动关闭
+const isDevelopment = typeof window !== 'undefined' && 
+  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+// 生成浏览器指纹（用于开发模式区分不同浏览器）
+const getBrowserFingerprint = () => {
+  if (!isDevelopment) return '';
+  
+  // 使用sessionStorage生成唯一会话ID
+  let fingerprint = sessionStorage.getItem('browser_fingerprint');
+  if (!fingerprint) {
+    fingerprint = `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    sessionStorage.setItem('browser_fingerprint', fingerprint);
+  }
+  return fingerprint;
+};
 
 // 显示提示消息
 const showToastMessage = (message, type = 'success') => {
@@ -91,29 +99,69 @@ const saveLocalLikeStatus = (liked) => {
   }
 };
 
+// 获取请求头（包含开发模式标识）
+const getRequestHeaders = () => {
+  const headers = {};
+  if (isDevelopment) {
+    headers['x-dev-mode'] = 'true';
+    headers['x-browser-fingerprint'] = getBrowserFingerprint();
+  }
+  return headers;
+};
+
+// 检测是否为 Netlify 环境
+const checkNetlifyEnv = async () => {
+  try {
+    const response = await fetch(`${API_BASE}?action=get_site_visits`, {
+      method: 'GET',
+      cache: 'no-cache',
+      headers: getRequestHeaders()
+    });
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+};
+
 // 获取统计数据
 const fetchStats = async () => {
   if (!currentPath.value) return;
 
+  // 先检测环境
+  const hasNetlifyFunctions = await checkNetlifyEnv();
+  isNetlifyEnv.value = hasNetlifyFunctions;
+  
+  if (!hasNetlifyFunctions) {
+    console.info('统计功能仅在 Netlify 部署时可用');
+    return;
+  }
+
   try {
-    const response = await fetch(`${API_BASE}?action=get_all_stats&path=${encodeURIComponent(currentPath.value)}`);
+    const response = await fetch(`${API_BASE}?action=get_all_stats&path=${encodeURIComponent(currentPath.value)}`, {
+      headers: getRequestHeaders()
+    });
     const data = await response.json();
     
     views.value = data.views || 0;
     likes.value = data.likes || 0;
     
-    // 优先使用本地存储的点赞状态
-    const localLiked = checkLocalLikeStatus();
-    hasLiked.value = localLiked || data.hasLiked || false;
+    // ✅ 优先使用服务端返回的真实状态（基于IP）
+    hasLiked.value = data.hasLiked || false;
+    
+    // 同步到本地存储（用于前端快速显示）
+    saveLocalLikeStatus(hasLiked.value);
+    
+    console.log('📊 Stats loaded:', { views: views.value, likes: likes.value, hasLiked: hasLiked.value });
     
   } catch (error) {
     console.error('Failed to fetch stats:', error);
+    isNetlifyEnv.value = false;
   }
 };
 
 // 增加阅读数
 const incrementViews = async () => {
-  if (!currentPath.value) return;
+  if (!currentPath.value || !isNetlifyEnv.value) return;
 
   // 检查是否已经记录过本次访问
   const sessionKey = `viewed_${currentPath.value}`;
@@ -122,7 +170,9 @@ const incrementViews = async () => {
   }
 
   try {
-    const response = await fetch(`${API_BASE}?action=increment_views&path=${encodeURIComponent(currentPath.value)}`);
+    const response = await fetch(`${API_BASE}?action=increment_views&path=${encodeURIComponent(currentPath.value)}`, {
+      headers: getRequestHeaders()
+    });
     const data = await response.json();
     views.value = data.views || 0;
     
@@ -136,22 +186,42 @@ const incrementViews = async () => {
 // 切换点赞状态
 const toggleLike = async () => {
   if (loading.value || !currentPath.value) return;
+  
+  // 如果不是 Netlify 环境，显示提示
+  if (!isNetlifyEnv.value) {
+    showToastMessage('统计功能仅在 Netlify 部署时可用', 'info');
+    return;
+  }
 
   loading.value = true;
+  
+  // 记录操作前的状态
+  const beforeAction = hasLiked.value ? 'unlike' : 'like';
+  console.log(`🔄 Toggling like: ${beforeAction}, current likes: ${likes.value}`);
 
   try {
     const action = hasLiked.value ? 'unlike' : 'like';
-    const response = await fetch(`${API_BASE}?action=${action}&path=${encodeURIComponent(currentPath.value)}`);
+    const response = await fetch(`${API_BASE}?action=${action}&path=${encodeURIComponent(currentPath.value)}`, {
+      headers: getRequestHeaders()
+    });
     const data = await response.json();
+
+    console.log('📥 Server response:', data);
+    if (isDevelopment) {
+      console.log('🔧 Dev mode enabled, fingerprint:', getBrowserFingerprint());
+    }
 
     if (data.alreadyLiked) {
       showToastMessage('您已经点赞过了', 'info');
     } else {
+      // ✅ 完全使用服务端返回的真实数据
       likes.value = data.likes || 0;
-      hasLiked.value = !hasLiked.value;
+      hasLiked.value = data.hasLiked;
       
-      // 保存到本地存储
+      // 同步到本地存储
       saveLocalLikeStatus(hasLiked.value);
+      
+      console.log(`✅ Like toggled: hasLiked=${hasLiked.value}, likes=${likes.value}`);
       
       showToastMessage(hasLiked.value ? '感谢点赞！❤️' : '已取消点赞', 'success');
     }
@@ -172,86 +242,75 @@ onMounted(async () => {
 
 <style scoped>
 .article-stats {
-  position: relative;
-  margin: 24px 0;
-  padding: 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  margin: 16px 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--vp-c-divider);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.stats-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.stat-item {
+.stats-meta {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  color: #333;
   font-size: 14px;
+  color: var(--vp-c-text-2);
 }
 
-.stat-action {
-  cursor: pointer;
-  user-select: none;
-}
-
-.stat-action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 1);
-}
-
-.stat-action:active {
-  transform: translateY(0);
+.stat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
 }
 
 .stat-icon {
-  font-size: 20px;
-  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 1;
 }
 
-.stat-icon.liked {
+.stat-text {
+  line-height: 1;
+}
+
+.stat-separator {
+  opacity: 0.5;
+  user-select: none;
+}
+
+.stat-clickable {
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 6px;
+  margin: -2px -6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.stat-clickable:hover {
+  color: var(--vp-c-brand-1);
+  background-color: var(--vp-c-default-soft);
+}
+
+.stat-clickable:active {
+  transform: scale(0.95);
+}
+
+.stat-clickable.liked {
+  color: var(--vp-c-brand-1);
+}
+
+.stat-clickable.liked .stat-icon {
   animation: heartbeat 0.5s ease;
 }
 
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.3); }
+  25% { transform: scale(1.2); }
   50% { transform: scale(1.1); }
-  75% { transform: scale(1.2); }
 }
 
-.stat-label {
-  font-weight: 500;
-  color: #666;
-}
-
-.stat-value {
-  font-weight: 600;
-  color: #667eea;
-  min-width: 30px;
-  text-align: center;
-}
-
-.loading-indicator {
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.loading-spinner {
-  font-size: 16px;
+.stat-loading {
+  font-size: 14px;
   animation: rotate 1s linear infinite;
 }
 
@@ -266,25 +325,21 @@ onMounted(async () => {
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 24px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  background: var(--vp-c-brand-1);
   color: white;
-  font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
   z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.toast-message.success {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .toast-message.info {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background: var(--vp-c-warning-1);
 }
 
 .toast-message.error {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  background: var(--vp-c-danger-1);
 }
 
 .toast-enter-active, .toast-leave-active {
@@ -293,46 +348,23 @@ onMounted(async () => {
 
 .toast-enter-from {
   opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
+  transform: translateX(-50%) translateY(-10px);
 }
 
 .toast-leave-to {
   opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
+  transform: translateX(-50%) translateY(-10px);
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .stats-container {
-    gap: 16px;
-  }
-
-  .stat-item {
-    padding: 6px 12px;
+  .stats-meta {
     font-size: 13px;
   }
 
   .stat-icon {
-    font-size: 18px;
+    font-size: 15px;
   }
-}
-
-/* 暗色主题适配 */
-.dark .stat-item {
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.dark .stat-action:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.dark .stat-label {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.dark .stat-value {
-  color: #a8b5ff;
 }
 </style>
 

@@ -27,9 +27,19 @@ async function setStats(store, key, value) {
 
 // 获取客户端IP（用于防刷）
 function getClientIP(headers) {
-  return headers.get('x-forwarded-for')?.split(',')[0]?.trim() 
+  const ip = headers.get('x-forwarded-for')?.split(',')[0]?.trim() 
     || headers.get('x-real-ip') 
     || 'unknown';
+  
+  // 开发模式：添加随机数，允许同一IP多次点赞测试
+  const isDev = headers.get('x-dev-mode') === 'true';
+  if (isDev) {
+    // 使用浏览器指纹作为唯一标识
+    const fingerprint = headers.get('x-browser-fingerprint') || Math.random().toString(36);
+    return `${ip}_${fingerprint}`;
+  }
+  
+  return ip;
 }
 
 export default async (req, context) => {
@@ -94,12 +104,13 @@ export default async (req, context) => {
         await setStats(store, `likes:${path}`, newLikes);
         
         // 记录已点赞（7天过期）
-        await store.setJSON(likeKey, { timestamp: Date.now() }, {
-          metadata: { expiresAt: Date.now() + 7 * 24 * 60 * 60 * 1000 }
-        });
+        await store.set(likeKey, JSON.stringify({ 
+          timestamp: Date.now(),
+          path: path 
+        }));
 
         return new Response(
-          JSON.stringify({ likes: newLikes, alreadyLiked: false }), 
+          JSON.stringify({ likes: newLikes, hasLiked: true }), 
           { status: 200, headers }
         );
       }
@@ -114,7 +125,7 @@ export default async (req, context) => {
         if (!hasLiked) {
           const likes = await getStats(store, `likes:${path}`);
           return new Response(
-            JSON.stringify({ likes, message: '您还未点赞' }), 
+            JSON.stringify({ likes, hasLiked: false, message: '您还未点赞' }), 
             { status: 200, headers }
           );
         }
@@ -128,7 +139,7 @@ export default async (req, context) => {
         await store.delete(likeKey);
 
         return new Response(
-          JSON.stringify({ likes: newLikes }), 
+          JSON.stringify({ likes: newLikes, hasLiked: false }), 
           { status: 200, headers }
         );
       }
