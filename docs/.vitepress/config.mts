@@ -65,7 +65,7 @@ export default withMermaid(defineConfig({
           text: '版本日志',
           collapsed: false,
           items: [
-            { text: 'v2.0.0 (2025-10-19) 🎉', link: '/articles/panda-coder-intro#v2-0-0-2025-10-19-史诗级更新' },
+            { text: 'v2.0.0 (2025-10-19)', link: '/articles/panda-coder-intro#v2-0-0-2025-10-19' },
             { text: 'v1.1.9 (2024-12-21)', link: '/articles/panda-coder-intro#v1-1-9-2024-12-21' },
             { text: 'v1.1.8 (2024-12-20)', link: '/articles/panda-coder-intro#v1-1-8-2024-12-20' },
             { text: 'v1.1.7 (2024-12-19)', link: '/articles/panda-coder-intro#v1-1-7-2024-12-19' },
