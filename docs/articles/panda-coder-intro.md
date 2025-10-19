@@ -9,7 +9,7 @@ author: 舒一笑不秃头
 
 # PandaCoder (熊猫编码器) - 基于AI的IDEA智能编程助手
 
-![PandaCoder](../PandaCoder.png)
+![PandaCoder](/PandaCoder.png)
 
 ## 插件简介
 
