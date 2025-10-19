@@ -49,6 +49,37 @@ export default withMermaid(defineConfig({
 
     // 侧边栏
     sidebar: {
+      '/articles/panda-coder-intro': [
+        {
+          text: 'PandaCoder介绍',
+          collapsed: false,
+          items: [
+            { text: '插件简介', link: '/articles/panda-coder-intro#插件简介' },
+            { text: '主要功能', link: '/articles/panda-coder-intro#主要功能' },
+            { text: '技术特点', link: '/articles/panda-coder-intro#技术特点' },
+            { text: '使用场景', link: '/articles/panda-coder-intro#使用场景' },
+            { text: '安装与配置', link: '/articles/panda-coder-intro#安装与配置' }
+          ]
+        },
+        {
+          text: '版本日志',
+          collapsed: false,
+          items: [
+            { text: 'v2.0.0 (2025-10-19) 🎉', link: '/articles/panda-coder-intro#v2-0-0-2025-10-19-史诗级更新' },
+            { text: 'v1.1.9 (2024-12-21)', link: '/articles/panda-coder-intro#v1-1-9-2024-12-21' },
+            { text: 'v1.1.8 (2024-12-20)', link: '/articles/panda-coder-intro#v1-1-8-2024-12-20' },
+            { text: 'v1.1.7 (2024-12-19)', link: '/articles/panda-coder-intro#v1-1-7-2024-12-19' },
+            { text: 'v1.1.6 (2024-11-15)', link: '/articles/panda-coder-intro#v1-1-6-2024-11-15' },
+            { text: 'v1.1.5 (2024-10-20)', link: '/articles/panda-coder-intro#v1-1-5-2024-10-20' },
+            { text: 'v1.1.4 (2024-09-25)', link: '/articles/panda-coder-intro#v1-1-4-2024-09-25' },
+            { text: 'v1.1.3 (2024-08-30)', link: '/articles/panda-coder-intro#v1-1-3-2024-08-30' },
+            { text: 'v1.1.2 (2024-08-15)', link: '/articles/panda-coder-intro#v1-1-2-2024-08-15' },
+            { text: 'v1.1.1 (2024-08-01)', link: '/articles/panda-coder-intro#v1-1-1-2024-08-01' },
+            { text: 'v1.1.0 (2024-07-15)', link: '/articles/panda-coder-intro#v1-1-0-2024-07-15' },
+            { text: 'v1.0.0 (2024-06-01)', link: '/articles/panda-coder-intro#v1-0-0-2024-06-01' }
+          ]
+        }
+      ],
       '/tutorials/java/': [
         {
           text: 'Java核心',

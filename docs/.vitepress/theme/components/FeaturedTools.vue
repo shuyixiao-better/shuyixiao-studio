@@ -5,19 +5,7 @@
       <p class="featured-tools-subtitle">精选开发工具，助力高效编码</p>
       
       <div class="tools-showcase">
-        <a href="/tools/avatar-generator/" class="featured-tool-card">
-          <div class="tool-card-icon">🎨</div>
-          <div class="tool-card-content">
-            <h3 class="tool-card-title">头像生成器</h3>
-            <p class="tool-card-desc">随机生成独特的个性头像，支持多种风格，一键下载使用</p>
-            <div class="tool-card-tags">
-              <span class="tool-badge">免费</span>
-              <span class="tool-badge">在线工具</span>
-            </div>
-          </div>
-          <div class="tool-card-arrow">→</div>
-        </a>
-        
+
         <a href="/articles/panda-coder-intro" class="featured-tool-card">
           <div class="tool-card-icon">🐼</div>
           <div class="tool-card-content">
@@ -30,6 +18,20 @@
           </div>
           <div class="tool-card-arrow">→</div>
         </a>
+
+        <a href="/tools/avatar-generator/" class="featured-tool-card">
+          <div class="tool-card-icon">🎨</div>
+          <div class="tool-card-content">
+            <h3 class="tool-card-title">头像生成器</h3>
+            <p class="tool-card-desc">随机生成独特的个性头像，支持多种风格，一键下载使用</p>
+            <div class="tool-card-tags">
+              <span class="tool-badge">免费</span>
+              <span class="tool-badge">在线工具</span>
+            </div>
+          </div>
+          <div class="tool-card-arrow">→</div>
+        </a>
+
       </div>
       
       <div class="tools-more">
