@@ -9,7 +9,7 @@ author: 舒一笑不秃头
 
 # PandaCoder (熊猫编码器) - 基于AI的IDEA智能编程助手
 
-![PandaCoder](/PandaCoder.png)
+![PandaCoder](../public/PandaCoder.png)
 
 ## 插件简介
 
@@ -302,6 +302,27 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
   - Ctrl+Alt+C - 中文转小驼峰
   - Ctrl+Alt+P - 中文转大驼峰
   - Ctrl+Alt+U - 中文转大写带下划线
+
+---
+
+## 支持作者
+
+如果 PandaCoder 对您有所帮助，欢迎您的支持与鼓励！您的每一份打赏都是我持续优化和开发新功能的动力。
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 40px; margin: 30px 0;">
+  <div style="text-align: center;">
+    <img src="../public/微信收款.jpg" alt="微信打赏" style="width: 300px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <p style="margin-top: 10px; font-weight: bold; color: #07c160;">微信打赏</p>
+  </div>
+  <div style="text-align: center;">
+    <img src="../public/支付宝收款.jpg" alt="支付宝打赏" style="width: 300px; height: auto; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    <p style="margin-top: 10px; font-weight: bold; color: #1677ff;">支付宝打赏</p>
+  </div>
+</div>
+
+<p style="text-align: center; color: #666; font-size: 14px; margin-top: 20px;">
+  感谢您的支持！您的鼓励是我前进的最大动力 ❤️
+</p>
 
 ---
 
