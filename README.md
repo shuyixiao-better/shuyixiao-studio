@@ -432,6 +432,24 @@ graph TB
 - ✅ 优化配置，提升渲染稳定性
 - ✅ 添加详细的使用文档
 
+### 💖 支持项目
+
+如果 shuyixiao-studio 帮助到了您，欢迎通过以下方式支持项目发展：
+
+- ⭐ **Star 项目**：在 GitHub 上给项目点个 Star
+- 🔔 **关注公众号**：「舒一笑的架构笔记」获取最新动态
+- ☕ **赞助支持**：请作者喝杯咖啡，激励持续更新
+
+<p align="center">
+  <img src="images/微信收款.jpg" width="200" alt="微信赞助">
+  <img src="images/支付宝收款.jpg" width="200" alt="支付宝赞助">
+</p>
+
+<p align="center">
+  <sub>扫码赞助，金额随心 | 您的支持是最大的动力</sub>
+</p>
+
+
 ## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request！
