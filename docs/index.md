@@ -66,6 +66,8 @@ features:
 
 ---
 
+<WinningMindset />
+
 <div class="access-notice">
   <div class="notice-container">
     <div class="notice-icon">🌏</div>
