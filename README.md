@@ -39,6 +39,7 @@ npm run docs:dev
 
 - ✅ 支持 Mermaid 图表自动渲染
 - ✅ 图片点击放大查看功能
+- ✅ B站视频嵌入功能（全局组件）
 - ✅ 响应式设计，移动端友好
 - ✅ 暗色模式支持
 - ✅ 快速热更新
@@ -50,6 +51,7 @@ npm run docs:dev
 - 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
 - 🌐 [自定义域名配置](./CUSTOM_DOMAIN.md) - 配置 www.shuyixiao.top 域名
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
+- 📺 [B站视频嵌入使用指南](./如何使用B站视频组件.md) - 在文章中嵌入B站视频
 
 ## 🔨 可用命令
 

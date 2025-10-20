@@ -13,6 +13,7 @@ import FeaturedTools from './components/FeaturedTools.vue'
 import PasswordProtect from './components/PasswordProtect.vue'
 import ArticleStats from './components/ArticleStats.vue'
 import SiteVisits from './components/SiteVisits.vue'
+import BilibiliVideo from './components/BilibiliVideo.vue'
 
 export default {
   extends: DefaultTheme,
@@ -35,6 +36,7 @@ export default {
     app.component('PasswordProtect', PasswordProtect)
     app.component('ArticleStats', ArticleStats)
     app.component('SiteVisits', SiteVisits)
+    app.component('BilibiliVideo', BilibiliVideo)
   },
   setup() {
     const route = useRoute()

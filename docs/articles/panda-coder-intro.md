@@ -303,6 +303,13 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
   - Ctrl+Alt+P - 中文转大驼峰
   - Ctrl+Alt+U - 中文转大写带下划线
 
+#### 📺 功能演示视频
+
+<BilibiliVideo 
+  url="https://www.bilibili.com/video/BV18VKhziE59/?spm_id_from=333.1387.homepage.video_card.click&vd_source=d8bd6ccfab93f775f0f97f24165df89f"
+  title="PandaCoder 熊猫编码器 - 功能演示"
+/>
+
 ---
 
 ## 支持作者
