@@ -37,6 +37,7 @@ npm run docs:dev
 
 ## ✨ 特性
 
+- ✅ 鸿蒙字体 (HarmonyOS Sans) 全局适配 🆕
 - ✅ 支持 Mermaid 图表自动渲染
 - ✅ 图片点击放大查看功能
 - ✅ B站视频嵌入功能（全局组件）
@@ -49,6 +50,7 @@ npm run docs:dev
 
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
 - 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
+- 🎨 [鸿蒙字体适配](./README_HARMONYOS_FONT.md) - 鸿蒙字体全局配置 🆕
 - 🌐 [自定义域名配置](./CUSTOM_DOMAIN.md) - 配置 www.shuyixiao.top 域名
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
 - 📺 [B站视频嵌入使用指南](./如何使用B站视频组件.md) - 在文章中嵌入B站视频

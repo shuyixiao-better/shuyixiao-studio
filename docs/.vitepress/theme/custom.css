@@ -2,6 +2,45 @@
  * 自定义主题样式
  */
 
+/* ==========  鸿蒙字体定义 ========== */
+
+/* 鸿蒙字体 - 从 jsDelivr CDN 加载 */
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'HarmonyOS Sans';
+  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* 更柔和的绿色配色方案 - 提升可读性 */
   --vp-c-brand-1: #10b981;
@@ -10,8 +49,20 @@
   --vp-c-brand-soft: rgba(16, 185, 129, 0.12);
   --vp-c-brand-dimm: rgba(16, 185, 129, 0.08);
 
+  /* 鸿蒙字体全局配置 */
+  --vp-font-family-base: 'HarmonyOS Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+
   /* 添加过渡效果到所有元素 */
   scroll-behavior: smooth;
+}
+
+/* 全局字体应用 */
+body {
+  font-family: var(--vp-font-family-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* 暗色模式特定颜色变量 */
