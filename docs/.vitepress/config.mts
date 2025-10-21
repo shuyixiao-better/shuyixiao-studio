@@ -15,6 +15,9 @@ export default withMermaid(defineConfig({
   description: "IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
+    // 预连接 B站 CDN 加速鸿蒙字体加载
+    ['link', { rel: 'preconnect', href: 'https://s1.hdslb.com', crossorigin: '' }],
+    ['link', { rel: 'dns-prefetch', href: 'https://s1.hdslb.com' }],
     // JetBrains Mono 字体用于代码显示
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }]
   ],
