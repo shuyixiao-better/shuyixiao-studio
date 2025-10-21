@@ -12,10 +12,10 @@ interface FontConfig {
 
 class HarmonyOSFontLoader {
   private fonts: FontConfig[] = [
-    { name: 'Regular', weight: 400, cssPath: '/fonts/css/result.css', loaded: false },
-    { name: 'Light', weight: 300, cssPath: '/fonts/css/result3.css', loaded: false },
-    { name: 'Medium', weight: 500, cssPath: '/fonts/css/result2.css', loaded: false },
-    { name: 'Bold', weight: 700, cssPath: '/fonts/css/result4.css', loaded: false }
+    { name: 'Regular', weight: 400, cssPath: '/fonts/css/HarmonyOS_SansSC_Regular/HarmonyOS_SansSC_Regular/result.css', loaded: false },
+    { name: 'Light', weight: 300, cssPath: '/fonts/css/HarmonyOS_SansSC_Light/HarmonyOS_SansSC_Light/result.css', loaded: false },
+    { name: 'Medium', weight: 500, cssPath: '/fonts/css/HarmonyOS_SansSC_Medium/HarmonyOS_SansSC_Medium/result.css', loaded: false },
+    { name: 'Bold', weight: 700, cssPath: '/fonts/css/HarmonyOS_SansSC_Bold/HarmonyOS_SansSC_Bold/result.css', loaded: false }
   ];
 
   private loadedFonts = new Set<number>();
@@ -69,10 +69,13 @@ class HarmonyOSFontLoader {
       // 检查是否已经加载过该 CSS
       const existingLink = document.querySelector(`link[data-font-weight="${font.weight}"]`);
       if (existingLink) {
+        console.log(`⏭️ HarmonyOS Sans ${font.name} (${font.weight}) already loaded, skipping...`);
         resolve();
         return;
       }
 
+      console.log(`📥 Loading HarmonyOS Sans ${font.name} (${font.weight}) from ${font.cssPath}...`);
+      
       const link = document.createElement('link');
       link.rel = 'stylesheet';
       link.href = font.cssPath;
@@ -80,16 +83,17 @@ class HarmonyOSFontLoader {
       link.setAttribute('data-font-name', font.name);
 
       link.onload = () => {
-        console.log(`✓ HarmonyOS Sans ${font.name} (${font.weight}) loaded`);
+        console.log(`✅ HarmonyOS Sans ${font.name} (${font.weight}) loaded successfully`);
         resolve();
       };
 
       link.onerror = () => {
-        console.error(`✗ Failed to load HarmonyOS Sans ${font.name}`);
+        console.error(`❌ Failed to load HarmonyOS Sans ${font.name} (${font.weight}) from ${font.cssPath}`);
         reject(new Error(`Failed to load font: ${font.name}`));
       };
 
       document.head.appendChild(link);
+      console.log(`🔗 Link element added to head for ${font.name}`);
     });
   }
 
@@ -147,22 +151,29 @@ export default fontLoader;
 
 // 自动初始化
 if (typeof window !== 'undefined') {
+  console.log('🎨 HarmonyOS Font Loader initializing...');
+  
   // 页面加载完成后预加载主字体
   if (document.readyState === 'loading') {
+    console.log('⏳ Document still loading, waiting for DOMContentLoaded...');
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('✅ DOMContentLoaded fired, loading primary font...');
       fontLoader.preloadPrimaryFont();
     });
   } else {
+    console.log('✅ Document already loaded, loading primary font immediately...');
     fontLoader.preloadPrimaryFont();
   }
 
   // 页面空闲时智能预加载其他字重
   if ('requestIdleCallback' in window) {
     requestIdleCallback(() => {
+      console.log('🔍 Starting intelligent font preload...');
       fontLoader.intelligentPreload();
     }, { timeout: 2000 });
   } else {
     setTimeout(() => {
+      console.log('🔍 Starting intelligent font preload (setTimeout fallback)...');
       fontLoader.intelligentPreload();
     }, 1000);
   }

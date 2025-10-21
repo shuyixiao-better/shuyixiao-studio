@@ -9,10 +9,10 @@
  * 字体CSS文件由 font-loader.ts 动态加载，优化性能
  * 
  * 字体文件位置：
- * - Regular (400): /fonts/css/result.css
- * - Light (300): /fonts/css/result3.css
- * - Medium (500): /fonts/css/result2.css
- * - Bold (700): /fonts/css/result4.css
+ * - Regular (400): /fonts/css/HarmonyOS_SansSC_Regular/result.css
+ * - Light (300): /fonts/css/HarmonyOS_SansSC_Light/result.css
+ * - Medium (500): /fonts/css/HarmonyOS_SansSC_Medium/result.css
+ * - Bold (700): /fonts/css/HarmonyOS_SansSC_Bold/result.css
  * 
  * 加载策略：
  * 1. 首屏加载：仅加载 Regular (400) 字重
