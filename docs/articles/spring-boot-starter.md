@@ -9,7 +9,7 @@ author: 舒一笑不秃头
 
 # 手把手教你开发一个Spring Boot Starter
 
-![Spring Boot Starter](../public/Spring+Boot+Starter.png)
+![Spring Boot Starter](/Spring+Boot+Starter.png)
 
 ## 前言
 
