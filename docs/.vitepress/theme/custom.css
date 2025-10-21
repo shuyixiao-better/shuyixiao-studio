@@ -5,19 +5,30 @@
 /* ==========  鸿蒙字体定义 ========== */
 
 /**
- * 鸿蒙字体懒加载方案
- * 字体CSS文件由 font-loader.ts 动态加载，优化性能
+ * 鸿蒙字体本地加载方案 ✅
+ * 字体CSS文件由 font-loader.ts 动态加载
  * 
- * 字体文件位置：
- * - Regular (400): /fonts/css/HarmonyOS_SansSC_Regular/result.css
- * - Light (300): /fonts/css/HarmonyOS_SansSC_Light/result.css
- * - Medium (500): /fonts/css/HarmonyOS_SansSC_Medium/result.css
- * - Bold (700): /fonts/css/HarmonyOS_SansSC_Bold/result.css
+ * 🎯 加载策略（优化版）：
+ * 1. 立即加载：使用 requestAnimationFrame 在浏览器空闲时立即加载
+ * 2. 不阻塞渲染：确保首屏快速显示
+ * 3. 智能预加载：页面空闲时检测主要内容区域，按需加载其他字重
+ * 4. Network 可见：字体请求会立即出现在 F12 → Network → Font 选项卡
  * 
- * 加载策略：
- * 1. 首屏加载：仅加载 Regular (400) 字重
- * 2. 智能预加载：页面空闲时检测并加载页面中实际使用的字重
- * 3. 按需加载：当需要特定字重时动态加载
+ * 🌐 CDN 地址：
+ * - 提供商：中文网字计划 (https://chinese-font.netlify.app/)
+ * - Regular (400): https://chinese-font.netlify.app/.netlify/functions/css?font=HarmonyOS%20Sans%20SC&subset=CN&weight=400
+ * - Light (300): https://chinese-font.netlify.app/.netlify/functions/css?font=HarmonyOS%20Sans%20SC&subset=CN&weight=300
+ * - Medium (500): https://chinese-font.netlify.app/.netlify/functions/css?font=HarmonyOS%20Sans%20SC&subset=CN&weight=500
+ * - Bold (700): https://chinese-font.netlify.app/.netlify/functions/css?font=HarmonyOS%20Sans%20SC&subset=CN&weight=700
+ * 
+ * ✨ CDN 方案优势：
+ * - 不占用项目空间（节省 ~80MB）
+ * - 全球 CDN 加速
+ * - 智能按需加载字符
+ * - 自动字体分包
+ * 
+ * 🔄 切换回本地方案：
+ * 在 index.js 中将 import './font-loader-cdn' 改为 import './font-loader'
  */
 
 /* 字体加载过渡效果 - 避免字体闪烁 */

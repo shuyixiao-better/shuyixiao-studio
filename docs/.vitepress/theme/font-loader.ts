@@ -12,10 +12,10 @@ interface FontConfig {
 
 class HarmonyOSFontLoader {
   private fonts: FontConfig[] = [
-    { name: 'Regular', weight: 400, cssPath: '/fonts/css/HarmonyOS_SansSC_Regular/HarmonyOS_SansSC_Regular/result.css', loaded: false },
-    { name: 'Light', weight: 300, cssPath: '/fonts/css/HarmonyOS_SansSC_Light/HarmonyOS_SansSC_Light/result.css', loaded: false },
-    { name: 'Medium', weight: 500, cssPath: '/fonts/css/HarmonyOS_SansSC_Medium/HarmonyOS_SansSC_Medium/result.css', loaded: false },
-    { name: 'Bold', weight: 700, cssPath: '/fonts/css/HarmonyOS_SansSC_Bold/HarmonyOS_SansSC_Bold/result.css', loaded: false }
+    { name: 'Regular', weight: 400, cssPath: '/fonts/HarmonyOS_SansSC_Regular/result.css', loaded: false },
+    { name: 'Light', weight: 300, cssPath: '/fonts/HarmonyOS_SansSC_Light/result.css', loaded: false },
+    { name: 'Medium', weight: 500, cssPath: '/fonts/HarmonyOS_SansSC_Medium/result.css', loaded: false },
+    { name: 'Bold', weight: 700, cssPath: '/fonts/HarmonyOS_SansSC_Bold/result.css', loaded: false }
   ];
 
   private loadedFonts = new Set<number>();
@@ -107,28 +107,38 @@ class HarmonyOSFontLoader {
 
   /**
    * 智能预加载：根据页面内容检测需要的字重
+   * 优化：只检测主要内容区域,避免性能问题
    */
   intelligentPreload(): void {
     // 延迟执行，避免阻塞首屏渲染
-    requestIdleCallback(() => {
+    const checkAndLoad = () => {
       const weights = new Set<number>();
       
-      // 检测页面中使用的字重
-      const elements = document.querySelectorAll('*');
+      // 只检测主要内容区域,避免性能问题
+      const mainContent = document.querySelector('.main') || document.querySelector('.vp-doc') || document.body;
+      const elements = mainContent.querySelectorAll('h1, h2, h3, h4, h5, h6, strong, b, .title');
+      
       elements.forEach(el => {
         const fontWeight = window.getComputedStyle(el).fontWeight;
         const weight = parseInt(fontWeight);
         
-        if ([300, 400, 500, 700].includes(weight)) {
+        if ([300, 400, 500, 700].includes(weight) && !this.loadedFonts.has(weight)) {
           weights.add(weight);
         }
       });
 
       // 加载检测到的字重
+      console.log(`🔍 Detected font weights: ${Array.from(weights).join(', ')}`);
       weights.forEach(weight => {
         this.loadFont(weight);
       });
-    });
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(checkAndLoad, { timeout: 2000 });
+    } else {
+      setTimeout(checkAndLoad, 1000);
+    }
   }
 
   /**
@@ -149,33 +159,41 @@ const fontLoader = new HarmonyOSFontLoader();
 // 导出
 export default fontLoader;
 
-// 自动初始化
+/**
+ * 立即加载策略（不阻塞渲染）
+ * - 使用 requestAnimationFrame 确保在浏览器空闲时加载
+ * - 字体请求会立即出现在 Network → Font 选项卡
+ */
 if (typeof window !== 'undefined') {
   console.log('🎨 HarmonyOS Font Loader initializing...');
   
-  // 页面加载完成后预加载主字体
-  if (document.readyState === 'loading') {
-    console.log('⏳ Document still loading, waiting for DOMContentLoaded...');
-    document.addEventListener('DOMContentLoaded', () => {
-      console.log('✅ DOMContentLoaded fired, loading primary font...');
+  // 等待 DOM 加载完成
+  const initFontLoader = () => {
+    // 使用 requestAnimationFrame 确保不阻塞首屏渲染
+    requestAnimationFrame(() => {
+      console.log('📥 Loading primary font (Regular)...');
       fontLoader.preloadPrimaryFont();
+      
+      // 在浏览器空闲时加载其他字重
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          console.log('🔍 Starting intelligent font preload...');
+          fontLoader.intelligentPreload();
+        }, { timeout: 1000 });
+      } else {
+        setTimeout(() => {
+          console.log('🔍 Starting intelligent font preload...');
+          fontLoader.intelligentPreload();
+        }, 500);
+      }
     });
+  };
+  
+  // 等待 DOM 加载完成后立即初始化
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFontLoader);
   } else {
-    console.log('✅ Document already loaded, loading primary font immediately...');
-    fontLoader.preloadPrimaryFont();
-  }
-
-  // 页面空闲时智能预加载其他字重
-  if ('requestIdleCallback' in window) {
-    requestIdleCallback(() => {
-      console.log('🔍 Starting intelligent font preload...');
-      fontLoader.intelligentPreload();
-    }, { timeout: 2000 });
-  } else {
-    setTimeout(() => {
-      console.log('🔍 Starting intelligent font preload (setTimeout fallback)...');
-      fontLoader.intelligentPreload();
-    }, 1000);
+    initFontLoader();
   }
 }
 

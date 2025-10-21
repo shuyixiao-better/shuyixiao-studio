@@ -4,7 +4,7 @@ import { onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import './custom.css'
-import fontLoader from './font-loader'
+import fontLoader from './font-loader'  // 切换回本地方案（解决 CORS 问题）
 import NotFound from './NotFound.vue'
 import RecentPosts from './components/RecentPosts.vue'
 import ArticleList from './components/ArticleList.vue'
