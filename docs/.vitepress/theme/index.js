@@ -4,6 +4,7 @@ import { onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
 import './custom.css'
+import fontLoader from './font-loader'
 import NotFound from './NotFound.vue'
 import RecentPosts from './components/RecentPosts.vue'
 import ArticleList from './components/ArticleList.vue'
@@ -15,6 +16,7 @@ import ArticleStats from './components/ArticleStats.vue'
 import SiteVisits from './components/SiteVisits.vue'
 import BilibiliVideo from './components/BilibiliVideo.vue'
 import WinningMindset from './components/WinningMindset.vue'
+import FontLoadIndicator from './components/FontLoadIndicator.vue'
 
 export default {
   extends: DefaultTheme,
@@ -24,7 +26,9 @@ export default {
       // 404 页面
       'not-found': () => h(NotFound),
       // 文档内容顶部（标题后，目录前）自动插入统计组件
-      'doc-top': () => h(ArticleStats)
+      'doc-top': () => h(ArticleStats),
+      // 字体加载指示器 - 显示在页面顶部
+      'layout-top': () => h(FontLoadIndicator)
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -275,6 +279,15 @@ export default {
       initMermaidZoom()
       initSiteRuntime()
       initSiteVisitsDisplay()
+      
+      // 初始化字体加载器（已在 font-loader.ts 中自动初始化）
+      // 可选：在控制台显示字体加载状态
+      if (import.meta.env.DEV) {
+        setTimeout(() => {
+          const status = fontLoader.getLoadStatus()
+          console.log('🎨 HarmonyOS Fonts Status:', status)
+        }, 2000)
+      }
     })
     
     // 监听路由变化，重新初始化缩放功能和运行时间

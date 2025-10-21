@@ -4,37 +4,28 @@
 
 /* ==========  鸿蒙字体定义 ========== */
 
-/* 鸿蒙字体 - 使用更快的 CDN WOFF2 格式 */
-@font-face {
-  font-family: 'HarmonyOS Sans';
-  src: url('https://s1.hdslb.com/bfs/static/jinkela/long/font/HarmonyOS_Sans_SC_Regular.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
+/**
+ * 鸿蒙字体懒加载方案
+ * 字体CSS文件由 font-loader.ts 动态加载，优化性能
+ * 
+ * 字体文件位置：
+ * - Regular (400): /fonts/css/result.css
+ * - Light (300): /fonts/css/result3.css
+ * - Medium (500): /fonts/css/result2.css
+ * - Bold (700): /fonts/css/result4.css
+ * 
+ * 加载策略：
+ * 1. 首屏加载：仅加载 Regular (400) 字重
+ * 2. 智能预加载：页面空闲时检测并加载页面中实际使用的字重
+ * 3. 按需加载：当需要特定字重时动态加载
+ */
 
-@font-face {
-  font-family: 'HarmonyOS Sans';
-  src: url('https://s1.hdslb.com/bfs/static/jinkela/long/font/HarmonyOS_Sans_SC_Bold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HarmonyOS Sans';
-  src: url('https://s1.hdslb.com/bfs/static/jinkela/long/font/HarmonyOS_Sans_SC_Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HarmonyOS Sans';
-  src: url('https://s1.hdslb.com/bfs/static/jinkela/long/font/HarmonyOS_Sans_SC_Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+/* 字体加载过渡效果 - 避免字体闪烁 */
+html {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
