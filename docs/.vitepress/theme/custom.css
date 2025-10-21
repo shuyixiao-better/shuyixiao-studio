@@ -4,11 +4,10 @@
 
 /* ==========  鸿蒙字体定义 ========== */
 
-/* 鸿蒙字体 - 从 jsDelivr CDN 加载 */
+/* 鸿蒙字体 - 从本地加载 */
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+  src: url('/fonts/HarmonyOS_SansSC/HarmonyOS_SansSC_Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -16,8 +15,7 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+  src: url('/fonts/HarmonyOS_SansSC/HarmonyOS_SansSC_Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -25,8 +23,7 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Medium.woff') format('woff');
+  src: url('/fonts/HarmonyOS_SansSC/HarmonyOS_SansSC_Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -34,8 +31,7 @@
 
 @font-face {
   font-family: 'HarmonyOS Sans';
-  src: url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/iCloudWorkGroup/HarmonyOS-Sans@latest/packages/HarmonyOS_Sans_SC/HarmonyOS_Sans_SC_Light.woff') format('woff');
+  src: url('/fonts/HarmonyOS_SansSC/HarmonyOS_SansSC_Light.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
