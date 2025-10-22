@@ -315,6 +315,7 @@ export default withMermaid(defineConfig({
                 { text: '超越编码：程序员的核心竞争力思考', link: '/tutorials/insights/growth/beyond-coding-core-competitiveness' },
                 { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
                 { text: '磨刀之道：从打工者到超级个体的修炼', link: '/tutorials/insights/growth/sharpen-the-blade' },
+                { text: '大模型时代的程序员成长悖论', link: '/tutorials/insights/growth/ai-copilot-era-growth' },
                 { text: '技术选型的艺术与哲学', link: '/tutorials/insights/growth/technology-selection' },
                 { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
                 { text: '技术债务的思考', link: '/tutorials/insights/growth/technical-debt' },
