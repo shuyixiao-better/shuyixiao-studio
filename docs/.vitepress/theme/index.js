@@ -16,7 +16,6 @@ import ArticleStats from './components/ArticleStats.vue'
 import SiteVisits from './components/SiteVisits.vue'
 import BilibiliVideo from './components/BilibiliVideo.vue'
 import WinningMindset from './components/WinningMindset.vue'
-import FontLoadIndicator from './components/FontLoadIndicator.vue'
 
 export default {
   extends: DefaultTheme,
@@ -26,9 +25,7 @@ export default {
       // 404 页面
       'not-found': () => h(NotFound),
       // 文档内容顶部（标题后，目录前）自动插入统计组件
-      'doc-top': () => h(ArticleStats),
-      // 字体加载指示器 - 显示在页面顶部
-      'layout-top': () => h(FontLoadIndicator)
+      'doc-top': () => h(ArticleStats)
     })
   },
   enhanceApp({ app, router, siteData }) {
