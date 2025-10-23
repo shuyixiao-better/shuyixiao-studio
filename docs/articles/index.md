@@ -17,7 +17,7 @@ title: 技术文章
 
 - [设计模式实战](./design-patterns.md) - 深入浅出讲解常用设计模式
 - [微服务通信方案](./microservice-communication.md) - 微服务架构下的通信策略
-- [PandaCoder 插件介绍](./panda-coder-intro.md) - IDEA 插件开发实战
+- [PandaCoder - SQL监控神器](./panda-coder-intro.md) - 致敬MyBatis Log Plugin，但我们做得更极致！自动关联API、可视化统计、超大JSON支持
 - [Spring Boot Starter 开发](./spring-boot-starter.md) - 自定义 Starter 从零到一
 
 ## 文章分类
