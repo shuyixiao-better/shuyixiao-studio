@@ -139,6 +139,14 @@ features:
 
 <div class="section-divider">
   <div class="divider-line"></div>
+  <div class="divider-icon">🛍️</div>
+  <div class="divider-line"></div>
+</div>
+
+<PremiumRecommend />
+
+<div class="section-divider">
+  <div class="divider-line"></div>
   <div class="divider-icon">🔍</div>
   <div class="divider-line"></div>
 </div>
