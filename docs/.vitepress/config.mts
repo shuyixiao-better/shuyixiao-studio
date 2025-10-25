@@ -319,6 +319,7 @@ export default withMermaid(defineConfig({
                 { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
                 { text: '磨刀之道：从打工者到超级个体的修炼', link: '/tutorials/insights/growth/sharpen-the-blade' },
                 { text: '产品化思维：如何让自己成为RAG领域的稀缺资产', link: '/tutorials/insights/growth/rag-product-thinking' },
+                { text: 'RAG开源之路：在解析与检索之间寻找你的第一性原理', link: '/tutorials/insights/growth/rag-opensource-journey' },
                 { text: '大模型时代的程序员成长悖论', link: '/tutorials/insights/growth/ai-copilot-era-growth' },
                 { text: '技术选型的艺术与哲学', link: '/tutorials/insights/growth/technology-selection' },
                 { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
