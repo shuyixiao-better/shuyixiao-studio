@@ -55,6 +55,214 @@ description: 个人简介与联系方式
 
 **我相信**：每一行代码都应该有存在的意义，每一个技术选择都应该经过深思熟虑。写代码不是堆砌功能，而是创造价值。
 
+---
+
+<div class="product-philosophy">
+<div class="philosophy-icon">🌟</div>
+<div class="philosophy-content">
+<h3 class="philosophy-title">产品价值观</h3>
+<div class="philosophy-core">
+<div class="core-text">最大的利己是利他</div>
+</div>
+<div class="philosophy-explanation">
+<p>做产品不是为了索取，而是为了给予。当我们用心创造真正对用户有价值的东西，当我们的产品能够解决别人的问题、提升他人的效率、改善用户的体验，这份价值终将以各种形式回馈给我们。</p>
+<p><strong>真正的商业智慧</strong>，是看清利他与利己的统一。帮助别人成功，就是成就自己；为他人创造价值，就是在为自己积累财富。这不是高尚的口号，而是最朴素的商业逻辑。</p>
+<p>所以，我做产品的初心很简单——<em>让每一个功能都能真实地帮到用户，让每一行代码都承载着对用户的尊重。</em></p>
+</div>
+</div>
+</div>
+
+<style scoped>
+.product-philosophy {
+  margin: 3rem 0;
+  padding: 3rem 2.5rem;
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.05) 0%,
+    rgba(168, 85, 247, 0.08) 50%,
+    rgba(99, 102, 241, 0.05) 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.12);
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-philosophy::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(99, 102, 241, 0.8),
+    rgba(168, 85, 247, 0.8),
+    rgba(99, 102, 241, 0.8),
+    transparent);
+}
+
+.product-philosophy::after {
+  content: '💝';
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 6rem;
+  opacity: 0.04;
+  transform: rotate(15deg);
+}
+
+.philosophy-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
+  }
+  50% { 
+    transform: translateY(-8px) scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.5));
+  }
+}
+
+.philosophy-content {
+  position: relative;
+  z-index: 2;
+}
+
+.philosophy-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+  letter-spacing: 1px;
+}
+
+.philosophy-core {
+  text-align: center;
+  margin: 2.5rem 0;
+}
+
+.core-text {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.12), 
+    rgba(168, 85, 247, 0.15));
+  border-radius: 50px;
+  position: relative;
+  letter-spacing: 2px;
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.core-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  padding: 2px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+}
+
+.core-text::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1.8rem;
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { 
+    transform: rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: rotate(180deg) scale(1.2);
+    opacity: 1;
+  }
+}
+
+.philosophy-explanation {
+  margin-top: 2.5rem;
+  text-align: justify;
+}
+
+.philosophy-explanation p {
+  margin: 1.3rem 0;
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.philosophy-explanation strong {
+  color: #6366f1;
+  font-weight: 600;
+}
+
+.philosophy-explanation em {
+  color: #a855f7;
+  font-weight: 500;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .product-philosophy {
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .philosophy-title {
+    font-size: 1.5rem;
+  }
+  
+  .core-text {
+    font-size: 1.5rem;
+    padding: 1.2rem 2rem;
+    letter-spacing: 1px;
+  }
+  
+  .philosophy-explanation p {
+    font-size: 0.95rem;
+  }
+}
+
+.dark .product-philosophy {
+  background: linear-gradient(135deg,
+    rgba(99, 102, 241, 0.08) 0%,
+    rgba(168, 85, 247, 0.12) 50%,
+    rgba(99, 102, 241, 0.08) 100%);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.dark .core-text {
+  background: linear-gradient(135deg, 
+    rgba(99, 102, 241, 0.15), 
+    rgba(168, 85, 247, 0.18));
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+}
+</style>
+
 ## 开源项目
 
 ### PandaCoder - IntelliJ IDEA插件
