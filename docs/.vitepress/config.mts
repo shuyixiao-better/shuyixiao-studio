@@ -589,7 +589,7 @@ export default withMermaid(defineConfig({
     // 页脚
     footer: {
       message: '用代码书写人生 | <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">This site is powered by Netlify</a>',
-      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新 <span id="site-runtime" style="margin-left: 20px;"></span><span id="site-visits-container" style="margin-left: 20px;"></span></span>'
+      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新 <span id="site-runtime" style="margin-left: 20px;"></span><span id="site-visits-container" style="margin-left: 20px;"></span></span><br><span style="font-size: 0.9em; opacity: 0.75; letter-spacing: 3px; font-style: italic; background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: 8px; display: inline-block;">他日卧龙终得雨 今朝放鹤且冲天</span>'
     },
 
     // 搜索
