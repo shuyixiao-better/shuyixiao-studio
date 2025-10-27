@@ -116,6 +116,27 @@ export const affiliateProducts: AffiliateProduct[] = [
   },
 
   // ========================================
+  // 示例 5: 开发工具 - Cursor Pro 试用
+  // ========================================
+  {
+    id: 'cursor-pro-trial',
+    title: 'Cursor Pro 7天试用',
+    description: 'AI 代码编辑器，智能编程助手，7天免费体验',
+    longDescription: 'Cursor 是新一代 AI 代码编辑器，集成了强大的 AI 编程助手。支持智能代码补全、自动重构、代码解释等功能，让编程更加高效。现在提供 7 天免费试用，体验 AI 编程的魅力。',
+    icon: '🎯',
+    link: 'https://m.tb.cn/h.SmhRyiH?tk=Ha86fVARjzM',
+    price: '7天免费',
+    originalPrice: '$20/月',
+    discount: '限时试用',
+    badge: '试用福利',
+    category: '开发工具',
+    tags: ['AI', '代码编辑器', 'Cursor', '试用'],
+    priority: 8,
+    featured: true,
+    active: true
+  },
+
+  // ========================================
   // 更多产品示例 (featured=false, 不会在首页显示)
   // ========================================
   {
@@ -152,10 +173,10 @@ export const affiliateProducts: AffiliateProduct[] = [
 /**
  * 获取精选产品 (用于首页显示)
  * 
- * @param limit 最多返回的数量，默认 4
+ * @param limit 最多返回的数量，默认 6
  * @returns 排序后的精选产品数组
  */
-export function getFeaturedProducts(limit = 4): AffiliateProduct[] {
+export function getFeaturedProducts(limit = 6): AffiliateProduct[] {
   return affiliateProducts
     .filter(p => p.featured && p.active)
     .sort((a, b) => b.priority - a.priority)
@@ -203,7 +224,7 @@ export const affiliateConfig = {
   
   // 显示数量限制
   limits: {
-    homepage: 4,              // 首页最多显示数量
+    homepage: 6,              // 首页最多显示数量
   },
   
   // 说明文字
@@ -239,7 +260,7 @@ export function trackAffiliateClick(productId: string, position: string = 'unkno
   }
   
   // 控制台日志 (开发环境)
-  if (import.meta.env.DEV) {
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') {
     console.log('🔗 Affiliate Click:', { productId, position, timestamp: new Date().toISOString() })
   }
   
