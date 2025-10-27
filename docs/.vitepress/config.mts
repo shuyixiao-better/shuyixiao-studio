@@ -113,7 +113,8 @@ export default withMermaid(defineConfig({
           text: '实战项目',
           collapsed: false,
           items: [
-            { text: 'shuyixiao-agent：AI Agent 项目', link: '/projects/shuyixiao-agent' }
+            { text: 'shuyixiao-agent：AI Agent 项目', link: '/projects/shuyixiao-agent' },
+            { text: 'TorchV Unstructured：强大的文档解析库', link: '/projects/torchv-unstructured' }
           ]
         }
       ],
