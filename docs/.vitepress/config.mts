@@ -114,7 +114,8 @@ export default withMermaid(defineConfig({
           collapsed: false,
           items: [
             { text: 'shuyixiao-agent：AI Agent 项目', link: '/projects/shuyixiao-agent' },
-            { text: 'TorchV Unstructured：强大的文档解析库', link: '/projects/torchv-unstructured' }
+            { text: 'TorchV Unstructured：强大的文档解析库', link: '/projects/torchv-unstructured' },
+            { text: 'TorchV Unstructured 优化建议', link: '/projects/torchv-unstructured-optimization' }
           ]
         }
       ],

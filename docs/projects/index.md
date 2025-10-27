@@ -21,6 +21,7 @@ author: 舒一笑不秃头
 ### 文档解析与处理
 
 - [**TorchV Unstructured**](./torchv-unstructured.md) - 专为 RAG 应用优化的强大文档解析库
+- [**TorchV Unstructured 优化建议**](./torchv-unstructured-optimization.md) - 基于深入分析的项目改进建议
 
 ## 🎯 专栏特色
 
