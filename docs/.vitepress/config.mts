@@ -34,6 +34,7 @@ export default withMermaid(defineConfig({
           { text: '微服务架构', link: '/tutorials/microservice/' },
           { text: '设计模式', link: '/tutorials/design-pattern/' },
           { text: 'Elasticsearch', link: '/tutorials/es/' },
+          { text: 'RAG从入门到精通', link: '/tutorials/rag/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
           { text: '代码与人生', link: '/tutorials/insights/' },
           { text: '拾遗录', link: '/tutorials/explorations/' },
@@ -127,6 +128,95 @@ export default withMermaid(defineConfig({
             { text: 'Java面试题', link: '/interview/java' },
             { text: '数据库面试题', link: '/interview/database' },
             { text: '系统设计面试题', link: '/interview/system-design' },
+          ]
+        }
+      ],
+      '/tutorials/rag/': [
+        {
+          text: 'RAG从入门到精通',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/rag/' },
+            {
+              text: 'RAG基础概念',
+              collapsed: true,
+              items: [
+                { text: '什么是RAG', link: '/tutorials/rag/basics/what-is-rag' },
+                { text: 'RAG的核心组件', link: '/tutorials/rag/basics/core-components' },
+                { text: 'RAG vs 传统搜索', link: '/tutorials/rag/basics/rag-vs-traditional-search' },
+                { text: 'RAG的应用场景', link: '/tutorials/rag/basics/use-cases' }
+              ]
+            },
+            {
+              text: '文档处理与向量化',
+              collapsed: true,
+              items: [
+                { text: '文档解析技术', link: '/tutorials/rag/document-processing/document-parsing' },
+                { text: '文本分块策略', link: '/tutorials/rag/document-processing/text-chunking' },
+                { text: '向量化模型选择', link: '/tutorials/rag/document-processing/embedding-models' },
+                { text: '向量数据库选型', link: '/tutorials/rag/document-processing/vector-databases' }
+              ]
+            },
+            {
+              text: '检索技术进阶',
+              collapsed: true,
+              items: [
+                { text: '相似度检索算法', link: '/tutorials/rag/retrieval/similarity-search' },
+                { text: '混合检索策略', link: '/tutorials/rag/retrieval/hybrid-search' },
+                { text: '重排序技术', link: '/tutorials/rag/retrieval/reranking' },
+                { text: '检索优化技巧', link: '/tutorials/rag/retrieval/optimization' }
+              ]
+            },
+            {
+              text: '生成与优化',
+              collapsed: true,
+              items: [
+                { text: '提示工程实践', link: '/tutorials/rag/generation/prompt-engineering' },
+                { text: '上下文管理', link: '/tutorials/rag/generation/context-management' },
+                { text: '生成质量控制', link: '/tutorials/rag/generation/quality-control' },
+                { text: '幻觉问题解决', link: '/tutorials/rag/generation/hallucination-prevention' }
+              ]
+            },
+            {
+              text: '系统架构设计',
+              collapsed: true,
+              items: [
+                { text: 'RAG系统架构模式', link: '/tutorials/rag/architecture/system-patterns' },
+                { text: '微服务RAG架构', link: '/tutorials/rag/architecture/microservice-rag' },
+                { text: '性能优化策略', link: '/tutorials/rag/architecture/performance-optimization' },
+                { text: '监控与运维', link: '/tutorials/rag/architecture/monitoring' }
+              ]
+            },
+            {
+              text: '实战案例',
+              collapsed: true,
+              items: [
+                { text: '企业知识库问答', link: '/tutorials/rag/cases/enterprise-kb' },
+                { text: '代码助手实现', link: '/tutorials/rag/cases/code-assistant' },
+                { text: '客服机器人', link: '/tutorials/rag/cases/customer-service' },
+                { text: '文档智能分析', link: '/tutorials/rag/cases/document-analysis' }
+              ]
+            },
+            {
+              text: '工具与框架',
+              collapsed: true,
+              items: [
+                { text: 'LangChain实战', link: '/tutorials/rag/tools/langchain' },
+                { text: 'LlamaIndex应用', link: '/tutorials/rag/tools/llamaindex' },
+                { text: 'RAGFlow使用指南', link: '/tutorials/rag/tools/ragflow' },
+                { text: '开源RAG框架对比', link: '/tutorials/rag/tools/framework-comparison' }
+              ]
+            },
+            {
+              text: '进阶话题',
+              collapsed: true,
+              items: [
+                { text: '多模态RAG', link: '/tutorials/rag/advanced/multimodal-rag' },
+                { text: 'Agent与RAG结合', link: '/tutorials/rag/advanced/agent-rag' },
+                { text: 'RAG评估体系', link: '/tutorials/rag/advanced/evaluation' },
+                { text: '未来发展趋势', link: '/tutorials/rag/advanced/future-trends' }
+              ]
+            }
           ]
         }
       ],
@@ -621,6 +711,17 @@ export default withMermaid(defineConfig({
     //   pattern: 'https://github.com/shuyixiao-better/shuyixiao-studio/edit/main/docs/:path',
     //   text: '在 GitHub 上编辑此页'
     // }
+  },
+
+  // Markdown 配置
+  markdown: {
+    // 启用语法高亮
+    theme: {
+      light: 'github-light',
+      dark: 'github-dark'
+    },
+    // 代码块配置
+    lineNumbers: true
   },
 
   // Mermaid 配置

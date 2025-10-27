@@ -36,7 +36,7 @@ _Exported on 2025/10/27 at GMT+8 23:37:33 from Cursor (1.7.54)_
 ### 2. **智能表格处理** ⭐
 这是项目的核心亮点功能：
 
-```12:14:src/main/java/com/torchv/infra/unstructured/UnstructuredParser.java
+```java
 // 解析文档为带HTML表格的Markdown格式（保持表格结构）
 String contentWithTables = UnstructuredParser.toMarkdownWithHtmlTables("document.docx");
 ```
@@ -55,7 +55,7 @@ String contentWithTables = UnstructuredParser.toMarkdownWithHtmlTables("document
 ### 4. **RAG 应用优化**
 项目专门针对 RAG 场景进行了优化：
 
-```223:230:src/main/java/com/torchv/infra/unstructured/parser/word/UnstructuredWord.java
+```java
 public static DocumentResult forKnowledgeBase(String filePath) {
     try (WordParser parser = WordParser.ragOptimized()) {
         return parser.parse(filePath);
@@ -126,7 +126,7 @@ public static DocumentResult forKnowledgeBase(String filePath) {
 
 ### 2. **AI 训练数据预处理**
 提供专门的方法处理 AI 训练数据：
-```239:250:src/main/java/com/torchv/infra/unstructured/parser/word/UnstructuredWord.java
+```java
 public static String forAiTraining(String filePath) {
     try (WordParser parser = WordParser.ragOptimized()) {
         DocumentResult result = parser.parse(filePath);
