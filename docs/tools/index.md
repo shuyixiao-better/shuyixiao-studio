@@ -52,6 +52,16 @@ description: 效率工具与插件推荐
     </div>
   </a>
 
+  <a href="./requirement-boundary/" class="tool-card">
+    <div class="tool-icon">🛡️</div>
+    <h3 class="tool-title">需求边界守卫者</h3>
+    <p class="tool-desc">在动手之前先明确需求边界，避免做超出范围的多余工作</p>
+    <div class="tool-tags">
+      <span class="tool-tag">工作必备</span>
+      <span class="tool-tag">效率工具</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
