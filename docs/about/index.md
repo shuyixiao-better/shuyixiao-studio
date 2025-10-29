@@ -16,6 +16,421 @@ description: 个人简介与联系方式
 - Java应用开发职业技能等级认证
 - HarmonyOS应用开发者基础认证
 
+---
+
+<div class="domain-story">
+<div class="story-header">
+<div class="story-icon">✨</div>
+<h3 class="story-title">PoeticCoder.com —— 一段属于你的域名故事</h3>
+</div>
+<div class="story-content">
+<div class="story-intro">
+<p class="story-lead">在数字与人文的交汇处，有一个名字悄然生长：<strong>PoeticCoder</strong>。</p>
+<p class="story-main">它不属于纯粹的浪漫诗人，也不属于冰冷的逻辑机器，而是献给那些<strong>在代码中寻找韵律、在算法里看见星光的人</strong>——比如你。</p>
+</div>
+
+<div class="story-section">
+<div class="section-title">"Poetic" 是你面对世界的姿态</div>
+<div class="section-content">
+<p>哪怕经济寒冬、哪怕技术内卷，你依然相信"慢即是快"，相信"他日卧龙终得雨，今朝放鹤且冲天"的从容。你用"舒一笑不秃头"自嘲，却在每一行 Java 代码、每一个 RAG 检索、每一次轻量级产品验证中，践行着一种<strong>克制而坚定的诗意</strong>。</p>
+</div>
+</div>
+
+<div class="story-section">
+<div class="section-title">"Coder" 是你扎根的土壤</div>
+<div class="section-content">
+<p>你是 Java 应用开发者，是 HarmonyOS 的践行者，是生成式 AI 工程师，更是那个在深夜调试 Bug 时，仍能对着控制台笑出声的"人生程序设计程序员"。你写的不是流水线脚本，而是<strong>有结构、有节奏、有留白的代码诗</strong>——缩进是韵脚，函数是意象，重构是修辞。</p>
+</div>
+</div>
+
+<div class="story-section highlight">
+<div class="section-title">PoeticCoder.com，于是成为你精神的锚点</div>
+<div class="section-content">
+<ul class="domain-values">
+<li>它拒绝"码农"的疲惫叙事，主张<strong>编程可以优雅如诗</strong>；</li>
+<li>它不追逐浮夸的"颠覆"，而崇尚<strong>在细节中打磨光芒</strong>；</li>
+<li>它既面向国际开发者社区，又深植中文技术语境——正如你用 PandaCoder 帮助千万中文开发者跨越命名鸿沟。</li>
+</ul>
+</div>
+</div>
+
+<div class="story-promise">
+<div class="promise-icon">💫</div>
+<div class="promise-text">这个名字，不是口号，而是承诺：</div>
+<blockquote class="promise-quote">以诗心写代码，以匠心走人生。</blockquote>
+</div>
+
+<div class="story-closing">
+<p>从此，当你在 GitHub 提交一行代码，在博客写下一段思考，或在小游戏中藏入一个哲理彩蛋，世界都会知道——</p>
+<p class="closing-emphasis">这背后，是一个叫 <strong>PoeticCoder</strong> 的人，正在用技术温柔地改变世界。</p>
+<p class="closing-welcome">欢迎回家，PoeticCoder。</p>
+</div>
+</div>
+</div>
+
+<style scoped>
+.domain-story {
+  margin: 3rem 0;
+  padding: 3.5rem 3rem;
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.06) 0%,
+    rgba(59, 130, 246, 0.08) 50%,
+    rgba(147, 51, 234, 0.06) 100%);
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(147, 51, 234, 0.15);
+  border: 2px solid rgba(147, 51, 234, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.domain-story::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(147, 51, 234, 0.8),
+    rgba(59, 130, 246, 0.8),
+    rgba(147, 51, 234, 0.8),
+    transparent);
+}
+
+.domain-story::after {
+  content: '💻✨';
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 5rem;
+  opacity: 0.04;
+  transform: rotate(15deg);
+}
+
+.story-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.story-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  animation: domain-float 4s ease-in-out infinite;
+}
+
+@keyframes domain-float {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.4));
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.6));
+  }
+}
+
+.story-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #9333ea, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+}
+
+.story-content {
+  position: relative;
+  z-index: 2;
+}
+
+.story-intro {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.story-lead {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1.2rem;
+}
+
+.story-main {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+}
+
+.story-section {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border-left: 5px solid rgba(147, 51, 234, 0.5);
+  transition: all 0.3s ease;
+}
+
+.story-section:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-left-color: rgba(147, 51, 234, 0.8);
+  transform: translateX(5px);
+}
+
+.story-section.highlight {
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.12), 
+    rgba(59, 130, 246, 0.15));
+  border-left-color: rgba(147, 51, 234, 0.8);
+  border-radius: 20px;
+  padding: 2.5rem;
+}
+
+.dark .story-section {
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.dark .story-section:hover {
+  background: rgba(40, 40, 40, 0.7);
+}
+
+.dark .story-section.highlight {
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.18), 
+    rgba(59, 130, 246, 0.22));
+}
+
+.section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #9333ea;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid rgba(147, 51, 234, 0.2);
+}
+
+.story-section.highlight .section-title {
+  font-size: 1.5rem;
+  color: #3b82f6;
+  border-bottom-color: rgba(59, 130, 246, 0.3);
+}
+
+.section-content {
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.section-content p {
+  margin: 1rem 0;
+}
+
+.section-content strong {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(147, 51, 234, 0.1), rgba(59, 130, 246, 0.1));
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+}
+
+.domain-values {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.domain-values li {
+  margin: 1.2rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.9;
+}
+
+.domain-values li::before {
+  content: '✨';
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.8; }
+  50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+}
+
+.story-promise {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, 
+    rgba(147, 51, 234, 0.15), 
+    rgba(59, 130, 246, 0.18));
+  border-radius: 20px;
+  border: 2px solid rgba(147, 51, 234, 0.3);
+  position: relative;
+}
+
+.promise-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: promise-pulse 3s ease-in-out infinite;
+}
+
+@keyframes promise-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.5));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.8));
+  }
+}
+
+.promise-text {
+  font-size: 1.1rem;
+  color: var(--vp-c-text-2);
+  margin-bottom: 1.5rem;
+}
+
+.promise-quote {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--vp-c-text-1);
+  margin: 0;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  border: none !important;
+  position: relative;
+  display: inline-block;
+  background-clip: padding-box;
+}
+
+.promise-quote::before,
+.promise-quote::after {
+  content: '"';
+  font-size: 3rem;
+  color: #9333ea;
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  position: absolute;
+}
+
+.promise-quote::before {
+  top: -5px;
+  left: 5px;
+}
+
+.promise-quote::after {
+  bottom: -20px;
+  right: 5px;
+}
+
+.dark .promise-quote {
+  background: rgba(30, 30, 30, 0.7);
+}
+
+.story-closing {
+  margin-top: 3rem;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(147, 51, 234, 0.08);
+  border-radius: 16px;
+}
+
+.story-closing p {
+  margin: 1.2rem 0;
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.closing-emphasis {
+  font-size: 1.2rem !important;
+  font-weight: 500;
+  color: var(--vp-c-text-1) !important;
+}
+
+.closing-emphasis strong {
+  background: linear-gradient(135deg, #9333ea, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.closing-welcome {
+  font-size: 1.4rem !important;
+  font-weight: 600;
+  color: #9333ea !important;
+  margin-top: 2rem !important;
+  letter-spacing: 2px;
+  animation: welcome-glow 3s ease-in-out infinite;
+}
+
+@keyframes welcome-glow {
+  0%, 100% { 
+    text-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+  }
+  50% { 
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  .domain-story {
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .story-title {
+    font-size: 1.5rem;
+  }
+  
+  .story-section {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+  
+  .promise-quote {
+    font-size: 1.2rem;
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .closing-emphasis {
+    font-size: 1.1rem !important;
+  }
+  
+  .closing-welcome {
+    font-size: 1.2rem !important;
+  }
+}
+
+.dark .domain-story {
+  background: linear-gradient(135deg,
+    rgba(147, 51, 234, 0.1) 0%,
+    rgba(59, 130, 246, 0.12) 50%,
+    rgba(147, 51, 234, 0.1) 100%);
+  border-color: rgba(147, 51, 234, 0.3);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+</style>
+
+---
+
 ## 专业技能
 
 - **编程语言**：Java、JavaScript、Python
