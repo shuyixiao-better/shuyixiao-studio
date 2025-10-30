@@ -21,35 +21,35 @@ description: 个人简介与联系方式
 <div class="domain-story">
 <div class="story-header">
 <div class="story-icon">✨</div>
-<h3 class="story-title">PoeticCoder.com —— 一段属于你的域名故事</h3>
+<h3 class="story-title">PoeticCoder.com —— 一段属于我的域名故事</h3>
 </div>
 <div class="story-content">
 <div class="story-intro">
 <p class="story-lead">在数字与人文的交汇处，有一个名字悄然生长：<strong>PoeticCoder</strong>。</p>
-<p class="story-main">它不属于纯粹的浪漫诗人，也不属于冰冷的逻辑机器，而是献给那些<strong>在代码中寻找韵律、在算法里看见星光的人</strong>——比如你。</p>
+<p class="story-main">它不属于纯粹的浪漫诗人，也不属于冰冷的逻辑机器，而是献给那些<strong>在代码中寻找韵律、在算法里看见星光的人</strong>——就像我。</p>
 </div>
 
 <div class="story-section">
-<div class="section-title">"Poetic" 是你面对世界的姿态</div>
+<div class="section-title">"Poetic" 是我面对世界的姿态</div>
 <div class="section-content">
-<p>哪怕经济寒冬、哪怕技术内卷，你依然相信"慢即是快"，相信"他日卧龙终得雨，今朝放鹤且冲天"的从容。你用"舒一笑不秃头"自嘲，却在每一行 Java 代码、每一个 RAG 检索、每一次轻量级产品验证中，践行着一种<strong>克制而坚定的诗意</strong>。</p>
+<p>哪怕经济寒冬、哪怕技术内卷，我依然相信"慢即是快"，相信"他日卧龙终得雨，今朝放鹤且冲天"的从容。我用"舒一笑不秃头"自嘲，却在每一行 Java 代码、每一个 RAG 检索、每一次轻量级产品验证中，践行着一种<strong>克制而坚定的诗意</strong>。</p>
 </div>
 </div>
 
 <div class="story-section">
-<div class="section-title">"Coder" 是你扎根的土壤</div>
+<div class="section-title">"Coder" 是我扎根的土壤</div>
 <div class="section-content">
-<p>你是 Java 应用开发者，是 HarmonyOS 的践行者，是生成式 AI 工程师，更是那个在深夜调试 Bug 时，仍能对着控制台笑出声的"人生程序设计程序员"。你写的不是流水线脚本，而是<strong>有结构、有节奏、有留白的代码诗</strong>——缩进是韵脚，函数是意象，重构是修辞。</p>
+<p>我是 Java 应用开发者，是 HarmonyOS 的践行者，是生成式 AI 工程师，更是那个在深夜调试 Bug 时，仍能对着控制台笑出声的"人生程序设计程序员"。我写的不是流水线脚本，而是<strong>有结构、有节奏、有留白的代码诗</strong>——缩进是韵脚，函数是意象，重构是修辞。</p>
 </div>
 </div>
 
 <div class="story-section highlight">
-<div class="section-title">PoeticCoder.com，于是成为你精神的锚点</div>
+<div class="section-title">PoeticCoder.com，于是成为我精神的锚点</div>
 <div class="section-content">
 <ul class="domain-values">
 <li>它拒绝"码农"的疲惫叙事，主张<strong>编程可以优雅如诗</strong>；</li>
 <li>它不追逐浮夸的"颠覆"，而崇尚<strong>在细节中打磨光芒</strong>；</li>
-<li>它既面向国际开发者社区，又深植中文技术语境——正如你用 PandaCoder 帮助千万中文开发者跨越命名鸿沟。</li>
+<li>它既面向国际开发者社区，又深植中文技术语境——正如我用 PandaCoder 帮助中文开发者跨越命名鸿沟。</li>
 </ul>
 </div>
 </div>
@@ -61,9 +61,9 @@ description: 个人简介与联系方式
 </div>
 
 <div class="story-closing">
-<p>从此，当你在 GitHub 提交一行代码，在博客写下一段思考，或在小游戏中藏入一个哲理彩蛋，世界都会知道——</p>
+<p>从此，当我在 GitHub 提交一行代码，在博客写下一段思考，或在产品中传递一个理念，世界都会知道——</p>
 <p class="closing-emphasis">这背后，是一个叫 <strong>PoeticCoder</strong> 的人，正在用技术温柔地改变世界。</p>
-<p class="closing-welcome">欢迎回家，PoeticCoder。</p>
+<p class="closing-welcome">欢迎来到这里，PoeticCoder。</p>
 </div>
 </div>
 </div>
