@@ -24,6 +24,9 @@
             <span class="stat-label">页内容</span>
           </div>
         </div>
+        <div class="page-intro">
+          <slot name="intro"></slot>
+        </div>
       </div>
     </div>
 
@@ -406,6 +409,79 @@ watch(pageSize, () => {
   width: 100%;
   position: relative;
   box-sizing: border-box;
+}
+
+.page-intro {
+  margin: 1.5rem auto 0;
+  max-width: 1000px;
+  width: 100%;
+}
+
+/* 介绍区域样式 */
+.page-intro :deep(.articles-intro) {
+  margin: 1rem auto 1.5rem;
+  color: var(--vp-c-text-2);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 900px;
+}
+
+.page-intro :deep(.article-categories) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 12px auto 0;
+  max-width: 1000px;
+}
+
+.page-intro :deep(.category-card) {
+  padding: 16px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  color: var(--vp-c-text-1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.page-intro :deep(.category-card:hover) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.page-intro :deep(.category-card h3) {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  border: none;
+}
+
+.page-intro :deep(.category-card p) {
+  margin: 0;
+  font-size: 13px;
+  opacity: 0.95;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+}
+
+.page-intro :deep(.subscribe-block) {
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+.page-intro :deep(.subscribe-link) {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  font-weight: 600;
+  background: var(--vp-c-brand-dimm);
+  transition: all 0.3s ease;
+}
+
+.page-intro :deep(.subscribe-link:hover) {
+  background: var(--vp-c-brand-1);
+  color: #fff;
 }
 
 /* 不同屏幕尺寸的响应式布局 - 使用更大的宽度 */
