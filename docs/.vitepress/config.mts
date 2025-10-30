@@ -19,7 +19,7 @@ export default withMermaid(defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }],
     // 百度统计
     ['script', {}, 
-      "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?b2b83b7fbd149e9110531ad879f71ebc\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
+      "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?dcaa1737f45a913780e610c5fbca5c42\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
     ]
   ],
   // 移除css配置，改用theme方式引入
