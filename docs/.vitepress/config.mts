@@ -16,7 +16,11 @@ export default withMermaid(defineConfig({
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
     // JetBrains Mono 字体用于代码显示
-    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }]
+    ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }],
+    // 百度统计
+    ['script', {}, 
+      "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?b2b83b7fbd149e9110531ad879f71ebc\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
+    ]
   ],
   // 移除css配置，改用theme方式引入
   themeConfig: {
