@@ -76,7 +76,12 @@ export default async (req, context) => {
 
     // 检查必需的环境变量
     if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !FEEDBACK_RECEIVER) {
-      console.error('Missing required environment variables');
+      console.error('❌ Missing required environment variables:', {
+        SMTP_HOST: !!SMTP_HOST,
+        SMTP_USER: !!SMTP_USER,
+        SMTP_PASS: !!SMTP_PASS,
+        FEEDBACK_RECEIVER: !!FEEDBACK_RECEIVER
+      });
       return new Response(
         JSON.stringify({ 
           error: '邮件服务配置错误，请联系管理员',
@@ -85,6 +90,14 @@ export default async (req, context) => {
         { status: 500, headers }
       );
     }
+
+    // 打印配置信息（不包含密码）
+    console.log('📧 SMTP Configuration:', {
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      user: SMTP_USER,
+      receiver: FEEDBACK_RECEIVER
+    });
 
     // 获取客户端IP并检查频率限制
     const clientIP = getClientIP(req.headers);
@@ -127,6 +140,7 @@ export default async (req, context) => {
     }
 
     // 创建邮件传输器
+    console.log('🔧 Creating SMTP transporter...');
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: parseInt(SMTP_PORT || '465'),
@@ -135,7 +149,19 @@ export default async (req, context) => {
         user: SMTP_USER,
         pass: SMTP_PASS,
       },
+      debug: true, // 启用调试模式
+      logger: true  // 启用日志
     });
+
+    // 验证 SMTP 连接
+    console.log('🔍 Verifying SMTP connection...');
+    try {
+      await transporter.verify();
+      console.log('✅ SMTP connection verified successfully');
+    } catch (verifyError) {
+      console.error('❌ SMTP verification failed:', verifyError.message);
+      throw new Error(`SMTP验证失败: ${verifyError.message}`);
+    }
 
     // 构建邮件内容
     const emailContent = `
@@ -222,6 +248,11 @@ export default async (req, context) => {
     `;
 
     // 发送邮件
+    console.log('📤 Sending email...');
+    console.log('From:', SMTP_USER);
+    console.log('To:', FEEDBACK_RECEIVER);
+    console.log('Subject:', `📬 新反馈${cleanArticleTitle ? `：${cleanArticleTitle}` : ''} - ${cleanName}`);
+    
     const info = await transporter.sendMail({
       from: `"博客反馈系统" <${SMTP_USER}>`,
       to: FEEDBACK_RECEIVER,
@@ -242,7 +273,9 @@ IP地址：${clientIP}
       `.trim()
     });
 
-    console.log('Feedback email sent:', info.messageId);
+    console.log('✅ Email sent successfully!');
+    console.log('Message ID:', info.messageId);
+    console.log('Response:', info.response);
 
     return new Response(
       JSON.stringify({ 
@@ -253,23 +286,36 @@ IP地址：${clientIP}
     );
 
   } catch (error) {
-    console.error('Feedback function error:', error);
+    console.error('❌ Feedback function error:', error);
+    console.error('Error name:', error.name);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
     
     // 根据错误类型返回不同的消息
     let errorMessage = '发送失败，请稍后重试';
     
-    if (error.message.includes('auth')) {
-      errorMessage = 'SMTP认证失败，请联系管理员';
-    } else if (error.message.includes('timeout')) {
+    if (error.message.includes('auth') || error.message.includes('Authentication') || error.message.includes('认证')) {
+      errorMessage = 'SMTP认证失败，请检查邮箱和授权码';
+      console.error('💡 提示: 确认使用的是授权码，不是登录密码');
+    } else if (error.message.includes('timeout') || error.message.includes('ETIMEDOUT')) {
       errorMessage = '发送超时，请检查网络连接';
+      console.error('💡 提示: 检查 SMTP 服务器地址和端口');
+    } else if (error.message.includes('ENOTFOUND') || error.message.includes('getaddrinfo')) {
+      errorMessage = 'SMTP服务器地址错误';
+      console.error('💡 提示: 检查 SMTP_HOST 配置');
     } else if (error.message.includes('Invalid email')) {
       errorMessage = '邮箱配置错误';
+      console.error('💡 提示: 检查邮箱格式');
+    } else if (error.code === 'ECONNREFUSED') {
+      errorMessage = '无法连接到SMTP服务器';
+      console.error('💡 提示: 检查端口号和防火墙设置');
     }
 
     return new Response(
       JSON.stringify({ 
         error: errorMessage,
-        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        details: error.message,
+        code: error.code
       }), 
       { status: 500, headers }
     );

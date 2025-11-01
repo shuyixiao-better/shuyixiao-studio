@@ -5,3 +5,9 @@
 [build.environment]
   NODE_VERSION = "22"
   PNPM_VERSION = "10.17.1"
+
+[dev]
+  command = "vitepress dev docs"
+  targetPort = 5173
+  publish = "docs/.vitepress/dist"
+  autoLaunch = true

@@ -252,7 +252,22 @@ const submitFeedback = async () => {
       })
     });
 
-    const data = await response.json();
+    // 特殊处理 404：本地开发环境
+    if (response.status === 404) {
+      showToast('⚠️ 本地开发环境不支持邮件发送\n请使用 pnpm docs:dev:netlify 命令测试', 'info');
+      console.warn('💡 提示：本地开发需要使用 Netlify CLI\n运行命令：pnpm docs:dev:netlify');
+      isSubmitting.value = false;
+      return;
+    }
+
+    // 尝试解析 JSON
+    let data;
+    try {
+      data = await response.json();
+    } catch (jsonError) {
+      // JSON 解析失败，可能是服务器错误
+      throw new Error('服务器响应格式错误');
+    }
 
     if (response.ok && data.success) {
       showToast('感谢您的反馈！留言已成功发送 🎉', 'success');
@@ -574,6 +589,9 @@ onUnmounted(() => {
   font-weight: 500;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 10000;
+  white-space: pre-line;
+  text-align: center;
+  max-width: 90%;
 }
 
 .toast-success {
