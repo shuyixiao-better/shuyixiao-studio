@@ -94,12 +94,13 @@ export default async (req, context) => {
       );
     }
 
-    // 打印配置信息（不包含密码）
+    // 打印配置信息（隐藏敏感信息）
     console.log('📧 SMTP Configuration:', {
       host: SMTP_HOST,
       port: SMTP_PORT,
-      user: SMTP_USER,
-      receiver: FEEDBACK_RECEIVER
+      user: SMTP_USER ? `${SMTP_USER.split('@')[0]}@***` : 'NOT SET', // 只显示用户名，隐藏域名
+      receiver: FEEDBACK_RECEIVER ? `${FEEDBACK_RECEIVER.split('@')[0]}@***` : 'NOT SET', // 只显示用户名，隐藏域名
+      passConfigured: !!SMTP_PASS // 只显示是否配置，不显示密码
     });
 
     // 获取客户端IP并检查频率限制
@@ -144,6 +145,8 @@ export default async (req, context) => {
 
     // 创建邮件传输器
     console.log('🔧 Creating SMTP transporter...');
+    // 只在本地开发环境启用 debug，生产环境关闭以保护敏感信息
+    const isDevelopment = process.env.NODE_ENV === 'development' || process.env.NETLIFY_DEV === 'true';
     const transporter = nodemailer.createTransport({
       host: SMTP_HOST,
       port: parseInt(SMTP_PORT || '465'),
@@ -155,8 +158,8 @@ export default async (req, context) => {
       connectionTimeout: SMTP_TIMEOUT, // 连接超时 30秒
       greetingTimeout: SMTP_TIMEOUT,   // 握手超时 30秒
       socketTimeout: SMTP_TIMEOUT,     // Socket 超时 30秒
-      debug: true, // 启用调试模式
-      logger: true  // 启用日志
+      debug: isDevelopment, // 只在开发环境启用调试
+      logger: isDevelopment  // 只在开发环境启用日志（避免暴露密码）
     });
 
     // 验证 SMTP 连接
@@ -253,11 +256,12 @@ export default async (req, context) => {
 </html>
     `;
 
-    // 发送邮件
+    // 发送邮件（隐藏敏感信息）
     console.log('📤 Sending email...');
-    console.log('From:', SMTP_USER);
-    console.log('To:', FEEDBACK_RECEIVER);
-    console.log('Subject:', `📬 新反馈${cleanArticleTitle ? `：${cleanArticleTitle}` : ''} - ${cleanName}`);
+    const subject = `📬 新反馈${cleanArticleTitle ? `：${cleanArticleTitle}` : ''} - ${cleanName}`;
+    console.log('From:', SMTP_USER ? `${SMTP_USER.split('@')[0]}@***` : 'NOT SET'); // 隐藏完整邮箱
+    console.log('To:', FEEDBACK_RECEIVER ? `${FEEDBACK_RECEIVER.split('@')[0]}@***` : 'NOT SET'); // 隐藏完整邮箱
+    console.log('Subject:', subject);
     
     const info = await transporter.sendMail({
       from: `"博客反馈系统" <${SMTP_USER}>`,
@@ -281,7 +285,12 @@ IP地址：${clientIP}
 
     console.log('✅ Email sent successfully!');
     console.log('Message ID:', info.messageId);
-    console.log('Response:', info.response);
+    // 不输出完整响应，避免可能包含敏感信息
+    if (info.response && typeof info.response === 'string') {
+      // 只输出状态码部分（通常是 "250 Mail OK" 这样的信息）
+      const statusMatch = info.response.match(/^\d+/);
+      console.log('Response status:', statusMatch ? statusMatch[0] : 'OK');
+    }
 
     return new Response(
       JSON.stringify({ 
