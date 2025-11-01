@@ -5,6 +5,9 @@ const submissionCache = new Map();
 const RATE_LIMIT_WINDOW = 60000; // 1分钟
 const MAX_SUBMISSIONS = 3; // 每分钟最多3次
 
+// SMTP 连接超时设置（增加到 30 秒）
+const SMTP_TIMEOUT = 30000;
+
 // 获取客户端IP
 function getClientIP(headers) {
   const ip = headers.get('x-forwarded-for')?.split(',')[0]?.trim() 
@@ -149,6 +152,9 @@ export default async (req, context) => {
         user: SMTP_USER,
         pass: SMTP_PASS,
       },
+      connectionTimeout: SMTP_TIMEOUT, // 连接超时 30秒
+      greetingTimeout: SMTP_TIMEOUT,   // 握手超时 30秒
+      socketTimeout: SMTP_TIMEOUT,     // Socket 超时 30秒
       debug: true, // 启用调试模式
       logger: true  // 启用日志
     });
