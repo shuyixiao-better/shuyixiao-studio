@@ -1,8 +1,8 @@
 <template>
   <Teleport to="body">
-    <!-- 悬浮按钮 -->
+    <!-- 悬浮按钮 - 仅在支持 API 的环境显示 -->
     <div 
-      v-if="!isModalOpen" 
+      v-if="!isModalOpen && isApiAvailable" 
       class="feedback-button" 
       @click="openModal"
       :class="{ 'feedback-button-hidden': isScrollingUp }"
@@ -149,6 +149,7 @@ const route = useRoute();
 const isModalOpen = ref(false);
 const isSubmitting = ref(false);
 const isScrollingUp = ref(false);
+const isApiAvailable = ref(false); // 是否支持 API（Netlify Functions）
 let lastScrollY = 0;
 
 // 表单数据
@@ -178,6 +179,49 @@ const currentArticleUrl = computed(() => {
   }
   return '';
 });
+
+// 获取反馈接收邮箱（从 meta 标签读取）
+const getFeedbackEmail = () => {
+  if (typeof document !== 'undefined') {
+    const metaTag = document.querySelector('meta[name="feedback-email"]');
+    if (metaTag) {
+      return metaTag.getAttribute('content') || 'shuyixiao@163.com';
+    }
+  }
+  // 默认邮箱（如果没有配置）
+  return 'shuyixiao@163.com';
+};
+
+// 生成 mailto 链接（用于 GitHub Pages 等不支持 API 的环境）
+const generateMailtoLink = () => {
+  const subject = encodeURIComponent(`📬 用户反馈${currentArticle.value ? `：${currentArticle.value}` : ''}`);
+  const bodyParts = [];
+  
+  if (formData.value.name) {
+    bodyParts.push(`姓名：${formData.value.name}`);
+  }
+  if (formData.value.email) {
+    bodyParts.push(`邮箱：${formData.value.email}`);
+  }
+  if (formData.value.contact) {
+    bodyParts.push(`联系方式：${formData.value.contact}`);
+  }
+  bodyParts.push('');
+  bodyParts.push(`反馈内容：`);
+  bodyParts.push(formData.value.content);
+  bodyParts.push('');
+  if (currentArticle.value) {
+    bodyParts.push(`文章标题：${currentArticle.value}`);
+  }
+  if (currentArticleUrl.value) {
+    bodyParts.push(`文章链接：${currentArticleUrl.value}`);
+  }
+  
+  const body = encodeURIComponent(bodyParts.join('\n'));
+  const receiverEmail = getFeedbackEmail();
+  
+  return `mailto:${receiverEmail}?subject=${subject}&body=${body}`;
+};
 
 // 监听滚动，自动隐藏/显示按钮
 const handleScroll = () => {
@@ -252,10 +296,35 @@ const submitFeedback = async () => {
       })
     });
 
-    // 特殊处理 404：本地开发环境
+    // 特殊处理 404：本地开发环境或 API 不存在
     if (response.status === 404) {
       showToast('⚠️ 本地开发环境不支持邮件发送\n请使用 pnpm docs:dev:netlify 命令测试', 'info');
       console.warn('💡 提示：本地开发需要使用 Netlify CLI\n运行命令：pnpm docs:dev:netlify');
+      isSubmitting.value = false;
+      return;
+    }
+
+    // 特殊处理 405：GitHub Pages 等静态部署环境不支持
+    if (response.status === 405) {
+      // 提供备用方案：生成邮件链接
+      const mailtoLink = generateMailtoLink();
+      showToast('📧 GitHub Pages 不支持在线发送\n已为您生成邮件链接', 'info');
+      
+      // 延迟一下让用户看到提示，然后打开邮件客户端
+      setTimeout(() => {
+        window.location.href = mailtoLink;
+        // 关闭弹窗
+        setTimeout(() => {
+          closeModal();
+          // 重置表单
+          formData.value = {
+            name: '',
+            email: '',
+            contact: '',
+            content: ''
+          };
+        }, 500);
+      }, 1500);
       isSubmitting.value = false;
       return;
     }
@@ -266,6 +335,25 @@ const submitFeedback = async () => {
       data = await response.json();
     } catch (jsonError) {
       // JSON 解析失败，可能是服务器错误
+      // 如果是 405，提供备用方案
+      if (response.status === 405) {
+        const mailtoLink = generateMailtoLink();
+        showToast('📧 当前环境不支持在线发送\n已为您生成邮件链接', 'info');
+        setTimeout(() => {
+          window.location.href = mailtoLink;
+          setTimeout(() => {
+            closeModal();
+            formData.value = {
+              name: '',
+              email: '',
+              contact: '',
+              content: ''
+            };
+          }, 500);
+        }, 1500);
+        isSubmitting.value = false;
+        return;
+      }
       throw new Error('服务器响应格式错误');
     }
 
@@ -288,10 +376,60 @@ const submitFeedback = async () => {
       throw new Error(data.error || '发送失败');
     }
   } catch (error) {
+    // 网络错误或其他错误
+    // 检查是否是 405 相关错误
+    if (error.message && error.message.includes('405') || 
+        (error.message && error.message.includes('Method Not Allowed'))) {
+      const mailtoLink = generateMailtoLink();
+      showToast('📧 当前环境不支持在线发送\n已为您生成邮件链接', 'info');
+      setTimeout(() => {
+        window.location.href = mailtoLink;
+        setTimeout(() => {
+          closeModal();
+          formData.value = {
+            name: '',
+            email: '',
+            contact: '',
+            content: ''
+          };
+        }, 500);
+      }, 1500);
+      isSubmitting.value = false;
+      return;
+    }
+    
     console.error('Submit feedback error:', error);
     showToast(error.message || '发送失败，请稍后重试', 'error');
   } finally {
     isSubmitting.value = false;
+  }
+};
+
+// 检测 API 是否可用（检测是否为 Netlify 环境）
+const checkApiAvailability = async () => {
+  if (typeof window === 'undefined') return;
+  
+  try {
+    // 尝试访问反馈 API（使用 OPTIONS 方法进行预检，不会真正发送邮件）
+    const response = await fetch('/api/feedback', {
+      method: 'OPTIONS',
+      cache: 'no-cache'
+    });
+    
+    // Netlify Functions 的 OPTIONS 请求会返回 204 (No Content)
+    // GitHub Pages 等静态网站会返回 404 (Not Found) 或 405 (Method Not Allowed)
+    if (response.status === 204) {
+      isApiAvailable.value = true;
+      console.log('✅ 反馈功能可用（Netlify 环境）');
+    } else {
+      // 404、405 或其他状态码都视为不支持
+      isApiAvailable.value = false;
+      console.log(`ℹ️ 反馈功能不可用（状态码: ${response.status}，可能是 GitHub Pages 等静态环境）`);
+    }
+  } catch (error) {
+    // 网络错误、CORS 错误或接口不存在，视为静态环境
+    isApiAvailable.value = false;
+    console.log('ℹ️ 无法检测 API 可用性，隐藏反馈按钮（可能是不支持 API 的静态环境）');
   }
 };
 
@@ -304,6 +442,9 @@ const handleKeyDown = (e) => {
 
 onMounted(() => {
   if (typeof window !== 'undefined') {
+    // 检测 API 可用性
+    checkApiAvailability();
+    
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('keydown', handleKeyDown);
   }
