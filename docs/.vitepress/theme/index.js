@@ -17,6 +17,7 @@ import SiteVisits from './components/SiteVisits.vue'
 import BilibiliVideo from './components/BilibiliVideo.vue'
 import WinningMindset from './components/WinningMindset.vue'
 import PremiumRecommend from './components/PremiumRecommend.vue'
+import FeedbackWidget from './components/FeedbackWidget.vue'
 
 export default {
   extends: DefaultTheme,
@@ -26,7 +27,9 @@ export default {
       // 404 页面
       'not-found': () => h(NotFound),
       // 文档内容顶部（标题后，目录前）自动插入统计组件
-      'doc-top': () => h(ArticleStats)
+      'doc-top': () => h(ArticleStats),
+      // 在布局底部添加反馈组件（全局可见）
+      'layout-bottom': () => h(FeedbackWidget)
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -42,6 +45,7 @@ export default {
     app.component('BilibiliVideo', BilibiliVideo)
     app.component('WinningMindset', WinningMindset)
     app.component('PremiumRecommend', PremiumRecommend)
+    app.component('FeedbackWidget', FeedbackWidget)
   },
   setup() {
     const route = useRoute()
