@@ -452,6 +452,7 @@ export default withMermaid(defineConfig({
               text: '生活智慧点滴',
               collapsed: true,
               items: [
+                { text: '认知边界：为何我们省不了认知之外的钱', link: '/tutorials/insights/life-wisdom/cognitive-money-management' },
                 { text: '程序员的健康生活', link: '/tutorials/insights/life-wisdom/healthy-living' },
                 { text: '工作与生活的平衡', link: '/tutorials/insights/life-wisdom/work-life-balance' },
                 { text: '时间管理的艺术', link: '/tutorials/insights/life-wisdom/time-management' },
