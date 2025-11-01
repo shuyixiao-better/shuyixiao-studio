@@ -18,6 +18,7 @@ import BilibiliVideo from './components/BilibiliVideo.vue'
 import WinningMindset from './components/WinningMindset.vue'
 import PremiumRecommend from './components/PremiumRecommend.vue'
 import FeedbackWidget from './components/FeedbackWidget.vue'
+import ConsumerCopilot from './components/ConsumerCopilot.vue'
 
 export default {
   extends: DefaultTheme,
@@ -46,6 +47,7 @@ export default {
     app.component('WinningMindset', WinningMindset)
     app.component('PremiumRecommend', PremiumRecommend)
     app.component('FeedbackWidget', FeedbackWidget)
+    app.component('ConsumerCopilot', ConsumerCopilot)
   },
   setup() {
     const route = useRoute()
