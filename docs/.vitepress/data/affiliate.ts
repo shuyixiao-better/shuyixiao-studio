@@ -78,6 +78,75 @@ export const affiliateProducts: AffiliateProduct[] = [
   },
 
   // ========================================
+  // 腾讯云服务器
+  // ========================================
+  {
+    id: 'tencent-cloud-enterprise',
+    title: '腾讯云企业套餐',
+    description: '云服务器、云数据库、COS、CDN、短信等云产品特惠热卖',
+    longDescription: '腾讯云提供一站式的企业云服务解决方案，包含高性能云服务器、稳定可靠的云数据库、弹性对象存储COS、全球加速CDN以及企业短信服务。适用于各种规模的企业应用部署，支持按需付费，灵活扩容。',
+    icon: '🌟',
+    link: 'https://cloud.tencent.com/act/cps/redirect?redirect=2446&cps_key=c97f9624f3745f90bf9763aa72dea776&from=console',
+    price: '特惠套餐',
+    badge: '企业优选',
+    category: '云服务',
+    tags: ['云服务器', '云数据库', 'COS', 'CDN', '短信'],
+    priority: 8,
+    featured: true,
+    active: true
+  },
+
+  {
+    id: 'tencent-cloud-lighthouse',
+    title: '腾讯云轻量服务器',
+    description: '4核4G服务器新客38元/年起，AI算力0.8折，百万大模型tokens免费',
+    longDescription: '腾讯云轻量应用服务器专为个人开发者和小型企业打造，配置灵活，价格亲民。新用户享受超低价格，4核4G配置仅需38元/年起。同时提供AI算力0.8折优惠，赠送百万级大模型tokens，是学习AI开发的绝佳选择。',
+    icon: '🚀',
+    link: 'https://cloud.tencent.com/act/cps/redirect?redirect=6544&cps_key=c97f9624f3745f90bf9763aa72dea776&from=console',
+    price: '¥38/年起',
+    originalPrice: '¥120/年',
+    discount: '新客专享低至3折',
+    badge: '新客特惠',
+    category: '云服务',
+    tags: ['轻量服务器', '4核4G', 'AI算力', '新人专享'],
+    priority: 8,
+    featured: true,
+    active: true
+  },
+
+  {
+    id: 'tencent-cloud-asr',
+    title: '腾讯云语音识别',
+    description: '语音识别准确率高，支持多语种多场景，限时特惠最低14.9元起',
+    longDescription: '腾讯云语音识别(ASR)提供高准确率的语音转文字服务，支持普通话、粤语、英语等多种语言，适用于会议记录、语音输入、客服质检等多个场景。采用先进的深度学习技术，准确率高达96%以上。限时特惠，最低14.9元起，适合中小企业快速接入。',
+    icon: '🎤',
+    link: 'https://cloud.tencent.com/act/cps/redirect?redirect=6351&cps_key=c97f9624f3745f90bf9763aa72dea776&from=console',
+    price: '¥14.9起',
+    badge: '限时特惠',
+    category: '云服务',
+    tags: ['语音识别', 'ASR', 'AI', '多语种'],
+    priority: 7,
+    featured: true,
+    active: true
+  },
+
+  {
+    id: 'tencent-cloud-gaming',
+    title: '腾讯云游戏服务器',
+    description: '热卖套餐配置低至32元/月起，一键开服即刻畅玩立享优惠',
+    longDescription: '腾讯云游戏服务器专为游戏开发者设计，提供高性能、低延迟的游戏运行环境。支持多种游戏引擎，配置灵活可自定义。热卖套餐低至32元/月起，一键快速部署，助您快速上线游戏。包含DDoS防护、高可用架构等企业级安全保障。',
+    icon: '🎮',
+    link: 'https://cloud.tencent.com/act/cps/redirect?redirect=5878&cps_key=c97f9624f3745f90bf9763aa72dea776&from=console',
+    price: '¥32/月起',
+    badge: '热卖套餐',
+    category: '云服务',
+    tags: ['游戏服务器', '一键开服', 'DDoS防护', '低延迟'],
+    priority: 7,
+    featured: true,
+    active: true
+  },
+
+  // ========================================
   // 示例 3: 学习资源
   // ========================================
   {
@@ -224,7 +293,7 @@ export const affiliateConfig = {
   
   // 显示数量限制
   limits: {
-    homepage: 6,              // 首页最多显示数量
+    homepage: 10,             // 首页最多显示数量
   },
   
   // 说明文字
