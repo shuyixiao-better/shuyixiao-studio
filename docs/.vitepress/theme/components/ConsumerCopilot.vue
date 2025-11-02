@@ -17,7 +17,7 @@
         :class="['message', msg.role]"
       >
         <div class="message-avatar">
-          <span v-if="msg.role === 'user'">👤</span>
+          <img v-if="msg.role === 'user'" src="/images/我的头像.jpg" alt="用户头像" class="avatar-img" />
           <span v-else>🤖</span>
         </div>
         <div class="message-content">
@@ -31,7 +31,9 @@
 
       <!-- 加载状态 -->
       <div v-if="isLoading" class="message assistant loading">
-        <div class="message-avatar">🤖</div>
+        <div class="message-avatar">
+          🤖
+        </div>
         <div class="message-content">
           <div class="typing-indicator">
             <span></span>
@@ -300,7 +302,7 @@ const sendMessage = async () => {
       body: JSON.stringify({
         message: userMessage,
         conversation: conversationHistory.slice(1), // 排除system消息
-        stream: false
+        stream: true  // 启用流式输出
       })
     });
 
@@ -317,28 +319,111 @@ const sendMessage = async () => {
       throw new Error(errorData.error || '请求失败');
     }
 
-    const data = await response.json();
-
-    if (data.success) {
-      conversation.value.push({
+    // 检查是否为流式响应
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/event-stream')) {
+      // 处理流式响应
+      let fullResponse = '';
+      let model = '';
+      let usage = null;
+      
+      // 创建助理消息占位符
+      const assistantMessage = {
         role: 'assistant',
-        content: data.response,
-        usage: data.usage,
-        model: data.model,
+        content: '',
         timestamp: new Date().toISOString()
-      });
-
-      // 滚动到底部
+      };
+      conversation.value.push(assistantMessage);
+      
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      
+      while (true) {
+        const { done, value } = await reader.read();
+        
+        if (done) {
+          break;
+        }
+        
+        // 解码数据
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n');
+        
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            const data = line.slice(6);
+            
+            // 检查是否是结束标记
+            if (data === '[DONE]') {
+              break;
+            }
+            
+            try {
+              const parsed = JSON.parse(data);
+              
+              // 提取增量内容
+              if (parsed.choices && parsed.choices[0] && parsed.choices[0].delta) {
+                const delta = parsed.choices[0].delta;
+                if (delta.content) {
+                  fullResponse += delta.content;
+                  assistantMessage.content = fullResponse;
+                  
+                  // 自动滚动到底部
+                  await nextTick();
+                  scrollToBottom();
+                }
+              }
+              
+              // 提取模型和usage信息
+              if (parsed.model) {
+                model = parsed.model;
+                assistantMessage.model = model;
+              }
+              if (parsed.usage) {
+                usage = parsed.usage;
+                assistantMessage.usage = usage;
+              }
+            } catch (e) {
+              // 忽略JSON解析错误
+            }
+          }
+        }
+      }
+      
+      // 流式响应完成
+      isLoading.value = false;
       await nextTick();
       scrollToBottom();
     } else {
-      throw new Error(data.error || 'AI响应异常');
+      // 非流式响应（降级处理）
+      const data = await response.json();
+      
+      if (data.success) {
+        conversation.value.push({
+          role: 'assistant',
+          content: data.response,
+          usage: data.usage,
+          model: data.model,
+          timestamp: new Date().toISOString()
+        });
+        
+        // 滚动到底部
+        await nextTick();
+        scrollToBottom();
+      } else {
+        throw new Error(data.error || 'AI响应异常');
+      }
     }
   } catch (error) {
     console.error('Send message error:', error);
     showToast(error.message || '发送失败，请稍后重试', 'error');
-    // 移除失败的用户消息
-    if (conversation.value.length > 0 && conversation.value[conversation.value.length - 1].role === 'user') {
+    // 移除失败的消息（可能是user消息和空的assistant占位符）
+    const lastMessage = conversation.value[conversation.value.length - 1];
+    if (lastMessage && lastMessage.role === 'user') {
+      conversation.value.pop();
+    }
+    const secondLastMessage = conversation.value[conversation.value.length - 1];
+    if (secondLastMessage && secondLastMessage.role === 'assistant' && !secondLastMessage.content) {
       conversation.value.pop();
     }
   } finally {
@@ -533,6 +618,14 @@ const showToast = (message, type = 'info') => {
 
 .message.user .message-avatar {
   background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
+  padding: 2px;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .message-content {

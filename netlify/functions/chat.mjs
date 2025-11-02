@@ -188,7 +188,48 @@ export default async (req, context) => {
       );
     }
 
-    // 处理响应
+    // 处理流式响应
+    if (stream) {
+      // 设置流式响应的Content-Type
+      const streamHeaders = {
+        ...headers,
+        'Content-Type': 'text/event-stream',
+        'Cache-Control': 'no-cache',
+        'Connection': 'keep-alive'
+      };
+
+      // 返回流式响应
+      const stream = new ReadableStream({
+        async start(controller) {
+          try {
+            const reader = apiResponse.body.getReader();
+            const decoder = new TextDecoder();
+            
+            while (true) {
+              const { done, value } = await reader.read();
+              
+              if (done) {
+                // 发送完成标记
+                controller.enqueue(new TextEncoder().encode('data: [DONE]\n\n'));
+                controller.close();
+                break;
+              }
+              
+              // 解码数据并转发给客户端
+              const chunk = decoder.decode(value, { stream: true });
+              controller.enqueue(new TextEncoder().encode(chunk));
+            }
+          } catch (error) {
+            console.error('❌ Stream error:', error);
+            controller.error(error);
+          }
+        }
+      });
+
+      return new Response(stream, { status: 200, headers: streamHeaders });
+    }
+
+    // 处理非流式响应
     const data = await apiResponse.json();
 
     // 提取回复内容
