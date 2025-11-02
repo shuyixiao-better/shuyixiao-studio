@@ -374,15 +374,6 @@ function showRedirectNotice() {
 
 建议查看活动详情页，确认哪些SKU参与，哪些不参与。
 
-## 🛠️ 技术说明
-
-本工具基于：
-
-- **前端**：Vue 3 + VitePress
-- **AI平台**：魔力方舟（Gitee AI）
-- **知识库**：静态JSON + RAG增强
-- **部署**：Netlify Functions
-
 ---
 
 <ConsumerCopilot />
