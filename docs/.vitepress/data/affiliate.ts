@@ -66,7 +66,7 @@ export const affiliateProducts: AffiliateProduct[] = [
     description: '高性能云服务器，新用户享受超值优惠，适合个人与企业',
     longDescription: '阿里云弹性计算服务(ECS)提供稳定可靠的云计算资源。99.95% SLA保障，支持按量付费和包年包月，适合各种规模的应用部署。',
     icon: '☁️',
-    link: 'https://www.aliyun.com/product/ecs', // 替换为你的推荐链接
+    link: 'https://www.aliyun.com/minisite/goods?userCode=1k5kobny',
     price: '¥9.9/月起',
     discount: '新用户首购低至 0.8 折',
     badge: '新人福利',
