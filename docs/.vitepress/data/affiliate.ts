@@ -37,21 +37,21 @@ export interface AffiliateProduct {
  */
 export const affiliateProducts: AffiliateProduct[] = [
   // ========================================
-  // 示例 1: 开发工具
+  // 示例 1: 潮流穿搭
   // ========================================
   {
-    id: 'jetbrains-toolbox',
-    title: 'JetBrains 全家桶',
-    description: '专业开发者的必备利器，支持 Java、Python、Go 等多种语言',
-    longDescription: 'JetBrains 提供业界最强大的 IDE 套件，包括 IntelliJ IDEA、PyCharm、GoLand 等。智能代码补全、强大的重构能力、优秀的调试工具，大幅提升开发效率。',
-    icon: '💻',
-    link: 'https://www.jetbrains.com/', // 替换为你的佣金链接
-    price: '¥89/月起',
-    originalPrice: '¥129/月',
-    discount: '学生免费，个人版 30% OFF',
-    badge: '推荐',
-    category: '开发工具',
-    tags: ['IDE', 'Java', 'Python', 'Go'],
+    id: 'nike-cargo-pants-m',
+    title: 'NIKE 男子工装长裤',
+    description: '经典工装风，潮流必备！券后立省113元，限时抢购中',
+    longDescription: 'NIKE【滔搏运动】联名款工装长裤，采用高品质面料打造，版型修身利落。经典工装口袋设计，兼顾实用与潮流。无论是街头穿搭还是日常休闲，都是你的不二选择。现在下单立享折扣，券后仅需375.88元，错过再等一年！',
+    icon: '👖',
+    link: 'https://u.jd.com/prUvaWM',
+    price: '¥323.12',
+    originalPrice: '¥699',
+    discount: '立省113元，券后价',
+    badge: '限时优惠',
+    category: '潮流服饰',
+    tags: ['工装裤', 'NIKE', '潮流穿搭', '滔搏运动'],
     priority: 10,
     featured: true,
     active: true
