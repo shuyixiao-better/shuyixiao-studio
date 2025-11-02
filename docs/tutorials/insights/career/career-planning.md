@@ -490,7 +490,6 @@ Java+RAG技术 → 解决企业文档检索效率低的问题 → 节省人力�
 
 - [产品化思维：如何让自己成为RAG领域的稀缺资产](/tutorials/insights/growth/rag-product-thinking)
 - [大模型时代的程序员成长悖论](/tutorials/insights/growth/ai-copilot-era-growth)
-- [技术选型的艺术与哲学](/tutorials/insights/growth/technology-selection)
 
 ---
 
