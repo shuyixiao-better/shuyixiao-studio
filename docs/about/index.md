@@ -12,6 +12,7 @@ description: 个人简介与联系方式
 
 - IDEA插件-PandaCoder（熊猫编码器）作者
 - 生成式AI应用工程师(高级)认证
+- 专注于AI工程化落地
 - 阿里云博客专家
 - Java应用开发职业技能等级认证
 - HarmonyOS应用开发者基础认证
