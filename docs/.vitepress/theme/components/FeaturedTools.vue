@@ -19,14 +19,14 @@
           <div class="tool-card-arrow">→</div>
         </a>
 
-        <a href="/tools/avatar-generator/" class="featured-tool-card">
-          <div class="tool-card-icon">🎨</div>
+        <a href="/tools/consumer-copilot/" class="featured-tool-card">
+          <div class="tool-card-icon">🤖</div>
           <div class="tool-card-content">
-            <h3 class="tool-card-title">头像生成器</h3>
-            <p class="tool-card-desc">随机生成独特的个性头像，支持多种风格，一键下载使用</p>
+            <h3 class="tool-card-title">消费决策助手</h3>
+            <p class="tool-card-desc">AI驱动的理性消费助手，帮你看穿商家套路，做出明智决策</p>
             <div class="tool-card-tags">
-              <span class="tool-badge">免费</span>
-              <span class="tool-badge">在线工具</span>
+              <span class="tool-badge">AI助手</span>
+              <span class="tool-badge">理性消费</span>
             </div>
           </div>
           <div class="tool-card-arrow">→</div>
