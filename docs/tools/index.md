@@ -21,6 +21,17 @@ description: 效率工具与插件推荐
       <span class="tool-tag">开源</span>
     </div>
   </a>
+
+  <a href="./consumer-copilot/" class="tool-card">
+    <div class="tool-icon">🤖</div>
+    <h3 class="tool-title">消费决策助手</h3>
+    <p class="tool-desc">AI驱动的理性消费助手，帮你看穿商家套路，做出明智决策</p>
+    <div class="tool-tags">
+      <span class="tool-tag">AI助手</span>
+      <span class="tool-tag">消费决策</span>
+      <span class="tool-tag">新功能</span>
+    </div>
+  </a>
   
   <a href="./avatar-generator/" class="tool-card">
     <div class="tool-icon">🎨</div>
@@ -59,17 +70,6 @@ description: 效率工具与插件推荐
     <div class="tool-tags">
       <span class="tool-tag">工作必备</span>
       <span class="tool-tag">效率工具</span>
-    </div>
-  </a>
-
-  <a href="./consumer-copilot/" class="tool-card">
-    <div class="tool-icon">🤖</div>
-    <h3 class="tool-title">消费决策助手</h3>
-    <p class="tool-desc">AI驱动的理性消费助手，帮你看穿商家套路，做出明智决策</p>
-    <div class="tool-tags">
-      <span class="tool-tag">AI助手</span>
-      <span class="tool-tag">消费决策</span>
-      <span class="tool-tag">新功能</span>
     </div>
   </a>
 
