@@ -19,6 +19,7 @@ import WinningMindset from './components/WinningMindset.vue'
 import PremiumRecommend from './components/PremiumRecommend.vue'
 import FeedbackWidget from './components/FeedbackWidget.vue'
 import ConsumerCopilot from './components/ConsumerCopilot.vue'
+import RSSFeedCard from './components/RSSFeedCard.vue'
 
 export default {
   extends: DefaultTheme,
@@ -48,6 +49,7 @@ export default {
     app.component('PremiumRecommend', PremiumRecommend)
     app.component('FeedbackWidget', FeedbackWidget)
     app.component('ConsumerCopilot', ConsumerCopilot)
+    app.component('RSSFeedCard', RSSFeedCard)
   },
   setup() {
     const route = useRoute()

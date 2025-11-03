@@ -152,3 +152,11 @@ features:
 </div>
 
 <RecentPosts />
+
+<div class="section-divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">📡</div>
+  <div class="divider-line"></div>
+</div>
+
+<RSSFeedCard />

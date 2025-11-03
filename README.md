@@ -37,10 +37,12 @@ npm run docs:dev
 
 ## ✨ 特性
 
-- ✅ 鸿蒙字体 (HarmonyOS Sans) 全局适配 🆕
+- ✅ RSS 订阅功能 🆕 - 支持主流 RSS 阅读器，自动同步最新文章
+- ✅ 鸿蒙字体 (HarmonyOS Sans) 全局适配
 - ✅ 支持 Mermaid 图表自动渲染
 - ✅ 图片点击放大查看功能
 - ✅ B站视频嵌入功能（全局组件）
+- ✅ 文章阅读量与点赞统计
 - ✅ 响应式设计，移动端友好
 - ✅ 暗色模式支持
 - ✅ 快速热更新
@@ -48,12 +50,15 @@ npm run docs:dev
 
 ## 📖 文档
 
+- 📡 [RSS 订阅功能总结](./RSS_功能总结.md) - RSS 订阅功能完整说明 🆕
+- 📋 [RSS Feed 设计方案](./RSS_FEED_DESIGN.md) - 包含付费订阅的完整设计方案 🆕
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
 - 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
-- 🎨 [鸿蒙字体适配](./README_HARMONYOS_FONT.md) - 鸿蒙字体全局配置 🆕
+- 🎨 [鸿蒙字体适配](./README_HARMONYOS_FONT.md) - 鸿蒙字体全局配置
 - 🌐 [自定义域名配置](./CUSTOM_DOMAIN.md) - 配置 www.shuyixiao.top 域名
 - 🔧 [问题排查指南](./TROUBLESHOOTING.md) - 遇到问题？看这里
 - 📺 [B站视频嵌入使用指南](./如何使用B站视频组件.md) - 在文章中嵌入B站视频
+- 📊 [网站统计功能](./STATS_USAGE.md) - 阅读量、点赞数、访问量统计
 
 ## 🔨 可用命令
 

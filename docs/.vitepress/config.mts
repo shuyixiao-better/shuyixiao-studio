@@ -17,6 +17,8 @@ export default withMermaid(defineConfig({
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
     // JetBrains Mono 字体用于代码显示
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }],
+    // RSS Feed
+    ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '舒一笑不秃头的技术博客 RSS Feed' }],
     // 百度统计
     ['script', {}, 
       "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?dcaa1737f45a913780e610c5fbca5c42\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
@@ -50,6 +52,7 @@ export default withMermaid(defineConfig({
       { text: '拾珍录', link: '/tutorials/treasures/' },
       { text: '面试宝典', link: '/interview/' },
       { text: '我的工具', link: '/tools/' },
+      { text: 'RSS 订阅', link: '/rss/' },
       { text: '关于我', link: '/about/' }
     ],
 
