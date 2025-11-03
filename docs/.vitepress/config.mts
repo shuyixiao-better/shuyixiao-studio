@@ -436,6 +436,7 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: '程序员的职业规划', link: '/tutorials/insights/career/career-planning' },
+                { text: '在非理想工作中找到成长', link: '/tutorials/insights/career/growth-from-non-ideal-work' },
                 { text: '技术管理者的修炼', link: '/tutorials/insights/career/tech-management' },
                 { text: '团队协作的艺术', link: '/tutorials/insights/career/team-collaboration' },
                 { text: '职场沟通技巧', link: '/tutorials/insights/career/workplace-communication' }
