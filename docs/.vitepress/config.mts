@@ -489,6 +489,7 @@ export default withMermaid(defineConfig({
               text: '心态与格局',
               collapsed: true,
               items: [
+                { text: '被困局中的突破：当代码搬砖遇见人生迷茫', link: '/tutorials/insights/mindset/breaking-through-confusion' },
                 { text: '程序员的格局修炼', link: '/tutorials/insights/mindset/developer-mindset' },
                 { text: '面对挫折的心态调整', link: '/tutorials/insights/mindset/dealing-with-failure' },
                 { text: '持续学习的内驱力', link: '/tutorials/insights/mindset/continuous-learning' },
