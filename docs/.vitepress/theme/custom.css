@@ -4463,9 +4463,255 @@ body,
     display: block;
     margin-top: 8px;
   }
-  
+
   .VPFooter .site-visits {
     font-size: 11px;
     padding: 3px 10px;
+  }
+}
+
+/* ========== 更新通知组件样式 ========== */
+
+.update-notification {
+  position: fixed;
+  top: 80px;
+  right: 24px;
+  z-index: 9999;
+  max-width: 420px;
+  animation: update-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes update-bounce {
+  0% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.update-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4),
+              0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.update-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: update-rotate 2s linear infinite;
+}
+
+@keyframes update-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.update-icon svg {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.update-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.update-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.update-desc {
+  font-size: 13px;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+.update-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.update-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.update-btn-primary {
+  background: white;
+  color: #667eea;
+}
+
+.update-btn-primary:hover {
+  background: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.update-btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.update-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.update-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.update-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.update-close svg {
+  width: 16px;
+  height: 16px;
+  color: white;
+}
+
+/* 过渡动画 */
+.update-slide-enter-active {
+  animation: update-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.update-slide-leave-active {
+  animation: update-slide-out 0.4s ease-out;
+}
+
+@keyframes update-slide-out {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px) scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* 暗色模式适配 */
+.dark .update-content {
+  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3),
+              0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .update-notification {
+    top: 60px;
+    right: 16px;
+    left: 16px;
+    max-width: none;
+  }
+
+  .update-content {
+    padding: 16px 18px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .update-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .update-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .update-title {
+    font-size: 15px;
+  }
+
+  .update-desc {
+    font-size: 12px;
+  }
+
+  .update-actions {
+    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  .update-btn {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+}
+
+/* 小屏幕优化 */
+@media (max-width: 480px) {
+  .update-notification {
+    top: 56px;
+    right: 12px;
+    left: 12px;
+  }
+
+  .update-content {
+    padding: 14px 16px;
+  }
+
+  .update-actions {
+    flex-direction: column;
+  }
+
+  .update-btn {
+    width: 100%;
   }
 }

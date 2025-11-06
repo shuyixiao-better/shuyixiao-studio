@@ -17,9 +17,10 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:dev:netlify": "netlify dev",
-    "docs:build": "vitepress build docs && node scripts/generate-rss.mjs",
+    "docs:build": "vitepress build docs && node scripts/generate-rss.mjs && node scripts/generate-version.mjs",
     "docs:preview": "vitepress preview docs",
-    "generate-rss": "node scripts/generate-rss.mjs"
+    "generate-rss": "node scripts/generate-rss.mjs",
+    "generate-version": "node scripts/generate-version.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^8.1.0",

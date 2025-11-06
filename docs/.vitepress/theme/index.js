@@ -20,6 +20,7 @@ import PremiumRecommend from './components/PremiumRecommend.vue'
 import FeedbackWidget from './components/FeedbackWidget.vue'
 import ConsumerCopilot from './components/ConsumerCopilot.vue'
 import RSSFeedCard from './components/RSSFeedCard.vue'
+import UpdateNotification from './components/UpdateNotification.vue'
 
 export default {
   extends: DefaultTheme,
@@ -31,7 +32,9 @@ export default {
       // 文档内容顶部（标题后，目录前）自动插入统计组件
       'doc-top': () => h(ArticleStats),
       // 在布局底部添加反馈组件（全局可见）
-      'layout-bottom': () => h(FeedbackWidget)
+      'layout-bottom': () => h(FeedbackWidget),
+      // 在布局顶部添加更新通知组件（全局可见）
+      'layout-top': () => h(UpdateNotification)
     })
   },
   enhanceApp({ app, router, siteData }) {
@@ -50,6 +53,7 @@ export default {
     app.component('FeedbackWidget', FeedbackWidget)
     app.component('ConsumerCopilot', ConsumerCopilot)
     app.component('RSSFeedCard', RSSFeedCard)
+    app.component('UpdateNotification', UpdateNotification)
   },
   setup() {
     const route = useRoute()
