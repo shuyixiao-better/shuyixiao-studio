@@ -21,6 +21,7 @@ import FeedbackWidget from './components/FeedbackWidget.vue'
 import ConsumerCopilot from './components/ConsumerCopilot.vue'
 import RSSFeedCard from './components/RSSFeedCard.vue'
 import UpdateNotification from './components/UpdateNotification.vue'
+import TechPhilosophy from './components/TechPhilosophy.vue'
 
 export default {
   extends: DefaultTheme,
@@ -54,6 +55,7 @@ export default {
     app.component('ConsumerCopilot', ConsumerCopilot)
     app.component('RSSFeedCard', RSSFeedCard)
     app.component('UpdateNotification', UpdateNotification)
+    app.component('TechPhilosophy', TechPhilosophy)
   },
   setup() {
     const route = useRoute()
