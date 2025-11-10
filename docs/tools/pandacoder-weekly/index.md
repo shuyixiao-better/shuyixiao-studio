@@ -5,199 +5,14 @@ description: 查看和管理你的 Git 周报
 ---
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { onMounted } from 'vue'
 
-// 状态管理
-const loading = ref(true)
-const error = ref(null)
-const iframeUrl = ref('')
-const iframeHeight = ref('800px')
-const isServiceAvailable = ref(false)
-const isMounted = ref(false)
-
-// 检测当前部署环境
-const detectEnvironment = () => {
-  if (typeof window === 'undefined') return 'unknown'
-  
-  const hostname = window.location.hostname
-  
-  // GitHub Pages 域名
-  if (hostname.includes('poeticcoder.cn') || hostname.includes('github.io')) {
-    return 'github'
-  }
-  
-  // Netlify 域名
-  if (hostname.includes('poeticcoder.com') || 
-      hostname.includes('shuyixiao.cn') ||
-      hostname.includes('netlify.app')) {
-    return 'netlify'
-  }
-  
-  return 'unknown'
-}
-
-// 检查服务是否可用
-const checkServiceAvailability = async () => {
-  const env = detectEnvironment()
-
-  // GitHub Pages 环境，显示跳转提示
-  if (env === 'github') {
-    isServiceAvailable.value = false
-    loading.value = false
-    error.value = 'github_redirect'
-    return
-  }
-
-  try {
-    // 直接尝试加载代理服务
-    const response = await fetch('/api/pandacoder-proxy?type=frontend&path=/', {
-      method: 'HEAD',
-      signal: AbortSignal.timeout(5000)
-    })
-
-    console.log('代理服务响应状态:', response.status)
-
-    if (response.status === 503) {
-      // 服务未配置
-      try {
-        const textResponse = await fetch('/api/pandacoder-proxy?type=frontend&path=/')
-        const data = await textResponse.json()
-        error.value = data.code === 'SERVICE_NOT_CONFIGURED'
-          ? 'not_configured'
-          : 'service_unavailable'
-      } catch {
-        error.value = 'not_configured'
-      }
-      isServiceAvailable.value = false
-      loading.value = false
-      return
-    }
-
-    if (response.status === 502) {
-      // 无法连接到后端服务
-      error.value = 'service_unavailable'
-      isServiceAvailable.value = false
-      loading.value = false
-      return
-    }
-
-    // 任何其他状态都尝试显示 iframe
-    isServiceAvailable.value = true
-    iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
-    loading.value = false
-
-  } catch (err) {
-    console.error('Service check failed:', err)
-    // 即使检查失败，也尝试显示 iframe
-    isServiceAvailable.value = true
-    iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
-    loading.value = false
-  }
-}
-
-// 监听 iframe 消息（用于动态调整高度和错误）
-const handleIframeMessage = (event) => {
-  // 只接受来自我们代理的消息
-  if (event.data && event.data.type === 'resize') {
-    iframeHeight.value = event.data.height + 'px'
-  }
-
-  // 监听 iframe 加载错误
-  if (event.data && event.data.type === 'error') {
-    console.error('iframe 加载错误:', event.data.message)
-    error.value = 'iframe_load_error'
-    isServiceAvailable.value = false
-  }
-}
-
-// 监听 iframe 加载事件
-const handleIframeLoad = (event) => {
-  console.log('✅ iframe 加载成功', event)
-  console.log('iframe URL:', iframeUrl.value)
-  loading.value = false
-}
-
-const handleIframeError = (event) => {
-  console.error('❌ iframe 加载失败', event)
-  error.value = 'iframe_load_error'
-  isServiceAvailable.value = false
-  loading.value = false
-}
-
-// 跳转到 Netlify 部署
-const redirectToNetlify = () => {
-  window.location.href = 'https://www.poeticcoder.com/tools/pandacoder-weekly/'
-}
-
-// 错误消息映射
-const errorMessages = computed(() => {
-  const messages = {
-    github_redirect: {
-      title: '功能限制提示',
-      message: 'PandaCoder 周报功能需要后端服务支持，仅在 Netlify 部署环境可用。',
-      action: '访问 Netlify 版本',
-      showButton: true
-    },
-    not_configured: {
-      title: '服务未配置',
-      message: 'PandaCoder 服务尚未配置，请在 Netlify 环境变量中配置 PANDACODER_FRONTEND_URL 和 PANDACODER_BACKEND_URL。',
-      action: '查看配置文档',
-      showButton: false
-    },
-    service_unavailable: {
-      title: '服务暂时不可用',
-      message: 'PandaCoder 服务暂时无法访问，请稍后再试或联系管理员。',
-      action: '重试',
-      showButton: true
-    },
-    network_error: {
-      title: '网络错误',
-      message: '无法连接到 PandaCoder 服务，请检查网络连接。',
-      action: '重试',
-      showButton: true
-    },
-    iframe_load_error: {
-      title: 'iframe 加载失败',
-      message: 'PandaCoder 页面无法在 iframe 中加载，可能是由于浏览器安全策略限制。请尝试刷新页面或检查浏览器控制台获取详细错误信息。',
-      action: '重试',
-      showButton: true
-    }
-  }
-
-  return messages[error.value] || messages.network_error
-})
-
-// 处理错误按钮点击
-const handleErrorAction = () => {
-  if (error.value === 'github_redirect') {
-    redirectToNetlify()
-  } else {
-    // 重试
-    loading.value = true
-    error.value = null
-    checkServiceAvailability()
-  }
-}
-
-// 组件挂载时初始化
 onMounted(() => {
-  console.log('🚀 PandaCoder 周报页面加载')
-
-  // 客户端渲染时设置 iframe URL
-  iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
-  isServiceAvailable.value = true
-  loading.value = false
-  isMounted.value = true
-
-  console.log('✅ iframe URL 已设置:', iframeUrl.value)
-
-  window.addEventListener('message', handleIframeMessage)
+  console.log('🚀 PandaCoder 周报页面已加载')
+  console.log('📍 iframe URL: /api/pandacoder-proxy?type=frontend&path=/')
 })
 
-// 组件卸载时清理
-onUnmounted(() => {
-  window.removeEventListener('message', handleIframeMessage)
-})
+
 </script>
 
 <template>
@@ -207,41 +22,22 @@ onUnmounted(() => {
       <p class="description">查看和管理你的 Git 提交周报</p>
     </div>
 
-    <!-- 调试信息 (开发时可见) -->
-    <div v-if="false" style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px; font-size: 12px;">
-      <p><strong>调试信息:</strong></p>
-      <p>loading: {{ loading }}</p>
-      <p>error: {{ error }}</p>
-      <p>isServiceAvailable: {{ isServiceAvailable }}</p>
-      <p>iframeUrl: {{ iframeUrl }}</p>
-      <p>environment: {{ detectEnvironment() }}</p>
-    </div>
-
-    <!-- 加载提示 -->
-    <div v-if="!isMounted || loading" class="loading-container">
-      <div class="loading-spinner"></div>
-      <p>正在加载 PandaCoder 服务...</p>
-    </div>
-
-    <!-- iframe 内嵌 -->
-    <div v-else-if="isMounted && iframeUrl" class="iframe-container">
-      <iframe
-        :src="iframeUrl"
-        :style="{ height: iframeHeight }"
-        frameborder="0"
-        width="100%"
-        allow="fullscreen"
-        @load="handleIframeLoad"
-        @error="handleIframeError"
-      />
-    </div>
-
-    <!-- 错误提示 -->
-    <div v-else class="error-container">
-      <div class="error-icon">⚠️</div>
-      <h2>加载失败</h2>
-      <p>无法加载 PandaCoder 服务，请刷新页面重试</p>
-    </div>
+    <ClientOnly>
+      <div class="iframe-container">
+        <iframe
+          src="/api/pandacoder-proxy?type=frontend&path=/"
+          style="width: 100%; height: 800px; border: none;"
+          frameborder="0"
+          allow="fullscreen"
+        />
+      </div>
+      <template #fallback>
+        <div class="loading-container">
+          <div class="loading-spinner"></div>
+          <p>正在加载 PandaCoder 服务...</p>
+        </div>
+      </template>
+    </ClientOnly>
   </div>
 </template>
 
