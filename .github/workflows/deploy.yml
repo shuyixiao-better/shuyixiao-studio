@@ -50,6 +50,10 @@ jobs:
 
       - name: Build with VitePress
         run: pnpm run docs:build
+        env:
+          # PandaCoder 周报服务配置（从 GitHub Secrets 读取）
+          PANDACODER_FRONTEND_URL: ${{ secrets.PANDACODER_FRONTEND_URL }}
+          PANDACODER_BACKEND_URL: ${{ secrets.PANDACODER_BACKEND_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

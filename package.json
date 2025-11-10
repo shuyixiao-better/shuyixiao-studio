@@ -20,7 +20,8 @@
     "docs:build": "vitepress build docs && node scripts/generate-rss.mjs && node scripts/generate-version.mjs",
     "docs:preview": "vitepress preview docs",
     "generate-rss": "node scripts/generate-rss.mjs",
-    "generate-version": "node scripts/generate-version.mjs"
+    "generate-version": "node scripts/generate-version.mjs",
+    "verify-security": "node scripts/verify-pandacoder-security.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "^8.1.0",
