@@ -17,6 +17,10 @@ export default async (req, context) => {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    // 移除 X-Frame-Options 限制，允许 iframe 嵌入
+    'X-Frame-Options': 'ALLOWALL',
+    // 设置 CSP 允许 iframe 嵌入
+    'Content-Security-Policy': "frame-ancestors 'self' https://*.poeticcoder.com https://*.netlify.app",
   };
 
   // 处理 OPTIONS 预检请求
@@ -114,6 +118,14 @@ export default async (req, context) => {
       }
     });
 
+    // 移除可能阻止 iframe 嵌入的响应头
+    // 不复制原始响应的 X-Frame-Options 和 CSP
+    delete responseHeaders['x-frame-options'];
+    delete responseHeaders['content-security-policy'];
+
+    // 添加允许 iframe 嵌入的头部
+    responseHeaders['X-Frame-Options'] = 'ALLOWALL';
+
     return new Response(responseBody, {
       status: response.status,
       headers: responseHeaders
@@ -136,24 +148,44 @@ export default async (req, context) => {
  * 重写 HTML 中的链接，将直接链接改为通过代理访问
  */
 function rewriteHtmlLinks(html, type) {
-  // 重写 script src
+  // 重写 script src（包括相对路径）
   html = html.replace(
-    /src="(\/[^"]+)"/g, 
+    /src="(\/[^"]+\.js[^"]*)"/g,
     `src="/api/pandacoder-proxy?type=${type}&path=$1"`
   );
-  
-  // 重写 link href (CSS)
+
+  // 重写 link href (CSS 和其他资源)
   html = html.replace(
-    /href="(\/[^"]+\.css[^"]*)"/g, 
+    /href="(\/[^"]+\.(css|ico|png|jpg|svg)[^"]*)"/g,
     `href="/api/pandacoder-proxy?type=${type}&path=$1"`
   );
-  
+
+  // 重写图片 src
+  html = html.replace(
+    /<img\s+([^>]*\s)?src="(\/[^"]+)"/g,
+    `<img $1src="/api/pandacoder-proxy?type=${type}&path=$2"`
+  );
+
   // 重写 API 调用（假设前端使用 /api/ 前缀）
   html = html.replace(
     /fetch\(['"]\/api\//g,
     `fetch('/api/pandacoder-proxy?type=api&path=/api/`
   );
-  
+
+  // 重写 axios 或其他 HTTP 库的调用
+  html = html.replace(
+    /axios\.(get|post|put|delete|patch)\(['"]\/api\//g,
+    `axios.$1('/api/pandacoder-proxy?type=api&path=/api/`
+  );
+
+  // 添加 base 标签，确保相对路径正确解析
+  if (!html.includes('<base')) {
+    html = html.replace(
+      /<head>/i,
+      `<head>\n  <base href="/api/pandacoder-proxy?type=${type}&path=/">`
+    );
+  }
+
   return html;
 }
 

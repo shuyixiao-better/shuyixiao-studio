@@ -78,12 +78,31 @@ const checkServiceAvailability = async () => {
   }
 }
 
-// 监听 iframe 消息（用于动态调整高度）
+// 监听 iframe 消息（用于动态调整高度和错误）
 const handleIframeMessage = (event) => {
   // 只接受来自我们代理的消息
   if (event.data && event.data.type === 'resize') {
     iframeHeight.value = event.data.height + 'px'
   }
+
+  // 监听 iframe 加载错误
+  if (event.data && event.data.type === 'error') {
+    console.error('iframe 加载错误:', event.data.message)
+    error.value = 'iframe_load_error'
+    isServiceAvailable.value = false
+  }
+}
+
+// 监听 iframe 加载事件
+const handleIframeLoad = () => {
+  console.log('✅ iframe 加载成功')
+}
+
+const handleIframeError = () => {
+  console.error('❌ iframe 加载失败')
+  error.value = 'iframe_load_error'
+  isServiceAvailable.value = false
+  loading.value = false
 }
 
 // 跳转到 Netlify 部署
@@ -117,9 +136,15 @@ const errorMessages = computed(() => {
       message: '无法连接到 PandaCoder 服务，请检查网络连接。',
       action: '重试',
       showButton: true
+    },
+    iframe_load_error: {
+      title: 'iframe 加载失败',
+      message: 'PandaCoder 页面无法在 iframe 中加载，可能是由于浏览器安全策略限制。请尝试刷新页面或检查浏览器控制台获取详细错误信息。',
+      action: '重试',
+      showButton: true
     }
   }
-  
+
   return messages[error.value] || messages.network_error
 })
 
@@ -190,13 +215,16 @@ onUnmounted(() => {
 
     <!-- iframe 内嵌 -->
     <div v-else-if="isServiceAvailable" class="iframe-container">
-      <iframe 
+      <iframe
         :src="iframeUrl"
         :style="{ height: iframeHeight }"
         frameborder="0"
         width="100%"
-        sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads"
+        allow="fullscreen"
         loading="lazy"
+        @load="handleIframeLoad"
+        @error="handleIframeError"
       />
     </div>
   </div>
