@@ -34,24 +34,17 @@ export default async (req, context) => {
     const path = url.searchParams.get('path') || '/';
     const type = url.searchParams.get('type') || 'frontend';
 
-    // 只代理前端页面，API 请求直接返回错误提示
+    // 确定目标 URL
+    let targetUrl;
     if (type === 'api') {
-      return new Response(
-        JSON.stringify({
-          error: 'API 请求不通过代理，请直接访问后端地址',
-          backend: PANDACODER_BACKEND_URL
-        }),
-        {
-          status: 400,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
-        }
-      );
+      // 代理后端 API 请求
+      targetUrl = `${PANDACODER_BACKEND_URL}${path}`;
+      console.log(`🔄 [API] ${req.method} ${path}`);
+    } else {
+      // 代理前端页面请求
+      targetUrl = `${PANDACODER_FRONTEND_URL}${path}`;
+      console.log(`🔄 [Frontend] ${req.method} ${path}`);
     }
-
-    // 确定目标 URL（只处理前端）
-    const targetUrl = `${PANDACODER_FRONTEND_URL}${path}`;
-
-    console.log(`🔄 [frontend] ${req.method} ${targetUrl}`);
 
     // 构建代理请求
     const proxyHeaders = new Headers();
@@ -115,27 +108,39 @@ export default async (req, context) => {
 
     let responseBody;
 
-    // 处理文本内容（HTML/CSS/JS）需要重写
-    if (finalContentType.includes('text/html') || finalContentType.includes('text/css') ||
-        finalContentType.includes('javascript') || finalContentType.includes('application/json')) {
+    // API 请求直接返回，不做任何处理
+    if (type === 'api') {
+      // 对于 JSON 响应，返回文本
+      if (finalContentType.includes('application/json') || finalContentType.includes('text/')) {
+        responseBody = await response.text();
+      } else {
+        responseBody = await response.arrayBuffer();
+      }
+    }
+    // 前端资源需要重写
+    else {
+      // 处理文本内容（HTML/CSS/JS）需要重写
+      if (finalContentType.includes('text/html') || finalContentType.includes('text/css') ||
+          finalContentType.includes('javascript') || finalContentType.includes('application/json')) {
 
-      const text = await response.text();
+        const text = await response.text();
 
-      // HTML 需要重写链接并注入拦截器
-      if (finalContentType.includes('text/html')) {
-        responseBody = rewriteHtml(text);
+        // HTML 需要重写链接并注入拦截器
+        if (finalContentType.includes('text/html')) {
+          responseBody = rewriteHtml(text);
+        }
+        // CSS 需要重写 url()
+        else if (finalContentType.includes('text/css')) {
+          responseBody = rewriteCss(text);
+        }
+        // 其他文本直接返回
+        else {
+          responseBody = text;
+        }
+      } else {
+        // 二进制内容直接返回
+        responseBody = await response.arrayBuffer();
       }
-      // CSS 需要重写 url()
-      else if (finalContentType.includes('text/css')) {
-        responseBody = rewriteCss(text);
-      }
-      // 其他文本直接返回
-      else {
-        responseBody = text;
-      }
-    } else {
-      // 二进制内容直接返回
-      responseBody = await response.arrayBuffer();
     }
 
     // 构建响应头
@@ -239,26 +244,21 @@ function rewriteHtml(html) {
     }
   );
 
-  // 注入配置脚本，让前端直接请求后端 IP
-  const backendUrl = PANDACODER_BACKEND_URL;
+  // 注入配置脚本，让前端通过代理访问后端 API
   const interceptorScript = `
 <script>
 (function() {
-  console.log('🐼 PandaCoder 配置已加载');
-  console.log('📍 后端地址: ${backendUrl}');
-
-  // 拦截 fetch - 将 /api/ 请求重定向到后端 IP
+  // 拦截 fetch - 将 /api/ 请求重定向到代理
   const originalFetch = window.fetch;
   window.fetch = function(url, options) {
     if (typeof url === 'string' && url.startsWith('/api/')) {
-      const backendUrl = '${backendUrl}' + url;
-      console.log('🔄 重定向 fetch:', url, '→', backendUrl);
-      return originalFetch(backendUrl, options);
+      const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
+      return originalFetch(proxyUrl, options);
     }
     return originalFetch(url, options);
   };
 
-  // 拦截 XMLHttpRequest - 将 /api/ 请求重定向到后端 IP
+  // 拦截 XMLHttpRequest - 将 /api/ 请求重定向到代理
   const OriginalXHR = window.XMLHttpRequest;
   window.XMLHttpRequest = function() {
     const xhr = new OriginalXHR();
@@ -266,9 +266,8 @@ function rewriteHtml(html) {
 
     xhr.open = function(method, url, ...args) {
       if (typeof url === 'string' && url.startsWith('/api/')) {
-        const backendUrl = '${backendUrl}' + url;
-        console.log('🔄 重定向 XHR:', url, '→', backendUrl);
-        return originalOpen.call(this, method, backendUrl, ...args);
+        const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
+        return originalOpen.call(this, method, proxyUrl, ...args);
       }
       return originalOpen.call(this, method, url, ...args);
     };
@@ -276,25 +275,22 @@ function rewriteHtml(html) {
     return xhr;
   };
 
-  // 拦截 axios - 将 /api/ 请求重定向到后端 IP
+  // 拦截 axios - 将 /api/ 请求重定向到代理
   let axiosIntercepted = false;
 
   const interceptAxios = (axiosInstance) => {
     if (!axiosInstance || axiosIntercepted) return;
 
     try {
-      console.log('🔧 为 axios 添加拦截器');
       axiosInstance.interceptors.request.use(config => {
         if (config.url && config.url.startsWith('/api/')) {
-          const originalUrl = config.url;
-          config.url = '${backendUrl}' + config.url;
-          console.log('🔄 重定向 axios:', originalUrl, '→', config.url);
+          config.url = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(config.url);
         }
         return config;
       }, error => Promise.reject(error));
       axiosIntercepted = true;
     } catch (e) {
-      console.warn('⚠️ axios 拦截器添加失败:', e);
+      console.warn('⚠️ API 拦截器配置失败:', e);
     }
   };
 
@@ -322,8 +318,6 @@ function rewriteHtml(html) {
   setTimeout(() => window.axios && interceptAxios(window.axios), 100);
   setTimeout(() => window.axios && interceptAxios(window.axios), 500);
   setTimeout(() => window.axios && interceptAxios(window.axios), 1000);
-
-  console.log('✅ 后端 API 重定向配置完成');
 })();
 </script>
 `;
