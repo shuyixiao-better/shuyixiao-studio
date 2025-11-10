@@ -8,11 +8,11 @@ description: 查看和管理你的 Git 周报
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 // 状态管理
-const loading = ref(true)
+const loading = ref(false)
 const error = ref(null)
-const iframeUrl = ref('')
+const iframeUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const iframeHeight = ref('800px')
-const isServiceAvailable = ref(false)
+const isServiceAvailable = ref(true)
 
 // 检测当前部署环境
 const detectEnvironment = () => {
@@ -38,7 +38,7 @@ const detectEnvironment = () => {
 // 检查服务是否可用
 const checkServiceAvailability = async () => {
   const env = detectEnvironment()
-  
+
   // GitHub Pages 环境，显示跳转提示
   if (env === 'github') {
     isServiceAvailable.value = false
@@ -46,34 +46,50 @@ const checkServiceAvailability = async () => {
     error.value = 'github_redirect'
     return
   }
-  
+
   try {
-    // 检查代理服务是否可用
-    const response = await fetch('/api/pandacoder-proxy?type=frontend&path=/health', {
-      method: 'GET'
+    // 直接尝试加载代理服务
+    const response = await fetch('/api/pandacoder-proxy?type=frontend&path=/', {
+      method: 'HEAD',
+      signal: AbortSignal.timeout(5000)
     })
-    
-    if (response.ok || response.status === 404) {
-      // 404 说明代理服务存在，但目标服务可能没有 /health 端点
-      isServiceAvailable.value = true
-      // 设置 iframe URL（通过代理访问）
-      iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
-    } else if (response.status === 503) {
+
+    console.log('代理服务响应状态:', response.status)
+
+    if (response.status === 503) {
       // 服务未配置
-      const data = await response.json()
-      error.value = data.code === 'SERVICE_NOT_CONFIGURED' 
-        ? 'not_configured' 
-        : 'service_unavailable'
+      try {
+        const textResponse = await fetch('/api/pandacoder-proxy?type=frontend&path=/')
+        const data = await textResponse.json()
+        error.value = data.code === 'SERVICE_NOT_CONFIGURED'
+          ? 'not_configured'
+          : 'service_unavailable'
+      } catch {
+        error.value = 'not_configured'
+      }
       isServiceAvailable.value = false
-    } else {
+      loading.value = false
+      return
+    }
+
+    if (response.status === 502) {
+      // 无法连接到后端服务
       error.value = 'service_unavailable'
       isServiceAvailable.value = false
+      loading.value = false
+      return
     }
+
+    // 任何其他状态都尝试显示 iframe
+    isServiceAvailable.value = true
+    iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
+    loading.value = false
+
   } catch (err) {
     console.error('Service check failed:', err)
-    error.value = 'network_error'
-    isServiceAvailable.value = false
-  } finally {
+    // 即使检查失败，也尝试显示 iframe
+    isServiceAvailable.value = true
+    iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
     loading.value = false
   }
 }
@@ -94,12 +110,14 @@ const handleIframeMessage = (event) => {
 }
 
 // 监听 iframe 加载事件
-const handleIframeLoad = () => {
-  console.log('✅ iframe 加载成功')
+const handleIframeLoad = (event) => {
+  console.log('✅ iframe 加载成功', event)
+  console.log('iframe URL:', iframeUrl.value)
+  loading.value = false
 }
 
-const handleIframeError = () => {
-  console.error('❌ iframe 加载失败')
+const handleIframeError = (event) => {
+  console.error('❌ iframe 加载失败', event)
   error.value = 'iframe_load_error'
   isServiceAvailable.value = false
   loading.value = false
@@ -162,7 +180,10 @@ const handleErrorAction = () => {
 
 // 组件挂载时检查服务
 onMounted(() => {
-  checkServiceAvailability()
+  // 暂时跳过检查，直接显示 iframe
+  // checkServiceAvailability()
+  console.log('🚀 PandaCoder 周报页面加载')
+  console.log('iframe URL:', iframeUrl.value)
   window.addEventListener('message', handleIframeMessage)
 })
 
@@ -177,6 +198,16 @@ onUnmounted(() => {
     <div class="page-header">
       <h1>🐼 PandaCoder 周报浏览</h1>
       <p class="description">查看和管理你的 Git 提交周报</p>
+    </div>
+
+    <!-- 调试信息 (开发时可见) -->
+    <div v-if="false" style="margin-bottom: 20px; padding: 15px; background: #f0f0f0; border-radius: 8px; font-size: 12px;">
+      <p><strong>调试信息:</strong></p>
+      <p>loading: {{ loading }}</p>
+      <p>error: {{ error }}</p>
+      <p>isServiceAvailable: {{ isServiceAvailable }}</p>
+      <p>iframeUrl: {{ iframeUrl }}</p>
+      <p>environment: {{ detectEnvironment() }}</p>
     </div>
 
     <!-- 加载状态 -->
@@ -220,9 +251,7 @@ onUnmounted(() => {
         :style="{ height: iframeHeight }"
         frameborder="0"
         width="100%"
-        sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-modals allow-downloads"
         allow="fullscreen"
-        loading="lazy"
         @load="handleIframeLoad"
         @error="handleIframeError"
       />
