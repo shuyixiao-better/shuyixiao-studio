@@ -210,42 +210,8 @@ onUnmounted(() => {
       <p>environment: {{ detectEnvironment() }}</p>
     </div>
 
-    <!-- 加载状态 -->
-    <div v-if="loading" class="loading-container">
-      <div class="loading-spinner"></div>
-      <p>正在加载 PandaCoder 服务...</p>
-    </div>
-
-    <!-- 错误提示 -->
-    <div v-else-if="error" class="error-container">
-      <div class="error-icon">⚠️</div>
-      <h2>{{ errorMessages.title }}</h2>
-      <p>{{ errorMessages.message }}</p>
-      <button 
-        v-if="errorMessages.showButton" 
-        @click="handleErrorAction"
-        class="action-button"
-      >
-        {{ errorMessages.action }}
-      </button>
-      <div v-if="error === 'not_configured'" class="config-hint">
-        <p><strong>配置步骤：</strong></p>
-        <ol>
-          <li>登录 Netlify 后台</li>
-          <li>进入 Site settings → Environment variables</li>
-          <li>添加以下环境变量：
-            <ul>
-              <li><code>PANDACODER_FRONTEND_URL</code>: 前端服务地址（如 http://your-ip:5174）</li>
-              <li><code>PANDACODER_BACKEND_URL</code>: 后端服务地址（如 http://your-ip:8080）</li>
-            </ul>
-          </li>
-          <li>重新部署站点</li>
-        </ol>
-      </div>
-    </div>
-
     <!-- iframe 内嵌 -->
-    <div v-else-if="isServiceAvailable" class="iframe-container">
+    <div class="iframe-container">
       <iframe
         :src="iframeUrl"
         :style="{ height: iframeHeight }"
