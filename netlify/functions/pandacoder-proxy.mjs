@@ -62,15 +62,20 @@ export default async (req, context) => {
 
     console.log(`🔄 Proxying ${type} request to: ${targetUrl.replace(/\/\/[^@]+@/, '//***@')}`);
 
-    // 构建代理请求
+    // 构建代理请求头
     const proxyHeaders = new Headers();
-    
-    // 复制原始请求头（排除 host）
+
+    // 复制原始请求头（排除某些不应该转发的头）
+    const headersToSkip = ['host', 'connection', 'x-forwarded-for', 'x-forwarded-proto', 'x-forwarded-host'];
     for (const [key, value] of req.headers.entries()) {
-      if (key.toLowerCase() !== 'host') {
+      if (!headersToSkip.includes(key.toLowerCase())) {
         proxyHeaders.set(key, value);
       }
     }
+
+    // 添加必要的头部
+    proxyHeaders.set('Origin', PANDACODER_FRONTEND_URL || 'http://81.69.17.52');
+    proxyHeaders.set('Referer', PANDACODER_FRONTEND_URL || 'http://81.69.17.52');
 
     // 发起代理请求
     const proxyRequest = {
@@ -80,8 +85,14 @@ export default async (req, context) => {
 
     // 如果有请求体，添加到代理请求中
     if (req.method !== 'GET' && req.method !== 'HEAD') {
-      proxyRequest.body = await req.text();
+      const body = await req.arrayBuffer();
+      if (body.byteLength > 0) {
+        proxyRequest.body = body;
+      }
     }
+
+    console.log(`📤 代理请求: ${req.method} ${targetUrl}`);
+    console.log(`📋 请求头:`, Object.fromEntries(proxyHeaders.entries()));
 
     const response = await fetch(targetUrl, proxyRequest);
 
