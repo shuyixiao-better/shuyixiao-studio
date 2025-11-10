@@ -170,6 +170,52 @@ function rewriteHtmlLinks(html, type) {
     }
   );
 
+  // 在 <head> 中注入 API 拦截器脚本
+  const interceptorScript = `
+<script>
+(function() {
+  console.log('🔧 PandaCoder API 拦截器已加载');
+
+  // 保存原始的 fetch
+  const originalFetch = window.fetch;
+
+  // 重写 fetch
+  window.fetch = function(url, options) {
+    // 如果是相对路径的 /api/ 请求，重写为代理请求
+    if (typeof url === 'string' && url.startsWith('/api/')) {
+      const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + url;
+      console.log('🔄 拦截 API 请求:', url, '→', proxyUrl);
+      return originalFetch(proxyUrl, options);
+    }
+    return originalFetch(url, options);
+  };
+
+  // 如果使用了 axios，也拦截它
+  if (typeof window !== 'undefined') {
+    const checkAxios = setInterval(() => {
+      if (window.axios) {
+        console.log('🔧 检测到 axios，添加拦截器');
+        window.axios.interceptors.request.use(config => {
+          if (config.url && config.url.startsWith('/api/')) {
+            config.url = '/api/pandacoder-proxy?type=api&path=' + config.url;
+            console.log('🔄 axios 拦截:', config.url);
+          }
+          return config;
+        });
+        clearInterval(checkAxios);
+      }
+    }, 100);
+
+    // 10秒后停止检查
+    setTimeout(() => clearInterval(checkAxios), 10000);
+  }
+})();
+</script>
+`;
+
+  // 在 </head> 之前插入拦截器
+  html = html.replace(/<\/head>/i, interceptorScript + '</head>');
+
   return html;
 }
 
