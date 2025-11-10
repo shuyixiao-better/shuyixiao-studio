@@ -170,45 +170,74 @@ function rewriteHtmlLinks(html, type) {
     }
   );
 
-  // 在 <head> 中注入 API 拦截器脚本
+  // 在 <head> 中注入 API 拦截器脚本（必须在所有其他脚本之前执行）
   const interceptorScript = `
 <script>
 (function() {
   console.log('🔧 PandaCoder API 拦截器已加载');
 
-  // 保存原始的 fetch
+  // 1. 拦截 fetch
   const originalFetch = window.fetch;
-
-  // 重写 fetch
   window.fetch = function(url, options) {
-    // 如果是相对路径的 /api/ 请求，重写为代理请求
     if (typeof url === 'string' && url.startsWith('/api/')) {
       const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + url;
-      console.log('🔄 拦截 API 请求:', url, '→', proxyUrl);
+      console.log('🔄 拦截 fetch:', url, '→', proxyUrl);
       return originalFetch(proxyUrl, options);
     }
     return originalFetch(url, options);
   };
 
-  // 如果使用了 axios，也拦截它
-  if (typeof window !== 'undefined') {
-    const checkAxios = setInterval(() => {
-      if (window.axios) {
-        console.log('🔧 检测到 axios，添加拦截器');
-        window.axios.interceptors.request.use(config => {
-          if (config.url && config.url.startsWith('/api/')) {
-            config.url = '/api/pandacoder-proxy?type=api&path=' + config.url;
-            console.log('🔄 axios 拦截:', config.url);
-          }
-          return config;
-        });
-        clearInterval(checkAxios);
-      }
-    }, 100);
+  // 2. 拦截 XMLHttpRequest
+  const originalOpen = XMLHttpRequest.prototype.open;
+  XMLHttpRequest.prototype.open = function(method, url, ...args) {
+    if (typeof url === 'string' && url.startsWith('/api/')) {
+      const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + url;
+      console.log('🔄 拦截 XHR:', url, '→', proxyUrl);
+      return originalOpen.call(this, method, proxyUrl, ...args);
+    }
+    return originalOpen.call(this, method, url, ...args);
+  };
 
-    // 10秒后停止检查
-    setTimeout(() => clearInterval(checkAxios), 10000);
+  // 3. 拦截 axios（通过劫持 axios.create 和默认实例）
+  let axiosInterceptorAdded = false;
+
+  const addAxiosInterceptor = (axiosInstance) => {
+    if (!axiosInstance || axiosInterceptorAdded) return;
+
+    console.log('🔧 为 axios 实例添加拦截器');
+    axiosInstance.interceptors.request.use(config => {
+      if (config.url && config.url.startsWith('/api/')) {
+        const originalUrl = config.url;
+        config.url = '/api/pandacoder-proxy?type=api&path=' + config.url;
+        console.log('🔄 拦截 axios:', originalUrl, '→', config.url);
+      }
+      return config;
+    }, error => Promise.reject(error));
+
+    axiosInterceptorAdded = true;
+  };
+
+  // 监听 axios 的加载
+  Object.defineProperty(window, 'axios', {
+    configurable: true,
+    enumerable: true,
+    get() {
+      return this._axios;
+    },
+    set(value) {
+      this._axios = value;
+      if (value) {
+        addAxiosInterceptor(value);
+      }
+    }
+  });
+
+  // 如果 axios 已经存在
+  if (window.axios) {
+    addAxiosInterceptor(window.axios);
   }
+
+  console.log('✅ API 拦截器初始化完成');
 })();
 </script>
 `;
