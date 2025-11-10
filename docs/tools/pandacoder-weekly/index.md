@@ -5,7 +5,7 @@ description: 查看和管理你的 Git 周报
 ---
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 // 状态管理
 const loading = ref(true)
