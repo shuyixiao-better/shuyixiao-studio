@@ -55,7 +55,6 @@ export default withMermaid(defineConfig({
         text: '我的工具',
         items: [
           { text: '工具导航', link: '/tools/' },
-          { text: '🐼 PandaCoder 周报', link: '/tools/pandacoder-weekly/' }
         ]
       },
       { text: 'RSS 订阅', link: '/rss/' },

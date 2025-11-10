@@ -11,6 +11,17 @@ description: 效率工具与插件推荐
 <div class="tools-grid">
 
 
+  <a href="/articles/panda-coder-intro" class="tool-card">
+    <div class="tool-icon">🐼</div>
+    <h3 class="tool-title">PandaCoder</h3>
+    <p class="tool-desc">IDEA 代码生成插件，智能生成样板代码，提升开发效率</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">IDEA 插件</span>
+      <span class="tool-tag">开源</span>
+    </div>
+  </a>
+
   <a href="./pandacoder-weekly/" class="tool-card">
     <div class="tool-icon">🐼</div>
     <h3 class="tool-title">PandaCoder 周报</h3>
