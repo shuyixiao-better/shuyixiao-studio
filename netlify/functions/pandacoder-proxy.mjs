@@ -66,16 +66,34 @@ export default async (req, context) => {
     const proxyHeaders = new Headers();
 
     // 复制原始请求头（排除某些不应该转发的头）
-    const headersToSkip = ['host', 'connection', 'x-forwarded-for', 'x-forwarded-proto', 'x-forwarded-host'];
+    const headersToSkip = [
+      'host',
+      'connection',
+      'x-forwarded-for',
+      'x-forwarded-proto',
+      'x-forwarded-host',
+      'origin',  // 不转发原始 origin
+      'referer'  // 不转发原始 referer
+    ];
+
     for (const [key, value] of req.headers.entries()) {
       if (!headersToSkip.includes(key.toLowerCase())) {
         proxyHeaders.set(key, value);
       }
     }
 
-    // 添加必要的头部
-    proxyHeaders.set('Origin', PANDACODER_FRONTEND_URL || 'http://81.69.17.52');
-    proxyHeaders.set('Referer', PANDACODER_FRONTEND_URL || 'http://81.69.17.52');
+    // 设置正确的 Origin 和 Referer（模拟从你的服务器直接访问）
+    const backendOrigin = type === 'api'
+      ? (PANDACODER_BACKEND_URL || 'http://81.69.17.52:8080')
+      : (PANDACODER_FRONTEND_URL || 'http://81.69.17.52');
+
+    proxyHeaders.set('Origin', backendOrigin);
+    proxyHeaders.set('Referer', backendOrigin + '/');
+
+    // 确保 Content-Type 正确传递
+    if (req.headers.get('content-type')) {
+      proxyHeaders.set('Content-Type', req.headers.get('content-type'));
+    }
 
     // 发起代理请求
     const proxyRequest = {
