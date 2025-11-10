@@ -86,18 +86,31 @@ export default async (req, context) => {
     // 获取 Content-Type
     const contentType = response.headers.get('content-type') || '';
 
-    // 根据文件扩展名推断 Content-Type
+    // 根据文件扩展名推断 Content-Type（优先使用扩展名判断）
     let finalContentType = contentType;
-    if (!contentType || contentType === 'application/octet-stream') {
-      if (path.endsWith('.css')) {
-        finalContentType = 'text/css; charset=utf-8';
-      } else if (path.endsWith('.js')) {
-        finalContentType = 'application/javascript; charset=utf-8';
-      } else if (path.endsWith('.json')) {
-        finalContentType = 'application/json; charset=utf-8';
-      } else if (path.endsWith('.html') || path === '/') {
-        finalContentType = 'text/html; charset=utf-8';
-      }
+
+    // 检查文件扩展名
+    if (path.endsWith('.css')) {
+      finalContentType = 'text/css; charset=utf-8';
+    } else if (path.endsWith('.js') || path.endsWith('.mjs')) {
+      finalContentType = 'application/javascript; charset=utf-8';
+    } else if (path.endsWith('.json')) {
+      finalContentType = 'application/json; charset=utf-8';
+    } else if (path.endsWith('.html') || path === '/') {
+      finalContentType = 'text/html; charset=utf-8';
+    } else if (path.endsWith('.png')) {
+      finalContentType = 'image/png';
+    } else if (path.endsWith('.jpg') || path.endsWith('.jpeg')) {
+      finalContentType = 'image/jpeg';
+    } else if (path.endsWith('.svg')) {
+      finalContentType = 'image/svg+xml';
+    } else if (path.endsWith('.woff') || path.endsWith('.woff2')) {
+      finalContentType = 'font/woff2';
+    } else if (path.endsWith('.ttf')) {
+      finalContentType = 'font/ttf';
+    } else if (!contentType || contentType === 'application/octet-stream') {
+      // 如果没有扩展名匹配且没有 Content-Type，默认为 HTML
+      finalContentType = 'text/html; charset=utf-8';
     }
 
     let responseBody;
@@ -174,6 +187,15 @@ export default async (req, context) => {
  * 2. 注入后端 API 重定向脚本
  */
 function rewriteHtml(html) {
+  // 辅助函数：规范化路径
+  const normalizePath = (path) => {
+    // 确保路径以 / 开头
+    if (!path.startsWith('/')) {
+      path = '/' + path;
+    }
+    return path;
+  };
+
   // 重写 script src
   html = html.replace(
     /<script([^>]*)\ssrc=["']([^"']+)["']/gi,
@@ -182,7 +204,8 @@ function rewriteHtml(html) {
       if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('//')) {
         return match;
       }
-      const newSrc = `/api/pandacoder-proxy?type=frontend&path=${src}`;
+      const normalizedSrc = normalizePath(src);
+      const newSrc = `/api/pandacoder-proxy?type=frontend&path=${encodeURIComponent(normalizedSrc)}`;
       return `<script${attrs} src="${newSrc}"`;
     }
   );
@@ -195,7 +218,8 @@ function rewriteHtml(html) {
       if (href.startsWith('http://') || href.startsWith('https://') || href.startsWith('//')) {
         return match;
       }
-      const newHref = `/api/pandacoder-proxy?type=frontend&path=${href}`;
+      const normalizedHref = normalizePath(href);
+      const newHref = `/api/pandacoder-proxy?type=frontend&path=${encodeURIComponent(normalizedHref)}`;
       return `<link${attrs} href="${newHref}"`;
     }
   );
@@ -209,7 +233,8 @@ function rewriteHtml(html) {
           src.startsWith('//') || src.startsWith('data:')) {
         return match;
       }
-      const newSrc = `/api/pandacoder-proxy?type=frontend&path=${src}`;
+      const normalizedSrc = normalizePath(src);
+      const newSrc = `/api/pandacoder-proxy?type=frontend&path=${encodeURIComponent(normalizedSrc)}`;
       return `<img${attrs} src="${newSrc}"`;
     }
   );
@@ -327,6 +352,15 @@ function rewriteHtml(html) {
  * 重写 url() 引用
  */
 function rewriteCss(css) {
+  // 辅助函数：规范化路径
+  const normalizePath = (path) => {
+    // 确保路径以 / 开头
+    if (!path.startsWith('/')) {
+      path = '/' + path;
+    }
+    return path;
+  };
+
   // 重写 url()
   css = css.replace(
     /url\(["']?([^"')]+)["']?\)/gi,
@@ -336,7 +370,8 @@ function rewriteCss(css) {
           url.startsWith('//') || url.startsWith('data:')) {
         return match;
       }
-      const newUrl = `/api/pandacoder-proxy?type=frontend&path=${url}`;
+      const normalizedUrl = normalizePath(url);
+      const newUrl = `/api/pandacoder-proxy?type=frontend&path=${encodeURIComponent(normalizedUrl)}`;
       return `url("${newUrl}")`;
     }
   );
