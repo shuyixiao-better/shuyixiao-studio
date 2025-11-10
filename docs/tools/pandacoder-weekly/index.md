@@ -8,11 +8,12 @@ description: 查看和管理你的 Git 周报
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 // 状态管理
-const loading = ref(false)
+const loading = ref(true)
 const error = ref(null)
-const iframeUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
+const iframeUrl = ref('')
 const iframeHeight = ref('800px')
-const isServiceAvailable = ref(true)
+const isServiceAvailable = ref(false)
+const isMounted = ref(false)
 
 // 检测当前部署环境
 const detectEnvironment = () => {
@@ -178,12 +179,18 @@ const handleErrorAction = () => {
   }
 }
 
-// 组件挂载时检查服务
+// 组件挂载时初始化
 onMounted(() => {
-  // 暂时跳过检查，直接显示 iframe
-  // checkServiceAvailability()
   console.log('🚀 PandaCoder 周报页面加载')
-  console.log('iframe URL:', iframeUrl.value)
+
+  // 客户端渲染时设置 iframe URL
+  iframeUrl.value = '/api/pandacoder-proxy?type=frontend&path=/'
+  isServiceAvailable.value = true
+  loading.value = false
+  isMounted.value = true
+
+  console.log('✅ iframe URL 已设置:', iframeUrl.value)
+
   window.addEventListener('message', handleIframeMessage)
 })
 
@@ -210,8 +217,14 @@ onUnmounted(() => {
       <p>environment: {{ detectEnvironment() }}</p>
     </div>
 
+    <!-- 加载提示 -->
+    <div v-if="!isMounted || loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>正在加载 PandaCoder 服务...</p>
+    </div>
+
     <!-- iframe 内嵌 -->
-    <div class="iframe-container">
+    <div v-else-if="isMounted && iframeUrl" class="iframe-container">
       <iframe
         :src="iframeUrl"
         :style="{ height: iframeHeight }"
@@ -221,6 +234,13 @@ onUnmounted(() => {
         @load="handleIframeLoad"
         @error="handleIframeError"
       />
+    </div>
+
+    <!-- 错误提示 -->
+    <div v-else class="error-container">
+      <div class="error-icon">⚠️</div>
+      <h2>加载失败</h2>
+      <p>无法加载 PandaCoder 服务，请刷新页面重试</p>
     </div>
   </div>
 </template>
