@@ -94,10 +94,14 @@ export default async (req, context) => {
       responseBody = JSON.stringify(responseBody);
     } else if (contentType.includes('text/')) {
       responseBody = await response.text();
-      
+
       // 如果是 HTML，需要重写内部链接
       if (contentType.includes('text/html')) {
         responseBody = rewriteHtmlLinks(responseBody, type);
+      }
+      // 如果是 JavaScript，需要重写 API 调用
+      else if (contentType.includes('javascript')) {
+        responseBody = rewriteJavaScript(responseBody);
       }
     } else {
       responseBody = await response.arrayBuffer();
@@ -148,45 +152,50 @@ export default async (req, context) => {
  * 重写 HTML 中的链接，将直接链接改为通过代理访问
  */
 function rewriteHtmlLinks(html, type) {
-  // 重写 script src（包括相对路径）
+  // 重写 script src（包括相对路径和绝对路径）
   html = html.replace(
-    /src="(\/[^"]+\.js[^"]*)"/g,
-    `src="/api/pandacoder-proxy?type=${type}&path=$1"`
+    /src="(\/[^"]+)"/g,
+    (match, path) => `src="/api/pandacoder-proxy?type=${type}&path=${path}"`
   );
 
   // 重写 link href (CSS 和其他资源)
   html = html.replace(
-    /href="(\/[^"]+\.(css|ico|png|jpg|svg)[^"]*)"/g,
-    `href="/api/pandacoder-proxy?type=${type}&path=$1"`
+    /href="(\/[^"]+)"/g,
+    (match, path) => {
+      // 跳过外部链接
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        return match;
+      }
+      return `href="/api/pandacoder-proxy?type=${type}&path=${path}"`;
+    }
   );
-
-  // 重写图片 src
-  html = html.replace(
-    /<img\s+([^>]*\s)?src="(\/[^"]+)"/g,
-    `<img $1src="/api/pandacoder-proxy?type=${type}&path=$2"`
-  );
-
-  // 重写 API 调用（假设前端使用 /api/ 前缀）
-  html = html.replace(
-    /fetch\(['"]\/api\//g,
-    `fetch('/api/pandacoder-proxy?type=api&path=/api/`
-  );
-
-  // 重写 axios 或其他 HTTP 库的调用
-  html = html.replace(
-    /axios\.(get|post|put|delete|patch)\(['"]\/api\//g,
-    `axios.$1('/api/pandacoder-proxy?type=api&path=/api/`
-  );
-
-  // 添加 base 标签，确保相对路径正确解析
-  if (!html.includes('<base')) {
-    html = html.replace(
-      /<head>/i,
-      `<head>\n  <base href="/api/pandacoder-proxy?type=${type}&path=/">`
-    );
-  }
 
   return html;
+}
+
+/**
+ * 重写 JavaScript 中的 API 调用
+ */
+function rewriteJavaScript(js) {
+  // 重写 fetch 调用
+  js = js.replace(
+    /fetch\s*\(\s*["'`](\/api\/[^"'`]+)["'`]/g,
+    (match, path) => `fetch("/api/pandacoder-proxy?type=api&path=${path}"`
+  );
+
+  // 重写 axios 调用
+  js = js.replace(
+    /axios\.(get|post|put|delete|patch)\s*\(\s*["'`](\/api\/[^"'`]+)["'`]/g,
+    (match, method, path) => `axios.${method}("/api/pandacoder-proxy?type=api&path=${path}"`
+  );
+
+  // 重写 baseURL 配置
+  js = js.replace(
+    /baseURL\s*:\s*["'`](\/api[^"'`]*)["'`]/g,
+    'baseURL:"/api/pandacoder-proxy?type=api&path=/api"'
+  );
+
+  return js;
 }
 
 export const config = {
