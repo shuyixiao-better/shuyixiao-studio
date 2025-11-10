@@ -96,24 +96,37 @@ export default async (req, context) => {
 
     const response = await fetch(targetUrl, proxyRequest);
 
+    console.log(`📥 代理响应: ${response.status} ${response.statusText}`);
+
     // 获取响应内容
     const contentType = response.headers.get('content-type') || '';
     let responseBody;
+    let finalContentType = contentType;
 
-    if (contentType.includes('application/json')) {
+    // 根据 URL 路径判断文件类型（如果 Content-Type 不准确）
+    if (!contentType || contentType === 'application/octet-stream') {
+      if (path.endsWith('.css')) {
+        finalContentType = 'text/css';
+      } else if (path.endsWith('.js')) {
+        finalContentType = 'application/javascript';
+      } else if (path.endsWith('.json')) {
+        finalContentType = 'application/json';
+      } else if (path.endsWith('.html')) {
+        finalContentType = 'text/html';
+      }
+    }
+
+    if (finalContentType.includes('application/json')) {
       responseBody = await response.json();
       responseBody = JSON.stringify(responseBody);
-    } else if (contentType.includes('text/')) {
+    } else if (finalContentType.includes('text/') || finalContentType.includes('javascript')) {
       responseBody = await response.text();
 
       // 如果是 HTML，需要重写内部链接
-      if (contentType.includes('text/html')) {
+      if (finalContentType.includes('text/html')) {
         responseBody = rewriteHtmlLinks(responseBody, type);
       }
-      // 如果是 JavaScript，需要重写 API 调用
-      else if (contentType.includes('javascript')) {
-        responseBody = rewriteJavaScript(responseBody);
-      }
+      // JavaScript 文件不需要重写（拦截器会处理）
     } else {
       responseBody = await response.arrayBuffer();
     }
@@ -121,7 +134,7 @@ export default async (req, context) => {
     // 构建响应头
     const responseHeaders = {
       ...headers,
-      'Content-Type': contentType,
+      'Content-Type': finalContentType,
     };
 
     // 复制其他必要的响应头
@@ -134,12 +147,13 @@ export default async (req, context) => {
     });
 
     // 移除可能阻止 iframe 嵌入的响应头
-    // 不复制原始响应的 X-Frame-Options 和 CSP
     delete responseHeaders['x-frame-options'];
     delete responseHeaders['content-security-policy'];
 
     // 添加允许 iframe 嵌入的头部
     responseHeaders['X-Frame-Options'] = 'ALLOWALL';
+
+    console.log(`✅ 返回响应: ${response.status}, Content-Type: ${finalContentType}`);
 
     return new Response(responseBody, {
       status: response.status,
