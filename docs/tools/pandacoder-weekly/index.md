@@ -5,51 +5,48 @@ description: 查看 PandaCoder 周报
 ---
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const loading = ref(true)
 const error = ref(null)
-const loadProgress = ref(0)
+const iframeKey = ref(0)
 
-let progressInterval = null
+let loadingTimer = null
 
 onMounted(() => {
   console.log('🐼 PandaCoder 周报页面初始化')
   console.log('📍 代理地址:', frontendUrl.value)
 
-  // 模拟加载进度
-  progressInterval = setInterval(() => {
-    if (loadProgress.value < 90) {
-      loadProgress.value += Math.random() * 10
-    }
-  }, 200)
-
-  // 超时检测
-  setTimeout(() => {
+  // 3秒后自动隐藏加载动画（即使 iframe 没触发 load 事件）
+  loadingTimer = setTimeout(() => {
     if (loading.value) {
-      console.warn('⚠️ 加载超时，但继续等待...')
+      console.log('⏰ 加载超时，自动显示内容')
+      loading.value = false
     }
-  }, 10000)
+  }, 3000)
+})
+
+onBeforeUnmount(() => {
+  if (loadingTimer) {
+    clearTimeout(loadingTimer)
+  }
 })
 
 const handleLoad = () => {
-  console.log('✅ iframe 加载成功')
-  loadProgress.value = 100
-  setTimeout(() => {
-    loading.value = false
-    if (progressInterval) {
-      clearInterval(progressInterval)
-    }
-  }, 300)
+  console.log('✅ iframe 加载完成')
+  loading.value = false
+  if (loadingTimer) {
+    clearTimeout(loadingTimer)
+  }
 }
 
 const handleError = (e) => {
   console.error('❌ iframe 加载失败:', e)
   loading.value = false
-  error.value = '加载失败'
-  if (progressInterval) {
-    clearInterval(progressInterval)
+  error.value = true
+  if (loadingTimer) {
+    clearTimeout(loadingTimer)
   }
 }
 
@@ -57,50 +54,43 @@ const retry = () => {
   console.log('🔄 重新加载...')
   error.value = null
   loading.value = true
-  loadProgress.value = 0
-  // 强制刷新 iframe
-  const iframe = document.querySelector('.iframe-wrapper iframe')
-  if (iframe) {
-    iframe.src = iframe.src
-  }
+  iframeKey.value++
+
+  // 重新设置超时
+  loadingTimer = setTimeout(() => {
+    if (loading.value) {
+      loading.value = false
+    }
+  }, 3000)
 }
 </script>
 
 <template>
   <div class="pandacoder-container">
-    <!-- 加载状态 -->
-    <div v-if="loading" class="loading-overlay">
-      <div class="loading-content">
-        <div class="panda-icon">🐼</div>
-        <h2>正在加载 PandaCoder 周报...</h2>
-        <div class="progress-bar">
-          <div class="progress-fill" :style="{ width: loadProgress + '%' }"></div>
-        </div>
-        <p class="loading-tip">{{ Math.round(loadProgress) }}%</p>
+    <!-- 简洁的加载动画 -->
+    <Transition name="fade">
+      <div v-if="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>加载中...</p>
       </div>
-    </div>
+    </Transition>
 
-    <!-- 错误状态 -->
-    <div v-if="error && !loading" class="error-overlay">
-      <div class="error-content">
-        <div class="error-icon">❌</div>
-        <h2>加载失败</h2>
-        <p>无法连接到 PandaCoder 周报服务</p>
-        <div class="error-details">
-          <p>可能的原因：</p>
-          <ul>
-            <li>后端服务未启动</li>
-            <li>网络连接问题</li>
-            <li>Netlify 环境变量未配置</li>
-          </ul>
+    <!-- 错误提示 -->
+    <Transition name="fade">
+      <div v-if="error" class="error-overlay">
+        <div class="error-content">
+          <div class="error-icon">⚠️</div>
+          <h3>加载失败</h3>
+          <p>无法连接到 PandaCoder 周报服务</p>
+          <button @click="retry" class="retry-btn">重试</button>
         </div>
-        <button @click="retry" class="retry-btn">🔄 重试</button>
       </div>
-    </div>
+    </Transition>
 
     <!-- iframe 容器 -->
-    <div class="iframe-wrapper" :class="{ 'iframe-loaded': !loading && !error }">
+    <div class="iframe-wrapper">
       <iframe
+        :key="iframeKey"
         :src="frontendUrl"
         @load="handleLoad"
         @error="handleError"
@@ -122,71 +112,45 @@ const retry = () => {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background: #f5f7fa;
+  background: #f8f9fa;
 }
 
-/* 加载状态 */
+/* 加载动画 */
 .loading-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: rgba(255, 255, 255, 0.95);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in;
+  gap: 16px;
 }
 
-.loading-content {
-  text-align: center;
-  color: white;
-  max-width: 400px;
-  padding: 40px;
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #e0e0e0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
 }
 
-.panda-icon {
-  font-size: 80px;
-  animation: bounce 1s infinite;
-  margin-bottom: 20px;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-.loading-content h2 {
-  font-size: 24px;
-  margin: 20px 0;
-  font-weight: 600;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 8px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 4px;
-  overflow: hidden;
-  margin: 20px 0;
-}
-
-.progress-fill {
-  height: 100%;
-  background: white;
-  border-radius: 4px;
-  transition: width 0.3s ease;
-}
-
-.loading-tip {
+.loading-overlay p {
+  color: #666;
   font-size: 14px;
-  opacity: 0.9;
-  margin-top: 10px;
+  margin: 0;
 }
 
-/* 错误状态 */
+/* 错误提示 */
 .error-overlay {
   position: absolute;
   top: 0;
@@ -198,71 +162,45 @@ const retry = () => {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  animation: fadeIn 0.3s ease-in;
 }
 
 .error-content {
   text-align: center;
-  max-width: 500px;
   padding: 40px;
+  max-width: 400px;
 }
 
 .error-icon {
-  font-size: 80px;
-  margin-bottom: 20px;
+  font-size: 64px;
+  margin-bottom: 16px;
 }
 
-.error-content h2 {
-  font-size: 28px;
-  color: #e74c3c;
-  margin: 20px 0;
-}
-
-.error-content > p {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 30px;
-}
-
-.error-details {
-  background: #f8f9fa;
-  border-radius: 8px;
-  padding: 20px;
-  margin: 20px 0;
-  text-align: left;
-}
-
-.error-details p {
-  font-weight: 600;
-  margin-bottom: 10px;
+.error-content h3 {
+  font-size: 20px;
   color: #333;
+  margin: 0 0 8px 0;
 }
 
-.error-details ul {
-  margin: 0;
-  padding-left: 20px;
+.error-content p {
   color: #666;
-}
-
-.error-details li {
-  margin: 8px 0;
+  font-size: 14px;
+  margin: 0 0 24px 0;
 }
 
 .retry-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #667eea;
   color: white;
   border: none;
-  padding: 12px 32px;
-  font-size: 16px;
-  border-radius: 24px;
+  padding: 10px 24px;
+  font-size: 14px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  margin-top: 20px;
+  transition: all 0.2s;
 }
 
 .retry-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  background: #5568d3;
+  transform: translateY(-1px);
 }
 
 .retry-btn:active {
@@ -273,12 +211,7 @@ const retry = () => {
 .iframe-wrapper {
   width: 100%;
   height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-.iframe-wrapper.iframe-loaded {
-  opacity: 1;
+  position: relative;
 }
 
 .iframe-wrapper iframe {
@@ -286,11 +219,18 @@ const retry = () => {
   height: 100%;
   border: none;
   display: block;
+  background: white;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* 过渡动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
 
