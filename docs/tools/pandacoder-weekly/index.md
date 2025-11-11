@@ -12,6 +12,19 @@ const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 onMounted(() => {
   console.log('🐼 PandaCoder 周报页面加载')
   console.log('📍 代理地址:', frontendUrl.value)
+  
+  // 注册 Service Worker（用于 GitHub Pages 环境）
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/pandacoder-proxy-sw.js')
+        .then(registration => {
+          console.log('🐼 PandaCoder Service Worker 注册成功:', registration.scope)
+        })
+        .catch(error => {
+          console.warn('⚠️ PandaCoder Service Worker 注册失败（可能是在 Netlify 环境）:', error)
+        })
+    })
+  }
 })
 </script>
 
