@@ -46,78 +46,6 @@ onMounted(() => {
         })
       })
     }
-    
-    // 隐藏 VitePress 的导航栏和侧边栏，确保 iframe 全屏显示
-    const hideVitePressUI = () => {
-      // 隐藏所有 VitePress UI 元素
-      const selectors = [
-        '.VPNav',
-        '.VPSidebar',
-        '.VPDocAside',
-        '.VPContent .container',
-        'header',
-        '.Layout header',
-        '.VPDoc header',
-        '.VPContent > .container',
-        '.vp-doc > .container'
-      ]
-      
-      selectors.forEach(selector => {
-        const elements = document.querySelectorAll(selector)
-        elements.forEach(el => {
-          if (el) {
-            el.style.setProperty('display', 'none', 'important')
-            el.style.setProperty('visibility', 'hidden', 'important')
-            el.style.setProperty('opacity', '0', 'important')
-            el.style.setProperty('height', '0', 'important')
-            el.style.setProperty('overflow', 'hidden', 'important')
-            el.style.setProperty('z-index', '-1', 'important')
-          }
-        })
-      })
-      
-      // 调整 VPContent 样式
-      const content = document.querySelector('.VPContent')
-      if (content) {
-        content.style.setProperty('padding', '0', 'important')
-        content.style.setProperty('margin', '0', 'important')
-        content.style.setProperty('max-width', '100vw', 'important')
-      }
-      
-      // 确保 body 和 html 没有 padding/margin
-      document.body.style.margin = '0'
-      document.body.style.padding = '0'
-      document.body.style.overflow = 'hidden'
-      document.documentElement.style.margin = '0'
-      document.documentElement.style.padding = '0'
-      document.documentElement.style.overflow = 'hidden'
-      
-      // 隐藏 Layout 容器的 padding
-      const layout = document.querySelector('.Layout')
-      if (layout) {
-        layout.style.padding = '0'
-        layout.style.margin = '0'
-      }
-    }
-    
-    // 立即执行
-    hideVitePressUI()
-    
-    // 延迟执行，确保 DOM 完全加载
-    setTimeout(hideVitePressUI, 50)
-    setTimeout(hideVitePressUI, 100)
-    setTimeout(hideVitePressUI, 300)
-    setTimeout(hideVitePressUI, 500)
-    
-    // 使用 MutationObserver 监听 DOM 变化，确保新添加的元素也被隐藏
-    const observer = new MutationObserver(() => {
-      hideVitePressUI()
-    })
-    
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true
-    })
   }
 })
 
@@ -252,31 +180,24 @@ const handleRedirect = () => {
   transform: translateY(0);
 }
 
-/* iframe 容器样式 - 全屏显示，覆盖所有 VitePress UI */
+/* iframe 容器样式 */
 .pandacoder-container {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   background: #ffffff;
-  z-index: 99999 !important;
-  margin: 0 !important;
-  padding: 0 !important;
 }
 
 .pandacoder-container iframe {
-  width: 100% !important;
-  height: 100% !important;
-  border: none !important;
-  display: block !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  z-index: 1 !important;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 
 /* 暗色模式支持 */
