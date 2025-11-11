@@ -5,18 +5,60 @@ description: 查看 PandaCoder 周报
 ---
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 
 const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
+const showRedirect = ref(false)
+const netlifyUrl = 'https://www.poeticcoder.com/tools/pandacoder-weekly/'
+
+// 检测当前环境
+const isGitHubPages = computed(() => {
+  if (typeof window === 'undefined') return false
+  const hostname = window.location.hostname
+  return hostname.includes('poeticcoder.cn') || hostname.includes('github.io')
+})
 
 onMounted(() => {
   console.log('🐼 PandaCoder 周报页面加载')
-  console.log('📍 代理地址:', frontendUrl.value)
+  console.log('📍 当前域名:', window.location.hostname)
+  
+  // 如果是 GitHub Pages 环境，显示跳转提示
+  if (isGitHubPages.value) {
+    showRedirect.value = true
+    console.log('⚠️ 检测到 GitHub Pages 环境，显示跳转提示')
+  } else {
+    console.log('✅ 检测到 Netlify 环境，正常加载')
+  }
 })
+
+const handleRedirect = () => {
+  window.location.href = netlifyUrl
+}
 </script>
 
 <template>
-  <div class="pandacoder-container">
+  <!-- GitHub Pages 环境：显示跳转提示 -->
+  <div v-if="showRedirect" class="redirect-container">
+    <div class="redirect-card">
+      <div class="redirect-icon">🐼</div>
+      <h1 class="redirect-title">PandaCoder 周报功能</h1>
+      <p class="redirect-message">
+        当前页面部署在 GitHub Pages 环境，该功能需要在 Netlify 环境中使用。
+      </p>
+      <p class="redirect-hint">
+        请访问 Netlify 部署版本以获得完整功能体验：
+      </p>
+      <div class="redirect-url">
+        <a :href="netlifyUrl" class="redirect-link">{{ netlifyUrl }}</a>
+      </div>
+      <button @click="handleRedirect" class="redirect-button">
+        立即跳转到 Netlify 版本
+      </button>
+    </div>
+  </div>
+
+  <!-- Netlify 环境：正常显示 iframe -->
+  <div v-else class="pandacoder-container">
     <iframe
       :src="frontendUrl"
       frameborder="0"
@@ -27,6 +69,100 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* 跳转提示样式 */
+.redirect-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.redirect-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.redirect-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.redirect-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.redirect-message {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.redirect-hint {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.redirect-url {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.redirect-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 16px;
+  word-break: break-all;
+  transition: color 0.3s;
+}
+
+.redirect-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+.redirect-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.redirect-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.redirect-button:active {
+  transform: translateY(0);
+}
+
+/* iframe 容器样式 */
 .pandacoder-container {
   position: fixed;
   top: 0;
@@ -44,6 +180,33 @@ onMounted(() => {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .redirect-card {
+    background: #1e1e1e;
+  }
+
+  .redirect-title {
+    color: #fff;
+  }
+
+  .redirect-message {
+    color: #ccc;
+  }
+
+  .redirect-hint {
+    color: #999;
+  }
+
+  .redirect-url {
+    background: #2a2a2a;
+  }
+
+  .pandacoder-container {
+    background: #1e1e1e;
+  }
 }
 </style>
 
