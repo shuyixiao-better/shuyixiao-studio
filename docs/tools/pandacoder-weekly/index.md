@@ -52,7 +52,7 @@ const handleRedirect = () => {
         <a :href="netlifyUrl" class="redirect-link">{{ netlifyUrl }}</a>
       </div>
       <button @click="handleRedirect" class="redirect-button">
-        立即跳转到 Netlify 版本
+        立即跳转到主域名版本
       </button>
     </div>
   </div>
