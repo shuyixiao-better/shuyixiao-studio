@@ -28,6 +28,24 @@ onMounted(() => {
     console.log('⚠️ 检测到 GitHub Pages 环境，显示跳转提示')
   } else {
     console.log('✅ 检测到 Netlify 环境，正常加载')
+    
+    // 在 Netlify 环境中，取消注册可能存在的 Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(registrations => {
+        registrations.forEach(registration => {
+          // 如果注册了 pandacoder-proxy-sw，取消注册
+          if (registration.scope.includes('pandacoder-proxy-sw') || 
+              registration.active?.scriptURL?.includes('pandacoder-proxy-sw')) {
+            console.log('🗑️ 取消注册 Service Worker:', registration.scope)
+            registration.unregister().then(success => {
+              if (success) {
+                console.log('✅ Service Worker 已取消注册')
+              }
+            })
+          }
+        })
+      })
+    }
   }
 })
 
