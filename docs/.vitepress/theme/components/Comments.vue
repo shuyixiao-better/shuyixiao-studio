@@ -99,6 +99,30 @@
     <div v-if="previewImg" class="image-modal" @click="previewImg = null">
       <img :src="previewImg" />
     </div>
+
+    <!-- Toast 提示 -->
+    <div v-if="toast.show" class="toast" :class="toast.type">
+      {{ toast.message }}
+    </div>
+
+    <!-- 密码输入对话框 -->
+    <div v-if="passwordDialog.show" class="dialog-overlay" @click="passwordDialog.show = false">
+      <div class="dialog" @click.stop>
+        <h3>删除评论</h3>
+        <p>请输入管理员密码</p>
+        <input 
+          v-model="passwordDialog.password" 
+          type="password" 
+          placeholder="管理员密码"
+          class="dialog-input"
+          @keyup.enter="confirmDelete"
+        />
+        <div class="dialog-actions">
+          <button @click="passwordDialog.show = false" class="dialog-btn cancel">取消</button>
+          <button @click="confirmDelete" class="dialog-btn confirm">确认删除</button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -117,6 +141,8 @@ const submitting = ref(false);
 const previewImg = ref(null);
 const showDeleteButton = ref(false);
 const deleteMode = ref(false);
+const toast = ref({ show: false, message: '', type: 'success' });
+const passwordDialog = ref({ show: false, commentId: null });
 
 // API 基础路径
 const API_BASE = import.meta.env.DEV 
@@ -149,10 +175,18 @@ const loadComments = async () => {
   }
 };
 
+// 显示 Toast 提示
+const showToast = (message, type = 'success') => {
+  toast.value = { show: true, message, type };
+  setTimeout(() => {
+    toast.value.show = false;
+  }, 3000);
+};
+
 // 提交评论
 const submitComment = async () => {
   if (!form.value.author.trim() || !form.value.content.trim()) {
-    alert('请填写昵称和评论内容');
+    showToast('请填写昵称和评论内容', 'error');
     return;
   }
 
@@ -185,24 +219,37 @@ const submitComment = async () => {
       // 直接添加到评论列表，无需重新加载
       comments.value.unshift(data.comment);
       
-      alert('评论发表成功！');
+      showToast('评论发表成功！', 'success');
       form.value.content = '';
       form.value.images = [];
     } else {
-      alert('评论发表失败：' + (data.error || '未知错误'));
+      showToast('评论发表失败：' + (data.error || '未知错误'), 'error');
     }
   } catch (error) {
     console.error('提交评论失败:', error);
-    alert('评论发表失败，请稍后重试');
+    showToast('评论发表失败，请稍后重试', 'error');
   } finally {
     submitting.value = false;
   }
 };
 
 // 删除评论
-const deleteComment = async (commentId) => {
-  const password = prompt('请输入管理员密码：');
-  if (!password) return;
+const deleteComment = (commentId) => {
+  passwordDialog.value = {
+    show: true,
+    commentId,
+    password: ''
+  };
+};
+
+// 确认删除
+const confirmDelete = async () => {
+  const { commentId, password } = passwordDialog.value;
+  
+  if (!password) {
+    showToast('请输入密码', 'error');
+    return;
+  }
 
   try {
     console.log('删除评论:', commentId);
@@ -222,16 +269,19 @@ const deleteComment = async (commentId) => {
     const data = await response.json();
     console.log('删除响应:', data);
     
+    passwordDialog.value.show = false;
+    
     if (data.success) {
       // 直接从列表中移除，无需重新加载
       comments.value = comments.value.filter(c => c.id !== commentId);
-      alert('评论已删除');
+      showToast('评论已删除', 'success');
     } else {
-      alert('删除失败：' + (data.error || '未知错误'));
+      showToast('删除失败：' + (data.error || '未知错误'), 'error');
     }
   } catch (error) {
     console.error('删除评论失败:', error);
-    alert('删除失败，请稍后重试');
+    showToast('删除失败，请稍后重试', 'error');
+    passwordDialog.value.show = false;
   }
 };
 
@@ -240,13 +290,13 @@ const handleImageUpload = async (event) => {
   const files = Array.from(event.target.files);
   
   if (form.value.images.length + files.length > 3) {
-    alert('最多只能上传3张图片');
+    showToast('最多只能上传3张图片', 'error');
     return;
   }
 
   for (const file of files) {
     if (file.size > 2 * 1024 * 1024) {
-      alert(`图片 ${file.name} 超过2MB，请压缩后上传`);
+      showToast(`图片 ${file.name} 超过2MB，请压缩后上传`, 'error');
       continue;
     }
 
@@ -268,19 +318,20 @@ const handlePaste = async (event) => {
       event.preventDefault();
       
       if (form.value.images.length >= 3) {
-        alert('最多只能上传3张图片');
+        showToast('最多只能上传3张图片', 'error');
         return;
       }
 
       const file = item.getAsFile();
       if (file.size > 2 * 1024 * 1024) {
-        alert('图片超过2MB，请压缩后上传');
+        showToast('图片超过2MB，请压缩后上传', 'error');
         continue;
       }
 
       const reader = new FileReader();
       reader.onload = (e) => {
         form.value.images.push(e.target.result);
+        showToast('图片已添加', 'success');
       };
       reader.readAsDataURL(file);
     }
@@ -601,6 +652,147 @@ onMounted(() => {
   max-width: 90%;
   max-height: 90%;
   object-fit: contain;
+}
+
+/* Toast 提示 */
+.toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  z-index: 10000;
+  animation: slideDown 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.toast.success {
+  background: #67c23a;
+}
+
+.toast.error {
+  background: #f56c6c;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* 对话框 */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog {
+  background: var(--vp-c-bg);
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.2s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.dialog h3 {
+  margin: 0 0 8px 0;
+  color: var(--vp-c-text-1);
+  font-size: 18px;
+}
+
+.dialog p {
+  margin: 0 0 16px 0;
+  color: var(--vp-c-text-2);
+  font-size: 14px;
+}
+
+.dialog-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  font-size: 14px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.dialog-input:focus {
+  outline: none;
+  border-color: var(--vp-c-brand);
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.dialog-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dialog-btn.cancel {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+}
+
+.dialog-btn.cancel:hover {
+  background: var(--vp-c-divider);
+}
+
+.dialog-btn.confirm {
+  background: #f56c6c;
+  color: white;
+}
+
+.dialog-btn.confirm:hover {
+  background: #f45454;
 }
 
 @media (max-width: 768px) {
