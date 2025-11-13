@@ -467,7 +467,8 @@ export default withMermaid(defineConfig({
                 { text: '注意力守护：如何摆脱算法诱导的消费陷阱', link: '/tutorials/insights/life-wisdom/algorithmic-attention-trap' },
                 { text: '工作与生活的平衡', link: '/tutorials/insights/life-wisdom/work-life-balance' },
                 { text: '时间管理的艺术', link: '/tutorials/insights/life-wisdom/time-management' },
-                { text: '兴趣爱好的培养', link: '/tutorials/insights/life-wisdom/hobbies' }
+                { text: '兴趣爱好的培养', link: '/tutorials/insights/life-wisdom/hobbies' },
+                { text: '自我驯化：喧嚣中守住专注', link: '/tutorials/insights/life-wisdom/self-mastery-focus-in-noise' }
               ]
             },
             {
