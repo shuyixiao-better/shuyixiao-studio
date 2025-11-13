@@ -22,16 +22,26 @@ import ConsumerCopilot from './components/ConsumerCopilot.vue'
 import RSSFeedCard from './components/RSSFeedCard.vue'
 import UpdateNotification from './components/UpdateNotification.vue'
 import TechPhilosophy from './components/TechPhilosophy.vue'
+import Comments from './components/Comments.vue'
+import CommentsPlaceholder from './components/CommentsPlaceholder.vue'
 
 export default {
   extends: DefaultTheme,
   // 通过 Layout 插槽自定义布局
   Layout() {
+    // 检测是否为 Netlify 环境（支持评论功能）
+    const isNetlify = typeof window !== 'undefined' && 
+      (window.location.hostname.includes('netlify') || 
+       window.location.hostname === 'www.poeticcoder.com' ||
+       window.location.hostname === 'localhost');
+    
     return h(DefaultTheme.Layout, null, {
       // 404 页面
       'not-found': () => h(NotFound),
       // 文档内容顶部（标题后，目录前）自动插入统计组件
       'doc-top': () => h(ArticleStats),
+      // 文档内容底部添加评论组件（根据环境选择）
+      'doc-after': () => isNetlify ? h(Comments) : h(CommentsPlaceholder),
       // 在布局底部添加反馈组件（全局可见）
       'layout-bottom': () => h(FeedbackWidget),
       // 在布局顶部添加更新通知组件（全局可见）
@@ -56,6 +66,8 @@ export default {
     app.component('RSSFeedCard', RSSFeedCard)
     app.component('UpdateNotification', UpdateNotification)
     app.component('TechPhilosophy', TechPhilosophy)
+    app.component('Comments', Comments)
+    app.component('CommentsPlaceholder', CommentsPlaceholder)
   },
   setup() {
     const route = useRoute()
