@@ -106,10 +106,15 @@ const submitting = ref(false);
 const previewImg = ref(null);
 const showDeleteButton = ref(false);
 
-// API 基础路径
+// API 基础路径 - 临时使用测试版本
 const API_BASE = import.meta.env.DEV 
   ? 'http://localhost:8888/.netlify/functions'
   : '/.netlify/functions';
+
+// 临时使用测试 API
+const API_ENDPOINT = import.meta.env.DEV 
+  ? `${API_BASE}/comments`
+  : `${API_BASE}/comments-test`; // 临时改为测试版本
 
 // 获取当前文章路径
 const getArticlePath = () => {
@@ -120,7 +125,7 @@ const getArticlePath = () => {
 const loadComments = async () => {
   try {
     const path = getArticlePath();
-    const response = await fetch(`${API_BASE}/comments?path=${encodeURIComponent(path)}`);
+    const response = await fetch(`${API_ENDPOINT}?path=${encodeURIComponent(path)}`);
     const data = await response.json();
     if (data.comments) {
       comments.value = data.comments.sort((a, b) => 
@@ -141,7 +146,7 @@ const submitComment = async () => {
 
   submitting.value = true;
   try {
-    const response = await fetch(`${API_BASE}/comments`, {
+    const response = await fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -177,7 +182,7 @@ const deleteComment = async (commentId) => {
   if (!password) return;
 
   try {
-    const response = await fetch(`${API_BASE}/comments`, {
+    const response = await fetch(API_ENDPOINT, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
