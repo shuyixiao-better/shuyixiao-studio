@@ -205,6 +205,8 @@ const deleteComment = async (commentId) => {
   if (!password) return;
 
   try {
+    console.log('删除评论:', commentId);
+    
     const response = await fetch(API_ENDPOINT, {
       method: 'DELETE',
       headers: {
@@ -218,9 +220,12 @@ const deleteComment = async (commentId) => {
     });
 
     const data = await response.json();
+    console.log('删除响应:', data);
+    
     if (data.success) {
+      // 直接从列表中移除，无需重新加载
+      comments.value = comments.value.filter(c => c.id !== commentId);
       alert('评论已删除');
-      await loadComments();
     } else {
       alert('删除失败：' + (data.error || '未知错误'));
     }
@@ -603,8 +608,27 @@ onMounted(() => {
     padding: 20px;
   }
   
+  .comments-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .toggle-delete-btn {
+    width: 100%;
+  }
+  
   .comment-item {
     padding: 16px;
+  }
+  
+  .comment-header {
+    flex-wrap: wrap;
+  }
+  
+  .delete-btn {
+    margin-left: 0;
+    margin-top: 8px;
   }
   
   .comment-image {
