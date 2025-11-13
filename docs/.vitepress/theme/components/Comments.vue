@@ -43,13 +43,15 @@
         placeholder="您的昵称" 
         class="form-input"
         maxlength="20"
+        @paste="handlePaste"
       />
       <textarea 
         v-model="form.content" 
-        placeholder="说点什么吧..." 
+        placeholder="说点什么吧...（支持 Ctrl+V 粘贴图片）" 
         class="form-textarea"
         rows="4"
         maxlength="500"
+        @paste="handlePaste"
       ></textarea>
       
       <!-- 图片上传 -->
@@ -146,6 +148,13 @@ const submitComment = async () => {
 
   submitting.value = true;
   try {
+    console.log('提交评论:', {
+      path: getArticlePath(),
+      author: form.value.author,
+      contentLength: form.value.content.length,
+      imagesCount: form.value.images.length
+    });
+
     const response = await fetch(API_ENDPOINT, {
       method: 'POST',
       headers: {
@@ -160,11 +169,15 @@ const submitComment = async () => {
     });
 
     const data = await response.json();
+    console.log('提交响应:', data);
+
     if (data.success) {
+      // 直接添加到评论列表，无需重新加载
+      comments.value.unshift(data.comment);
+      
       alert('评论发表成功！');
       form.value.content = '';
       form.value.images = [];
-      await loadComments();
     } else {
       alert('评论发表失败：' + (data.error || '未知错误'));
     }
@@ -227,6 +240,35 @@ const handleImageUpload = async (event) => {
       form.value.images.push(e.target.result);
     };
     reader.readAsDataURL(file);
+  }
+};
+
+// 处理粘贴事件（支持粘贴图片）
+const handlePaste = async (event) => {
+  const items = event.clipboardData?.items;
+  if (!items) return;
+
+  for (const item of items) {
+    if (item.type.indexOf('image') !== -1) {
+      event.preventDefault();
+      
+      if (form.value.images.length >= 3) {
+        alert('最多只能上传3张图片');
+        return;
+      }
+
+      const file = item.getAsFile();
+      if (file.size > 2 * 1024 * 1024) {
+        alert('图片超过2MB，请压缩后上传');
+        continue;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        form.value.images.push(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   }
 };
 
