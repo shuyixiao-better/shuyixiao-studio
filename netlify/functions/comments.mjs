@@ -1,5 +1,6 @@
 import { getStore } from '@netlify/blobs';
 import nodemailer from 'nodemailer';
+import process from 'node:process';
 
 // 邮件配置
 const createTransporter = () => {
