@@ -464,7 +464,7 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: '认知边界：为何我们省不了认知之外的钱', link: '/tutorials/insights/life-wisdom/cognitive-money-management' },
-                { text: '程序员的健康生活', link: '/tutorials/insights/life-wisdom/healthy-living' },
+                { text: '注意力守护：如何摆脱算法诱导的消费陷阱', link: '/tutorials/insights/life-wisdom/algorithmic-attention-trap' },
                 { text: '工作与生活的平衡', link: '/tutorials/insights/life-wisdom/work-life-balance' },
                 { text: '时间管理的艺术', link: '/tutorials/insights/life-wisdom/time-management' },
                 { text: '兴趣爱好的培养', link: '/tutorials/insights/life-wisdom/hobbies' }
