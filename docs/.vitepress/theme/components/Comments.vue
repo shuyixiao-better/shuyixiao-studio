@@ -1,6 +1,15 @@
 <template>
   <div class="comments-section">
-    <h2 class="comments-title">💬 评论区</h2>
+    <div class="comments-header">
+      <h2 class="comments-title">💬 评论区</h2>
+      <button 
+        @click="deleteMode = !deleteMode" 
+        class="toggle-delete-btn"
+        :class="{ active: deleteMode }"
+      >
+        {{ deleteMode ? '✅ 退出删除模式' : '🗑️ 管理评论' }}
+      </button>
+    </div>
     
     <!-- 评论列表 -->
     <div v-if="comments.length > 0" class="comments-list">
@@ -9,12 +18,12 @@
           <span class="comment-author">{{ comment.author }}</span>
           <span class="comment-time">{{ formatTime(comment.timestamp) }}</span>
           <button 
-            v-if="showDeleteButton"
+            v-if="deleteMode"
             @click="deleteComment(comment.id)" 
             class="delete-btn"
             title="删除评论"
           >
-            🗑️
+            🗑️ 删除
           </button>
         </div>
         <div class="comment-content" v-html="formatContent(comment.content)"></div>
@@ -107,6 +116,7 @@ const form = ref({
 const submitting = ref(false);
 const previewImg = ref(null);
 const showDeleteButton = ref(false);
+const deleteMode = ref(false);
 
 // API 基础路径
 const API_BASE = import.meta.env.DEV 
@@ -335,10 +345,40 @@ onMounted(() => {
   border-radius: 12px;
 }
 
+.comments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
 .comments-title {
   font-size: 24px;
-  margin-bottom: 24px;
+  margin: 0;
   color: var(--vp-c-text-1);
+}
+
+.toggle-delete-btn {
+  padding: 8px 16px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-2);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.toggle-delete-btn:hover {
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+}
+
+.toggle-delete-btn.active {
+  background: var(--vp-c-brand);
+  color: white;
+  border-color: var(--vp-c-brand);
 }
 
 .comments-list {
@@ -372,16 +412,19 @@ onMounted(() => {
 
 .delete-btn {
   margin-left: auto;
-  background: none;
+  padding: 4px 12px;
+  background: #ff4444;
+  color: white;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
-  opacity: 0.6;
-  transition: opacity 0.2s;
+  font-size: 12px;
+  transition: all 0.2s;
 }
 
 .delete-btn:hover {
-  opacity: 1;
+  background: #cc0000;
+  transform: scale(1.05);
 }
 
 .comment-content {

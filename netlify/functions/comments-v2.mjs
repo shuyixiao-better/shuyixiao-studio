@@ -18,12 +18,21 @@ const createTransporter = () => {
 
 // 发送邮件通知
 const sendEmailNotification = async (comment, articlePath) => {
-    if (!process.env.ADMIN_EMAIL || !process.env.SMTP_USER) {
-        console.log('⚠️ 邮件配置未设置，跳过邮件通知');
+    console.log('📧 检查邮件配置:', {
+        hasAdminEmail: !!process.env.ADMIN_EMAIL,
+        hasSmtpUser: !!process.env.SMTP_USER,
+        hasSmtpPass: !!process.env.SMTP_PASS,
+        smtpHost: process.env.SMTP_HOST || 'smtp.163.com'
+    });
+
+    if (!process.env.ADMIN_EMAIL || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        console.log('⚠️ 邮件配置不完整，跳过邮件通知');
+        console.log('需要配置: ADMIN_EMAIL, SMTP_USER, SMTP_PASS');
         return;
     }
 
     try {
+        console.log('📧 开始发送邮件...');
         const transporter = createTransporter();
         const mailOptions = {
             from: process.env.SMTP_USER,
@@ -48,10 +57,11 @@ const sendEmailNotification = async (comment, articlePath) => {
             `,
         };
 
-        await transporter.sendMail(mailOptions);
-        console.log('✅ 邮件通知发送成功');
+        const info = await transporter.sendMail(mailOptions);
+        console.log('✅ 邮件发送成功:', info.messageId);
     } catch (error) {
         console.error('❌ 发送邮件失败:', error.message);
+        console.error('错误详情:', error);
     }
 };
 
