@@ -964,4 +964,21 @@ description: 个人简介与联系方式
 }
 </style>
 
+<div class="naval-reflection-section">
+  <div class="naval-container">
+    <div class="naval-icon">🤔</div>
+    <h2 class="naval-title">最后送你一句纳瓦尔式自问：</h2>
+    <div class="naval-content">
+      <div class="naval-quote">
+        <p class="naval-english">"If I can't sell it, don't watch it."</p>
+        <p class="naval-chinese">如果这内容不能帮我赚钱、不能帮我创造、不能帮我理解世界，那我为什么要让它进入我的大脑？</p>
+      </div>
+      <div class="naval-explanation">
+        <p class="naval-wisdom">纳瓦尔的反思自问，提醒我们时刻审视自己消费的内容是否真正有价值。在信息爆炸的时代，有选择地摄入知识，才能让有限的精力产生最大的价值。</p>
+        <p class="naval-closing">愿你的每一次点击，都是对时间的尊重和价值的投资 💎</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 > 让我们一起用代码改变世界。
