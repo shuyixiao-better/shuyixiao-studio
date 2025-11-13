@@ -106,15 +106,15 @@ const submitting = ref(false);
 const previewImg = ref(null);
 const showDeleteButton = ref(false);
 
-// API 基础路径 - 临时使用测试版本
+// API 基础路径
 const API_BASE = import.meta.env.DEV 
   ? 'http://localhost:8888/.netlify/functions'
   : '/.netlify/functions';
 
-// 临时使用测试 API
+// 使用 v2 版本（不依赖邮件功能）
 const API_ENDPOINT = import.meta.env.DEV 
   ? `${API_BASE}/comments`
-  : `${API_BASE}/comments-test`; // 临时改为测试版本
+  : `${API_BASE}/comments-v2`;
 
 // 获取当前文章路径
 const getArticlePath = () => {
