@@ -18,11 +18,19 @@ const createTransporter = () => {
 
 // 发送邮件通知
 const sendEmailNotification = async (comment, articlePath) => {
+    console.log('📧 ========== 开始发送邮件通知 ==========');
+    console.log('📧 文章路径:', articlePath);
+    console.log('📧 评论者:', comment.author);
+    console.log('📧 评论内容:', comment.content);
+    
     console.log('📧 检查邮件配置:', {
         hasAdminEmail: !!process.env.ADMIN_EMAIL,
+        adminEmail: process.env.ADMIN_EMAIL,
         hasSmtpUser: !!process.env.SMTP_USER,
+        smtpUser: process.env.SMTP_USER,
         hasSmtpPass: !!process.env.SMTP_PASS,
-        smtpHost: process.env.SMTP_HOST || 'smtp.163.com'
+        smtpHost: process.env.SMTP_HOST || 'smtp.163.com',
+        smtpPort: process.env.SMTP_PORT || '465'
     });
 
     if (!process.env.ADMIN_EMAIL || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
@@ -32,36 +40,64 @@ const sendEmailNotification = async (comment, articlePath) => {
     }
 
     try {
-        console.log('📧 开始发送邮件...');
+        console.log('📧 创建邮件传输器...');
         const transporter = createTransporter();
+        
+        console.log('📧 验证 SMTP 连接...');
+        await transporter.verify();
+        console.log('✅ SMTP 连接验证成功');
+        
+        // 移除 .html 后缀
+        const cleanPath = articlePath.replace('.html', '');
+        
         const mailOptions = {
             from: process.env.SMTP_USER,
             to: process.env.ADMIN_EMAIL,
-            subject: `新评论通知 - ${articlePath}`,
+            subject: `新评论通知 - ${comment.author}`,
             html: `
-                <h2>您的博客收到新评论</h2>
-                <p><strong>文章：</strong>${articlePath}</p>
-                <p><strong>评论者：</strong>${comment.author}</p>
-                <p><strong>评论时间：</strong>${new Date(comment.timestamp).toLocaleString('zh-CN')}</p>
-                <p><strong>评论内容：</strong></p>
-                <div style="padding: 10px; background: #f5f5f5; border-radius: 4px;">
-                    ${comment.content}
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #333;">您的博客收到新评论</h2>
+                    <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <p><strong>文章：</strong>${cleanPath}</p>
+                        <p><strong>评论者：</strong>${comment.author}</p>
+                        <p><strong>评论时间：</strong>${new Date(comment.timestamp).toLocaleString('zh-CN')}</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-left: 4px solid #42b883; margin: 20px 0;">
+                        <p><strong>评论内容：</strong></p>
+                        <p style="color: #333; line-height: 1.6;">${comment.content}</p>
+                    </div>
+                    ${comment.images && comment.images.length > 0 ? `
+                        <div style="margin: 20px 0;">
+                            <p><strong>图片：</strong></p>
+                            ${comment.images.map(img => `<img src="${img}" style="max-width: 300px; margin: 5px; border-radius: 4px;" />`).join('')}
+                        </div>
+                    ` : ''}
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="https://www.poeticcoder.com${cleanPath}" 
+                           style="display: inline-block; padding: 12px 24px; background: #42b883; color: white; text-decoration: none; border-radius: 6px;">
+                            查看评论
+                        </a>
+                    </div>
                 </div>
-                ${comment.images && comment.images.length > 0 ? `
-                    <p><strong>图片：</strong></p>
-                    ${comment.images.map(img => `<img src="${img}" style="max-width: 300px; margin: 5px;" />`).join('')}
-                ` : ''}
-                <p style="margin-top: 20px;">
-                    <a href="https://www.poeticcoder.com${articlePath}">查看评论</a>
-                </p>
             `,
         };
 
+        console.log('📧 发送邮件到:', mailOptions.to);
+        console.log('📧 邮件主题:', mailOptions.subject);
+        
         const info = await transporter.sendMail(mailOptions);
-        console.log('✅ 邮件发送成功:', info.messageId);
+        console.log('✅ 邮件发送成功!');
+        console.log('✅ Message ID:', info.messageId);
+        console.log('✅ Response:', info.response);
+        console.log('📧 ========== 邮件发送完成 ==========');
     } catch (error) {
-        console.error('❌ 发送邮件失败:', error.message);
-        console.error('错误详情:', error);
+        console.error('❌ ========== 邮件发送失败 ==========');
+        console.error('❌ 错误类型:', error.name);
+        console.error('❌ 错误信息:', error.message);
+        console.error('❌ 错误代码:', error.code);
+        console.error('❌ 完整错误:', error);
+        console.error('❌ 错误堆栈:', error.stack);
+        throw error; // 重新抛出错误，让调用者知道失败了
     }
 };
 
@@ -154,10 +190,13 @@ export default async (req) => {
             await store.setJSON(blobKey, comments);
             console.log('✅ 评论保存成功，总数:', comments.length);
 
-            // 发送邮件通知（异步，不阻塞响应）
-            sendEmailNotification(newComment, path).catch(err => {
-                console.error('❌ 邮件通知失败（非阻塞）:', err.message);
-            });
+            // 发送邮件通知（同步等待，确保发送）
+            try {
+                await sendEmailNotification(newComment, path);
+            } catch (err) {
+                console.error('❌ 邮件通知失败:', err.message);
+                // 邮件失败不影响评论提交
+            }
 
             return new Response(
                 JSON.stringify({ success: true, comment: newComment }),
