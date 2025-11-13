@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer';
 // 邮件配置
 const createTransporter = () => {
   return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.qq.com',
+    host: process.env.SMTP_HOST || 'smtp.163.com',
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true,
     auth: {
