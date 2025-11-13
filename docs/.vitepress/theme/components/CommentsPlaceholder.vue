@@ -4,19 +4,18 @@
       <div class="icon">💬</div>
       <h3>评论功能</h3>
       <p>当前站点为 GitHub Pages 镜像版本，不支持评论功能。</p>
-      <p>如需发表评论，请访问 Netlify 版本：</p>
+      <p>如需发表评论，请访问主域名版本：</p>
       <a 
         :href="netlifyUrl" 
         class="netlify-link"
         target="_blank"
         rel="noopener noreferrer"
       >
-        🚀 前往 Netlify 版本评论
+        🚀 前往 主域名 版本评论
       </a>
       <div class="features">
         <div class="feature-item">✅ 支持文字评论</div>
         <div class="feature-item">✅ 支持图片上传</div>
-        <div class="feature-item">✅ 实时邮件通知</div>
       </div>
     </div>
   </div>
