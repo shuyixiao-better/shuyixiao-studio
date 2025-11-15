@@ -322,20 +322,37 @@ function rewriteHtml(html) {
 </script>
 `;
 
-  // 在 <head> 之后立即插入拦截器（确保最先执行）
+  // 添加 CSS 样式来隐藏遮罩元素
+  const curtainRemovalStyle = `
+<style>
+/* 隐藏 PandaCoder 页面中的遮罩元素 */
+.aside-curtain {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+</style>
+`;
+
+  // 在 <head> 之后立即插入拦截器和隐藏遮罩元素的样式（确保最先执行）
+  const combinedScript = interceptorScript + curtainRemovalStyle;
+  
   if (html.includes('<head>')) {
-    html = html.replace('<head>', '<head>' + interceptorScript);
+    html = html.replace('<head>', '<head>' + combinedScript);
   } else if (html.includes('<head ')) {
-    html = html.replace(/<head([^>]*)>/, '<head$1>' + interceptorScript);
+    html = html.replace(/<head([^>]*)>/, '<head$1>' + combinedScript);
   } else if (html.includes('</head>')) {
     // 如果找不到 <head>，在 </head> 之前插入
-    html = html.replace('</head>', interceptorScript + '</head>');
+    html = html.replace('</head>', combinedScript + '</head>');
   } else if (html.includes('<body')) {
     // 如果没有 head，在 <body> 之前插入
-    html = html.replace('<body', interceptorScript + '<body');
+    html = html.replace('<body', combinedScript + '<body');
   } else {
     // 最后的兜底方案：在 HTML 开头插入
-    html = interceptorScript + html;
+    html = combinedScript + html;
   }
 
   return html;
