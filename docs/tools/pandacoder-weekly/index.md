@@ -5,7 +5,7 @@ description: 查看 PandaCoder 周报
 ---
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed, nextTick } from 'vue'
+import { ref, onMounted, computed, nextTick } from 'vue'
 
 const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const showRedirect = ref(false)
@@ -117,38 +117,6 @@ onMounted(() => {
   if (iframe) {
     iframe.addEventListener('load', hideAsideCurtain)
   }
-})
-
-// 监听来自 iframe 的消息（处理token过期等事件）
-const handleMessage = (event) => {
-  // 安全检查：验证消息来源
-  if (event.origin !== window.location.origin && 
-      !event.origin.includes('poeticcoder.com') && 
-      !event.origin.includes('poeticcoder.cn')) {
-    return
-  }
-  
-  if (event.data && event.data.type === 'TOKEN_EXPIRED') {
-    console.log('🔒 接收到token过期消息:', event.data.path)
-    
-    // 可以在这里添加更多的用户提示
-    // 例如显示一个toast或者modal
-    console.log('🔧 正在处理token过期...')
-    
-    // 重新加载iframe以触发登录流程
-    const iframe = document.querySelector('.pandacoder-container iframe')
-    if (iframe) {
-      iframe.src = iframe.src // 重新加载iframe
-    }
-  }
-}
-
-// 添加消息监听器
-window.addEventListener('message', handleMessage)
-
-// 在组件卸载时移除消息监听器
-onUnmounted(() => {
-  window.removeEventListener('message', handleMessage)
 })
 </script>
 
