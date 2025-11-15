@@ -5,7 +5,7 @@ description: 查看 PandaCoder 周报
 ---
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, nextTick } from 'vue'
 
 const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const showRedirect = ref(false)
@@ -17,6 +17,26 @@ const isGitHubPages = computed(() => {
   const hostname = window.location.hostname
   return hostname.includes('poeticcoder.cn') || hostname.includes('github.io')
 })
+
+// 隐藏 iframe 中的遮罩元素
+const hideAsideCurtain = () => {
+  const iframe = document.querySelector('.pandacoder-container iframe')
+  if (iframe && iframe.contentWindow) {
+    try {
+      const iframeDoc = iframe.contentWindow.document
+      const asideCurtain = iframeDoc.querySelector('.aside-curtain')
+      if (asideCurtain) {
+        asideCurtain.style.display = 'none'
+        asideCurtain.style.visibility = 'hidden'
+        asideCurtain.style.opacity = '0'
+        console.log('✅ 已隐藏 iframe 中的遮罩元素')
+      }
+    } catch (e) {
+      // 跨域限制，无法直接操作 iframe 内容
+      console.log('⚠️ 无法直接操作 iframe 内容，可能需要其他方式解决')
+    }
+  }
+}
 
 onMounted(() => {
   console.log('🐼 PandaCoder 周报页面加载')
@@ -46,12 +66,25 @@ onMounted(() => {
         })
       })
     }
+    
+    // 延迟尝试隐藏遮罩元素
+    nextTick(() => {
+      setTimeout(hideAsideCurtain, 2000) // 延迟执行，确保 iframe 已加载
+    })
   }
 })
 
 const handleRedirect = () => {
   window.location.href = netlifyUrl
 }
+
+// 监听 iframe 加载完成事件
+onMounted(() => {
+  const iframe = document.querySelector('.pandacoder-container iframe')
+  if (iframe) {
+    iframe.addEventListener('load', hideAsideCurtain)
+  }
+})
 </script>
 
 <template>
@@ -225,6 +258,26 @@ const handleRedirect = () => {
   .pandacoder-container {
     background: #1e1e1e;
   }
+}
+
+/* iframe 容器样式 */
+.pandacoder-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.pandacoder-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }
 </style>
 
