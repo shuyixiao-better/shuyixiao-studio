@@ -140,6 +140,19 @@ body {
   display: none !important;
 }
 
+/* 在 pandacoder-weekly 页面隐藏 aside-curtain 遮罩 */
+.VPDoc:has(.pandacoder-container) .aside-curtain,
+.pandacoder-container ~ .aside-curtain,
+body:has(.pandacoder-container) .aside-curtain,
+.aside-curtain[data-v-3a82ddb3] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
+
 /* 优化文档页面布局 - 让内容区域和目录都有更多空间 */
 .VPDoc.has-aside {
   max-width: 100%;

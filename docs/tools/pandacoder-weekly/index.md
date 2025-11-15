@@ -18,8 +18,19 @@ const isGitHubPages = computed(() => {
   return hostname.includes('poeticcoder.cn') || hostname.includes('github.io')
 })
 
-// 隐藏 iframe 中的遮罩元素
+// 隐藏页面中的遮罩元素
 const hideAsideCurtain = () => {
+  // 移除当前页面的遮罩元素
+  const curtains = document.querySelectorAll('.aside-curtain, [class*="aside-curtain"], [data-v-3a82ddb3]')
+  curtains.forEach(curtain => {
+    if (curtain.classList.contains('aside-curtain') || 
+        curtain.className.includes('aside-curtain')) {
+      curtain.remove()
+      console.log('✅ 已移除页面遮罩元素')
+    }
+  })
+  
+  // 尝试隐藏 iframe 中的遮罩元素
   const iframe = document.querySelector('.pandacoder-container iframe')
   if (iframe && iframe.contentWindow) {
     try {
@@ -33,9 +44,23 @@ const hideAsideCurtain = () => {
       }
     } catch (e) {
       // 跨域限制，无法直接操作 iframe 内容
-      console.log('⚠️ 无法直接操作 iframe 内容，可能需要其他方式解决')
+      console.log('⚠️ 无法直接操作 iframe 内容（跨域限制）')
     }
   }
+}
+
+// 持续监听并移除遮罩元素
+const observeCurtain = () => {
+  const observer = new MutationObserver(() => {
+    hideAsideCurtain()
+  })
+  
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  })
+  
+  return observer
 }
 
 onMounted(() => {
@@ -67,9 +92,17 @@ onMounted(() => {
       })
     }
     
+    // 立即移除遮罩元素
+    hideAsideCurtain()
+    
+    // 启动持续监听
+    const observer = observeCurtain()
+    
     // 延迟尝试隐藏遮罩元素
     nextTick(() => {
-      setTimeout(hideAsideCurtain, 2000) // 延迟执行，确保 iframe 已加载
+      setTimeout(hideAsideCurtain, 500)
+      setTimeout(hideAsideCurtain, 1000)
+      setTimeout(hideAsideCurtain, 2000)
     })
   }
 })
@@ -278,6 +311,22 @@ onMounted(() => {
   height: 100%;
   border: none;
   display: block;
+}
+
+/* 强制隐藏所有 aside-curtain 遮罩 */
+.aside-curtain,
+div.aside-curtain,
+[class*="aside-curtain"],
+[data-v-3a82ddb3].aside-curtain,
+.aside-curtain[data-v-3a82ddb3] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 </style>
 
