@@ -190,6 +190,7 @@ export default async (req, context) => {
  * 重写 HTML 内容
  * 1. 重写资源链接（script, link, img 等）
  * 2. 注入后端 API 重定向脚本
+ * 3. 移除遮罩元素
  */
 function rewriteHtml(html) {
   // 辅助函数：规范化路径
@@ -200,6 +201,15 @@ function rewriteHtml(html) {
     }
     return path;
   };
+
+  // 直接移除遮罩元素
+  html = html.replace(/<div\s+class=["']aside-curtain["'][^>]*><\/div>/gi, '');
+  html = html.replace(/<div\s+class=["'][^"']*aside-curtain[^"']*["'][^>]*><\/div>/gi, '');
+  html = html.replace(/<div[^>]*class=["'][^"']*aside-curtain[^"']*["'][^>]*><\/div>/gi, '');
+  
+  // 也处理可能的带有data-v属性的版本
+  html = html.replace(/<div\s+class=["']aside-curtain["'][^>]*data-v-[^>]*><\/div>/gi, '');
+  html = html.replace(/<div\s+data-v-[^>]*class=["']aside-curtain["'][^>]*><\/div>/gi, '');
 
   // 重写 script src
   html = html.replace(
@@ -320,19 +330,109 @@ function rewriteHtml(html) {
   setTimeout(() => window.axios && interceptAxios(window.axios), 1000);
 })();
 </script>
+
+<script>
+// 移除遮罩元素的专用脚本
+(function() {
+  const removeCurtain = function() {
+    // 使用多种选择器查找并移除遮罩元素
+    const selectors = [
+      '.aside-curtain',
+      '[class*="aside-curtain"]',
+      'div.aside-curtain',
+      'div[data-v-3a82ddb3].aside-curtain',
+      'div.aside-curtain[data-v-3a82ddb3]',
+      'div[data-v-3a82ddb3]:not([class*="content"]):not([class*="main"]):not([class*="container"])'
+    ];
+    
+    let removed = 0;
+    selectors.forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(el => {
+        // 额外检查，确保不是误删其他元素
+        if (el.classList.contains('aside-curtain') || 
+            (el.getAttribute('data-v-3a82ddb3') && 
+             !el.classList.contains('content') && 
+             !el.classList.contains('main') && 
+             !el.classList.contains('container'))) {
+          el.remove();
+          removed++;
+        }
+      });
+    });
+    
+    if (removed > 0) {
+      console.log(\`✅ 已移除 \${removed} 个遮罩元素\`);
+    }
+  };
+  
+  // 立即执行一次
+  setTimeout(removeCurtain, 100);
+  
+  // 使用 MutationObserver 监听DOM变化，持续移除新增的遮罩元素
+  const observer = new MutationObserver(function(mutations) {
+    let shouldRemove = false;
+    
+    mutations.forEach(mutation => {
+      mutation.addedNodes.forEach(node => {
+        if (node.nodeType === 1) { // 元素节点
+          // 检查新添加的元素是否是遮罩元素
+          if (node.classList && node.classList.contains('aside-curtain')) {
+            shouldRemove = true;
+          }
+          // 检查子元素
+          const curtainElements = node.querySelectorAll && 
+            node.querySelectorAll('.aside-curtain, [class*="aside-curtain"]');
+          if (curtainElements && curtainElements.length > 0) {
+            shouldRemove = true;
+          }
+        }
+      });
+    });
+    
+    if (shouldRemove) {
+      setTimeout(removeCurtain, 10);
+    }
+  });
+  
+  // 开始观察整个文档
+  observer.observe(document.documentElement || document.body, {
+    childList: true,
+    subtree: true
+  });
+  
+  // 定期执行，确保遮罩元素被移除
+  setInterval(removeCurtain, 1000);
+  
+  console.log('🎯 遮罩元素移除脚本已加载');
+})();
+</script>
 `;
 
   // 添加 CSS 样式来隐藏遮罩元素
   const curtainRemovalStyle = `
 <style>
-/* 隐藏 PandaCoder 页面中的遮罩元素 */
-.aside-curtain {
+/* 隐藏 PandaCoder 页面中的遮罩元素 - 使用多种选择器确保覆盖 */
+.aside-curtain,
+div[class*="aside-curtain"],
+div.aside-curtain,
+div[data-v-3a82ddb3].aside-curtain,
+div.aside-curtain[data-v-3a82ddb3] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
   width: 0 !important;
   height: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+  z-index: -9999 !important;
   pointer-events: none !important;
+}
+
+/* 使用属性选择器覆盖可能的数据属性 */
+div[data-v-3a82ddb3]:not([class*="content"]):not([class*="main"]):not([class*="container"]) {
+  display: none !important;
 }
 </style>
 `;
