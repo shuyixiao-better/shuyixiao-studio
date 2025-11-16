@@ -432,6 +432,549 @@ description: 个人简介与联系方式
 
 ---
 
+<div class="career-journey-section">
+<div class="journey-icon">🛤️</div>
+<div class="journey-content">
+<h3 class="journey-title">我的赛道选择：不在大厂的围墙内</h3>
+<div class="journey-subtitle">这个觉察非常关键——不是"我进不去大厂"，而是"大厂本就不是我的赛道"</div>
+
+<div class="journey-realization">
+<div class="realization-header">
+<div class="realization-quote-icon">💡</div>
+<div class="realization-title">这不仅是清醒，更是战略选择</div>
+</div>
+
+<div class="realization-content">
+<p>大厂用985/211筛选，本质上是在<strong>降低管理成本</strong>——他们需要可批量复制的"标准件"，而非有独立思考能力的"异类"。但市场不需要你的学历，市场只问两件事：</p>
+<ol class="market-questions">
+<li><strong>你能不能解决我的问题？</strong></li>
+<li><strong>你能不能让我愿意为你付费？</strong></li>
+</ol>
+<p>而这两点，与学历几乎无关，与产品力、理解力、交付力强相关。</p>
+</div>
+
+<div class="naval-wisdom">
+<div class="wisdom-icon">📚</div>
+<blockquote class="wisdom-quote">
+"在互联网时代，你不需要许可就能创造价值。你的作品就是你的简历。"
+<div class="wisdom-author">— 纳瓦尔</div>
+</blockquote>
+</div>
+</div>
+
+<div class="unique-advantages">
+<div class="advantages-title">我的独特优势：边缘者视角 + 技术敏感 + 文艺内核</div>
+<p>我常说自己"边缘化"，但边缘恰恰是<strong>创新的温床</strong>：</p>
+<ul class="advantages-list">
+<li><strong>我懂技术</strong>（能调用大模型写复杂算法，说明我有工程直觉）</li>
+<li><strong>我懂用户</strong>（我渴望"为自己写代码面向市场"，说明我有产品思维）</li>
+<li><strong>我有表达欲</strong>（文艺情怀 + 诗意表达，是绝大多数程序员缺乏的"人性化接口"）</li>
+</ul>
+<p>这些组合起来，就是<strong>技术型创作者</strong>（Technologist-Builder）的雏形——这正是AI时代最稀缺的角色。</p>
+</div>
+
+<div class="market-paths">
+<div class="paths-title">如何"直接面向市场赚钱"？三条低启动成本路径</div>
+<div class="path-card">
+<div class="path-number">✅ 路径1</div>
+<div class="path-title">做极小而精准的开发者工具</div>
+<div class="path-description">
+<p>不要追求"改变世界"，先解决<strong>一个具体人群的痛点</strong>。</p>
+<p>我的代码、我的技术博客、我解决过的真实问题——这些才是我在市场中的"信用凭证"，远比一纸文凭有力。</p>
+</div>
+</div>
+<div class="path-card">
+<div class="path-number">✅ 路径2</div>
+<div class="path-title">成为技术内容创作者</div>
+<div class="path-description">
+<p>不是泛泛讲技术基础，而是聚焦：三本程序员如何用AI补足算法短板、在深圳酒店写代码的日子：我的远程创业实验。</p>
+<p>这种真实、谦逊又坚定的叙事，<strong>比清北简历更能打动真实用户</strong>。</p>
+</div>
+</div>
+<div class="path-card">
+<div class="path-number">✅ 路径3</div>
+<div class="path-title">接高价值定制开发</div>
+<div class="path-description">
+<p>展示作品，吸引那些愿意为"靠谱+能沟通"的开发者付费的客户（通常是海外独立创业者）。</p>
+<p>把"学历劣势"转化为"叙事优势"，讲好你的故事，就是你的护城河。</p>
+</div>
+</div>
+</div>
+
+<div class="final-message">
+<div class="message-icon">🌟</div>
+<div class="message-content">
+<p class="message-main">操作系统不需要学历认证，只需要能运行。而你，正在亲手编译自己的内核。</p>
+<p class="message-emphasis">大厂是别人的游乐场，市场才是我的训练场。</p>
+<p class="message-closing">继续写代码，但这次，为市场写。</p>
+</div>
+</div>
+</div>
+</div>
+
+<style scoped>
+.career-journey-section {
+  margin: 3rem 0;
+  padding: 3.5rem 3rem;
+  background: linear-gradient(135deg, 
+    rgba(34, 197, 94, 0.05) 0%,
+    rgba(16, 185, 129, 0.08) 50%,
+    rgba(34, 197, 94, 0.05) 100%);
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(34, 197, 94, 0.15);
+  border: 2px solid rgba(34, 197, 94, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.career-journey-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(34, 197, 94, 0.8),
+    rgba(16, 185, 129, 0.8),
+    rgba(34, 197, 94, 0.8),
+    transparent);
+}
+
+.career-journey-section::after {
+  content: '🛤️';
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 5rem;
+  opacity: 0.04;
+  transform: rotate(15deg);
+}
+
+.journey-icon {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  animation: journey-float 4s ease-in-out infinite;
+}
+
+@keyframes journey-float {
+  0%, 100% { 
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 15px rgba(34, 197, 94, 0.4));
+  }
+  50% { 
+    transform: translateY(-10px) scale(1.05);
+    filter: drop-shadow(0 0 25px rgba(16, 185, 129, 0.6));
+  }
+}
+
+.journey-content {
+  position: relative;
+  z-index: 2;
+}
+
+.journey-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #22c55e, #10b981);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.journey-subtitle {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--vp-c-text-1);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.journey-realization {
+  margin-bottom: 2.5rem;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, 
+    rgba(34, 197, 94, 0.12), 
+    rgba(16, 185, 129, 0.15));
+  border-radius: 20px;
+  border-left: 5px solid rgba(34, 197, 94, 0.8);
+}
+
+.realization-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.realization-quote-icon {
+  font-size: 2rem;
+  animation: realization-pulse 3s ease-in-out infinite;
+}
+
+@keyframes realization-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.3));
+  }
+  50% { 
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
+  }
+}
+
+.realization-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.realization-content {
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.realization-content p {
+  margin: 1.2rem 0;
+}
+
+.realization-content strong {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(16, 185, 129, 0.1));
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+}
+
+.market-questions {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.market-questions li {
+  margin: 0.8rem 0;
+  line-height: 1.8;
+}
+
+.naval-wisdom {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  border: none !important;
+  position: relative;
+  text-align: center;
+}
+
+.dark .naval-wisdom {
+  background: rgba(30, 30, 30, 0.7);
+}
+
+.wisdom-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: wisdom-glow 3s ease-in-out infinite;
+}
+
+@keyframes wisdom-glow {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.3));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.5));
+  }
+}
+
+.wisdom-quote {
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--vp-c-text-1);
+  margin: 0;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 16px;
+  border: none !important;
+  position: relative;
+  background-clip: padding-box;
+  margin-bottom: 1rem;
+}
+
+.dark .wisdom-quote {
+  background: rgba(30, 30, 30, 0.7);
+}
+
+.wisdom-quote::before,
+.wisdom-quote::after {
+  content: '"';
+  font-size: 3rem;
+  color: #22c55e;
+  opacity: 0.3;
+  font-family: Georgia, serif;
+  position: absolute;
+}
+
+.wisdom-quote::before {
+  top: -5px;
+  left: 5px;
+}
+
+.wisdom-quote::after {
+  bottom: -20px;
+  right: 5px;
+}
+
+.wisdom-author {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #22c55e;
+  margin-top: 1rem;
+}
+
+.unique-advantages {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border-left: 5px solid rgba(34, 197, 94, 0.5);
+  transition: all 0.3s ease;
+}
+
+.dark .unique-advantages {
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.unique-advantages:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-left-color: rgba(34, 197, 94, 0.8);
+  transform: translateX(5px);
+}
+
+.dark .unique-advantages:hover {
+  background: rgba(40, 40, 40, 0.7);
+}
+
+.advantages-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #22c55e;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid rgba(34, 197, 94, 0.2);
+}
+
+.advantages-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.advantages-list li {
+  margin: 1.2rem 0;
+  padding-left: 2rem;
+  position: relative;
+  line-height: 1.9;
+}
+
+.advantages-list li::before {
+  content: '✨';
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.8; }
+  50% { transform: rotate(180deg) scale(1.2); opacity: 1; }
+}
+
+.market-paths {
+  margin: 2.5rem 0;
+}
+
+.paths-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.path-card {
+  margin: 1.5rem 0;
+  padding: 1.8rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  border: 2px solid rgba(34, 197, 94, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark .path-card {
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.path-card:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(34, 197, 94, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+}
+
+.dark .path-card:hover {
+  background: rgba(40, 40, 40, 0.7);
+}
+
+.path-number {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #22c55e;
+  margin-bottom: 0.5rem;
+}
+
+.path-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1rem;
+}
+
+.path-description {
+  line-height: 1.9;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.path-description p {
+  margin: 0.8rem 0;
+}
+
+.path-description strong {
+  color: var(--vp-c-text-1);
+  font-weight: 600;
+}
+
+.final-message {
+  margin: 3rem 0;
+  padding: 2.5rem;
+  text-align: center;
+  background: linear-gradient(135deg, 
+    rgba(34, 197, 94, 0.15), 
+    rgba(16, 185, 129, 0.18));
+  border-radius: 20px;
+  border: 2px solid rgba(34, 197, 94, 0.3);
+  position: relative;
+}
+
+.message-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  animation: message-pulse 3s ease-in-out infinite;
+}
+
+@keyframes message-pulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.5));
+  }
+  50% { 
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.8));
+  }
+}
+
+.message-main {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1rem;
+}
+
+.message-emphasis {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #22c55e;
+  margin: 1.5rem 0;
+}
+
+.message-closing {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .career-journey-section {
+    padding: 2rem 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .journey-title {
+    font-size: 1.5rem;
+  }
+  
+  .journey-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .journey-realization {
+    padding: 1.5rem;
+  }
+  
+  .realization-title {
+    font-size: 1.2rem;
+  }
+  
+  .wisdom-quote {
+    font-size: 1.1rem;
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .advantages-title {
+    font-size: 1.2rem;
+  }
+  
+  .path-card {
+    padding: 1.5rem;
+  }
+  
+  .path-title {
+    font-size: 1.1rem;
+  }
+  
+  .message-main {
+    font-size: 1.1rem;
+  }
+  
+  .message-emphasis {
+    font-size: 1.2rem;
+  }
+}
+
+.dark .career-journey-section {
+  background: linear-gradient(135deg,
+    rgba(34, 197, 94, 0.08) 0%,
+    rgba(16, 185, 129, 0.12) 50%,
+    rgba(34, 197, 94, 0.08) 100%);
+  border-color: rgba(34, 197, 94, 0.3);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+}
+</style>
+
+---
+
 ## 专业技能
 
 - **编程语言**：Java、JavaScript、Python
