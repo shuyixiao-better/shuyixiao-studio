@@ -263,12 +263,12 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
   <table>
     <tr>
       <td align="center">
-        <img src="/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
         <br>
         <sub>扫码添加微信好友，备注 <strong>PandaCoder交流</strong>，可以拉你进微信交流群</sub>
       </td>
       <td align="center">
-        <img src="/PandaCoder交流QQ群.jpg" width="280" alt="PandaCoder开发者交流QQ群">
+        <img src="/images/PandaCoder交流QQ群.jpg" width="280" alt="PandaCoder开发者交流QQ群">
         <br>
         <sub>扫码加入QQ群，与作者和开发者直接交流</sub>
       </td>
