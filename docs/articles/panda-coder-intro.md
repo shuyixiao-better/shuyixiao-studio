@@ -251,6 +251,38 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
 
 未来，我们将持续优化和迭代 PandaCoder，加入更多实用功能，为开发者提供更加智能、便捷的编程体验。欢迎使用并提出宝贵意见！
 
+## 🤝 社区交流
+
+### 💬 加入开发者交流群
+
+欢迎加入 PandaCoder 开发者交流群，与作者和其他开发者一起交流技术、分享经验、反馈问题！我们提供多种交流渠道：
+
+#### 📱 微信交流群 & 💬 QQ交流群
+
+<p align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <br>
+        <sub>扫码添加微信好友，备注 <strong>PandaCoder交流</strong>，可以拉你进微信交流群</sub>
+      </td>
+      <td align="center">
+        <img src="/images/PandaCoder交流QQ群.jpg" width="280" alt="PandaCoder开发者交流QQ群">
+        <br>
+        <sub>扫码加入QQ群，与作者和开发者直接交流</sub>
+      </td>
+    </tr>
+  </table>
+</p>
+
+**交流群内可以：**
+- 💡 获取最新的插件更新和技术动态
+- 🐛 反馈使用问题和改进建议
+- 🔧 交流开发经验和最佳实践
+- 📚 获取技术文档和教程资源
+- 🎯 参与功能讨论和产品规划
+
 ## 版本日志
 
 ### v2.4.7 (敬请期待)
