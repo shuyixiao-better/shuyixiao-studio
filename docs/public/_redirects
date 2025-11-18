@@ -1,2 +1,0 @@
-/login /.netlify/functions/pandacoder-proxy?type=frontend&path=/login 200!
-/pandacoder/* /.netlify/functions/pandacoder-proxy?type=frontend&path=/:splat 200!

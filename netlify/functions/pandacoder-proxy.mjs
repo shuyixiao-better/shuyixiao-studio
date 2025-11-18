@@ -34,24 +34,16 @@ export default async (req, context) => {
     const path = url.searchParams.get('path') || '/';
     const type = url.searchParams.get('type') || 'frontend';
 
-    console.log('📥 收到请求:', { 
-      url: req.url, 
-      path, 
-      type,
-      FRONTEND_URL: PANDACODER_FRONTEND_URL,
-      BACKEND_URL: PANDACODER_BACKEND_URL
-    });
-
     // 确定目标 URL
     let targetUrl;
     if (type === 'api') {
       // 代理后端 API 请求
       targetUrl = `${PANDACODER_BACKEND_URL}${path}`;
-      console.log(`🔄 [API] ${req.method} ${path} → ${targetUrl}`);
+      console.log(`🔄 [API] ${req.method} ${path}`);
     } else {
       // 代理前端页面请求
       targetUrl = `${PANDACODER_FRONTEND_URL}${path}`;
-      console.log(`🔄 [Frontend] ${req.method} ${path} → ${targetUrl}`);
+      console.log(`🔄 [Frontend] ${req.method} ${path}`);
     }
 
     // 构建代理请求

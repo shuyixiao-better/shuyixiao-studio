@@ -1,5 +1,5 @@
 [build]
-  command = "corepack enable && pnpm install && pnpm run docs:build && cp docs/public/_redirects docs/.vitepress/dist/_redirects"
+  command = "corepack enable && pnpm install && pnpm run docs:build"
   publish = "docs/.vitepress/dist"
 
 [build.environment]
@@ -14,17 +14,3 @@
   targetPort = 5173
   publish = "docs/.vitepress/dist"
   autoLaunch = true
-
-# PandaCoder 登录页重定向
-[[redirects]]
-  from = "/login"
-  to = "/.netlify/functions/pandacoder-proxy?type=frontend&path=/login"
-  status = 200
-  force = true
-
-# PandaCoder 其他页面重定向（可选，如果需要的话）
-[[redirects]]
-  from = "/pandacoder/*"
-  to = "/.netlify/functions/pandacoder-proxy?type=frontend&path=/:splat"
-  status = 200
-  force = true
