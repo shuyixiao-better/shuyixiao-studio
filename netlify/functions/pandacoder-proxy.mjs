@@ -12,6 +12,9 @@
 const PANDACODER_FRONTEND_URL = process.env.PANDACODER_FRONTEND_URL || 'http://81.69.17.52';
 const PANDACODER_BACKEND_URL = process.env.PANDACODER_BACKEND_URL || 'http://81.69.17.52:8080';
 
+// HTTPS 强制标志
+const FORCE_HTTPS = process.env.PANDACODER_FORCE_HTTPS === 'true' || false;
+
 export default async (req, context) => {
   // CORS 头部配置
   const corsHeaders = {
@@ -39,11 +42,19 @@ export default async (req, context) => {
     if (type === 'api') {
       // 代理后端 API 请求
       targetUrl = `${PANDACODER_BACKEND_URL}${path}`;
-      console.log(`🔄 [API] ${req.method} ${path}`);
+      // 如果强制使用 HTTPS，替换协议
+      if (FORCE_HTTPS && targetUrl.startsWith('http://')) {
+        targetUrl = targetUrl.replace('http://', 'https://');
+      }
+      console.log(`🔄 [API] ${req.method} ${targetUrl}`);
     } else {
       // 代理前端页面请求
       targetUrl = `${PANDACODER_FRONTEND_URL}${path}`;
-      console.log(`🔄 [Frontend] ${req.method} ${path}`);
+      // 如果强制使用 HTTPS，替换协议
+      if (FORCE_HTTPS && targetUrl.startsWith('http://')) {
+        targetUrl = targetUrl.replace('http://', 'https://');
+      }
+      console.log(`🔄 [Frontend] ${req.method} ${targetUrl}`);
     }
 
     // 构建代理请求
@@ -56,6 +67,12 @@ export default async (req, context) => {
       if (!['host', 'connection', 'x-forwarded-for', 'x-forwarded-proto', 'x-forwarded-host'].includes(lowerKey)) {
         proxyHeaders.set(key, value);
       }
+    }
+
+    // 如果强制使用 HTTPS，添加必要的协议头
+    if (FORCE_HTTPS && targetUrl.startsWith('https://')) {
+      proxyHeaders.set('X-Forwarded-Proto', 'https');
+      proxyHeaders.set('X-Forwarded-SSL', 'on');
     }
 
     // 发起代理请求
