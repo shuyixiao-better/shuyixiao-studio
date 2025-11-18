@@ -34,16 +34,24 @@ export default async (req, context) => {
     const path = url.searchParams.get('path') || '/';
     const type = url.searchParams.get('type') || 'frontend';
 
+    console.log('📥 收到请求:', { 
+      url: req.url, 
+      path, 
+      type,
+      FRONTEND_URL: PANDACODER_FRONTEND_URL,
+      BACKEND_URL: PANDACODER_BACKEND_URL
+    });
+
     // 确定目标 URL
     let targetUrl;
     if (type === 'api') {
       // 代理后端 API 请求
       targetUrl = `${PANDACODER_BACKEND_URL}${path}`;
-      console.log(`🔄 [API] ${req.method} ${path}`);
+      console.log(`🔄 [API] ${req.method} ${path} → ${targetUrl}`);
     } else {
       // 代理前端页面请求
       targetUrl = `${PANDACODER_FRONTEND_URL}${path}`;
-      console.log(`🔄 [Frontend] ${req.method} ${path}`);
+      console.log(`🔄 [Frontend] ${req.method} ${path} → ${targetUrl}`);
     }
 
     // 构建代理请求
@@ -89,7 +97,8 @@ export default async (req, context) => {
       finalContentType = 'application/javascript; charset=utf-8';
     } else if (path.endsWith('.json')) {
       finalContentType = 'application/json; charset=utf-8';
-    } else if (path.endsWith('.html') || path === '/') {
+    } else if (path.endsWith('.html') || path === '/' || path === '/login' || !path.includes('.')) {
+      // 对于没有扩展名的路径（如 /login），默认为 HTML
       finalContentType = 'text/html; charset=utf-8';
     } else if (path.endsWith('.png')) {
       finalContentType = 'image/png';
