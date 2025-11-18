@@ -243,31 +243,104 @@ function rewriteHtml(html) {
       return `<img${attrs} src="${newSrc}"`;
     }
   );
+  
+  // 重写 a href - 确保内部链接（如登录页）也通过代理
+  html = html.replace(
+    /<a([^>]*)\shref=["']([^"']+)["']/gi,
+    (match, attrs, href) => {
+      // 跳过外部链接、锚点、javascript 和 mailto
+      if (href.startsWith('http://') || href.startsWith('https://') || 
+          href.startsWith('//') || href.startsWith('#') || 
+          href.startsWith('javascript:') || href.startsWith('mailto:')) {
+        return match;
+      }
+      // 对于内部链接（如 /login），通过代理
+      const normalizedHref = normalizePath(href);
+      const newHref = `/api/pandacoder-proxy?type=frontend&path=${encodeURIComponent(normalizedHref)}`;
+      return `<a${attrs} href="${newHref}"`;
+    }
+  );
 
   // 注入配置脚本，让前端通过代理访问后端 API
   const interceptorScript = `
 <script>
 (function() {
-  // 拦截 fetch - 将 /api/ 请求重定向到代理
+  console.log('🐼 PandaCoder 代理拦截器已加载');
+  
+  // 拦截页面导航 - 防止登录页跳转到错误的域名
+  const originalPushState = history.pushState;
+  const originalReplaceState = history.replaceState;
+  
+  history.pushState = function(state, title, url) {
+    if (url && (url === '/login' || url.includes('/login'))) {
+      console.log('🔄 拦截登录页跳转:', url);
+      // 通过代理加载登录页
+      const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent('/login');
+      return originalPushState.call(this, state, title, proxyUrl);
+    }
+    return originalPushState.call(this, state, title, url);
+  };
+  
+  history.replaceState = function(state, title, url) {
+    if (url && (url === '/login' || url.includes('/login'))) {
+      console.log('🔄 拦截登录页跳转:', url);
+      const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent('/login');
+      return originalReplaceState.call(this, state, title, proxyUrl);
+    }
+    return originalReplaceState.call(this, state, title, url);
+  };
+  
+  // 拦截 window.location 赋值
+  let _location = window.location;
+  Object.defineProperty(window, 'location', {
+    get() {
+      return _location;
+    },
+    set(value) {
+      if (typeof value === 'string' && (value === '/login' || value.includes('/login'))) {
+        console.log('🔄 拦截 location 跳转到登录页:', value);
+        const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent('/login');
+        _location.href = proxyUrl;
+      } else {
+        _location.href = value;
+      }
+    }
+  });
+
+  // 拦截 fetch - 将 /api/ 和 /login 请求重定向到代理
   const originalFetch = window.fetch;
   window.fetch = function(url, options) {
-    if (typeof url === 'string' && url.startsWith('/api/')) {
-      const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
-      return originalFetch(proxyUrl, options);
+    if (typeof url === 'string') {
+      if (url.startsWith('/api/')) {
+        const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
+        console.log('🔄 重定向 fetch API:', url, '→', proxyUrl);
+        return originalFetch(proxyUrl, options);
+      } else if (url === '/login' || url.includes('/login')) {
+        const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(url);
+        console.log('🔄 重定向 fetch 登录页:', url, '→', proxyUrl);
+        return originalFetch(proxyUrl, options);
+      }
     }
     return originalFetch(url, options);
   };
 
-  // 拦截 XMLHttpRequest - 将 /api/ 请求重定向到代理
+  // 拦截 XMLHttpRequest - 将 /api/ 和 /login 请求重定向到代理
   const OriginalXHR = window.XMLHttpRequest;
   window.XMLHttpRequest = function() {
     const xhr = new OriginalXHR();
     const originalOpen = xhr.open;
 
     xhr.open = function(method, url, ...args) {
-      if (typeof url === 'string' && url.startsWith('/api/')) {
-        const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
-        return originalOpen.call(this, method, proxyUrl, ...args);
+      if (typeof url === 'string') {
+        if (url.startsWith('/api/')) {
+          const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
+          console.log('🔄 重定向 XHR API:', url, '→', proxyUrl);
+          return originalOpen.call(this, method, proxyUrl, ...args);
+        } else if (url === '/login' || url.includes('/login')) {
+          const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(url);
+          console.log('🔄 重定向 XHR 登录页:', url, '→', proxyUrl);
+          return originalOpen.call(this, method, proxyUrl, ...args);
+        }
       }
       return originalOpen.call(this, method, url, ...args);
     };
@@ -275,7 +348,7 @@ function rewriteHtml(html) {
     return xhr;
   };
 
-  // 拦截 axios - 将 /api/ 请求重定向到代理
+  // 拦截 axios - 将 /api/ 和 /login 请求重定向到代理
   let axiosIntercepted = false;
 
   const interceptAxios = (axiosInstance) => {
@@ -283,12 +356,34 @@ function rewriteHtml(html) {
 
     try {
       axiosInstance.interceptors.request.use(config => {
-        if (config.url && config.url.startsWith('/api/')) {
-          config.url = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(config.url);
+        if (config.url) {
+          if (config.url.startsWith('/api/')) {
+            const originalUrl = config.url;
+            config.url = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(config.url);
+            console.log('🔄 重定向 axios API:', originalUrl, '→', config.url);
+          } else if (config.url === '/login' || config.url.includes('/login')) {
+            const originalUrl = config.url;
+            config.url = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(config.url);
+            console.log('🔄 重定向 axios 登录页:', originalUrl, '→', config.url);
+          }
         }
         return config;
       }, error => Promise.reject(error));
+      
+      // 拦截响应，处理登录跳转
+      axiosInstance.interceptors.response.use(
+        response => response,
+        error => {
+          if (error.response && error.response.status === 401) {
+            console.log('🔐 检测到 401 未授权，准备跳转登录页');
+            // 不要直接跳转，让应用自己处理
+          }
+          return Promise.reject(error);
+        }
+      );
+      
       axiosIntercepted = true;
+      console.log('✅ axios 拦截器配置成功');
     } catch (e) {
       console.warn('⚠️ API 拦截器配置失败:', e);
     }
@@ -318,6 +413,8 @@ function rewriteHtml(html) {
   setTimeout(() => window.axios && interceptAxios(window.axios), 100);
   setTimeout(() => window.axios && interceptAxios(window.axios), 500);
   setTimeout(() => window.axios && interceptAxios(window.axios), 1000);
+  
+  console.log('✅ PandaCoder 代理拦截器配置完成');
 })();
 </script>
 `;
