@@ -14,21 +14,32 @@ GET https://www.poeticcoder.com/login 404 (Not Found)
 
 修改了 `netlify/functions/pandacoder-proxy.mjs` 文件，增强了代理拦截器的功能：
 
-### 1. 劫持 window.location.origin
+### 1. 早期拦截器（最关键！）
 
-这是关键修复！PandaCoder 的代码使用了 `window.location.origin + '/login'` 构造完整 URL，导致跳转到 `https://www.poeticcoder.com/login`。通过劫持 `location.origin`，让前端代码认为自己在原始服务器上：
+在所有代码执行之前，立即劫持 `window.location` 的方法：
 
 ```javascript
-const realOrigin = window.location.origin; // https://www.poeticcoder.com
-const fakeOrigin = 'http://81.69.17.52';   // 伪装的 origin
-
-Object.defineProperty(window.location, 'origin', {
-  get() {
-    return fakeOrigin; // 返回原始服务器地址
-  },
-  configurable: true
+// 拦截 location.href 赋值
+Object.defineProperty(window.location, 'href', {
+  set(value) {
+    if (typeof value === 'string' && value.includes('/login')) {
+      const path = value.includes('http') ? new URL(value).pathname : value;
+      const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+      return _href.set.call(window.location, proxyUrl);
+    }
+    return _href.set.call(window.location, value);
+  }
 });
+
+// 拦截 location.assign 和 location.replace
+window.location.assign = function(url) {
+  if (url.includes('/login')) {
+    // 重定向到代理
+  }
+};
 ```
+
+这个拦截器在 `<head>` 标签之后立即注入，确保在 PandaCoder 的任何代码执行之前就已经生效
 
 ### 2. 拦截完整 URL 请求
 
@@ -173,7 +184,29 @@ console.log(window.location.origin); // 应该输出: http://81.69.17.52
 
 2. 登录页的所有资源（CSS、JS、API 调用）都会通过代理加载
 
-3. 如果登录页有特殊的跳转逻辑，可能需要进一步调整
+3. **重要**：如果仍然出现 404 错误，需要修改 PandaCoder 前端代码，将登录跳转改为使用相对路径。详见 `PANDACODER_FRONTEND_FIX.md`
+
+## 已知限制
+
+由于 `window.location.origin` 是只读属性无法重定义，如果 PandaCoder 前端代码使用了：
+```javascript
+window.location.href = window.location.origin + '/login';
+```
+
+这种方式构造完整 URL，代理拦截器可能无法完全拦截。
+
+### 解决方案
+
+**最佳方案**：修改 PandaCoder 前端代码，使用相对路径：
+```javascript
+// 将这个
+window.location.href = window.location.origin + '/login';
+
+// 改为
+window.location.href = '/login';
+```
+
+**临时方案**：代理已经拦截了 `location.assign()` 和 `location.replace()` 方法，如果前端使用这些方法，可以正常工作
 
 ## 相关文件
 
