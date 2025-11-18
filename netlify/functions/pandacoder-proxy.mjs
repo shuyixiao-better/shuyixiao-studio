@@ -267,6 +267,21 @@ function rewriteHtml(html) {
 (function() {
   console.log('🐼 PandaCoder 代理拦截器已加载');
   
+  // 劫持 window.location.origin - 让前端代码认为自己在原始服务器上
+  const realOrigin = window.location.origin;
+  const fakeOrigin = '${PANDACODER_FRONTEND_URL}';
+  
+  console.log('🔧 真实 origin:', realOrigin);
+  console.log('🔧 伪装 origin:', fakeOrigin);
+  
+  // 重写 location.origin（只读属性需要通过 defineProperty）
+  Object.defineProperty(window.location, 'origin', {
+    get() {
+      return fakeOrigin;
+    },
+    configurable: true
+  });
+  
   // 拦截页面导航 - 防止登录页跳转到错误的域名
   const originalPushState = history.pushState;
   const originalReplaceState = history.replaceState;
@@ -311,7 +326,21 @@ function rewriteHtml(html) {
   const originalFetch = window.fetch;
   window.fetch = function(url, options) {
     if (typeof url === 'string') {
-      if (url.startsWith('/api/')) {
+      // 处理完整 URL（包含 origin）
+      if (url.startsWith(realOrigin)) {
+        const path = url.substring(realOrigin.length);
+        if (path.startsWith('/api/')) {
+          const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(path);
+          console.log('🔄 重定向 fetch API (完整URL):', url, '→', proxyUrl);
+          return originalFetch(proxyUrl, options);
+        } else if (path === '/login' || path.includes('/login')) {
+          const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+          console.log('🔄 重定向 fetch 登录页 (完整URL):', url, '→', proxyUrl);
+          return originalFetch(proxyUrl, options);
+        }
+      }
+      // 处理相对路径
+      else if (url.startsWith('/api/')) {
         const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
         console.log('🔄 重定向 fetch API:', url, '→', proxyUrl);
         return originalFetch(proxyUrl, options);
@@ -332,7 +361,21 @@ function rewriteHtml(html) {
 
     xhr.open = function(method, url, ...args) {
       if (typeof url === 'string') {
-        if (url.startsWith('/api/')) {
+        // 处理完整 URL（包含 origin）
+        if (url.startsWith(realOrigin)) {
+          const path = url.substring(realOrigin.length);
+          if (path.startsWith('/api/')) {
+            const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(path);
+            console.log('🔄 重定向 XHR API (完整URL):', url, '→', proxyUrl);
+            return originalOpen.call(this, method, proxyUrl, ...args);
+          } else if (path === '/login' || path.includes('/login')) {
+            const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+            console.log('🔄 重定向 XHR 登录页 (完整URL):', url, '→', proxyUrl);
+            return originalOpen.call(this, method, proxyUrl, ...args);
+          }
+        }
+        // 处理相对路径
+        else if (url.startsWith('/api/')) {
           const proxyUrl = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(url);
           console.log('🔄 重定向 XHR API:', url, '→', proxyUrl);
           return originalOpen.call(this, method, proxyUrl, ...args);
@@ -357,7 +400,21 @@ function rewriteHtml(html) {
     try {
       axiosInstance.interceptors.request.use(config => {
         if (config.url) {
-          if (config.url.startsWith('/api/')) {
+          // 处理完整 URL（包含 origin）
+          if (config.url.startsWith(realOrigin)) {
+            const path = config.url.substring(realOrigin.length);
+            if (path.startsWith('/api/')) {
+              const originalUrl = config.url;
+              config.url = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(path);
+              console.log('🔄 重定向 axios API (完整URL):', originalUrl, '→', config.url);
+            } else if (path === '/login' || path.includes('/login')) {
+              const originalUrl = config.url;
+              config.url = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+              console.log('🔄 重定向 axios 登录页 (完整URL):', originalUrl, '→', config.url);
+            }
+          }
+          // 处理相对路径
+          else if (config.url.startsWith('/api/')) {
             const originalUrl = config.url;
             config.url = '/api/pandacoder-proxy?type=api&path=' + encodeURIComponent(config.url);
             console.log('🔄 重定向 axios API:', originalUrl, '→', config.url);

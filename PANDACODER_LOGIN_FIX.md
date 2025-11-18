@@ -14,7 +14,38 @@ GET https://www.poeticcoder.com/login 404 (Not Found)
 
 修改了 `netlify/functions/pandacoder-proxy.mjs` 文件，增强了代理拦截器的功能：
 
-### 1. 拦截页面导航
+### 1. 劫持 window.location.origin
+
+这是关键修复！PandaCoder 的代码使用了 `window.location.origin + '/login'` 构造完整 URL，导致跳转到 `https://www.poeticcoder.com/login`。通过劫持 `location.origin`，让前端代码认为自己在原始服务器上：
+
+```javascript
+const realOrigin = window.location.origin; // https://www.poeticcoder.com
+const fakeOrigin = 'http://81.69.17.52';   // 伪装的 origin
+
+Object.defineProperty(window.location, 'origin', {
+  get() {
+    return fakeOrigin; // 返回原始服务器地址
+  },
+  configurable: true
+});
+```
+
+### 2. 拦截完整 URL 请求
+
+所有网络请求拦截器（fetch、XHR、axios）都增加了对完整 URL 的处理：
+
+```javascript
+// 处理完整 URL（包含 origin）
+if (url.startsWith(realOrigin)) {
+  const path = url.substring(realOrigin.length);
+  if (path === '/login' || path.includes('/login')) {
+    const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+    return originalFetch(proxyUrl, options);
+  }
+}
+```
+
+### 3. 拦截页面导航
 
 添加了对 `history.pushState` 和 `history.replaceState` 的拦截，确保当应用尝试跳转到 `/login` 时，会通过代理加载：
 
@@ -75,10 +106,29 @@ html = html.replace(
 
 ## 工作原理
 
-1. **拦截所有导航**: 无论是通过 `history API`、`location` 赋值、还是点击链接，所有到 `/login` 的跳转都会被拦截
-2. **代理转发**: 拦截到的请求会被转发到 `/api/pandacoder-proxy?type=frontend&path=/login`
-3. **加载实际登录页**: 代理函数会从 `http://81.69.17.52/login` 获取真实的登录页面
-4. **重写资源**: 登录页中的所有资源（CSS、JS、图片等）也会被重写，确保通过代理加载
+1. **劫持 origin**: 让前端代码认为 `window.location.origin` 是 `http://81.69.17.52` 而不是 `https://www.poeticcoder.com`
+2. **拦截完整 URL**: 当代码构造 `https://www.poeticcoder.com/login` 时，拦截器会识别并提取路径 `/login`
+3. **代理转发**: 拦截到的请求会被转发到 `/api/pandacoder-proxy?type=frontend&path=/login`
+4. **加载实际登录页**: 代理函数会从 `http://81.69.17.52/login` 获取真实的登录页面
+5. **重写资源**: 登录页中的所有资源（CSS、JS、图片等）也会被重写，确保通过代理加载
+
+### 请求流程示例
+
+```
+前端代码: window.location.origin + '/login'
+         ↓
+劫持后:   'http://81.69.17.52' + '/login' = 'http://81.69.17.52/login'
+         ↓
+拦截器:   检测到完整 URL 以 realOrigin 开头
+         ↓
+提取路径: '/login'
+         ↓
+代理转发: '/api/pandacoder-proxy?type=frontend&path=%2Flogin'
+         ↓
+Netlify:  代理到 http://81.69.17.52/login
+         ↓
+返回:     真实的登录页面
+```
 
 ## 测试步骤
 
@@ -99,10 +149,21 @@ html = html.replace(
 修改后的拦截器会在控制台输出详细的日志：
 
 - `🐼 PandaCoder 代理拦截器已加载` - 拦截器初始化
+- `🔧 真实 origin: https://www.poeticcoder.com` - 显示真实的 origin
+- `🔧 伪装 origin: http://81.69.17.52` - 显示伪装的 origin
 - `🔄 拦截登录页跳转: /login` - 检测到登录页跳转
-- `🔄 重定向 fetch/XHR/axios 登录页` - 网络请求被重定向
+- `🔄 重定向 fetch/XHR/axios 登录页 (完整URL)` - 完整 URL 被重定向
+- `🔄 重定向 fetch/XHR/axios 登录页` - 相对路径被重定向
 - `✅ axios 拦截器配置成功` - axios 拦截器配置完成
 - `✅ PandaCoder 代理拦截器配置完成` - 所有拦截器配置完成
+
+### 验证 origin 劫持
+
+在浏览器控制台中运行：
+
+```javascript
+console.log(window.location.origin); // 应该输出: http://81.69.17.52
+```
 
 ## 注意事项
 
