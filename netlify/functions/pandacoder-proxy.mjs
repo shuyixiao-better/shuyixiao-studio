@@ -319,29 +319,8 @@ function rewriteHtml(html) {
     return locationMethods.replace(url);
   };
   
-  // 拦截页面导航 - 防止登录页跳转到错误的域名
-  const originalPushState = history.pushState;
-  const originalReplaceState = history.replaceState;
-  
-  history.pushState = function(state, title, url) {
-    if (url && url.includes('/login')) {
-      console.log('🔄 拦截 pushState 登录页跳转:', url);
-      const proxyUrl = getProxyUrl(url);
-      console.log('  → 重定向到:', proxyUrl);
-      return originalPushState.call(this, state, title, proxyUrl);
-    }
-    return originalPushState.call(this, state, title, url);
-  };
-  
-  history.replaceState = function(state, title, url) {
-    if (url && url.includes('/login')) {
-      console.log('🔄 拦截 replaceState 登录页跳转:', url);
-      const proxyUrl = getProxyUrl(url);
-      console.log('  → 重定向到:', proxyUrl);
-      return originalReplaceState.call(this, state, title, proxyUrl);
-    }
-    return originalReplaceState.call(this, state, title, url);
-  };
+  // 不拦截 history API，让 React Router 正常工作
+  // 只通过 auth.redirectToLogin() 中的 window.location.href 来处理登录跳转
 
   // 拦截 fetch - 将 /api/ 和 /login 请求重定向到代理
   const originalFetch = window.fetch;
