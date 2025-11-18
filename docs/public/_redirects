@@ -1,4 +1,2 @@
-/api/pandacoder-proxy    /.netlify/functions/pandacoder-proxy    200
-/api/stats               /.netlify/functions/stats               200
-/pandacoder-proxy-sw.js  404
-/pandacoder-proxy-sw-register.js  404
+/login /.netlify/functions/pandacoder-proxy?type=frontend&path=/login 200!
+/pandacoder/* /.netlify/functions/pandacoder-proxy?type=frontend&path=/:splat 200!
