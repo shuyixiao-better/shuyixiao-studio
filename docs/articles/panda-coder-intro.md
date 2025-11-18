@@ -286,7 +286,7 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
 #### 📱 关注公众号
 
 <p align="center">
-  <img src="/images/WechatOfficialAccount.png" width="280" alt="舒一笑的架构笔记">
+  <img src="/images/WechatOfficialAccount.gif" width="280" alt="舒一笑的架构笔记">
   <br>
   <sub>扫码关注<strong>「舒一笑的架构笔记」</strong>，获取最新技术动态和深度架构解析</sub>
 </p>
