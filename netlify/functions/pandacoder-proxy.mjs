@@ -474,52 +474,79 @@ function rewriteHtml(html) {
 <script>
 // 最早期拦截 - 在任何代码执行之前
 (function() {
-  const _href = Object.getOwnPropertyDescriptor(window.location, 'href');
-  const _assign = window.location.assign;
-  const _replace = window.location.replace;
+  console.log('🔧 [早期拦截器] 开始初始化...');
   
-  // 拦截 location.href 赋值
-  Object.defineProperty(window.location, 'href', {
-    get() {
-      return _href.get.call(window.location);
-    },
-    set(value) {
-      if (typeof value === 'string' && value.includes('/login')) {
-        console.log('🔄 [早期拦截] location.href =', value);
-        const path = value.includes('http') ? new URL(value).pathname : value;
-        const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
-        console.log('  → 重定向到:', proxyUrl);
-        return _href.set.call(window.location, proxyUrl);
+  // 保存原始的 location 对象和方法
+  const originalLocation = window.location;
+  const originalAssign = originalLocation.assign.bind(originalLocation);
+  const originalReplace = originalLocation.replace.bind(originalLocation);
+  
+  // 辅助函数：处理 URL 并返回代理 URL
+  function processUrl(url, method) {
+    if (typeof url !== 'string') return url;
+    
+    // 检查是否包含 /login
+    if (!url.includes('/login')) return url;
+    
+    console.log('🔄 [早期拦截] ' + method + ':', url);
+    
+    // 提取路径
+    let path = url;
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      try {
+        const urlObj = new URL(url);
+        path = urlObj.pathname + urlObj.search + urlObj.hash;
+      } catch (e) {
+        console.warn('⚠️ 无法解析 URL:', url);
       }
-      return _href.set.call(window.location, value);
     }
-  });
+    
+    const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
+    console.log('  → 重定向到:', proxyUrl);
+    return proxyUrl;
+  }
   
-  // 拦截 location.assign
-  window.location.assign = function(url) {
-    if (typeof url === 'string' && url.includes('/login')) {
-      console.log('🔄 [早期拦截] location.assign:', url);
-      const path = url.includes('http') ? new URL(url).pathname : url;
-      const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
-      console.log('  → 重定向到:', proxyUrl);
-      return _assign.call(window.location, proxyUrl);
-    }
-    return _assign.call(window.location, url);
-  };
+  // 重写 location.assign
+  try {
+    Object.defineProperty(window.location, 'assign', {
+      value: function(url) {
+        const processedUrl = processUrl(url, 'location.assign');
+        return originalAssign(processedUrl);
+      },
+      writable: true,
+      configurable: true
+    });
+    console.log('✅ location.assign 已拦截');
+  } catch (e) {
+    console.warn('⚠️ 无法重写 location.assign:', e.message);
+    // 备选方案：直接替换
+    window.location.assign = function(url) {
+      const processedUrl = processUrl(url, 'location.assign');
+      return originalAssign(processedUrl);
+    };
+  }
   
-  // 拦截 location.replace
-  window.location.replace = function(url) {
-    if (typeof url === 'string' && url.includes('/login')) {
-      console.log('🔄 [早期拦截] location.replace:', url);
-      const path = url.includes('http') ? new URL(url).pathname : url;
-      const proxyUrl = '/api/pandacoder-proxy?type=frontend&path=' + encodeURIComponent(path);
-      console.log('  → 重定向到:', proxyUrl);
-      return _replace.call(window.location, proxyUrl);
-    }
-    return _replace.call(window.location, url);
-  };
+  // 重写 location.replace
+  try {
+    Object.defineProperty(window.location, 'replace', {
+      value: function(url) {
+        const processedUrl = processUrl(url, 'location.replace');
+        return originalReplace(processedUrl);
+      },
+      writable: true,
+      configurable: true
+    });
+    console.log('✅ location.replace 已拦截');
+  } catch (e) {
+    console.warn('⚠️ 无法重写 location.replace:', e.message);
+    // 备选方案：直接替换
+    window.location.replace = function(url) {
+      const processedUrl = processUrl(url, 'location.replace');
+      return originalReplace(processedUrl);
+    };
+  }
   
-  console.log('✅ [早期拦截器] 已加载');
+  console.log('✅ [早期拦截器] 初始化完成');
 })();
 </script>
 `;
