@@ -249,12 +249,12 @@ onMounted(() => {
 /* iframe 容器样式 */
 .pandacoder-container {
   position: fixed;
-  top: 0;
+  top: var(--vp-nav-height, 64px); /* 为导航栏留出空间 */
   left: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - var(--vp-nav-height, 64px)); /* 减去导航栏高度 */
   overflow: hidden;
   background: #ffffff;
 }
@@ -291,26 +291,6 @@ onMounted(() => {
   .pandacoder-container {
     background: #1e1e1e;
   }
-}
-
-/* iframe 容器样式 */
-.pandacoder-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: #ffffff;
-}
-
-.pandacoder-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  display: block;
 }
 
 /* 强制隐藏所有 aside-curtain 遮罩 */
