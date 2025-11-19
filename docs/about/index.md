@@ -8,14 +8,174 @@ description: 个人简介与联系方式
 
 ## 个人简介
 
-你好，我是舒一笑不秃头，一名资深Java开发工程师和技术博主。
+<div class="personal-intro-card">
+<div class="intro-header">
+<div class="intro-icon">👋</div>
+<h3 class="intro-title">你好，我是舒一笑</h3>
+</div>
 
-- IDEA插件-PandaCoder（熊猫编码器）作者
-- 生成式AI应用工程师(高级)认证
-- 专注于AI工程化落地
-- 阿里云博客专家
-- Java应用开发职业技能等级认证
-- HarmonyOS应用开发者基础认证
+<div class="intro-content">
+<p class="intro-lead">衢州人，在杭州写代码。</p>
+
+<p>喜欢把复杂的问题拆解成可执行的步骤，也喜欢把平淡的日子过成值得记录的样子。</p>
+
+<p>会做饭（虽然菜单有限），会修电脑（这个很擅长），会在你需要的时候安静陪伴，也会在合适的时候说些有趣的废话。</p>
+
+<p>人生是个长期项目，目前单人开发，但我相信好的产品需要合适的合伙人。</p>
+
+<p class="intro-closing">如果你也在找一个靠谱、有趣、愿意一起成长的队友，不妨留个言，或者给我发封邮件。</p>
+</div>
+
+<div class="intro-credentials">
+<div class="credential-item">💻 IDEA插件-PandaCoder（熊猫编码器）作者</div>
+<div class="credential-item">🤖 生成式AI应用工程师(高级)认证</div>
+<div class="credential-item">🎯 专注于AI工程化落地</div>
+<div class="credential-item">☁️ 阿里云博客专家</div>
+<div class="credential-item">☕ Java应用开发职业技能等级认证</div>
+<div class="credential-item">📱 HarmonyOS应用开发者基础认证</div>
+</div>
+</div>
+
+<style scoped>
+.personal-intro-card {
+  margin: 2rem 0 3rem;
+  padding: 2.5rem 2rem;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(147, 51, 234, 0.08) 50%,
+    rgba(59, 130, 246, 0.05) 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(59, 130, 246, 0.1);
+  border: 2px solid rgba(59, 130, 246, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.personal-intro-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(59, 130, 246, 0.8),
+    rgba(147, 51, 234, 0.8),
+    rgba(59, 130, 246, 0.8),
+    transparent);
+}
+
+.intro-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.intro-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(20deg); }
+  75% { transform: rotate(-20deg); }
+}
+
+.intro-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.intro-content {
+  margin: 2rem 0;
+  line-height: 1.9;
+}
+
+.intro-lead {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.intro-content p {
+  margin: 1.2rem 0;
+  color: var(--vp-c-text-2);
+  font-size: 1.05rem;
+}
+
+.intro-closing {
+  margin-top: 2rem !important;
+  padding-top: 1.5rem;
+  border-top: 2px dashed rgba(59, 130, 246, 0.2);
+  font-style: italic;
+  color: var(--vp-c-text-1) !important;
+  font-weight: 500;
+}
+
+.intro-credentials {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.8rem;
+}
+
+.dark .intro-credentials {
+  background: rgba(30, 30, 30, 0.5);
+}
+
+.credential-item {
+  padding: 0.6rem 1rem;
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--vp-c-text-2);
+  transition: all 0.3s ease;
+}
+
+.credential-item:hover {
+  background: rgba(59, 130, 246, 0.15);
+  transform: translateX(5px);
+}
+
+@media (max-width: 768px) {
+  .personal-intro-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .intro-title {
+    font-size: 1.5rem;
+  }
+  
+  .intro-lead {
+    font-size: 1.1rem;
+  }
+  
+  .intro-credentials {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dark .personal-intro-card {
+  background: linear-gradient(135deg,
+    rgba(59, 130, 246, 0.08) 0%,
+    rgba(147, 51, 234, 0.12) 50%,
+    rgba(59, 130, 246, 0.08) 100%);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+</style>
 
 ---
 

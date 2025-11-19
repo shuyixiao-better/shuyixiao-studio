@@ -24,6 +24,7 @@ import UpdateNotification from './components/UpdateNotification.vue'
 import TechPhilosophy from './components/TechPhilosophy.vue'
 import Comments from './components/Comments.vue'
 import CommentsPlaceholder from './components/CommentsPlaceholder.vue'
+import EasterEgg from './components/EasterEgg.vue'
 
 export default {
   extends: DefaultTheme,
@@ -42,8 +43,8 @@ export default {
       'doc-top': () => h(ArticleStats),
       // 文档内容底部添加评论组件（根据环境选择）
       'doc-after': () => isNetlify ? h(Comments) : h(CommentsPlaceholder),
-      // 在布局底部添加反馈组件（全局可见）
-      'layout-bottom': () => h(FeedbackWidget),
+      // 在布局底部添加反馈组件和彩蛋（全局可见）
+      'layout-bottom': () => [h(FeedbackWidget), h(EasterEgg)],
       // 在布局顶部添加更新通知组件（全局可见）
       'layout-top': () => h(UpdateNotification)
     })
@@ -68,6 +69,7 @@ export default {
     app.component('TechPhilosophy', TechPhilosophy)
     app.component('Comments', Comments)
     app.component('CommentsPlaceholder', CommentsPlaceholder)
+    app.component('EasterEgg', EasterEgg)
   },
   setup() {
     const route = useRoute()
