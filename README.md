@@ -13,6 +13,8 @@
 ![Node version](https://img.shields.io/badge/node-22.x-brightgreen)
 ![VitePress](https://img.shields.io/badge/VitePress-1.0.0-blue)
 
+
+
 ## 🚀 快速开始
 
 ```bash
@@ -50,8 +52,8 @@ npm run docs:dev
 
 ## 📖 文档
 
-- 📡 [RSS 订阅功能总结](./RSS_功能总结.md) - RSS 订阅功能完整说明 🆕
-- 📋 [RSS Feed 设计方案](./RSS_FEED_DESIGN.md) - 包含付费订阅的完整设计方案 🆕
+- 📡 [RSS 订阅功能总结](./RSS_功能总结.md) - RSS 订阅功能完整说明
+- 📋 [RSS Feed 设计方案](./RSS_FEED_DESIGN.md) - 包含付费订阅的完整设计方案
 - 📝 [快速开始指南](./QUICK_START.md) - 5分钟快速上手
 - 🚀 [部署指南](./DEPLOY.md) - GitHub Pages & Netlify 双平台部署
 - 🎨 [鸿蒙字体适配](./README_HARMONYOS_FONT.md) - 鸿蒙字体全局配置
@@ -464,6 +466,47 @@ graph TB
 ## 📄 许可证
 
 MIT License
+
+---
+
+## ⭐ Star 历史趋势
+
+### GitHub Star 趋势
+
+<p align="center">
+  <a href="https://star-history.com/#shuyixiao-better/shuyixiao-studio&Date">
+    <img src="https://api.star-history.com/svg?repos=shuyixiao-better/shuyixiao-studio&type=Date" alt="GitHub Star History Chart" width="600">
+  </a>
+</p>
+
+<p align="center">
+  <sub>📈 GitHub Star 增长趋势 | <a href="https://github.com/shuyixiao-better/shuyixiao-studio">前往 GitHub 仓库</a></sub>
+</p>
+
+### Gitee 仓库
+
+<p align="center">
+  <a href="https://gitee.com/shuyixiao-better/shuyixiao-studio">
+    <img src="https://gitee.com/shuyixiao-better/shuyixiao-studio/badge/star.svg?theme=gvp" alt="Gitee Stars">
+  </a>
+  <a href="https://gitee.com/shuyixiao-better/shuyixiao-studio">
+    <img src="https://gitee.com/shuyixiao-better/shuyixiao-studio/badge/fork.svg?theme=gvp" alt="Gitee Forks">
+  </a>
+  <br><br>
+  <a href="https://gitee.com/shuyixiao-better/shuyixiao-studio">
+    <img src="https://img.shields.io/badge/Gitee-仓库地址-C71D23?style=for-the-badge&logo=gitee&logoColor=white" alt="Gitee Repo">
+  </a>
+</p>
+
+<p align="center">
+  <sub>📊 <a href="https://gitee.com/shuyixiao-better/shuyixiao-studio">前往 Gitee 仓库</a> | <a href="https://gitee.com/shuyixiao-better/shuyixiao-studio/stargazers">查看 Star 用户</a></sub>
+  <br>
+  <sub><em>注：Gitee 暂不支持 Star 趋势图展示</em></sub>
+</p>
+
+<p align="center">
+  <em>💡 提示：两个平台的数据独立统计，欢迎在您常用的平台上给项目点 Star 支持！</em>
+</p>
 
 ---
 
