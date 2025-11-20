@@ -1,5 +1,6 @@
 <template>
-  <div class="comments-section">
+  <!-- 如果是 pandacoder-weekly 路由，不显示评论 -->
+  <div v-if="!isPandaCoderWeekly" class="comments-section">
     <div class="comments-header">
       <h2 class="comments-title">💬 评论区</h2>
       <button 
@@ -143,6 +144,11 @@ const showDeleteButton = ref(false);
 const deleteMode = ref(false);
 const toast = ref({ show: false, message: '', type: 'success' });
 const passwordDialog = ref({ show: false, commentId: null });
+
+// 检查是否是 PandaCoder 周报页面
+const isPandaCoderWeekly = computed(() => {
+  return route.path.includes('/tools/pandacoder-weekly/');
+});
 
 // API 基础路径
 const API_BASE = import.meta.env.DEV 
