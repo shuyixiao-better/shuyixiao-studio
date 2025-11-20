@@ -147,7 +147,7 @@ IDEA → Settings → Plugins → 搜索 "PandaCoder" → Install
 
 **方式2：手动安装**
 ```
-下载：https://github.com/shuyixiao-better/PandaCoder/releases
+下载：https://plugins.jetbrains.com/plugin/27533-pandacoder
 IDEA → Settings → Plugins → Install from Disk
 ```
 
