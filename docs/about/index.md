@@ -11,7 +11,7 @@ description: 个人简介与联系方式
 <div class="personal-intro-card">
 <div class="intro-header">
 <div class="intro-icon">👋</div>
-<h3 class="intro-title">你好，我是舒一笑</h3>
+<h3 class="intro-title">你好，我是舒一笑不秃头</h3>
 </div>
 
 <div class="intro-content">
