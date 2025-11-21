@@ -251,6 +251,43 @@ PandaCoder 是一款融合了先进AI技术的智能编程助手，它不仅能�
 
 未来，我们将持续优化和迭代 PandaCoder，加入更多实用功能，为开发者提供更加智能、便捷的编程体验。欢迎使用并提出宝贵意见！
 
+## 配置使用
+
+### 方式一： 指定mybatis日志级别
+
+```yml
+# application.yml
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 等价于application.properties
+mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+```
+
+### 方式二：配置mybatis-config.xml
+
+```yml
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+</configuration>
+```
+
+### 方式三：指定整个mapper包下的日志级别
+
+```yml
+# application.yml
+logging:
+  level:
+    com.example.demo.mapper: debug
+
+# 等价于application.properties
+logging.level.com.example.demo.mapper=debug
+
+```
+
 ## 🤝 社区交流
 
 ### 💬 加入开发者交流群
