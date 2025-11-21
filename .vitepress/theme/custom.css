@@ -54,7 +54,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 80vh; /* Ensure it takes up most of the screen */
+  min-height: 80vh;
+  /* Ensure it takes up most of the screen */
   text-align: center;
   padding: 20px;
 }
@@ -66,9 +67,17 @@ body {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .not-found-title {
@@ -100,9 +109,63 @@ body {
   transition: all 0.3s ease;
 }
 
-.action-button:hover {
-  background-color: var(--vp-c-brand);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+/* Glassmorphism Card Style */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Dark mode adjustments for glass card */
+.dark .glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Brand Gradient Variables */
+:root {
+  --vp-c-brand-gradient: linear-gradient(315deg, #42d392 25%, #647eff);
+}
+
+/* Navbar Glass Effect (Enhanced) */
+.VPNav {
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  background-color: rgba(var(--vp-c-bg-rgb), 0.7) !important;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Apply Glassmorphism to existing sections if they have these classes */
+.learning-card,
+.why-write-container,
+.notice-container {
+  /* @extend .glass-card; Removed as standard CSS does not support @extend */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.learning-card:hover,
+.why-write-container:hover,
+.notice-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
 }

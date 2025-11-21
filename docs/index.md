@@ -82,11 +82,7 @@ features:
   </div>
 </div>
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">✨</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="bottom" />
 
 <div class="learning-investment-section">
   <div class="learning-card">
@@ -108,19 +104,11 @@ features:
   </div>
 </div>
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">💎</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="top" />
 
 <TechPhilosophy />
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">✨</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="bottom" />
 
 <div class="why-write-section">
   <div class="why-write-container">
@@ -137,34 +125,18 @@ features:
   </div>
 </div>
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">🛠️</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="top" />
 
 <FeaturedTools />
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">🛍️</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="bottom" />
 
 <PremiumRecommend />
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">🔍</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="top" />
 
 <RecentPosts />
 
-<div class="section-divider">
-  <div class="divider-line"></div>
-  <div class="divider-icon">📡</div>
-  <div class="divider-line"></div>
-</div>
+<WaveDivider position="bottom" />
 
 <RSSFeedCard />
