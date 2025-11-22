@@ -429,6 +429,7 @@ export default withMermaid(defineConfig({
               items: [
                 { text: '超越编码：程序员的核心竞争力思考', link: '/tutorials/insights/growth/beyond-coding-core-competitiveness' },
                 { text: '从菜鸟到架构师的成长之路', link: '/tutorials/insights/growth/from-junior-to-architect' },
+                { text: '迷茫不是病，是探索期的馈赠', link: '/tutorials/insights/growth/confusion-and-focus' },
                 { text: '磨刀之道：从打工者到超级个体的修炼', link: '/tutorials/insights/growth/sharpen-the-blade' },
                 { text: '产品化思维：如何让自己成为RAG领域的稀缺资产', link: '/tutorials/insights/growth/rag-product-thinking' },
                 { text: 'RAG开源之路：在解析与检索之间寻找你的第一性原理', link: '/tutorials/insights/growth/rag-opensource-journey' },
