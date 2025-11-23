@@ -10,7 +10,7 @@ const base = '/'
 // https://vitepress.dev/reference/site-config
 export default withMermaid(defineConfig({
   base,
-  
+
   title: "舒一笑不秃头的博客",
   description: "IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 专注于AI工程化落地 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
   head: [
@@ -20,7 +20,7 @@ export default withMermaid(defineConfig({
     // RSS Feed
     ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '舒一笑不秃头的技术博客 RSS Feed' }],
     // 百度统计
-    ['script', {}, 
+    ['script', {},
       "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?dcaa1737f45a913780e610c5fbca5c42\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
     ]
   ],
@@ -32,8 +32,8 @@ export default withMermaid(defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '关注公众号', link: '/about/wechat/' },
-      { 
-        text: '专栏教程', 
+      {
+        text: '专栏教程',
         items: [
           { text: 'Java核心', link: '/tutorials/java/' },
           { text: 'Spring全家桶', link: '/tutorials/spring/' },
@@ -64,6 +64,13 @@ export default withMermaid(defineConfig({
     // 侧边栏
     sidebar: {
       '/articles/panda-coder-intro': [
+        {
+          text: '重构说明',
+          collapsed: false,
+          items: [
+            { text: 'PandaCoder的解构与新生', link: '/articles/pandacoder-refactoring' }
+          ]
+        },
         {
           text: 'PandaCoder介绍',
           collapsed: false,
@@ -582,8 +589,8 @@ export default withMermaid(defineConfig({
               text: '安全架构设计',
               collapsed: true,
               items: [
-                { 
-                  text: '认证授权体系设计', 
+                {
+                  text: '认证授权体系设计',
                   collapsed: true,
                   items: [
                     { text: '认证授权概述', link: '/tutorials/architecture/security/auth-system/' },
@@ -699,9 +706,11 @@ export default withMermaid(defineConfig({
     // 社交链接
     socialLinks: [
       { icon: 'github', link: 'https://github.com/shuyixiao-better' },
-      { icon: {
+      {
+        icon: {
           svg: '<svg t="1632200514682" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2880" width="200" height="200"><path d="M512 1024C229.222 1024 0 794.778 0 512S229.222 0 512 0s512 229.222 512 512-229.222 512-512 512z m259.149-568.883h-290.74a25.293 25.293 0 0 0-25.292 25.293l-0.026 63.206c0 13.952 11.315 25.293 25.267 25.293h177.024c13.978 0 25.293 11.315 25.293 25.267v12.646a75.853 75.853 0 0 1-75.853 75.853h-240.23a25.293 25.293 0 0 1-25.267-25.293V417.203a75.853 75.853 0 0 1 75.827-75.853h353.946a25.293 25.293 0 0 0 25.267-25.292l0.077-63.207a25.293 25.293 0 0 0-25.268-25.293H417.152a189.62 189.62 0 0 0-189.62 189.645V771.15c0 13.977 11.316 25.293 25.294 25.293h372.94a170.65 170.65 0 0 0 170.65-170.65V480.384a25.293 25.293 0 0 0-25.293-25.267z" fill="currentColor"></path></svg>'
-        }, link: 'https://gitee.com/shuyixiao-only' }
+        }, link: 'https://gitee.com/shuyixiao-only'
+      }
     ],
 
     // 页脚
