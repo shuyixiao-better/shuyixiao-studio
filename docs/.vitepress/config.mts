@@ -19,6 +19,12 @@ export default withMermaid(defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }],
     // RSS Feed
     ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '舒一笑不秃头的技术博客 RSS Feed' }],
+    // Google AdSense
+    ['script', { 
+      async: '', 
+      src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8453754288657802',
+      crossorigin: 'anonymous'
+    }],
     // 百度统计
     ['script', {},
       "var _hmt = _hmt || [];(function(){var hm = document.createElement(\"script\");hm.src = \"https://hm.baidu.com/hm.js?dcaa1737f45a913780e610c5fbca5c42\";var s = document.getElementsByTagName(\"script\")[0];s.parentNode.insertBefore(hm, s);})();"
