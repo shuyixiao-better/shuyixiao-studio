@@ -6,13 +6,12 @@
       
       <div class="tools-showcase">
 
-        <a href="/articles/panda-coder-intro" class="featured-tool-card">
+        <a href="/articles/MyBatis_Log_Panda" class="featured-tool-card">
           <div class="tool-card-icon">🐼</div>
           <div class="tool-card-content">
-            <h3 class="tool-card-title">PandaCoder</h3>
-            <p class="tool-card-desc">IDEA代码生成插件，智能生成样板代码，提升开发效率</p>
+            <h3 class="tool-card-title">MyBatis Log Panda</h3>
+            <p class="tool-card-desc">SQL语句生成插件，提升开发效率</p>
             <div class="tool-card-tags">
-              <span class="tool-badge">开源</span>
               <span class="tool-badge">IDEA插件</span>
             </div>
           </div>
