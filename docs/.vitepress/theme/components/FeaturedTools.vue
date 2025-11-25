@@ -6,7 +6,7 @@
       
       <div class="tools-showcase">
 
-        <a href="/articles/MyBatis_Log_Panda" class="featured-tool-card">
+        <a href="/articles/MyBatis-Log-Panda" class="featured-tool-card">
           <div class="tool-card-icon">🐼</div>
           <div class="tool-card-content">
             <h3 class="tool-card-title">MyBatis Log Panda</h3>
