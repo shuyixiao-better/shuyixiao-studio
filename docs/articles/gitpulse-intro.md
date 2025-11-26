@@ -237,13 +237,6 @@ GitPulse 的使命，就是让这些价值被看见：
 
 **立即体验**：在 JetBrains Marketplace 搜索 "GitPulse"
 
-**开源地址**：[GitHub - GitPulse](https://github.com/shuyixiao/GitPulse)（如果已开源）
-
-**文档支持**：
-- [快速开始指南](QUICK_START.md)
-- [开发指南](开发指南.md)
-- [项目结构](PROJECT_STRUCTURE.md)
-
 ---
 
 *本文档基于理查德·沃曼的信息架构理论和哈里·马克思的价值营销哲学创作，致力于传递"创造价值而非索取"的理念。*
