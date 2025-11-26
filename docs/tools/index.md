@@ -11,14 +11,36 @@ description: 效率工具与插件推荐
 <div class="tools-grid">
 
 
-  <a href="/articles/panda-coder-intro" class="tool-card">
+  <a href="/articles/gitpulse-intro" class="tool-card">
     <div class="tool-icon">🐼</div>
-    <h3 class="tool-title">PandaCoder</h3>
-    <p class="tool-desc">IDEA 代码生成插件，智能生成样板代码，提升开发效率</p>
+    <h3 class="tool-title">GitPulse</h3>
+    <p class="tool-desc">Git周报小助手，查看 Git 提交历史，了解项目进度</p>
     <div class="tool-tags">
       <span class="tool-tag">舒一笑不秃头自研</span>
       <span class="tool-tag">IDEA 插件</span>
-      <span class="tool-tag">开源</span>
+      <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
+  <a href="/articles/MyBatis-Log-Panda" class="tool-card">
+    <div class="tool-icon">🐼</div>
+    <h3 class="tool-title">MyBatisLog Panda Log</h3>
+    <p class="tool-desc">MyBatis日志快速提取可执行SQL</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">IDEA 插件</span>
+      <span class="tool-tag">轻量付费</span>
+    </div>
+  </a>
+
+  <a href="/articles/elasticsearch-log-info" class="tool-card">
+    <div class="tool-icon">🐼</div>
+    <h3 class="tool-title">Elasticsearch Log</h3>
+    <p class="tool-desc">Elasticsearch日志高效提取，快速提取DSL</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">IDEA 插件</span>
+      <span class="tool-tag">轻量付费</span>
     </div>
   </a>
 
