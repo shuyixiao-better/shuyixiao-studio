@@ -12,7 +12,7 @@ description: 效率工具与插件推荐
 
 
   <a href="/articles/gitpulse-intro" class="tool-card">
-    <div class="tool-icon">🐼</div>
+    <div class="tool-icon">📊</div>
     <h3 class="tool-title">GitPulse</h3>
     <p class="tool-desc">Git周报小助手，查看 Git 提交历史，了解项目进度</p>
     <div class="tool-tags">
@@ -23,7 +23,7 @@ description: 效率工具与插件推荐
   </a>
 
   <a href="/articles/MyBatis-Log-Panda" class="tool-card">
-    <div class="tool-icon">🐼</div>
+    <div class="tool-icon">📝</div>
     <h3 class="tool-title">MyBatisLog Panda Log</h3>
     <p class="tool-desc">MyBatis日志快速提取可执行SQL</p>
     <div class="tool-tags">
@@ -34,7 +34,7 @@ description: 效率工具与插件推荐
   </a>
 
   <a href="/articles/elasticsearch-log-info" class="tool-card">
-    <div class="tool-icon">🐼</div>
+    <div class="tool-icon">🔎</div>
     <h3 class="tool-title">Elasticsearch Log</h3>
     <p class="tool-desc">Elasticsearch日志高效提取，快速提取DSL</p>
     <div class="tool-tags">
