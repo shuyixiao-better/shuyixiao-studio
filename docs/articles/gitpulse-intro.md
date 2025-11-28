@@ -232,5 +232,12 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
 - 📚 免费获取精品技术文档和学习资料
 - 🎁 参与抽奖活动赢取精美礼品和技术书籍
 
+
+### v1.2.0 (敬请期待)
+
+敬请等待！
+
+
+
 **立即体验**：JetBrains Marketplace 搜索 **GitPulse**  
 **作者**：舒一笑不秃头｜[poeticcoder.com](https://www.poeticcoder.com)｜yixiaoshu88@163.com

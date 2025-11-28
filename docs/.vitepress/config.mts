@@ -79,6 +79,24 @@ export default withMermaid(defineConfig({
                 ]
             }
         ],
+      '/articles/elasticsearch-log-info': [
+            {
+                text: '版本日志',
+                collapsed: false,
+                items: [
+                    { text: 'v2025.4.1 (敬请期待)', link: '/articles/elasticsearch-log-info#v2025-4-1-敬请期待' }
+                ]
+            }
+        ],
+      '/articles/gitpulse-intro': [
+            {
+                text: '版本日志',
+                collapsed: false,
+                items: [
+                    { text: 'v1.2.0 (敬请期待)', link: '/articles/gitpulse-intro#v1-2-0-敬请期待' }
+                ]
+            }
+        ],
       '/articles/panda-coder-intro': [
         {
           text: '重构说明',
