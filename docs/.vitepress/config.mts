@@ -69,6 +69,16 @@ export default withMermaid(defineConfig({
 
     // 侧边栏
     sidebar: {
+      '/articles/MyBatis-Log-Panda': [
+            {
+                text: '版本日志',
+                collapsed: false,
+                items: [
+                    { text: 'v2025.6.1 (敬请期待)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-敬请期待' },
+                    { text: 'v2025.6.1 (2025-11-28)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-2025-11-28' }
+                ]
+            }
+        ],
       '/articles/panda-coder-intro': [
         {
           text: '重构说明',
