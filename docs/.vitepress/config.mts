@@ -57,12 +57,7 @@ export default withMermaid(defineConfig({
       { text: '实战项目', link: '/projects/' },
       { text: '拾珍录', link: '/tutorials/treasures/' },
       { text: '面试宝典', link: '/interview/' },
-      {
-        text: '我的工具',
-        items: [
-          { text: '工具导航', link: '/tools/' },
-        ]
-      },
+      { text: '我的工具',link: '/tools/'},
       { text: 'RSS 订阅', link: '/rss/' },
       { text: '关于我', link: '/about/' }
     ],
