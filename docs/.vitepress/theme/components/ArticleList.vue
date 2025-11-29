@@ -1254,8 +1254,12 @@ watch(pageSize, () => {
   .wechat-card {
     flex-direction: column;
     padding: 1.25rem;
-    margin: 0 1rem 1.5rem;
+    margin: 0 auto 1.5rem;
     width: calc(100% - 2rem);
+  }
+
+  .wechat-info {
+    text-align: center;
   }
   
   .wechat-qrcode {
