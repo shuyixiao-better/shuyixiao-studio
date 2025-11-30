@@ -11,6 +11,12 @@ const base = '/'
 export default withMermaid(defineConfig({
   base,
 
+  // SEO 优化配置
+  cleanUrls: true,
+  sitemap: {
+    hostname: 'https://www.poeticcoder.com'
+  },
+
   title: "舒一笑不秃头的博客",
   description: "IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 专注于AI工程化落地 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
   head: [
@@ -20,8 +26,8 @@ export default withMermaid(defineConfig({
     // RSS Feed
     ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '舒一笑不秃头的技术博客 RSS Feed' }],
     // Google AdSense
-    ['script', { 
-      async: '', 
+    ['script', {
+      async: '',
       src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8453754288657802',
       crossorigin: 'anonymous'
     }],
@@ -57,7 +63,7 @@ export default withMermaid(defineConfig({
       { text: '实战项目', link: '/projects/' },
       { text: '拾珍录', link: '/tutorials/treasures/' },
       { text: '面试宝典', link: '/interview/' },
-      { text: '我的工具',link: '/tools/'},
+      { text: '我的工具', link: '/tools/' },
       { text: 'RSS 订阅', link: '/rss/' },
       { text: '关于我', link: '/about/' }
     ],
@@ -65,33 +71,33 @@ export default withMermaid(defineConfig({
     // 侧边栏
     sidebar: {
       '/articles/MyBatis-Log-Panda': [
-            {
-                text: '版本日志',
-                collapsed: false,
-                items: [
-                    { text: 'v2025.6.1 (敬请期待)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-敬请期待' },
-                    { text: 'v2025.6.1 (2025-11-28)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-2025-11-28' }
-                ]
-            }
-        ],
+        {
+          text: '版本日志',
+          collapsed: false,
+          items: [
+            { text: 'v2025.6.1 (敬请期待)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-敬请期待' },
+            { text: 'v2025.6.1 (2025-11-28)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-2025-11-28' }
+          ]
+        }
+      ],
       '/articles/elasticsearch-log-info': [
-            {
-                text: '版本日志',
-                collapsed: false,
-                items: [
-                    { text: 'v2025.4.1 (敬请期待)', link: '/articles/elasticsearch-log-info#v2025-4-1-敬请期待' }
-                ]
-            }
-        ],
+        {
+          text: '版本日志',
+          collapsed: false,
+          items: [
+            { text: 'v2025.4.1 (敬请期待)', link: '/articles/elasticsearch-log-info#v2025-4-1-敬请期待' }
+          ]
+        }
+      ],
       '/articles/gitpulse-intro': [
-            {
-                text: '版本日志',
-                collapsed: false,
-                items: [
-                    { text: 'v1.2.0 (敬请期待)', link: '/articles/gitpulse-intro#v1-2-0-敬请期待' }
-                ]
-            }
-        ],
+        {
+          text: '版本日志',
+          collapsed: false,
+          items: [
+            { text: 'v1.2.0 (敬请期待)', link: '/articles/gitpulse-intro#v1-2-0-敬请期待' }
+          ]
+        }
+      ],
       '/articles/panda-coder-intro': [
         {
           text: '重构说明',
@@ -794,5 +800,53 @@ export default withMermaid(defineConfig({
   },
   mermaidPlugin: {
     class: "mermaid my-class" // 设置额外类名，可选
+  },
+
+  // 动态注入 SEO 元数据
+  transformHead({ pageData }) {
+    const head: any[] = []
+
+    // 1. Canonical URL (规范链接)
+    // 移除 .md 后缀，处理 index.md
+    const relativePath = pageData.relativePath.replace(/index\.md$/, '').replace(/\.md$/, '')
+    const url = `https://www.poeticcoder.com/${relativePath}`
+    head.push(['link', { rel: 'canonical', href: url }])
+
+    // 2. Open Graph (社交媒体分享)
+    head.push(['meta', { property: 'og:url', content: url }])
+    head.push(['meta', { property: 'og:title', content: pageData.title || "舒一笑不秃头的博客" }])
+    head.push(['meta', { property: 'og:description', content: pageData.description || "专注于AI工程化落地的技术博客" }])
+    // 使用默认封面图，如果有文章特定封面图可以在 frontmatter 中指定 cover 字段
+    const image = pageData.frontmatter.cover || 'https://www.poeticcoder.com/logo.png'
+    head.push(['meta', { property: 'og:image', content: image }])
+
+    // 3. Twitter Card
+    head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
+    head.push(['meta', { name: 'twitter:title', content: pageData.title || "舒一笑不秃头的博客" }])
+    head.push(['meta', { name: 'twitter:description', content: pageData.description || "专注于AI工程化落地的技术博客" }])
+    head.push(['meta', { name: 'twitter:image', content: image }])
+
+    // 4. JSON-LD (结构化数据)
+    if (pageData.frontmatter.layout !== 'home') {
+      const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": pageData.title,
+        "image": [image],
+        "datePublished": pageData.frontmatter.date ? new Date(pageData.frontmatter.date).toISOString() : undefined,
+        "dateModified": pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : undefined,
+        "author": [{
+          "@type": "Person",
+          "name": pageData.frontmatter.author || "舒一笑不秃头",
+          "url": "https://www.poeticcoder.com/about/"
+        }]
+      }
+      // 只有当有日期时才添加，避免无效数据
+      if (jsonLd.datePublished) {
+        head.push(['script', { type: 'application/ld+json' }, JSON.stringify(jsonLd)])
+      }
+    }
+
+    return head
   }
 }))
