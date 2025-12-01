@@ -47,11 +47,11 @@ description: 效率工具与插件推荐
   <a href="https://www.poeticcoder.vip/" class="tool-card" target="_blank" rel="noopener noreferrer">
     <div class="tool-icon">🐼</div>
     <h3 class="tool-title">GitPulse 周报</h3>
-    <p class="tool-desc">查看 Git 提交周报，了解开发进度和代码统计</p>
+    <p class="tool-desc">你的专属代码时光机，记录每一次提交的足迹。构建属于程序员的个人知识库，让成长轨迹清晰可见。目前正在精心打磨中，若想抢先体验，欢迎关注公众号或私信交流</p>
     <div class="tool-tags">
       <span class="tool-tag">舒一笑不秃头自研</span>
-      <span class="tool-tag">周报浏览</span>
-      <span class="tool-tag">开源</span>
+      <span class="tool-tag">内测体验</span>
+      <span class="tool-tag">知识库</span>
     </div>
   </a>
 
