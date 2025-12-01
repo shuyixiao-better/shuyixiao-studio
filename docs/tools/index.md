@@ -106,6 +106,17 @@ description: 效率工具与插件推荐
     </div>
   </a>
 
+  <a href="https://www.strloom.com/" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">🧵</div>
+    <h3 class="tool-title">StrLoom</h3>
+    <p class="tool-desc">编码与解码的艺术空间，JSON 解析的进阶之选。深度剖析数据结构，智能识别类型转换，让复杂节点一目了然。超越传统工具的优雅体验，为开发者量身打造</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">在线工具</span>
+      <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
