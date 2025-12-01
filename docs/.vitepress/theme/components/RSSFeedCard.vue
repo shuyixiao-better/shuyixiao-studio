@@ -439,7 +439,9 @@ onMounted(() => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .card-header {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
+    flex-direction: column;
+    text-align: center;
   }
   
   .card-body {
