@@ -45,13 +45,14 @@ author: 舒一笑不秃头
 ### 📚 系统学习指南
 提供系统化的学习路线，助你成为更优秀的开发者
 
-### 👥 欢迎找我唠嗑～
+### 🌟 在代码之外，遇见有趣的灵魂
+
 <table>
   <tr>
     <td align="center">
         <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
         <br>
-        <sub>扫码添加微信好友欢迎你来闲聊瞎聊，备注 <strong>唠唠嗑</strong></sub>
+        <sub>扫码添加微信，一起聊技术、聊生活、聊有趣的事（备注：<strong>唠唠嗑</strong>）</sub>
       </td>
   </tr>
 </table>
