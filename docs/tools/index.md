@@ -10,6 +10,20 @@ description: 效率工具与插件推荐
 
 <div class="tools-grid">
 
+  <a href="javascript:void(0)" class="tool-card service-card" id="wechat-service-card">
+    <div class="tool-icon">🎓</div>
+    <h3 class="tool-title">毕设定制服务</h3>
+    <p class="tool-desc">从需求分析到代码实现，用工程化思维打磨你的毕业设计。多年开发经验沉淀，助你交付一份有温度的作品</p>
+    <div class="tool-tags">
+      <span class="tool-tag">技术咨询</span>
+      <span class="tool-tag">全栈开发</span>
+      <span class="tool-tag">一对一指导</span>
+    </div>
+    <div class="contact-hint">
+      <span class="wechat-id">💬 点击复制微信：Tobeabetterman1001</span>
+      <span class="note-text">添加请备注：毕设设计</span>
+    </div>
+  </a>
 
   <a href="/articles/gitpulse-intro" class="tool-card">
     <div class="tool-icon">📊</div>
@@ -123,6 +137,59 @@ description: 效率工具与插件推荐
 
 正在持续开发中，敬请期待...
 
+<script setup>
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  const serviceCard = document.getElementById('wechat-service-card');
+  if (serviceCard) {
+    serviceCard.addEventListener('click', (e) => {
+      e.preventDefault();
+      copyWechatId();
+    });
+  }
+});
+
+function copyWechatId() {
+  const wechatId = 'Tobeabetterman1001';
+  navigator.clipboard.writeText(wechatId).then(() => {
+    showToast('✅ 微信号已复制成功', '请添加时备注：毕设设计');
+  }).catch(() => {
+    showToast('❌ 复制失败', '请手动复制：' + wechatId, 'error');
+  });
+}
+
+function showToast(title, message, type = 'success') {
+  // 移除已存在的 toast
+  const existingToast = document.querySelector('.custom-toast');
+  if (existingToast) {
+    existingToast.remove();
+  }
+
+  // 创建 toast 元素
+  const toast = document.createElement('div');
+  toast.className = `custom-toast ${type}`;
+  toast.innerHTML = `
+    <div class="toast-content">
+      <div class="toast-title">${title}</div>
+      <div class="toast-message">${message}</div>
+      <div class="toast-wechat">微信号：<strong>Tobeabetterman1001</strong></div>
+    </div>
+  `;
+  
+  document.body.appendChild(toast);
+  
+  // 触发动画
+  setTimeout(() => toast.classList.add('show'), 10);
+  
+  // 3秒后自动消失
+  setTimeout(() => {
+    toast.classList.remove('show');
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+</script>
+
 <style scoped>
 .tools-grid {
   display: grid;
@@ -234,6 +301,115 @@ description: 效率工具与插件推荐
   box-shadow: 0 20px 50px rgba(62, 175, 124, 0.25);
 }
 
+.service-card {
+  cursor: pointer;
+}
+
+.service-card .contact-hint {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(62, 175, 124, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.service-card .wechat-id {
+  font-size: 0.9rem;
+  color: var(--vp-c-brand-1);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.service-card .note-text {
+  font-size: 0.8rem;
+  color: var(--vp-c-text-3);
+  font-style: italic;
+}
+
+.service-card:hover .wechat-id {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Toast 提示样式 - 使用 :global 避免 scoped 限制 */
+:global(.custom-toast) {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 320px;
+  max-width: 400px;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, 
+    rgba(62, 175, 124, 0.95) 0%, 
+    rgba(52, 211, 153, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(62, 175, 124, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateX(450px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 9999;
+  color: white;
+}
+
+:global(.custom-toast.show) {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+:global(.custom-toast.error) {
+  background: linear-gradient(135deg, 
+    rgba(239, 68, 68, 0.95) 0%, 
+    rgba(220, 38, 38, 0.95) 100%);
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+:global(.toast-content) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+:global(.toast-title) {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:global(.toast-message) {
+  font-size: 0.9rem;
+  opacity: 0.95;
+  line-height: 1.5;
+}
+
+:global(.toast-wechat) {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.95rem;
+  font-family: 'Courier New', monospace;
+}
+
+:global(.toast-wechat strong) {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
 @media (max-width: 768px) {
   .tools-grid {
     grid-template-columns: 1fr;
@@ -247,6 +423,18 @@ description: 效率工具与插件推荐
   .tool-icon {
     font-size: 2.5rem;
     height: 60px;
+  }
+
+  :global(.custom-toast) {
+    right: 10px;
+    left: 10px;
+    min-width: auto;
+    max-width: none;
+    transform: translateY(-100px);
+  }
+
+  :global(.custom-toast.show) {
+    transform: translateY(0);
   }
 }
 </style>
