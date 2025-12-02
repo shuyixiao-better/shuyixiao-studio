@@ -75,7 +75,8 @@ export default withMermaid(defineConfig({
           text: '版本日志',
           collapsed: false,
           items: [
-            { text: 'v2025.6.1 (敬请期待)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-敬请期待' },
+            { text: 'v2025.8.1 (敬请期待)', link: '/articles/MyBatis-Log-Panda#v2025-8-1-敬请期待' },
+            { text: 'v2025.7.1 (2025-12-02)', link: '/articles/MyBatis-Log-Panda#v2025-7-1-2025-12-02' },
             { text: 'v2025.6.1 (2025-11-28)', link: '/articles/MyBatis-Log-Panda#v2025-6-1-2025-11-28' }
           ]
         }
