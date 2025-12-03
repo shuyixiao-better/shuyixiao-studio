@@ -426,15 +426,32 @@ function showToast(title, message, type = 'success') {
   }
 
   :global(.custom-toast) {
-    right: 10px;
-    left: 10px;
-    min-width: auto;
-    max-width: none;
-    transform: translateY(-100px);
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    min-width: 280px;
+    max-width: 85vw;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0;
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
   }
 
   :global(.custom-toast.show) {
-    transform: translateY(0);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  :global(.toast-content) {
+    align-items: center;
+    text-align: center;
+  }
+
+  :global(.toast-title) {
+    justify-content: center;
   }
 }
 </style>
