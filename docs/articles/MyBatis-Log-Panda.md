@@ -344,6 +344,44 @@ MyBatis Log Panda 不是终点，它是起点。
 *本文献给所有在信息迷宫中寻找出路的开发者。*  
 *愿你们找到清晰，找到效率，找到那个更好的自己。*
 
+
+## 配置使用
+
+### 方式一： 指定mybatis日志级别
+
+```yml
+# application.yml
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# 等价于application.properties
+mybatis.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
+```
+
+### 方式二：配置mybatis-config.xml
+
+```yml
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+</configuration>
+```
+
+### 方式三：指定整个mapper包下的日志级别
+
+```yml
+# application.yml
+logging:
+  level:
+    com.example.demo.mapper: debug
+
+# 等价于application.properties
+logging.level.com.example.demo.mapper=debug
+
+```
+
 🐼
 ## 🤝 社区交流
 
