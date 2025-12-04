@@ -2,12 +2,5 @@
 name = "shuyixiao-studio"
 compatibility_date = "2025-12-04"
 
-# Pages 项目配置
+# Pages 项目输出目录配置
 pages_build_output_dir = "docs/.vitepress/dist"
-
-# 构建配置 (这些也可以在 Cloudflare Pages 控制台配置)
-[build]
-command = "npm run docs:build"
-
-[build.environment]
-NODE_VERSION = "22.16.0"
