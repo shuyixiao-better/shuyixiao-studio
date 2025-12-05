@@ -191,24 +191,27 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
 
 欢迎加入 PandaCoder 工具宇宙开发者交流群，与作者和其他开发者一起交流技术、分享经验、反馈问题！我们提供多种交流渠道：
 
+
+
 #### 📱 微信交流群 & 💬 QQ交流群
 
 <p align="center">
   <table>
     <tr>
       <td align="center">
-        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <img src="https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20251205164750295.png" width="280" alt="舒一笑不秃头微信">
         <br>
         <sub>扫码添加微信好友，备注 <strong>PandaCoder工具宇宙交流</strong>，可以拉你进微信交流群</sub>
       </td>
       <td align="center">
-        <img src="/images/PandaCoder交流QQ群.jpg" width="280" alt="PandaCoder工具宇宙开发者交流QQ群">
+        <img src="https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20251205164927629.png" width="280" alt="PandaCoder工具宇宙开发者交流QQ群">
         <br>
         <sub>扫码加入QQ群，与作者和开发者直接交流</sub>
       </td>
     </tr>
   </table>
 </p>
+
 
 **交流群内可以：**
 - 💡 获取最新的插件更新和技术动态
@@ -220,10 +223,11 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
 #### 📱 关注公众号
 
 <p align="center">
-  <img src="/images/WechatOfficialAccount.gif" width="280" alt="舒一笑的架构笔记">
+  <img src="https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/CSDN%E6%8E%A8%E5%B9%BF.gif" width="280" alt="舒一笑的架构笔记">
   <br>
   <sub>扫码关注<strong>「舒一笑的架构笔记」</strong>，获取最新技术动态和深度架构解析</sub>
 </p>
+
 
 **公众号内可以：**
 - 📖 获取独家技术文章和深度解析
@@ -231,13 +235,6 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
 - 💬 与作者一对一交流技术问题
 - 📚 免费获取精品技术文档和学习资料
 - 🎁 参与抽奖活动赢取精美礼品和技术书籍
-
-
-### v1.3.0 (敬请期待)
-
-### v1.2.0 (2025-12-05)
-
-- ✅ 增加插件相关信息介绍
 
 
 
