@@ -131,6 +131,17 @@ description: 效率工具与插件推荐
     </div>
   </a>
 
+  <a href="http://www.xin2u.com/" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">💌</div>
+    <h3 class="tool-title">Xin2U</h3>
+    <p class="tool-desc">写代码的人也有柔软的心。一个专为程序员打造的表白神器，用技术的浪漫传递真挚的心意。有些话藏在心里太久，不如让它优雅地抵达 TA 的屏幕前</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">表白神器</span>
+      <span class="tool-tag">浪漫</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
