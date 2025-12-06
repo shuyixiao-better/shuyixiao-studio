@@ -14,11 +14,11 @@ description: 面向工程落地的 AI 编码伙伴，系列文章与演示入口
 - **内容沉淀**：以系列文章长期更新，形成知识资产
 
 ## 系列文章
-以下为拟定的系列结构，你可以逐篇补充并发布：
-- [开篇：Qoder 的理念与实践](/articles/qoder-intro) — 待发布
-- [实战篇：最小改动接入 Qoder](/articles/qoder-practice-1) — 待发布
-- [协作篇：与现有工具链的联动](/articles/qoder-integration) — 待发布
-- [案例篇：典型问题与解决策略](/articles/qoder-cases) — 待发布
+以下为拟定的系列结构,你可以逐篇补充并发布:
+- [开篇:Qoder 的理念与实践](/articles/qoder-intro) — 已发布
+- **实战篇:最小改动接入 Qoder** — 待发布
+- **协作篇:与现有工具链的联动** — 待发布
+- **案例篇:典型问题与解决策略** — 待发布
 
 > 说明：当你在 `docs/articles/` 下创建对应文章（含 `title` 与 `date` 前言）后，构建时会被 RSS 脚本自动收录，便于订阅传播。
 
