@@ -142,6 +142,17 @@ description: 效率工具与插件推荐
     </div>
   </a>
 
+  <a href="./qoder/" class="tool-card">
+    <div class="tool-icon">🤖</div>
+    <h3 class="tool-title">Qoder 开发助手</h3>
+    <p class="tool-desc">面向工程落地的 AI 编码伙伴，支持系列文章与演示入口</p>
+    <div class="tool-tags">
+      <span class="tool-tag">AI助手</span>
+      <span class="tool-tag">工程化</span>
+      <span class="tool-tag">系列文章</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
