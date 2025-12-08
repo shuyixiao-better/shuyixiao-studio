@@ -89,7 +89,8 @@ export default withMermaid(defineConfig({
           text: '版本日志',
           collapsed: false,
           items: [
-            { text: 'v2025.5.1 (敬请期待)', link: '/articles/elasticsearch-log-info#v2025-5-1-敬请期待' },
+            { text: 'v2025.6.1 (敬请期待)', link: '/articles/elasticsearch-log-info#v2025-5-1-敬请期待' },
+            { text: 'v2025.5.1 (2025-12-08)', link: '/articles/elasticsearch-log-info#v2025-5-1-2025-12-08' },
             { text: 'v2025.4.1 (2025-12-05)', link: '/articles/elasticsearch-log-info#v2025-4-1-2025-12-05' }
           ]
         }
