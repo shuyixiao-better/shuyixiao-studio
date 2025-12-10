@@ -432,6 +432,9 @@ logging.level.com.example.demo.mapper=debug
 
 ### v2025.9.3 (敬请期待)
 
+- ✅ 插件稳定性提升
+
+
 ### v2025.9.2 (2025-12-05)
 
 - ✅ 增强SQL表名解析支持多种格式，包括带schema的表名（如 schema.table）
