@@ -25,6 +25,7 @@ import TechPhilosophy from './components/TechPhilosophy.vue'
 import Comments from './components/Comments.vue'
 import CommentsPlaceholder from './components/CommentsPlaceholder.vue'
 import EasterEgg from './components/EasterEgg.vue'
+import GoogleAdsense from './components/GoogleAdsense.vue'
 
 export default {
   extends: DefaultTheme,
@@ -70,6 +71,7 @@ export default {
     app.component('Comments', Comments)
     app.component('CommentsPlaceholder', CommentsPlaceholder)
     app.component('EasterEgg', EasterEgg)
+    app.component('GoogleAdsense', GoogleAdsense)
   },
   setup() {
     const route = useRoute()
