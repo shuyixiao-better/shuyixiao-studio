@@ -27,7 +27,7 @@ description: 个人简介与联系方式
 </div>
 
 <div class="intro-credentials">
-<div class="credential-item">💻 IDEA插件-PandaCoder（熊猫编码器）作者</div>
+<div class="credential-item">💻 IDEA插件-PandaCoder工具宇宙作者</div>
 <div class="credential-item">🤖 生成式AI应用工程师(高级)认证</div>
 <div class="credential-item">🎯 专注于AI工程化落地</div>
 <div class="credential-item">☁️ 阿里云博客专家</div>
