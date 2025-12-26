@@ -487,7 +487,8 @@ export default withMermaid(defineConfig({
                 { text: '代码重构的智慧', link: '/tutorials/insights/growth/code-refactoring' },
                 { text: '技术债务的思考', link: '/tutorials/insights/growth/technical-debt' },
                 { text: '程序员如何学习技术', link: '/tutorials/insights/growth/程序员如何学习技术' },
-                { text: '在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践', link: '/tutorials/insights/growth/在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践' }
+                { text: '在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践', link: '/tutorials/insights/growth/在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践' },
+                { text: '告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命', link: '/tutorials/insights/growth/告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命' }
               ]
             },
             {
