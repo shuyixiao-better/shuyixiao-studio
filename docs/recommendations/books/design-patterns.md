@@ -309,7 +309,7 @@ Spring框架使用的设计模式：
 
 - [设计模式在线教程](https://refactoring.guru/design-patterns)
 - [Head First设计模式](https://www.oreilly.com/library/view/head-first-design/0596007124/)
-- [我的设计模式专栏](/tutorials/design-pattern/)
+- [设计模式详解](https://refactoring.guru/design-patterns/catalog)
 
 ## 💬 读者评价
 
