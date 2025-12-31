@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 代码助手实现
+description: # 代码助手实现
+tags:
+  - Java
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 代码助手实现
 
 ## 引言

@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAG从入门到精通
+description: # RAG从入门到精通
+tags:
+  - RAG
+  - AI
+  - 架构设计
+  - 微服务
+  - 教程
+author: 舒一笑不秃头
+---
 # RAG从入门到精通
 
 欢迎来到"RAG从入门到精通"专栏！这里是我对RAG（Retrieval-Augmented Generation，检索增强生成）技术一步步深入理解和实践的记录。

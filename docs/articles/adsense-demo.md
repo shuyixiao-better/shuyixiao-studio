@@ -1,3 +1,11 @@
+---
+layout: doc
+title: Google AdSense 广告展示示例
+description: 演示如何在文章中使用 Google AdSense 广告的示例文章
+tags: ['AdSense', '广告', '示例']
+author: 舒一笑不秃头
+---
+
 # Google AdSense 广告展示示例
 
 这是一篇演示如何在文章中使用 Google AdSense 广告的示例文章。

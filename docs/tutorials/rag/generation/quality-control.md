@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 生成质量控制
+description: # 生成质量控制
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 生成质量控制
 
 ## 引言

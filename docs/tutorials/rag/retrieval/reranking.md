@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 重排序技术
+description: # 重排序技术
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 重排序技术
 
 ## 引言

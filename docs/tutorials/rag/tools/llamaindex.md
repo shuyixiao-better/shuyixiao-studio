@@ -1,3 +1,15 @@
+---
+layout: doc
+title: LlamaIndex应用
+description: # LlamaIndex应用
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 开发工具
+author: 舒一笑不秃头
+---
 # LlamaIndex应用
 
 ## 引言

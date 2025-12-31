@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 监控与运维
+description: # 监控与运维
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 监控与运维
 
 ## 引言

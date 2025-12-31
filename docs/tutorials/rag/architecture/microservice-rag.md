@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 微服务RAG架构
+description: # 微服务RAG架构
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 微服务RAG架构
 
 ## 引言

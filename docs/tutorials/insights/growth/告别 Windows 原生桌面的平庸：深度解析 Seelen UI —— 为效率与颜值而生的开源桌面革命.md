@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
+description: # 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
+tags:
+  - Java
+  - AI
+  - Elasticsearch
+  - Git
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
 
 ## 1. 引言：我们为什么对 Windows 桌面“爱恨交织”？

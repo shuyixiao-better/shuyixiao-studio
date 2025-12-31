@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAGFlow使用指南
+description: # RAGFlow使用指南
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - Git
+author: 舒一笑不秃头
+---
 # RAGFlow使用指南
 
 ## 引言

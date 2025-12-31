@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 企业知识库问答
+description: # 企业知识库问答
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 企业知识库问答
 
 ## 引言

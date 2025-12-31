@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAG vs 传统搜索
+description: # RAG vs 传统搜索
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # RAG vs 传统搜索
 
 ## 引言

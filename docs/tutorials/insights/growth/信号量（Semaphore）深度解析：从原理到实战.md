@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 信号量（Semaphore）深度解析：从原理到实战
+description: # 信号量（Semaphore）深度解析：从原理到实战
+tags:
+  - Java
+  - Python
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 信号量（Semaphore）深度解析：从原理到实战
 
 > 基于 TorchV 知识运营系统的并发控制实践

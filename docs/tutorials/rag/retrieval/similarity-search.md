@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 相似度检索算法
+description: # 相似度检索算法
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 相似度检索算法
 
 ## 引言

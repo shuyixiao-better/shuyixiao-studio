@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 提示工程实践
+description: # 提示工程实践
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 提示工程实践
 
 ## 引言

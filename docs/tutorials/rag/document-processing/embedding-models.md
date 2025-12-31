@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 向量化模型选择
+description: # 向量化模型选择
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 向量化模型选择
 
 ## 引言

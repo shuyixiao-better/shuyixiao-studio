@@ -1,3 +1,14 @@
+---
+layout: doc
+title: 什么是RAG
+description: # 什么是RAG
+tags:
+  - RAG
+  - AI
+  - 架构设计
+  - 教程
+author: 舒一笑不秃头
+---
 # 什么是RAG
 
 ## 引言

@@ -1,3 +1,12 @@
+---
+layout: doc
+title: MyBatis Log Panda：重构开发者的认知地图
+description: MyBatis日志格式化工具，让SQL调试变得简单高效
+date: '2025-11-25'
+tags: ['IDEA插件', 'MyBatis', 'SQL', '开发工具']
+author: 舒一笑不秃头
+---
+
 # 信息的建筑学：MyBatis Log Panda 如何重构开发者的认知地图
 
 > "理解先于一切。" —— 理查德·沃曼  

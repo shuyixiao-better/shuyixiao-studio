@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 混合检索策略
+description: # 混合检索策略
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 混合检索策略
 
 ## 引言

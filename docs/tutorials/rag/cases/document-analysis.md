@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 文档智能分析
+description: # 文档智能分析
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 文档智能分析
 
 ## 引言

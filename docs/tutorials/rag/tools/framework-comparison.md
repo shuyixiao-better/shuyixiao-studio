@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 开源RAG框架对比
+description: # 开源RAG框架对比
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 开源RAG框架对比
 
 ## 引言

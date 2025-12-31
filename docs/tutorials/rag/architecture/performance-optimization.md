@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 性能优化策略
+description: # 性能优化策略
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 性能优化策略
 
 ## 引言

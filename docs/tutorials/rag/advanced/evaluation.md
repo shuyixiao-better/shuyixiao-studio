@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAG评估体系
+description: # RAG评估体系
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # RAG评估体系
 
 ## 引言

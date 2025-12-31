@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAG的应用场景
+description: # RAG的应用场景
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # RAG的应用场景
 
 ## 引言

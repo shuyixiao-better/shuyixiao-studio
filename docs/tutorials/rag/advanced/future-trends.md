@@ -1,3 +1,15 @@
+---
+layout: doc
+title: RAG未来发展趋势
+description: # RAG未来发展趋势
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # RAG未来发展趋势
 
 ## 引言

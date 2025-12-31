@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 客服机器人
+description: # 客服机器人
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 客服机器人
 
 ## 引言

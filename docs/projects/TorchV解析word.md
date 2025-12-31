@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 分析项目功能和效果
+description: # 分析项目功能和效果
+tags:
+  - Java
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 分析项目功能和效果
 _Exported on 2025/10/27 at GMT+8 23:37:33 from Cursor (1.7.54)_
 

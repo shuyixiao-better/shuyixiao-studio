@@ -1,3 +1,15 @@
+---
+layout: doc
+title: LangChain实战
+description: # LangChain实战
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # LangChain实战
 
 ## 引言

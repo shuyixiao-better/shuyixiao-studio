@@ -1,3 +1,12 @@
+---
+layout: doc
+title: Elasticsearch Log：让 ES 查询变得透明可见
+description: IDEA插件，让Elasticsearch查询变得透明可见，提升开发效率
+date: '2025-10-15'
+tags: ['IDEA插件', 'Elasticsearch', '开发工具', '效率提升']
+author: 舒一笑不秃头
+---
+
 # Elasticsearch Log：让 ES 查询变得透明可见
 
 > 作者：舒一笑不秃头  

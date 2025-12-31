@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 上下文管理
+description: # 上下文管理
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 上下文管理
 
 ## 引言

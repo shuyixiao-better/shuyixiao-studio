@@ -1,3 +1,9 @@
+---
+layout: doc
+title: 技术文章
+description: 技术探索路上的点滴思考和实践经验
+---
+
 <ArticleList>
   <template #intro>
     <div class="articles-intro">

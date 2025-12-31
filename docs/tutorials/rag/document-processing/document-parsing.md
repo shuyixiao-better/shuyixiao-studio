@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 文档解析技术
+description: # 文档解析技术
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 文档解析技术
 
 ## 引言

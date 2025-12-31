@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 多模态RAG
+description: # 多模态RAG
+tags:
+  - Python
+  - RAG
+  - AI
+  - IDEA插件
+  - Elasticsearch
+author: 舒一笑不秃头
+---
 # 多模态RAG
 
 ## 引言

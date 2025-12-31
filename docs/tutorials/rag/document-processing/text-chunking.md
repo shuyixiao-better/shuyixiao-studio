@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 文本分块策略
+description: # 文本分块策略
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 教程
+author: 舒一笑不秃头
+---
 # 文本分块策略
 
 ## 引言

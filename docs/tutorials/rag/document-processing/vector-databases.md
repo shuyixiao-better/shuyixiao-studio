@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 向量数据库选型
+description: # 向量数据库选型
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 向量数据库选型
 
 ## 引言

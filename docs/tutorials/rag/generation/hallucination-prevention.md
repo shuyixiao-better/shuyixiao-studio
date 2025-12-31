@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 幻觉问题解决
+description: # 幻觉问题解决
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 幻觉问题解决
 
 ## 引言

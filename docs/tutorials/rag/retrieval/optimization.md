@@ -1,3 +1,15 @@
+---
+layout: doc
+title: 检索优化技巧
+description: # 检索优化技巧
+tags:
+  - Python
+  - RAG
+  - AI
+  - Elasticsearch
+  - 架构设计
+author: 舒一笑不秃头
+---
 # 检索优化技巧
 
 ## 引言
