@@ -64,6 +64,7 @@ export default withMermaid(defineConfig({
       { text: '拾珍录', link: '/tutorials/treasures/' },
       { text: '面试宝典', link: '/interview/' },
       { text: '我的工具', link: '/tools/' },
+      { text: '书单推荐', link: '/recommendations/' },
       { text: 'RSS 订阅', link: '/rss/' },
       { text: '关于我', link: '/about/' }
     ],
@@ -741,6 +742,64 @@ export default withMermaid(defineConfig({
                 { text: '开源项目推荐', link: '/tutorials/treasures/resources/open-source' },
                 { text: '电子书资源', link: '/tutorials/treasures/resources/ebooks' },
                 { text: '视频教程精选', link: '/tutorials/treasures/resources/video-courses' }
+              ]
+            }
+          ]
+        }
+      ],
+      '/recommendations/': [
+        {
+          text: '书单推荐',
+          collapsed: false,
+          items: [
+            { text: '📚 书单首页', link: '/recommendations/' },
+            {
+              text: '技术成长类',
+              collapsed: false,
+              items: [
+                { text: '深入理解Java虚拟机', link: '/recommendations/books/understanding-jvm' },
+                { text: '设计模式', link: '/recommendations/books/design-patterns' },
+                { text: '重构', link: '/recommendations/books/refactoring' },
+                { text: '代码整洁之道', link: '/recommendations/books/clean-code' },
+                { text: 'Elasticsearch权威指南', link: '/recommendations/books/elasticsearch-guide' },
+                { text: '微服务架构设计模式', link: '/recommendations/books/microservices-patterns' }
+              ]
+            },
+            {
+              text: 'AI与大模型',
+              collapsed: false,
+              items: [
+                { text: '动手学深度学习', link: '/recommendations/books/dive-into-deep-learning' },
+                { text: '大规模语言模型', link: '/recommendations/books/large-language-models' }
+              ]
+            },
+            {
+              text: '职场与成长',
+              collapsed: false,
+              items: [
+                { text: '程序员修炼之道', link: '/recommendations/books/pragmatic-programmer' },
+                { text: '软技能', link: '/recommendations/books/soft-skills' },
+                { text: '凤凰架构', link: '/recommendations/books/phoenix-architecture' }
+              ]
+            },
+            {
+              text: '思维与人生',
+              collapsed: false,
+              items: [
+                { text: '纳瓦尔宝典', link: '/recommendations/books/naval-almanack' },
+                { text: '黑客与画家', link: '/recommendations/books/hackers-and-painters' },
+                { text: '穷查理宝典', link: '/recommendations/books/poor-charlies-almanack' },
+                { text: '原则', link: '/recommendations/books/principles' },
+                { text: '认知觉醒', link: '/recommendations/books/cognitive-awakening' }
+              ]
+            },
+            {
+              text: '阅读指南',
+              collapsed: false,
+              items: [
+                { text: '如何选书', link: '/recommendations/#如何选书' },
+                { text: '如何读书', link: '/recommendations/#如何读书' },
+                { text: '阅读习惯', link: '/recommendations/#阅读建议' }
               ]
             }
           ]

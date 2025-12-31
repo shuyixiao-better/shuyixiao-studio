@@ -31,6 +31,19 @@
           <div class="tool-card-arrow">→</div>
         </a>
 
+        <a href="/recommendations/" class="featured-tool-card">
+          <div class="tool-card-icon">📚</div>
+          <div class="tool-card-content">
+            <h3 class="tool-card-title">书单推荐</h3>
+            <p class="tool-card-desc">精选技术与人生好书，助力成长之路</p>
+            <div class="tool-card-tags">
+              <span class="tool-badge">阅读</span>
+              <span class="tool-badge">成长</span>
+            </div>
+          </div>
+          <div class="tool-card-arrow">→</div>
+        </a>
+
       </div>
       
       <div class="tools-more">
