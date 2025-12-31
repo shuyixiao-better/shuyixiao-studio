@@ -5,9 +5,7 @@ description: # 信号量（Semaphore）深度解析：从原理到实战
 date: '2025-12-31'
 tags:
   - Java
-  - Python
-  - AI
-  - Elasticsearch
+  - 虚拟线程
   - 教程
 author: 舒一笑不秃头
 ---
