@@ -2,6 +2,7 @@
 layout: doc
 title: 示例：技术思考的艺术
 description: # 示例：技术思考的艺术
+date: '2025-12-31'
 tags:
   - 架构设计
   - 教程

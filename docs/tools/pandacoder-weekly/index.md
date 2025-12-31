@@ -2,6 +2,7 @@
 layout: doc
 title: PandaCoder 周报浏览
 description: 查看 PandaCoder 周报
+date: '2025-12-25'
 ---
 
 <script setup>

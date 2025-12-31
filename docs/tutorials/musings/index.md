@@ -2,6 +2,7 @@
 layout: doc
 title: 漫思录
 description: # 漫思录
+date: '2025-12-31'
 tags:
   - 架构设计
   - 教程

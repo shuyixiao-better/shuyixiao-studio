@@ -2,6 +2,7 @@
 layout: doc
 title: 提示工程实践
 description: # 提示工程实践
+date: '2025-12-31'
 tags:
   - Python
   - RAG

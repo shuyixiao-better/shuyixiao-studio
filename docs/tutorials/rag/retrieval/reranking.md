@@ -2,6 +2,7 @@
 layout: doc
 title: 重排序技术
 description: # 重排序技术
+date: '2025-12-31'
 tags:
   - Python
   - RAG

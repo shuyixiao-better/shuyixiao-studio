@@ -2,6 +2,7 @@
 layout: doc
 title: 分析项目功能和效果
 description: # 分析项目功能和效果
+date: '2025-12-31'
 tags:
   - Java
   - RAG

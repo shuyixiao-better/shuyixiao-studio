@@ -2,6 +2,7 @@
 layout: doc
 title: PandaCoder 测试页面
 description: 测试 iframe 内嵌功能
+date: '2025-12-25'
 ---
 
 <script setup>

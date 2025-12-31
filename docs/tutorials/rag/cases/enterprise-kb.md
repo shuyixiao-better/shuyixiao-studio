@@ -2,6 +2,7 @@
 layout: doc
 title: 企业知识库问答
 description: # 企业知识库问答
+date: '2025-12-31'
 tags:
   - Python
   - RAG

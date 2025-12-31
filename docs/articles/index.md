@@ -2,6 +2,7 @@
 layout: doc
 title: 技术文章
 description: 技术探索路上的点滴思考和实践经验
+date: '2025-12-31'
 ---
 
 <ArticleList>

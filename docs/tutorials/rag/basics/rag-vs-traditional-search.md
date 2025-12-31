@@ -2,6 +2,7 @@
 layout: doc
 title: RAG vs 传统搜索
 description: # RAG vs 传统搜索
+date: '2025-12-31'
 tags:
   - Python
   - RAG

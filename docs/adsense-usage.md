@@ -2,6 +2,7 @@
 layout: doc
 title: Google AdSense 广告使用指南
 description: 介绍如何在文章中使用 Google AdSense 广告组件
+date: '2025-12-31'
 ---
 
 # Google AdSense 广告使用指南

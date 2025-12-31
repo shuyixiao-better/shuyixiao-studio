@@ -2,6 +2,7 @@
 layout: doc
 title: 生成质量控制
 description: # 生成质量控制
+date: '2025-12-31'
 tags:
   - Python
   - RAG

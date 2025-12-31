@@ -2,6 +2,7 @@
 layout: doc
 title: 关于我
 description: 个人简介与联系方式
+date: '2025-12-25'
 ---
 
 # 关于我

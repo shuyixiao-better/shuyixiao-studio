@@ -2,6 +2,7 @@
 layout: doc
 title: 代码雨
 description: 黑客帝国风格的代码雨动画效果
+date: '2025-12-25'
 ---
 
 <script setup>

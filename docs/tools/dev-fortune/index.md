@@ -2,6 +2,7 @@
 layout: doc
 title: 程序员摸鱼日历
 description: 查看今日运势，决定今天适合干什么
+date: '2025-12-25'
 ---
 
 <script setup>

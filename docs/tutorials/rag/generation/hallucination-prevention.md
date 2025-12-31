@@ -2,6 +2,7 @@
 layout: doc
 title: 幻觉问题解决
 description: # 幻觉问题解决
+date: '2025-12-31'
 tags:
   - Python
   - RAG

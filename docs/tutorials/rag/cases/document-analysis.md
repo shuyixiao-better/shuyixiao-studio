@@ -2,6 +2,7 @@
 layout: doc
 title: 文档智能分析
 description: # 文档智能分析
+date: '2025-12-31'
 tags:
   - Python
   - RAG

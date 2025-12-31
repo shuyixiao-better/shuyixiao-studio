@@ -2,6 +2,7 @@
 layout: doc
 title: 微服务RAG架构
 description: # 微服务RAG架构
+date: '2025-12-31'
 tags:
   - Python
   - RAG

@@ -2,6 +2,7 @@
 layout: doc
 title: LlamaIndex应用
 description: # LlamaIndex应用
+date: '2025-12-31'
 tags:
   - Python
   - RAG

@@ -2,6 +2,7 @@
 layout: doc
 title: 相似度检索算法
 description: # 相似度检索算法
+date: '2025-12-31'
 tags:
   - Python
   - RAG

@@ -1,6 +1,7 @@
 ---
 title: 代码整洁之道
 description: Robert C. Martin著 - Uncle Bob的经典之作
+date: '2025-12-31'
 ---
 
 # ✨ 代码整洁之道

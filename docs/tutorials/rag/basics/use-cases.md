@@ -2,6 +2,7 @@
 layout: doc
 title: RAG的应用场景
 description: # RAG的应用场景
+date: '2025-12-31'
 tags:
   - Python
   - RAG

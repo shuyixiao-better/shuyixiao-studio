@@ -2,6 +2,7 @@
 layout: doc
 title: 开源RAG框架对比
 description: # 开源RAG框架对比
+date: '2025-12-31'
 tags:
   - Python
   - RAG

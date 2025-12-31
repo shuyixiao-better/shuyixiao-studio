@@ -2,6 +2,7 @@
 layout: doc
 title: 如何用AI的方式给自己助力
 description: 使用AI集成编码插件进行代码review和测试方案设计
+date: '2025-12-31'
 tags:
   - AI
   - 测试

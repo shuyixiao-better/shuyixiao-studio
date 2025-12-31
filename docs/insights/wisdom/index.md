@@ -2,6 +2,7 @@
 layout: doc
 title: 智慧启迪
 description: 伟大思想家与创新者的人生智慧
+date: '2025-12-25'
 ---
 
 # 智慧启迪

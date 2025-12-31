@@ -2,6 +2,7 @@
 layout: doc
 title: 文本分块策略
 description: # 文本分块策略
+date: '2025-12-31'
 tags:
   - Python
   - RAG

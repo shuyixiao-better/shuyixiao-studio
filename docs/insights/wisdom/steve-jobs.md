@@ -2,6 +2,7 @@
 layout: doc
 title: 乔布斯的智慧启迪
 description: 史蒂夫·乔布斯的人生哲学与励志名言完整解读
+date: '2025-12-25'
 ---
 
 <div class="jobs-wisdom-page">

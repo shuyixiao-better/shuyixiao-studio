@@ -2,6 +2,7 @@
 layout: doc
 title: 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
 description: # 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
+date: '2025-12-31'
 tags:
   - Java
   - AI

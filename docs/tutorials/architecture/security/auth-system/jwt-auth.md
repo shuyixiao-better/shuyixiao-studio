@@ -1,6 +1,7 @@
 ---
 title: JWT令牌认证实践
 description: JWT认证的完整实现方案
+date: '2025-12-25'
 ---
 
 # JWT令牌认证实践

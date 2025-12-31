@@ -1,6 +1,7 @@
 ---
 title: 重构：改善既有代码的设计
 description: Martin Fowler著 - 系统学习代码重构的艺术
+date: '2025-12-31'
 ---
 
 # 🔧 重构：改善既有代码的设计

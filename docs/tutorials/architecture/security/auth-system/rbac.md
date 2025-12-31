@@ -1,6 +1,7 @@
 ---
 title: RBAC权限模型设计
 description: 基于角色的访问控制实现
+date: '2025-12-25'
 ---
 
 # RBAC权限模型设计

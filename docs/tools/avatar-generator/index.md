@@ -2,6 +2,7 @@
 layout: doc
 title: 头像生成器
 description: 随机生成独特的个性头像，支持多种风格
+date: '2025-12-25'
 ---
 
 <script setup>

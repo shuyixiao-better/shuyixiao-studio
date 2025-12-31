@@ -2,6 +2,7 @@
 layout: doc
 title: RAG评估体系
 description: # RAG评估体系
+date: '2025-12-31'
 tags:
   - Python
   - RAG

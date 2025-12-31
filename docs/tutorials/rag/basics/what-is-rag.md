@@ -2,6 +2,7 @@
 layout: doc
 title: 什么是RAG
 description: # 什么是RAG
+date: '2025-12-31'
 tags:
   - RAG
   - AI

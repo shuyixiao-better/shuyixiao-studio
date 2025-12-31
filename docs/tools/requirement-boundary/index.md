@@ -2,6 +2,7 @@
 layout: doc
 title: 需求边界守卫者
 description: 在动手之前先明确需求边界，避免做无用功
+date: '2025-12-25'
 ---
 
 <script setup>

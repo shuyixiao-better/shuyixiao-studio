@@ -2,6 +2,7 @@
 layout: doc
 title: 消费决策助手
 description: AI驱动的理性消费助手，帮你看穿商家套路，做出明智决策
+date: '2025-12-25'
 ---
 
 <script setup>

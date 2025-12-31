@@ -2,6 +2,7 @@
 layout: doc
 title: 检索优化技巧
 description: # 检索优化技巧
+date: '2025-12-31'
 tags:
   - Python
   - RAG

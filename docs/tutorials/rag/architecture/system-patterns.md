@@ -2,6 +2,7 @@
 layout: doc
 title: RAG系统架构模式
 description: # RAG系统架构模式
+date: '2025-12-31'
 tags:
   - Python
   - RAG

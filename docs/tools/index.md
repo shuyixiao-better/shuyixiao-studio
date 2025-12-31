@@ -2,6 +2,7 @@
 layout: doc
 title: 开发工具
 description: 效率工具与插件推荐
+date: '2025-12-25'
 ---
 
 # 开发工具

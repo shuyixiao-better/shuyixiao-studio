@@ -2,6 +2,7 @@
 layout: doc
 title: RSS 订阅
 description: 订阅 RSS Feed，第一时间获取最新文章更新
+date: '2025-12-25'
 ---
 
 # 📡 RSS 订阅

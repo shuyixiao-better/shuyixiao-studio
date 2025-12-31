@@ -2,6 +2,7 @@
 layout: doc
 title: 向量化模型选择
 description: # 向量化模型选择
+date: '2025-12-31'
 tags:
   - Python
   - RAG

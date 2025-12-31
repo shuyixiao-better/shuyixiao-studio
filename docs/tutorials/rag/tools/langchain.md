@@ -2,6 +2,7 @@
 layout: doc
 title: LangChain实战
 description: # LangChain实战
+date: '2025-12-31'
 tags:
   - Python
   - RAG

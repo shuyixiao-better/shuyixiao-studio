@@ -1,6 +1,7 @@
 ---
 title: Elasticsearch权威指南
 description: Clinton Gormley等著 - 全面掌握ES搜索引擎技术
+date: '2025-12-31'
 ---
 
 # 🔍 Elasticsearch权威指南

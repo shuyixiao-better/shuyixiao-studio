@@ -1,6 +1,7 @@
 ---
 title: OAuth2.0授权框架
 description: OAuth2.0协议详解与实战
+date: '2025-12-25'
 ---
 
 # OAuth2.0授权框架

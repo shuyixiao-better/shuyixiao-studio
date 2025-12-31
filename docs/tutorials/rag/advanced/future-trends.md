@@ -2,6 +2,7 @@
 layout: doc
 title: RAG未来发展趋势
 description: # RAG未来发展趋势
+date: '2025-12-31'
 tags:
   - Python
   - RAG

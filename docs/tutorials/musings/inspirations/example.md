@@ -2,6 +2,7 @@
 layout: doc
 title: 示例：捕捉灵感的瞬间
 description: # 示例：捕捉灵感的瞬间
+date: '2025-12-31'
 tags:
   - AI
   - 架构设计

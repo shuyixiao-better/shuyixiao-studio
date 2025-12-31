@@ -1,6 +1,7 @@
 ---
 title: JVM性能调优实践
 description: JVM性能调优的方法与实战案例
+date: '2025-12-25'
 ---
 
 # JVM性能调优实践

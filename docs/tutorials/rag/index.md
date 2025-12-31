@@ -2,6 +2,7 @@
 layout: doc
 title: RAG从入门到精通
 description: # RAG从入门到精通
+date: '2025-12-31'
 tags:
   - RAG
   - AI

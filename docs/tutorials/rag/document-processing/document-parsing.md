@@ -2,6 +2,7 @@
 layout: doc
 title: 文档解析技术
 description: # 文档解析技术
+date: '2025-12-31'
 tags:
   - Python
   - RAG

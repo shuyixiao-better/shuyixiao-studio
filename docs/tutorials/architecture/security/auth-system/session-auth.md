@@ -1,6 +1,7 @@
 ---
 title: Session认证机制
 description: 深入理解Session认证的原理与实现
+date: '2025-12-25'
 ---
 
 # Session认证机制

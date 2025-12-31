@@ -2,6 +2,7 @@
 layout: doc
 title: 多模态RAG
 description: # 多模态RAG
+date: '2025-12-31'
 tags:
   - Python
   - RAG

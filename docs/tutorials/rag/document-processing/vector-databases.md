@@ -2,6 +2,7 @@
 layout: doc
 title: 向量数据库选型
 description: # 向量数据库选型
+date: '2025-12-31'
 tags:
   - Python
   - RAG

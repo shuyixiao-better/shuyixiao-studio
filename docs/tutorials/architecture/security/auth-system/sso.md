@@ -1,6 +1,7 @@
 ---
 title: SSO单点登录设计
 description: 企业级单点登录解决方案
+date: '2025-12-25'
 ---
 
 # SSO单点登录设计

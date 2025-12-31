@@ -2,6 +2,7 @@
 layout: doc
 title: END USER LICENSE AGREEMENT (EULA)
 description: # END USER LICENSE AGREEMENT (EULA)
+date: '2025-12-31'
 tags:
   - AI
   - Elasticsearch

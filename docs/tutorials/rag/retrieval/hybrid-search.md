@@ -2,6 +2,7 @@
 layout: doc
 title: 混合检索策略
 description: # 混合检索策略
+date: '2025-12-31'
 tags:
   - Python
   - RAG

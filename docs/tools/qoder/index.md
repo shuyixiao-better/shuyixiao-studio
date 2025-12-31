@@ -2,6 +2,7 @@
 layout: doc
 title: Qoder 开发助手
 description: 面向工程落地的 AI 编码伙伴，系列文章与演示入口
+date: '2025-12-25'
 ---
 
 ## Qoder 开发助手

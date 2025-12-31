@@ -2,6 +2,7 @@
 layout: doc
 title: RAGFlow使用指南
 description: # RAGFlow使用指南
+date: '2025-12-31'
 tags:
   - Python
   - RAG

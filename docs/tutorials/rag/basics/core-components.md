@@ -2,6 +2,7 @@
 layout: doc
 title: RAG的核心组件
 description: # RAG的核心组件
+date: '2025-12-31'
 tags:
   - Python
   - RAG
