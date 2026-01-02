@@ -501,7 +501,7 @@ export default withMermaid(defineConfig({
                 { text: '程序员的职业规划', link: '/tutorials/insights/career/career-planning' },
                 { text: '在非理想工作中找到成长', link: '/tutorials/insights/career/growth-from-non-ideal-work' },
                 { text: '25岁的选择：从平台思维到个人资产构建', link: '/tutorials/insights/career/25-years-choice' },
-                { text: '技术管理者的修炼', link: '/tutorials/insights/career/tech-management' },
+                { text: '罗振宇2025跨年演讲：在显白教诲之下，我们错过了哪些隐微真相', link: '/tutorials/insights/career/罗振宇2025跨年演讲：在显白教诲之下，我们错过了哪些隐微真相' },
                 { text: '团队协作的艺术', link: '/tutorials/insights/career/team-collaboration' },
                 { text: '职场沟通技巧', link: '/tutorials/insights/career/workplace-communication' }
               ]
