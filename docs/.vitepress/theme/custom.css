@@ -271,10 +271,17 @@ aside.VPDocAside * {
 .VPDocAside {
   padding-left: 16px;
   padding-right: 16px;
-  width: 280px;
-  min-width: 280px;
-  max-width: 280px;
+  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
   flex-shrink: 0;
+}
+
+/* 覆盖 VitePress 内部 aside-container 宽度限制 */
+.aside-container {
+  width: 400px !important;
+  min-width: 400px !important;
+  max-width: 400px !important;
 }
 
 /* 目录标题样式 */
