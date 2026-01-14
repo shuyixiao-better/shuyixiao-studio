@@ -544,7 +544,7 @@ export default withMermaid(defineConfig({
               text: '时间与效率',
               collapsed: true,
               items: [
-                { text: '番茄工作法的实践', link: '/tutorials/insights/time-efficiency/pomodoro-technique' },
+                { text: 'AI 协作编程复盘：一次需求交付的效率提升', link: '/tutorials/insights/time-efficiency/AI协作编程复盘-一次需求交付的效率提升' },
                 { text: '深度工作的力量', link: '/tutorials/insights/time-efficiency/deep-work' },
                 { text: '任务优先级管理', link: '/tutorials/insights/time-efficiency/task-priority' },
                 { text: '效率工具的使用心得', link: '/tutorials/insights/time-efficiency/efficiency-tools' }
