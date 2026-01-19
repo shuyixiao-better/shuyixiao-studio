@@ -494,7 +494,8 @@ export default withMermaid(defineConfig({
                 { text: '在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践', link: '/tutorials/insights/growth/在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践' },
                 { text: '告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命', link: '/tutorials/insights/growth/告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命' },
                 { text: '信号量（Semaphore）深度解析：从原理到实战', link: '/tutorials/insights/growth/信号量（Semaphore）深度解析：从原理到实战' },
-                { text: 'Java 虚拟线程（Virtual Threads）深度解析', link: '/tutorials/insights/growth/Java 虚拟线程（Virtual Threads）深度解析' }
+                { text: 'Java 虚拟线程（Virtual Threads）深度解析', link: '/tutorials/insights/growth/Java 虚拟线程（Virtual Threads）深度解析' },
+                { text: 'Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命', link: '/tutorials/insights/growth/Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命' }
               ]
             },
             {
