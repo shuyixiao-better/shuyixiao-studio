@@ -1,3 +1,19 @@
+---
+layout: doc
+title: Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命
+description: >-
+  深度解析 Claude Skills 功能，从提示词工程的局限到 Agentic AI 的崛起，详解渐进式披露架构、实战应用案例及构建指南，探讨 AI 代理生态中的工作流革命。
+date: '2026-01-19'
+tags:
+  - Claude Skills
+  - AI代理
+  - Agentic AI
+  - 工作流自动化
+  - 技能工程
+  - MCP
+author: 舒一笑不秃头
+---
+
 # Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命
 
 ## 1. 绪论：从对话到行动——AI 交互范式的演进
