@@ -105,7 +105,8 @@ export default withMermaid(defineConfig({
           text: '版本日志',
           collapsed: false,
           items: [
-            { text: 'v1.3.0 (敬请期待)', link: '/articles/gitpulse-intro#v1-3-0-敬请期待' },
+            { text: 'v1.4.0 (敬请期待)', link: '/articles/gitpulse-intro#v1-4-0-敬请期待' },
+            { text: 'v1.3.0 (2026-01-21)', link: '/articles/gitpulse-intro#v1-3-0-2026-01-21' },
             { text: 'v1.2.0 (2025-12-05)', link: '/articles/gitpulse-intro#v1-2-0-2025-12-05' }
           ]
         }
