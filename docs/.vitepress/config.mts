@@ -551,7 +551,7 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: 'AI 协作编程复盘：一次需求交付的效率提升', link: '/tutorials/insights/time-efficiency/AI协作编程复盘-一次需求交付的效率提升' },
-                { text: '深度工作的力量', link: '/tutorials/insights/time-efficiency/deep-work' },
+                { text: 'Claude Code + Firecrawl MCP：让 AI 成为能上网查资料的“全栈搭档”', link: '/tutorials/insights/time-efficiency/Claude Code + Firecrawl MCP：让 AI 成为能上网查资料的“全栈搭档”' },
                 { text: '任务优先级管理', link: '/tutorials/insights/time-efficiency/task-priority' },
                 { text: '效率工具的使用心得', link: '/tutorials/insights/time-efficiency/efficiency-tools' }
               ]
