@@ -441,6 +441,8 @@ logging.level.com.example.demo.mapper=debug
 
 ### v2025.9.6 (敬请期待)
 
+- ✅ 插件稳定性提升
+
 ### v2025.9.5 (2026-01-20)
 
 - ✅ 插件稳定性提升
