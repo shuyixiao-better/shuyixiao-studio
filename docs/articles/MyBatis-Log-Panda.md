@@ -442,6 +442,7 @@ logging.level.com.example.demo.mapper=debug
 ### v2025.9.6 (敬请期待)
 
 - ✅ 插件稳定性提升
+- ✅ 修复报错SQL耗时时间提取异常问题
 
 ### v2025.9.5 (2026-01-20)
 
