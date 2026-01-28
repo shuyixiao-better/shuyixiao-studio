@@ -502,7 +502,8 @@ export default withMermaid(defineConfig({
                 { text: '信号量（Semaphore）深度解析：从原理到实战', link: '/tutorials/insights/growth/信号量（Semaphore）深度解析：从原理到实战' },
                 { text: 'Java 虚拟线程（Virtual Threads）深度解析', link: '/tutorials/insights/growth/Java 虚拟线程（Virtual Threads）深度解析' },
                 { text: 'Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命', link: '/tutorials/insights/growth/Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命' },
-                { text: '2026 智能体编程趋势报告', link: '/tutorials/insights/growth/2026 智能体编程趋势报告' }
+                { text: '2026 智能体编程趋势报告', link: '/tutorials/insights/growth/2026 智能体编程趋势报告' },
+                { text: 'MCP工具构建心得分享', link: '/tutorials/insights/growth/MCP工具构建心得分享' }
               ]
             },
             {
