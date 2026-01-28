@@ -44,13 +44,6 @@ MCP（Model Context Protocol，模型上下文协议）是一套“接口规范�
 
 ------
 
-## v0.19.0 代表什么？
-
-这是 Inspector 这个工具的**版本号**（0.19.0）。你看到的 “MCP Inspector v0.19.0” 基本就是“你现在运行/安装的 Inspector 版本”。（不同版本可能会有 UI、功能、bug 修复差异。）
-它对应的 npm 包一般是 `@modelcontextprotocol/inspector`。 ([npm](https://www.npmjs.com/package/@modelcontextprotocol/inspector?utm_source=chatgpt.com))
-
-------
-
 ## 小白怎么用（最常见的方式）
 
 如果你装了 Node.js，一般直接一条命令就能跑起来（不需要先安装）：
@@ -60,14 +53,6 @@ MCP（Model Context Protocol，模型上下文协议）是一套“接口规范�
   官方 GitHub 的 Quick Start 就是这么写的。 ([GitHub](https://github.com/modelcontextprotocol/inspector?utm_source=chatgpt.com))
 
 > 你不用先理解协议细节：先把 Inspector 跑起来 → 连接你的 MCP Server → 看它暴露了哪些工具/资源 → 点一下试试，就能快速理解“它到底给大模型提供了什么能力”。
-
-------
-
-## 你什么时候会需要它？
-
-- 你在写/改一个 MCP Server，想验证：**工具能不能调用成功？输入输出对不对？**
-- 你拿到别人写的 MCP Server（npm/pypi 包），想先“试用”一下它提供什么
-- 你在排查问题：连接不上、返回报错、参数不对、CORS/SSE 问题等（Inspector 的日志很有用） ([掘金](https://juejin.cn/post/7512720970312171572?utm_source=chatgpt.com))
 
 ------
 
