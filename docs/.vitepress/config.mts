@@ -505,7 +505,8 @@ export default withMermaid(defineConfig({
                 { text: 'Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命', link: '/tutorials/insights/growth/Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命' },
                 { text: '2026 智能体编程趋势报告', link: '/tutorials/insights/growth/2026 智能体编程趋势报告' },
                 { text: 'MCP工具构建心得分享', link: '/tutorials/insights/growth/MCP工具构建心得分享' },
-                { text: 'MCP、Function Call、业务接口（API） 三者的关系', link: '/tutorials/insights/growth/MCP、Function Call、业务接口（API） 三者的关系' }
+                { text: 'MCP、Function Call、业务接口（API） 三者的关系', link: '/tutorials/insights/growth/MCP、Function Call、业务接口（API） 三者的关系' },
+                { text: 'MCP Inspector（v0.19.0）能力标签页解读', link: '/tutorials/insights/growth/MCP Inspector（v0.19.0）能力标签页解读' }
               ]
             },
             {
