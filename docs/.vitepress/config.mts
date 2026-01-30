@@ -18,7 +18,7 @@ export default withMermaid(defineConfig({
   },
 
   title: "舒一笑不秃头的博客",
-  description: "IDEA插件-PandaCoder（熊猫编码器）作者 ｜ 生成式AI应用工程师(高级)认证 | 专注于AI工程化落地 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
+  description: "IDEA插件-PandaCoder工具宇宙作者 ｜ 生成式AI应用工程师(高级)认证 | 专注于AI工程化落地 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
     // JetBrains Mono 字体用于代码显示
@@ -47,6 +47,7 @@ export default withMermaid(defineConfig({
       {
         text: '专栏教程',
         items: [
+          { text: '代码与人生', link: '/tutorials/insights/' },
           { text: 'Java核心', link: '/tutorials/java/' },
           { text: 'Spring全家桶', link: '/tutorials/spring/' },
           { text: '微服务架构', link: '/tutorials/microservice/' },
@@ -54,7 +55,6 @@ export default withMermaid(defineConfig({
           { text: 'Elasticsearch', link: '/tutorials/es/' },
           { text: 'RAG从入门到精通', link: '/tutorials/rag/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
-          { text: '代码与人生', link: '/tutorials/insights/' },
           { text: '拾遗录', link: '/tutorials/explorations/' },
           { text: '筑·匠', link: '/tutorials/architecture/' },
           { text: '漫思录', link: '/tutorials/musings/' }
