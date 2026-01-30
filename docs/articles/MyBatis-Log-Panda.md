@@ -441,6 +441,8 @@ logging.level.com.example.demo.mapper=debug
 
 ### v2025.9.8 (敬请期待)
 
+- ✅ 插件Windows环境稳定性提升
+
 ### v2025.9.7 (2026-01-28)
 - ✅ 插件Windows环境稳定性提升
 
