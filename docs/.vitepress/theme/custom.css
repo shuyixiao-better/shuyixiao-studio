@@ -4821,7 +4821,7 @@ body,
 /* ========== Sidebar Width Override ========== */
 :root {
   /* Wider sidebar so long titles fit on a single line */
-  --vp-sidebar-width: 520px;
+  --vp-sidebar-width: 320px;
 }
 
 @media (min-width: 960px) {
