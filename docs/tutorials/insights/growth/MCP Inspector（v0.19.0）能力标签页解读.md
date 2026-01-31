@@ -16,6 +16,10 @@ author: 舒一笑不秃头
 
 ![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260130174210858.png)
 
+## 启动命令
+
+npx @modelcontextprotocol/inspector
+
 ## 1) Resources（资源）
 
 **它是什么：**
