@@ -135,6 +135,9 @@ body {
 /* Brand Gradient Variables */
 :root {
   --vp-c-brand-gradient: linear-gradient(315deg, #42d392 25%, #647eff);
+  /* Keep sidebar list width aligned with the doc aside (TOC) list width */
+  --vp-aside-width: 360px;
+  --vp-sidebar-width: calc(var(--vp-aside-width) + 32px);
 }
 
 /* Navbar Glass Effect (Enhanced) */
@@ -147,6 +150,16 @@ body {
 /* Smooth Scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Align right aside width with the sidebar list width */
+.VPDoc .aside {
+  max-width: var(--vp-aside-width);
+}
+
+.VPDoc .aside-container,
+.VPDoc .aside-curtain {
+  width: calc(var(--vp-aside-width) - 32px);
 }
 
 /* Apply Glassmorphism to existing sections if they have these classes */

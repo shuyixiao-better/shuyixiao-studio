@@ -4812,9 +4812,31 @@ body,
     padding-top: 12px;
   }
 
-  .update-btn {
+.update-btn {
     padding: 8px 12px;
     font-size: 13px;
+  }
+}
+
+/* ========== Sidebar Width Override ========== */
+:root {
+  /* Wider sidebar so long titles fit on a single line */
+  --vp-sidebar-width: 520px;
+}
+
+@media (min-width: 960px) {
+  .VPSidebar {
+    width: var(--vp-sidebar-width) !important;
+  }
+
+  .VPSidebar .group {
+    width: calc(var(--vp-sidebar-width) - 64px) !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPSidebar {
+    width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px) !important;
   }
 }
 
