@@ -507,7 +507,8 @@ export default withMermaid(defineConfig({
                 { text: 'MCP工具构建心得分享', link: '/tutorials/insights/growth/MCP工具构建心得分享' },
                 { text: 'MCP、Function Call、业务接口（API） 三者的关系', link: '/tutorials/insights/growth/MCP、Function Call、业务接口（API） 三者的关系' },
                 { text: 'MCP Inspector（v0.19.0）能力标签页解读', link: '/tutorials/insights/growth/MCP Inspector（v0.19.0）能力标签页解读' },
-                { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' }
+                { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
+                { text: '程序员在 AI 时代如何打磨技能、实现财富增长飞轮', link: '/tutorials/insights/growth/程序员在 AI 时代如何打磨技能、实现财富增长飞轮' }
               ]
             },
             {
@@ -584,6 +585,7 @@ export default withMermaid(defineConfig({
                 { text: '专长与杠杆：程序员的核心资产', link: '/tutorials/insights/wealth/leverage-and-expertise' },
                 { text: '从打工思维到资产思维', link: '/tutorials/insights/wealth/asset-mindset' },
                 { text: '构建被动收入系统', link: '/tutorials/insights/wealth/passive-income' },
+                { text: '在心动的瞬间，我选择先打磨自己', link: '/tutorials/insights/wealth/passive-income' },
                 { text: '技术博客项目的营利分析：纳瓦尔思维实战', link: '/tutorials/insights/wealth/project-monetization-naval' }
               ]
             }
