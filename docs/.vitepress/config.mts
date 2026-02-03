@@ -508,6 +508,8 @@ export default withMermaid(defineConfig({
                 { text: 'MCP、Function Call、业务接口（API） 三者的关系', link: '/tutorials/insights/growth/MCP、Function Call、业务接口（API） 三者的关系' },
                 { text: 'MCP Inspector（v0.19.0）能力标签页解读', link: '/tutorials/insights/growth/MCP Inspector（v0.19.0）能力标签页解读' },
                 { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
+                { text: '程序员在 AI 时代如何打磨技能、实现财富增长飞轮', link: '/tutorials/insights/growth/程序员在 AI 时代如何打磨技能、实现财富增长飞轮' }
+                { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
                 { text: 'MCP工具模块开发的心得记录V1.0', link: '/tutorials/insights/growth/MCP工具模块开发的心得记录V1.0' }
               ]
             },
