@@ -510,7 +510,8 @@ export default withMermaid(defineConfig({
                 { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
                 { text: '程序员在 AI 时代如何打磨技能、实现财富增长飞轮', link: '/tutorials/insights/growth/程序员在 AI 时代如何打磨技能、实现财富增长飞轮' },
                 { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
-                { text: 'MCP工具模块开发的心得记录V1.0', link: '/tutorials/insights/growth/MCP工具模块开发的心得记录V1.0' }
+                { text: 'MCP工具模块开发的心得记录V1.0', link: '/tutorials/insights/growth/MCP工具模块开发的心得记录V1.0' },
+                { text: 'Claude Code 插件市场项目详细文档', link: '/tutorials/insights/growth/Claude Code 插件市场项目详细文档' }
               ]
             },
             {
