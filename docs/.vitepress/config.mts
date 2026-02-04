@@ -512,7 +512,7 @@ export default withMermaid(defineConfig({
                 { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
                 { text: 'MCP工具模块开发的心得记录V1.0', link: '/tutorials/insights/growth/MCP工具模块开发的心得记录V1.0' },
                 { text: 'Claude Code 插件市场项目详细文档', link: '/tutorials/insights/growth/Claude Code 插件市场项目详细文档' },
-                { text: '原型不全、实现偏差、AI 代码风格不一、实习生“听多了反而更乱”——服务端开发的四个自救方法论', link: '/tutorials/insights/growth/原型不全、实现偏差、AI 代码风格不一、实习生“听多了反而更乱”——服务端开发的四个自救方法论' }
+                { text: '实习生“听多了反而更乱”——服务端开发的自救方法论', link: '/tutorials/insights/growth/实习生“听多了反而更乱”——服务端开发的自救方法论' }
               ]
             },
             {
