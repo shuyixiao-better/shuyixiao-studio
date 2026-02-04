@@ -15,9 +15,13 @@
 
 ## 几个疑惑点的解释
 
-### Token的机制
+### 项目Token的机制
+
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20260204212210105.png)
 
 #### Sa-Token的登录原理
+
+
 
 #### Cookie、Session、JWT-Token的故事
 
