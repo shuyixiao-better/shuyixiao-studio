@@ -703,7 +703,8 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: '示例：技术思考的艺术', link: '/tutorials/musings/thoughts/example' },
-                { text: '如何用AI的方式给自己助力', link: '/tutorials/musings/thoughts/如何用AI的方式给自己助力' }
+                { text: '如何用AI的方式给自己助力', link: '/tutorials/musings/thoughts/如何用AI的方式给自己助力' },
+                { text: 'AGI 前夜的 22 分钟：GPT-5.3-Codex 与 Claude Opus 4.6 的代理化巅峰决战与全球生产力重置深度研究报告', link: '/tutorials/musings/thoughts/AGI 前夜的 22 分钟：GPT-5.3-Codex 与 Claude Opus 4.6 的代理化巅峰决战与全球生产力重置深度研究报告' }
               ]
             },
             {
