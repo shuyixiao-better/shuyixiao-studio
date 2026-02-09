@@ -2,7 +2,7 @@
 
 ### 引子：我们学过的一切，正在失效
 
-最近越来越频繁地出现一种失重感。
+最近我越来越频繁地出现一种失重感。
 
 不是焦虑，也不是迷茫，而是发现——
 **自己过去十多年形成的商业直觉，正在集体报废。**
@@ -32,6 +32,8 @@
 所以，是时候主动清理认知库存了。
 下面这六个判断，可能会让你不太舒服，但它们正在发生。
 
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209200703898.png)
+
 ------
 
 ## 第一部分：旧互联网的六次坍塌
@@ -59,6 +61,8 @@ AI 产品不是这样。
 
 当连接不再发生在用户之间，
 所谓“规模飞轮”，自然也就转不起来。
+
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209200836282.png)
 
 ------
 
@@ -89,6 +93,8 @@ AI 改写了这个前提。
 因为在 Agent 结构里，
 **中心天然拥有制定规则的权力。**
 
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209201210611.png)
+
 ------
 
 ### 3️⃣ SaaS 还在，但使用者已经换人
@@ -118,6 +124,8 @@ AI 改写了这个前提。
 最大的客户类型，不再是 B 或 C，
 而是 **A（Agent）**。
 
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209201604737.png)
+
 ------
 
 ### 4️⃣ “AI 应用”这个说法，本身就落后了
@@ -145,6 +153,8 @@ AI 改写了这个前提。
 不是“好不好用”，
 而是“值不值得被持续调用”。
 
+![、](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209201918590.png)
+
 ------
 
 ### 5️⃣ 时间争夺战，正在结束
@@ -170,6 +180,8 @@ AI 产品的逻辑完全相反。
 一个希望你解放。
 
 这是两个方向完全相反的经济模型。
+
+![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260209202147572.png)
 
 ------
 
