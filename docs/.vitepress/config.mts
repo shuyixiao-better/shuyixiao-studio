@@ -512,7 +512,9 @@ export default withMermaid(defineConfig({
                 { text: 'RESTful，JSON-RPC，HTTP之前的关系', link: '/tutorials/insights/growth/RESTful，JSON-RPC，HTTP之前的关系' },
                 { text: 'MCP工具模块开发的心得记录V1.0', link: '/tutorials/insights/growth/MCP工具模块开发的心得记录V1.0' },
                 { text: 'Claude Code 插件市场项目详细文档', link: '/tutorials/insights/growth/Claude Code 插件市场项目详细文档' },
-                { text: '实习生“听多了反而更乱”——服务端开发的自救方法论', link: '/tutorials/insights/growth/实习生“听多了反而更乱”——服务端开发的自救方法论' }
+                { text: '实习生“听多了反而更乱”——服务端开发的自救方法论', link: '/tutorials/insights/growth/实习生“听多了反而更乱”——服务端开发的自救方法论' },
+                { text: '代码迁移和重组的心得体会', link: '/tutorials/insights/growth/代码迁移和重组的心得体会' },
+                { text: '旧互联网正在退场，Agent 才是未来的常住人口', link: '/tutorials/insights/growth/旧互联网正在退场，Agent 才是未来的常住人口' }
               ]
             },
             {
