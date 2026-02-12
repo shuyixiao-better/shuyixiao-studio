@@ -515,7 +515,9 @@ export default withMermaid(defineConfig({
                 { text: '实习生“听多了反而更乱”——服务端开发的自救方法论', link: '/tutorials/insights/growth/实习生“听多了反而更乱”——服务端开发的自救方法论' },
                 { text: '代码迁移和重组的心得体会', link: '/tutorials/insights/growth/代码迁移和重组的心得体会' },
                 { text: '旧互联网正在退场，Agent 才是未来的常住人口', link: '/tutorials/insights/growth/旧互联网正在退场，Agent 才是未来的常住人口' },
-                { text: '数据智能时代下SaaS的“去意义化”与企业软件重构', link: '/tutorials/insights/growth/数据智能时代下SaaS的“去意义化”与企业软件重构' }
+                { text: '数据智能时代下SaaS的“去意义化”与企业软件重构', link: '/tutorials/insights/growth/数据智能时代下SaaS的“去意义化”与企业软件重构' },
+                { text: '算法效率与自主算力：中国AI正在探索一条差异化发展路径', link: '/tutorials/insights/growth/算法效率与自主算力：中国AI正在探索一条差异化发展路径' }
+
               ]
             },
             {
