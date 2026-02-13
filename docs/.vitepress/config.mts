@@ -516,7 +516,8 @@ export default withMermaid(defineConfig({
                 { text: '代码迁移和重组的心得体会', link: '/tutorials/insights/growth/代码迁移和重组的心得体会' },
                 { text: '旧互联网正在退场，Agent 才是未来的常住人口', link: '/tutorials/insights/growth/旧互联网正在退场，Agent 才是未来的常住人口' },
                 { text: '数据智能时代下SaaS的“去意义化”与企业软件重构', link: '/tutorials/insights/growth/数据智能时代下SaaS的“去意义化”与企业软件重构' },
-                { text: '算法效率与自主算力：中国AI正在探索一条差异化发展路径', link: '/tutorials/insights/growth/算法效率与自主算力：中国AI正在探索一条差异化发展路径' }
+                { text: '算法效率与自主算力：中国AI正在探索一条差异化发展路径', link: '/tutorials/insights/growth/算法效率与自主算力：中国AI正在探索一条差异化发展路径' },
+                { text: '赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋', link: '/tutorials/insights/growth/赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋' },
 
               ]
             },
