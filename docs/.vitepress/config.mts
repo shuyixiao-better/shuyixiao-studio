@@ -57,7 +57,8 @@ export default withMermaid(defineConfig({
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
           { text: '拾遗录', link: '/tutorials/explorations/' },
           { text: '筑·匠', link: '/tutorials/architecture/' },
-          { text: '漫思录', link: '/tutorials/musings/' }
+          { text: '漫思录', link: '/tutorials/musings/' },
+          { text: '登科录', link: '/tutorials/certifications/' }
         ]
       },
       { text: '实战项目', link: '/projects/' },
@@ -726,6 +727,61 @@ export default withMermaid(defineConfig({
               collapsed: true,
               items: [
                 { text: '示例：捕捉灵感的瞬间', link: '/tutorials/musings/inspirations/example' }
+              ]
+            }
+          ]
+        }
+      ],
+      '/tutorials/certifications/': [
+        {
+          text: '登科录',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/certifications/' },
+            {
+              text: '系统架构设计师（高级）',
+              collapsed: true,
+              items: [
+                { text: '考试概述与备考规划', link: '/tutorials/certifications/system-architect/' },
+                {
+                  text: '综合知识',
+                  collapsed: true,
+                  items: [
+                    { text: '计算机组成与体系结构', link: '/tutorials/certifications/system-architect/comprehensive/computer-architecture' },
+                    { text: '操作系统', link: '/tutorials/certifications/system-architect/comprehensive/operating-system' },
+                    { text: '数据库系统', link: '/tutorials/certifications/system-architect/comprehensive/database-system' },
+                    { text: '计算机网络', link: '/tutorials/certifications/system-architect/comprehensive/computer-network' },
+                    { text: '系统安全', link: '/tutorials/certifications/system-architect/comprehensive/system-security' },
+                    { text: '软件工程', link: '/tutorials/certifications/system-architect/comprehensive/software-engineering' },
+                    { text: '项目管理', link: '/tutorials/certifications/system-architect/comprehensive/project-management' }
+                  ]
+                },
+                {
+                  text: '案例分析',
+                  collapsed: true,
+                  items: [
+                    { text: '系统架构设计案例', link: '/tutorials/certifications/system-architect/case-study/system-design' },
+                    { text: '软件架构设计案例', link: '/tutorials/certifications/system-architect/case-study/software-architecture' },
+                    { text: '数据库设计案例', link: '/tutorials/certifications/system-architect/case-study/database-design' },
+                    { text: '网络架构设计案例', link: '/tutorials/certifications/system-architect/case-study/network-architecture' }
+                  ]
+                },
+                {
+                  text: '论文写作',
+                  collapsed: true,
+                  items: [
+                    { text: '论文写作技巧与模板', link: '/tutorials/certifications/system-architect/thesis/writing-skills' },
+                    { text: '历年真题范文赏析', link: '/tutorials/certifications/system-architect/thesis/sample-papers' }
+                  ]
+                },
+                {
+                  text: '历年真题',
+                  collapsed: true,
+                  items: [
+                    { text: '综合知识真题', link: '/tutorials/certifications/system-architect/exam-papers/comprehensive' },
+                    { text: '案例分析真题', link: '/tutorials/certifications/system-architect/exam-papers/case-study' }
+                  ]
+                }
               ]
             }
           ]
