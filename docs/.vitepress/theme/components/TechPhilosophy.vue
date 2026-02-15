@@ -57,6 +57,16 @@ const philosophies = [
     icon: '🚀',
     title: '持续迭代',
     description: '没有完美的第一版，只有不断优化的过程。在实践中学习，在学习中精进。'
+  },
+  {
+    icon: '🔍',
+    title: '保持好奇',
+    description: '好奇心是探索的源动力。永远保持对未知的渴望，每一个"为什么"都是成长的起点。'
+  },
+  {
+    icon: '✨',
+    title: '化繁为简',
+    description: '简单是最终的复杂。用最少的代码做最多的事，让复杂的问题变得清晰可解。'
   }
 ]
 </script>
