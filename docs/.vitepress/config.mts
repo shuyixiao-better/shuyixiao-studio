@@ -519,6 +519,7 @@ export default withMermaid(defineConfig({
                 { text: '数据智能时代下SaaS的“去意义化”与企业软件重构', link: '/tutorials/insights/growth/数据智能时代下SaaS的“去意义化”与企业软件重构' },
                 { text: '算法效率与自主算力：中国AI正在探索一条差异化发展路径', link: '/tutorials/insights/growth/算法效率与自主算力：中国AI正在探索一条差异化发展路径' },
                 { text: '赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋', link: '/tutorials/insights/growth/赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋' },
+                { text: '大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！', link: '/tutorials/insights/growth/大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！' },
 
               ]
             },
