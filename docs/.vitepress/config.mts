@@ -521,6 +521,7 @@ export default withMermaid(defineConfig({
                 { text: '赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋', link: '/tutorials/insights/growth/赛博时代的“情人节葬礼”：GPT-4o停服背后的那场集体失恋' },
                 { text: '大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！', link: '/tutorials/insights/growth/大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！' },
                 { text: 'AI 上春晚：一场十四亿人的验收', link: '/tutorials/insights/growth/AI 上春晚：一场十四亿人的验收' },
+                { text: '大年初四迎财神：春节之后中国AI应用竞争的新分水岭', link: '/tutorials/insights/growth/大年初四迎财神：春节之后中国AI应用竞争的新分水岭' },
 
               ]
             },
