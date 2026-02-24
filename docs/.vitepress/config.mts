@@ -522,7 +522,7 @@ export default withMermaid(defineConfig({
                 { text: '大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！', link: '/tutorials/insights/growth/大年初一AI界“开年第一炸”：OpenClaw之父入驻OpenAI，小扎马年首败！' },
                 { text: 'AI 上春晚：一场十四亿人的验收', link: '/tutorials/insights/growth/AI 上春晚：一场十四亿人的验收' },
                 { text: '大年初四迎财神：春节之后中国AI应用竞争的新分水岭', link: '/tutorials/insights/growth/大年初四迎财神：春节之后中国AI应用竞争的新分水岭' },
-
+                { text: '从DAU奴隶到TPD指挥官：春节复工，职场升维指南', link: '/tutorials/insights/growth/从DAU奴隶到TPD指挥官：春节复工，职场升维指南' },
               ]
             },
             {
