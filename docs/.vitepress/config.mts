@@ -524,6 +524,7 @@ export default withMermaid(defineConfig({
                 { text: '大年初四迎财神：春节之后中国AI应用竞争的新分水岭', link: '/tutorials/insights/growth/大年初四迎财神：春节之后中国AI应用竞争的新分水岭' },
                 { text: '从DAU奴隶到TPD指挥官：春节复工，职场升维指南', link: '/tutorials/insights/growth/从DAU奴隶到TPD指挥官：春节复工，职场升维指南' },
                 { text: '别再盯着反编译的.class发呆了！IDEA 一招让断点直跳源码', link: '/tutorials/insights/growth/别再盯着反编译的.class发呆了！IDEA 一招让断点直跳源码' },
+                { text: '年入百万跃迁实战指南', link: '/tutorials/insights/growth/年入百万跃迁实战指南' },
               ]
             },
             {
