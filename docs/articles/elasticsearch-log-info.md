@@ -224,6 +224,106 @@ author: 舒一笑不秃头
 
 ## 开始使用
 
+### 先在项目里打开 Elasticsearch 日志
+
+如果你的项目本身没有把 ES 请求日志打出来，那么插件也无从解析。  
+所以在**涉及 Elasticsearch 的 Spring Boot 项目**里，建议先在 `logback-local.xml`、`logback-spring.xml` 或你当前环境使用的 Logback 配置文件中加入下面这段配置。
+
+例如，在项目 `/home/shuyixiao/IdeaProjects/torchv_server_langchao/src/main/resources/logback-local.xml` 中，就可以这样配置：
+
+```xml
+<!-- ===== Elasticsearch 日志配置 ===== -->
+<!-- Elasticsearch Java Client 请求日志 -->
+<logger name="org.elasticsearch.client" level="DEBUG">
+
+
+</logger>
+<!-- Spring Data Elasticsearch 查询日志 -->
+<logger name="org.springframework.data.elasticsearch" level="DEBUG">
+
+
+</logger>
+<!-- Elasticsearch RestClient 详细日志 -->
+<logger name="org.elasticsearch.client.RestClient" level="DEBUG">
+
+
+</logger>
+<!-- Elasticsearch 请求追踪（最详细） -->
+<logger name="tracer" level="TRACE">
+
+
+</logger>
+```
+
+这段配置的作用可以这样理解：
+
+- `org.elasticsearch.client`：用于输出 Elasticsearch Java Client 的请求日志，适合查看应用到底发起了哪些 ES 调用。
+- `org.springframework.data.elasticsearch`：用于输出 Spring Data Elasticsearch 层面的查询信息，适合排查 Repository、`ElasticsearchOperations`、注解查询等场景。
+- `org.elasticsearch.client.RestClient`：用于输出更底层的 RestClient 请求细节，适合定位 HTTP 请求路径、方法、执行过程等问题。
+- `tracer`：这是最详细的请求追踪日志，通常会把完整请求和响应细节打出来，排查复杂问题时非常有用，但日志量也最大。
+
+### 这段配置应该放在哪里
+
+推荐把它放在你的业务 logger 后面、`</configuration>` 前面即可。  
+以 `torchv_server_langchao` 这个项目为例，就是放在 `logback-local.xml` 中现有的：
+
+- `com.torchv`
+- `org.springframework.web`
+
+这些 `logger` 配置后面，然后保持整个 XML 结构完整。
+
+### 为什么示例里没有写 `appender-ref` 也能生效
+
+因为在你给出的示例配置中，根节点已经定义了：
+
+```xml
+<root level="info">
+    <appender-ref ref="STDOUT" />
+</root>
+```
+
+这意味着这些 ES logger 即使没有单独配置 `appender-ref`，默认也会继续向上继承，把日志输出到控制台。  
+对于插件来说，这通常已经够用了，因为开发时最常见的场景就是直接从运行日志里抓取 ES 请求信息。
+
+如果你希望这些日志**不仅输出到控制台，还同时写入日志文件**，可以在对应的 `logger` 中显式加入：
+
+```xml
+<appender-ref ref="syslog" />
+```
+
+例如：
+
+```xml
+<logger name="org.elasticsearch.client" level="DEBUG">
+    <appender-ref ref="syslog" />
+</logger>
+```
+
+这样就可以把 ES 日志同步写入 `logs/torchv.log` 这类文件中，方便离线排查和历史追溯。
+
+### 实际使用建议
+
+- 本地开发环境建议开启这组配置，尤其是 `org.elasticsearch.client` 和 `org.springframework.data.elasticsearch`。
+- `tracer` 级别非常详细，建议只在排查疑难问题时临时开启，不要长期在生产环境使用。
+- 如果你发现日志太多，可以先保留前 2 到 3 个 logger，把 `tracer` 注释掉。
+- 修改完 Logback 配置后，记得**重启应用**，否则新的日志级别通常不会立即生效。
+
+### 配置好之后怎么配合插件使用
+
+1. 在项目中加入上面的日志配置。
+2. 启动你的 Spring Boot 应用。
+3. 触发一次 ES 查询，比如搜索、聚合、分页查询、Repository 方法调用等。
+4. 打开 IntelliJ IDEA 底部的 **ES Log Monitor**。
+5. 你就可以看到插件自动捕获并解析出来的 ES 请求记录。
+
+如果插件里没有看到任何内容，优先检查这几项：
+
+- 当前启动环境是否真的使用了你修改过的 `logback-local.xml`
+- 日志级别是否已经生效
+- 查询是否真的走了 Elasticsearch
+- 控制台中是否已经出现了 ES 相关日志
+- 插件监控开关是否已经开启
+
 ### 安装
 1. 打开 IntelliJ IDEA
 2. 进入 Settings → Plugins
