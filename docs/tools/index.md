@@ -41,6 +41,17 @@ date: '2025-12-25'
     </div>
   </a>
 
+  <a href="https://github.com/shuyixiao-better/BlinkSpark" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">👀</div>
+    <h3 class="tool-title">BlinkSpark</h3>
+    <p class="tool-desc">一个轻量、安静、不打断工作流的跨平台护眼提醒工具。支持 Linux/macOS/Windows，开箱即用，帮你稳定实践 20-20-20 习惯，把“眼睛不舒服才想起休息”变成“持续可执行的日常节奏”。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">Rust 开源</span>
+      <span class="tool-tag">跨平台</span>
+      <span class="tool-tag">护眼效率</span>
+    </div>
+  </a>
+
   <a href="/articles/gitpulse-intro" class="tool-card">
     <div class="tool-icon">📊</div>
     <h3 class="tool-title">GitPulse</h3>
