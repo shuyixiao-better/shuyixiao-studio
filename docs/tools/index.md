@@ -11,7 +11,7 @@ date: '2025-12-25'
 
 <div class="tools-grid">
 
-  <a href="javascript:void(0)" class="tool-card service-card" id="wechat-service-card">
+  <a href="javascript:void(0)" class="tool-card service-card" id="wechat-service-card" data-note="毕设设计">
     <div class="tool-icon">🎓</div>
    <h3 class="tool-title">毕业设计交付保障</h3>
     <p class="tool-desc">答辩一次过,代码能跑通,文档能过审。专注解决"不会做、没时间、怕延期"三大核心痛点,让你顺利拿到毕业证</p>
@@ -23,6 +23,21 @@ date: '2025-12-25'
     <div class="contact-hint">
       <span class="wechat-id">💬 点击复制微信：Tobeabetterman1001</span>
       <span class="note-text">添加请备注：毕设设计</span>
+    </div>
+  </a>
+
+  <a href="javascript:void(0)" class="tool-card service-card" data-note="软件脚本">
+    <div class="tool-icon">⚡</div>
+    <h3 class="tool-title">软件脚本定制代做</h3>
+    <p class="tool-desc">不会写脚本、没时间反复调试、项目又催着交付？把需求发我，各类软件脚本都能按场景定制实现。自动化办公、数据处理、批量操作、接口联调都可落地，省下重复劳动，把时间换成结果。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">脚本定制</span>
+      <span class="tool-tag">自动化提效</span>
+      <span class="tool-tag">一对一交付</span>
+    </div>
+    <div class="contact-hint">
+      <span class="wechat-id">📱 点击复制微信：Tobeabetterman1001</span>
+      <span class="note-text">添加请备注：软件脚本</span>
     </div>
   </a>
 
@@ -164,19 +179,20 @@ date: '2025-12-25'
 import { onMounted } from 'vue';
 
 onMounted(() => {
-  const serviceCard = document.getElementById('wechat-service-card');
-  if (serviceCard) {
-    serviceCard.addEventListener('click', (e) => {
+  const serviceCards = document.querySelectorAll('.service-card');
+  serviceCards.forEach((card) => {
+    card.addEventListener('click', (e) => {
       e.preventDefault();
-      copyWechatId();
+      const note = card.getAttribute('data-note') || '毕设设计';
+      copyWechatId(note);
     });
-  }
+  });
 });
 
-function copyWechatId() {
+function copyWechatId(note = '毕设设计') {
   const wechatId = 'Tobeabetterman1001';
   navigator.clipboard.writeText(wechatId).then(() => {
-    showToast('✅ 微信号已复制成功', '请添加时备注：毕设设计');
+    showToast('✅ 微信号已复制成功', `请添加时备注：${note}`);
   }).catch(() => {
     showToast('❌ 复制失败', '请手动复制：' + wechatId, 'error');
   });
