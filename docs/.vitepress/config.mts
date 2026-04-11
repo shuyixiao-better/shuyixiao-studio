@@ -527,6 +527,7 @@ export default withMermaid(defineConfig({
                 { text: '客户现场没网，Docker 镜像怎么快速部署？我把离线导入导出做成了一键化', link: '/tutorials/insights/growth/客户现场没网，Docker 镜像怎么快速部署？我把离线导入导出做成了一键化' },
                 { text: '年入百万跃迁实战指南', link: '/tutorials/insights/growth/年入百万跃迁实战指南' },
                 { text: '我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark', link: '/tutorials/insights/growth/我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark' },
+                { text: 'AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘', link: '/tutorials/insights/growth/AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘' },
               ]
             },
             {
