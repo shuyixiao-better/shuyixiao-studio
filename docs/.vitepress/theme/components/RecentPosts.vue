@@ -25,9 +25,9 @@
 import { data as posts } from '../utils/posts.data.js'
 import { computed } from 'vue'
 
-// 获取最新的4篇文章
+// 获取最新的6篇文章
 const recentPosts = computed(() => {
-  return posts.slice(0, 4)
+  return posts.slice(0, 6)
 })
 
 // 格式化日期
@@ -215,4 +215,3 @@ const formatDate = (date) => {
   box-shadow: 0 12px 28px rgba(66, 211, 146, 0.15);
 }
 </style>
-
