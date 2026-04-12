@@ -528,6 +528,7 @@ export default withMermaid(defineConfig({
                 { text: '年入百万跃迁实战指南', link: '/tutorials/insights/growth/年入百万跃迁实战指南' },
                 { text: '我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark', link: '/tutorials/insights/growth/我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark' },
                 { text: 'AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘', link: '/tutorials/insights/growth/AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘' },
+                { text: '技术圈爆火新词：Harness 工程，OpenAI 和 Anthropic 都在卷这个！', link: '/tutorials/insights/growth/技术圈爆火新词：Harness 工程，OpenAI 和 Anthropic 都在卷这个！' },
               ]
             },
             {
