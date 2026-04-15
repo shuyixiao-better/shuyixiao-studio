@@ -529,7 +529,8 @@ export default withMermaid(defineConfig({
                 { text: '我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark', link: '/tutorials/insights/growth/我用 Rust 做了一个跨平台护眼提醒工具 BlinkSpark' },
                 { text: 'AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘', link: '/tutorials/insights/growth/AI 系统落地难的，从来不只是模型：一次企业级部署实施复盘' },
                 { text: '技术圈爆火新词：Harness 工程，OpenAI 和 Anthropic 都在卷这个！', link: '/tutorials/insights/growth/技术圈爆火新词：Harness 工程，OpenAI 和 Anthropic 都在卷这个！' },
-                { text: '一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解', link: '/tutorials/insights/growth/一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解' }
+                { text: '一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解', link: '/tutorials/insights/growth/一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解' },
+                { text: '重磅！Google 昨晚官宣桌面神器：Alt + Space 一键召唤 AI + 全局搜索，Windows 用户直接起飞！', link: '/tutorials/insights/growth/重磅！Google 昨晚官宣桌面神器：Alt + Space 一键召唤 AI + 全局搜索，Windows 用户直接起飞！' }
               ]
             },
             {
