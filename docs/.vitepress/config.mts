@@ -532,7 +532,8 @@ export default withMermaid(defineConfig({
                 { text: '一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解', link: '/tutorials/insights/growth/一文讲透：大模型推理到底在做什么？从 Prefill 到 vLLM，全链路拆解' },
                 { text: '重磅！Google 昨晚官宣桌面神器：Alt + Space 一键召唤 AI + 全局搜索，Windows 用户直接起飞！', link: '/tutorials/insights/growth/重磅！Google 昨晚官宣桌面神器：Alt + Space 一键召唤 AI + 全局搜索，Windows 用户直接起飞！' },
                 { text: '为什么你的AI Agent聊着聊着就“跑偏”了？不是模型笨，是7大机制在“作妖”！附8大架构神器，彻底治愈“老年痴呆”', link: '/tutorials/insights/growth/为什么你的AI Agent聊着聊着就“跑偏”了？不是模型笨，是7大机制在“作妖”！附8大架构神器，彻底治愈“老年痴呆”' },
-                { text: '为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？', link: '/tutorials/insights/growth/为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？' }
+                { text: '为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？', link: '/tutorials/insights/growth/为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？' },
+                { text: 'RAG评估必备 | Recall@K、MRR、NDCG 三指标，一文彻底讲透', link: '/tutorials/insights/growth/Recall@K、MRR、NDCG 三指标，一文彻底讲透' }
               ]
             },
             {
