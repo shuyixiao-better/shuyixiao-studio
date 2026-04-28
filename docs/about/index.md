@@ -1385,18 +1385,18 @@ date: '2025-12-25'
 
 ## 开源项目
 
-### PandaCoder - IntelliJ IDEA插件
+### PandaCoder AI - IntelliJ IDEA 插件
 
-一款智能代码生成与补全插件，帮助开发者提高编码效率。
+你的本地化 AI 编码伙伴，聚焦智能补全与代码生成，在保障隐私与安全的前提下提升开发效率。
 
-- GitHub: [https://github.com/shuyixiao-better/pandacoder](https://github.com/shuyixiao-better/pandacoder)
-- 插件市场: [plugins.jetbrains.com/plugin/pandacoder](https://plugins.jetbrains.com/plugin/27533-pandacoder)
+- GitHub: [https://github.com/shuyixiao-better/PandaCoder-AI](https://github.com/shuyixiao-better/PandaCoder-AI)
+- 插件市场: [https://plugins.jetbrains.com/plugin/27533-pandacoder](https://plugins.jetbrains.com/plugin/27533-pandacoder)
 
-### Spring Boot Starter集合
+### shuyixiao-agent - AI Agent 实战项目
 
-一系列实用的Spring Boot Starter组件，简化开发流程。
+基于 LangGraph 与码云 AI 构建的智能 Agent 项目，提供清晰工程结构、示例与文档，适合学习与二次开发。
 
-- GitHub: [https://github.com/shuyixiao-better/spring-boot-starters](https://github.com/shuyixiao-better/spring-boot-starters)
+- GitHub: [https://github.com/shuyixiao-better/shuyixiao-agent](https://github.com/shuyixiao-better/shuyixiao-agent)
 
 ## 联系方式
 
