@@ -580,7 +580,8 @@ export default withMermaid(defineConfig({
                 { text: '产品思维的重要性', link: '/tutorials/insights/entrepreneurship/product-thinking' },
                 { text: '产品思维的重要性之技术文章', link: '/tutorials/insights/entrepreneurship/产品思维的重要性之技术文章' },
                 { text: '从技术到商业的转变', link: '/tutorials/insights/entrepreneurship/tech-to-business' },
-                { text: '创业路上的坑与收获', link: '/tutorials/insights/entrepreneurship/startup-journey' }
+                { text: '创业路上的坑与收获', link: '/tutorials/insights/entrepreneurship/startup-journey' },
+                { text: '零后端、零数据库——我做了一个让 10000+ 人成功告白的开源工具', link: '/tutorials/insights/entrepreneurship/零后端、零数据库——我做了一个让 10000+ 人成功告白的开源工具' }
               ]
             },
             {
