@@ -85,6 +85,17 @@ date: '2025-12-25'
     </div>
   </a>
 
+  <a href="https://plugins.jetbrains.com/plugin/29146-pipelinelens" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">🔧</div>
+    <h3 class="tool-title">PipelineLens</h3>
+    <p class="tool-desc">在 IDEA 中编写 Jenkinsfile 再也不用反复切浏览器查语法。智能补全 + 语法高亮让 CI/CD 流水线编写效率提升 50%,告别拼写错误导致的构建失败</p>
+    <div class="tool-tags">
+      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">IDEA 插件</span>
+      <span class="tool-tag">DevOps</span>
+    </div>
+  </a>
+
   <a href="https://www.poeticcoder.vip/" class="tool-card" target="_blank" rel="noopener noreferrer">
     <div class="tool-icon">🐼</div>
     <h3 class="tool-title">GitPulse 周报</h3>
@@ -177,17 +188,6 @@ date: '2025-12-25'
       <span class="tool-tag">AI助手</span>
       <span class="tool-tag">工程化</span>
       <span class="tool-tag">系列文章</span>
-    </div>
-  </a>
-
-  <a href="https://plugins.jetbrains.com/plugin/29146-pipelinelens" class="tool-card" target="_blank" rel="noopener noreferrer">
-    <div class="tool-icon">🔧</div>
-    <h3 class="tool-title">PipelineLens</h3>
-    <p class="tool-desc">在 IDEA 中编写 Jenkinsfile 再也不用反复切浏览器查语法。智能补全 + 语法高亮让 CI/CD 流水线编写效率提升 50%,告别拼写错误导致的构建失败</p>
-    <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
-      <span class="tool-tag">IDEA 插件</span>
-      <span class="tool-tag">DevOps</span>
     </div>
   </a>
 
