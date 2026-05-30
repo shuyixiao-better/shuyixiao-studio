@@ -2,6 +2,7 @@
 title: 微服务认证授权方案
 description: 分布式环境下的认证授权实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 微服务认证授权方案

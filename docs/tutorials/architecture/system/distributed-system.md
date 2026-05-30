@@ -2,6 +2,7 @@
 title: 分布式系统架构设计
 description: 分布式系统的核心概念与设计实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 分布式系统架构设计

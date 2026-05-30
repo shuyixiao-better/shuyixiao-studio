@@ -2,6 +2,7 @@
 title: 微服务架构设计实践
 description: 微服务架构的设计原则与落地方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 微服务架构设计实践

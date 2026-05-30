@@ -2,6 +2,7 @@
 title: 限流降级熔断设计
 description: 系统稳定性保障的限流降级方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 限流降级熔断设计

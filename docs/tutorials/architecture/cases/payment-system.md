@@ -2,6 +2,7 @@
 title: 支付系统架构设计
 description: 支付系统的架构设计与实现
 date: '2025-12-25'
+noindex: true
 ---
 
 # 支付系统架构设计

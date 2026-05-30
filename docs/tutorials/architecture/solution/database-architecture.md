@@ -2,6 +2,7 @@
 title: 数据库架构设计
 description: 数据库架构的设计与优化方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 数据库架构设计

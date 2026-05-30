@@ -2,6 +2,7 @@
 title: 消息队列选型与实践
 description: 消息队列的选型与架构设计
 date: '2025-12-25'
+noindex: true
 ---
 
 # 消息队列选型与实践

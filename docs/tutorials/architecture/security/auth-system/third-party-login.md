@@ -2,6 +2,7 @@
 title: 第三方登录集成
 description: 社交登录实战指南
 date: '2025-12-25'
+noindex: true
 ---
 
 # 第三方登录集成

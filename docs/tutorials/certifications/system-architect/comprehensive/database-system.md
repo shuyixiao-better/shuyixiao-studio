@@ -1,5 +1,6 @@
 ---
 title: 数据库系统
+noindex: true
 ---
 
 # 数据库系统

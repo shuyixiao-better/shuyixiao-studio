@@ -1,5 +1,6 @@
 ---
 title: 软件工程
+noindex: true
 ---
 
 # 软件工程

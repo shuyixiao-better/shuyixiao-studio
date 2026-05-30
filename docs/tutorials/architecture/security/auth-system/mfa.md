@@ -2,6 +2,7 @@
 title: 多因素认证(MFA)
 description: 增强安全性的多因素认证方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 多因素认证(MFA)

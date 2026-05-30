@@ -2,6 +2,7 @@
 title: 数据库性能优化方案
 description: 数据库性能优化的策略与实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 数据库性能优化方案

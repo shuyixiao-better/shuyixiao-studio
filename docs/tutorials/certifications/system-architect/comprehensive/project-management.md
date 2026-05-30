@@ -1,5 +1,6 @@
 ---
 title: 项目管理
+noindex: true
 ---
 
 # 项目管理

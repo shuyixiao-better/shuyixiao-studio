@@ -2,6 +2,7 @@
 title: ABAC属性访问控制
 description: 灵活的细粒度权限控制方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # ABAC属性访问控制

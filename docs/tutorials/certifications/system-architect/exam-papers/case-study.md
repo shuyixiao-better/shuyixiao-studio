@@ -1,5 +1,6 @@
 ---
 title: 案例分析真题
+noindex: true
 ---
 
 # 案例分析真题

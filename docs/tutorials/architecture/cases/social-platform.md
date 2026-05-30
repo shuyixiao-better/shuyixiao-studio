@@ -2,6 +2,7 @@
 title: 社交平台架构方案
 description: 社交平台的架构设计与实现
 date: '2025-12-25'
+noindex: true
 ---
 
 # 社交平台架构方案

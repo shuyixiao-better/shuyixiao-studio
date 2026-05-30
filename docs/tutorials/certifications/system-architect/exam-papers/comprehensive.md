@@ -1,5 +1,6 @@
 ---
 title: 综合知识真题
+noindex: true
 ---
 
 # 综合知识真题

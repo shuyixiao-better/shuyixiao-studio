@@ -1,5 +1,6 @@
 ---
 title: 计算机网络
+noindex: true
 ---
 
 # 计算机网络

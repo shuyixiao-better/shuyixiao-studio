@@ -2,6 +2,7 @@
 title: 接口安全防护方案
 description: API接口安全防护的策略与实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 接口安全防护方案

@@ -2,6 +2,7 @@
 title: 接口性能优化实战
 description: API接口性能优化的方法与实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 接口性能优化实战

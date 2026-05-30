@@ -1,5 +1,6 @@
 ---
 title: 系统安全
+noindex: true
 ---
 
 # 系统安全

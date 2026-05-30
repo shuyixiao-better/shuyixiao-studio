@@ -2,6 +2,7 @@
 title: 前端性能优化方案
 description: 前端性能优化的策略与实践
 date: '2025-12-25'
+noindex: true
 ---
 
 # 前端性能优化方案

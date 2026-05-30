@@ -2,6 +2,7 @@
 title: 搜索引擎架构方案
 description: 搜索引擎的架构设计与实现
 date: '2025-12-25'
+noindex: true
 ---
 
 # 搜索引擎架构方案

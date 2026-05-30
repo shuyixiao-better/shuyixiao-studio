@@ -2,6 +2,7 @@
 title: 数据加密方案设计
 description: 数据加密的原理与实践方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 数据加密方案设计

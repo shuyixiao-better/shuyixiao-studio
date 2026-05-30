@@ -67,6 +67,15 @@ export default withMermaid(defineConfig({
       { text: '我的工具', link: '/tools/' },
       { text: '书单推荐', link: '/recommendations/' },
       { text: 'RSS 订阅', link: '/rss/' },
+      {
+        text: '网站政策',
+        items: [
+          { text: '隐私政策', link: '/policies/privacy-policy' },
+          { text: '服务条款', link: '/policies/terms' },
+          { text: '免责声明', link: '/policies/disclaimer' },
+          { text: '联系我们', link: '/policies/contact' }
+        ]
+      },
       { text: '关于我', link: '/about/' }
     ],
 

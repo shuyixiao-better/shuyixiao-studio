@@ -1,5 +1,6 @@
 ---
 title: 操作系统
+noindex: true
 ---
 
 # 操作系统

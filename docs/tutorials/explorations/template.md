@@ -7,6 +7,7 @@ tags:
   - 技术探索
   - Java
 author: 舒一笑不秃头
+noindex: true
 ---
 # 【示例】初探某技术
 

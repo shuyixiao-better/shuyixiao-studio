@@ -2,6 +2,7 @@
 title: 领域驱动设计(DDD)实战
 description: DDD方法论在实际项目中的应用
 date: '2025-12-25'
+noindex: true
 ---
 
 # 领域驱动设计(DDD)实战

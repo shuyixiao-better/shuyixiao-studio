@@ -1,5 +1,6 @@
 ---
 title: 数据库设计案例
+noindex: true
 ---
 
 # 数据库设计案例

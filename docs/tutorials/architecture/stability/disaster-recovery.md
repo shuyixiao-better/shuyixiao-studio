@@ -2,6 +2,7 @@
 title: 容灾与高可用设计
 description: 系统容灾与高可用架构方案
 date: '2025-12-25'
+noindex: true
 ---
 
 # 容灾与高可用设计

@@ -2,6 +2,7 @@
 title: 监控告警体系建设
 description: 完整的监控告警系统设计
 date: '2025-12-25'
+noindex: true
 ---
 
 # 监控告警体系建设
