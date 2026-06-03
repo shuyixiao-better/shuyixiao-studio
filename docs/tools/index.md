@@ -52,6 +52,17 @@ date: '2025-12-25'
     </div>
   </a>
 
+  <a href="https://www.poeticcoder.vip/audio-transcribe" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">🎙️</div>
+    <h3 class="tool-title">音频转文字</h3>
+    <p class="tool-desc">面试录音提取和音频转文字工具。上传录音即可快速整理成可检索文本，适合复盘面试问答、提炼重点内容，也方便后续做笔记归档和总结输出。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">面试录音提取</span>
+      <span class="tool-tag">一键转写</span>
+      <span class="tool-tag">效率整理</span>
+    </div>
+  </a>
+
   <a href="/articles/gitpulse-intro" class="tool-card">
     <div class="tool-icon">📊</div>
     <h3 class="tool-title">GitPulse</h3>
@@ -516,4 +527,3 @@ function showToast(title, message, type = 'success') {
   }
 }
 </style>
-
