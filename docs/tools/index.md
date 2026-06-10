@@ -202,6 +202,39 @@ date: '2025-12-25'
     </div>
   </a>
 
+  <a href="https://retirecountdown.pages.dev/" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">⏰</div>
+    <h3 class="tool-title">退休倒计时</h3>
+    <p class="tool-desc">距离退休还有多久？输入出生日期，实时计算剩余工作天数。让漫长的职业生涯有了清晰的终点线，每天都知道自己离自由又近了一步</p>
+    <div class="tool-tags">
+      <span class="tool-tag">生活工具</span>
+      <span class="tool-tag">倒计时</span>
+      <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
+  <a href="https://zodiac-date-finder.pages.dev/" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">♈</div>
+    <h3 class="tool-title">星座查询</h3>
+    <p class="tool-desc">不确定自己是什么星座？输入生日自动识别，解决"星座按农历还是阳历"的世纪难题。支持边界日期精准判定，再也不用对着星座表纠结</p>
+    <div class="tool-tags">
+      <span class="tool-tag">星座运势</span>
+      <span class="tool-tag">日期查询</span>
+      <span class="tool-tag">娱乐</span>
+    </div>
+  </a>
+
+  <a href="https://aging-clock.pages.dev/" class="tool-card" target="_blank" rel="noopener noreferrer">
+    <div class="tool-icon">🎂</div>
+    <h3 class="tool-title">年龄时钟</h3>
+    <p class="tool-desc">精确计算年龄到秒，告别"我多大了"的模糊认知。实时更新的年龄显示让你感受时间的流逝，珍惜当下每一刻</p>
+    <div class="tool-tags">
+      <span class="tool-tag">趣味工具</span>
+      <span class="tool-tag">实时计算</span>
+      <span class="tool-tag">免费</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
