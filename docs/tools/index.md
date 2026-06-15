@@ -268,7 +268,7 @@ date: '2025-12-25'
     </div>
   </a>
 
-  <a href="javascript:void(0)" class="tool-card">
+  <div class="tool-card music-card">
     <div class="tool-icon">🎵</div>
     <h3 class="tool-title">等我把风吹成答案</h3>
     <p class="tool-desc">不是所有执念都需要被回应，但每一份坚持都会慢慢变成结果。把心事交给时间，熬过那些没人懂的日子，答案自己会来。</p>
@@ -277,7 +277,11 @@ date: '2025-12-25'
       <span class="tool-tag">成长叙事</span>
       <span class="tool-tag">全网可听</span>
     </div>
-  </a>
+    <div class="music-links">
+      <a href="https://y.qq.com/n/ryqq_v2/songDetail/002m3wpy3I6NP1" class="music-btn" target="_blank" rel="noopener noreferrer">🎵 QQ 音乐</a>
+      <a href="https://music.163.com/song?id=3393648173" class="music-btn" target="_blank" rel="noopener noreferrer">🎵 网易云音乐</a>
+    </div>
+  </div>
 
 </div>
 
@@ -454,6 +458,42 @@ function showToast(title, message, type = 'success') {
   cursor: pointer;
 }
 
+.music-card {
+  cursor: default;
+}
+
+.music-links {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(62, 175, 124, 0.3);
+  display: flex;
+  gap: 0.75rem;
+}
+
+.music-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--vp-c-brand-dimm), rgba(62, 175, 124, 0.15));
+  color: var(--vp-c-brand-1);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(62, 175, 124, 0.3);
+}
+
+.music-btn:hover {
+  background: linear-gradient(135deg, rgba(62, 175, 124, 0.3), rgba(62, 175, 124, 0.2));
+  border-color: rgba(62, 175, 124, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.2);
+}
+
 .service-card .contact-hint {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -572,6 +612,10 @@ function showToast(title, message, type = 'success') {
   .tool-icon {
     font-size: 2.5rem;
     height: 60px;
+  }
+
+  .music-links {
+    flex-direction: column;
   }
 
   :global(.custom-toast) {
