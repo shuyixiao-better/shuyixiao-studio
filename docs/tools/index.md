@@ -235,6 +235,50 @@ date: '2025-12-25'
     </div>
   </a>
 
+  <a href="javascript:void(0)" class="tool-card">
+    <div class="tool-icon">🎵</div>
+    <h3 class="tool-title">差一点当真</h3>
+    <p class="tool-desc">暧昧里最怕的那种认真，差一步就陷进去，还好收住了，又好像没完全收住。适合深夜一个人戴着耳机，反复听那段没说出口的话。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">原创音乐</span>
+      <span class="tool-tag">暧昧情绪</span>
+      <span class="tool-tag">全网可听</span>
+    </div>
+  </a>
+
+  <a href="javascript:void(0)" class="tool-card">
+    <div class="tool-icon">🎵</div>
+    <h3 class="tool-title">风知道答案</h3>
+    <p class="tool-desc">问了很多遍的问题，没有人回答，那就交给风吧。有些遗憾不是用来释怀的，是用来带着走的。适合下雨天靠窗发呆的时候听。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">原创音乐</span>
+      <span class="tool-tag">遗憾感</span>
+      <span class="tool-tag">全网可听</span>
+    </div>
+  </a>
+
+  <a href="javascript:void(0)" class="tool-card">
+    <div class="tool-icon">🎵</div>
+    <h3 class="tool-title">神仙也救不了周三</h3>
+    <p class="tool-desc">周一靠意志，周五靠盼头，周三什么都不靠，纯靠命。一首献给所有"周三下午三点还在改需求"的人的自嘲之歌。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">原创音乐</span>
+      <span class="tool-tag">打工人之歌</span>
+      <span class="tool-tag">全网可听</span>
+    </div>
+  </a>
+
+  <a href="javascript:void(0)" class="tool-card">
+    <div class="tool-icon">🎵</div>
+    <h3 class="tool-title">等我把风吹成答案</h3>
+    <p class="tool-desc">不是所有执念都需要被回应，但每一份坚持都会慢慢变成结果。把心事交给时间，熬过那些没人懂的日子，答案自己会来。</p>
+    <div class="tool-tags">
+      <span class="tool-tag">原创音乐</span>
+      <span class="tool-tag">成长叙事</span>
+      <span class="tool-tag">全网可听</span>
+    </div>
+  </a>
+
 </div>
 
 ## 🎯 更多工具
