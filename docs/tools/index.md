@@ -275,7 +275,7 @@ date: '2025-12-25'
       <span class="tool-tag">全网可听</span>
     </div>
     <div class="music-links">
-      <a href="https://y.qq.com/n/ryqq_v2/songDetail/002m3wpy3I6NP1" class="music-btn" target="_blank" rel="noopener noreferrer">🎵 QQ 音乐</a>
+      <a href="https://y.qq.com/n/ryqq_v2/songDetail/002pgUv911wrtB" class="music-btn" target="_blank" rel="noopener noreferrer">🎵 QQ 音乐</a>
       <a href="https://music.163.com/song?id=3393585918" class="music-btn" target="_blank" rel="noopener noreferrer">🎵 网易云音乐</a>
     </div>
   </div>
