@@ -544,7 +544,8 @@ export default withMermaid(defineConfig({
                 { text: '为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？', link: '/tutorials/insights/growth/为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？' },
                 { text: 'RAG评估必备 | Recall@K、MRR、NDCG 三指标，一文彻底讲透', link: '/tutorials/insights/growth/Recall@K、MRR、NDCG 三指标，一文彻底讲透' },
                 { text: '我把设备指纹生成逻辑拆开了：它到底凭什么区分不同设备？', link: '/tutorials/insights/growth/我把设备指纹生成逻辑拆开了：它到底凭什么区分不同设备？' },
-                { text: '一个 YML 开关，搞定 Chat 接口透明转发：支持跨环境调用的轻量级网关实践', link: '/tutorials/insights/growth/一个 YML 开关，搞定 Chat 接口透明转发：支持跨环境调用的轻量级网关实践' }
+                { text: '一个 YML 开关，搞定 Chat 接口透明转发：支持跨环境调用的轻量级网关实践', link: '/tutorials/insights/growth/一个 YML 开关，搞定 Chat 接口透明转发：支持跨环境调用的轻量级网关实践' },
+                { text: '一个 YML 开关，搞定 Chat 接口透明转发：支持跨环境调用的轻量级网关实践', link: '/tutorials/insights/growth/Avernet_WSL_Windows版本手册.md' }
               ]
             },
             {
