@@ -5,3 +5,7 @@
 .VPNavBarMenuLink.active, .VPNavBarMenuGroup.active .text { color: var(--vp-c-brand-1); }
 .VPNavBar .VPMenu { background: var(--ui-surface); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); box-shadow: var(--ui-shadow); }
 .VPNavScreen { background: var(--vp-c-bg); }
+
+.VPNavBar:not(.top) { background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent); backdrop-filter: blur(var(--sp-12)); }
+/* Override the default theme's opaque nested navigation backgrounds after scrolling. */
+.VPNavBar:not(.top) .content-body, .VPNavBar:not(.top) .curtain { background: transparent; }

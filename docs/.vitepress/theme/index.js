@@ -174,7 +174,7 @@ export default {
             svg.style.cursor = 'zoom-in'
             svg.style.maxWidth = '100%'
             svg.style.height = 'auto'
-            svg.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease'
+            svg.style.transition = 'none'
             
             // 点击事件 - 创建自定义全屏查看器
             svg.addEventListener('click', (e) => {
@@ -205,7 +205,7 @@ export default {
                 max-height: 90vh;
                 width: auto;
                 height: auto;
-                background: white;
+                background: var(--ui-surface);
                 padding: 20px;
                 border-radius: 8px;
                 cursor: zoom-out;
@@ -239,16 +239,7 @@ export default {
               document.addEventListener('keydown', handleKeyDown)
             })
             
-            // 悬停效果
-            svg.addEventListener('mouseenter', () => {
-              svg.style.transform = 'scale(1.02)'
-              svg.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.1)'
-            })
-            
-            svg.addEventListener('mouseleave', () => {
-              svg.style.transform = 'scale(1)'
-              svg.style.boxShadow = 'none'
-            })
+
           })
           
           console.log('Mermaid zoom initialized, found containers:', mermaidContainers.length)
@@ -305,6 +296,7 @@ export default {
         
         // 清空容器
         container.innerHTML = ''
+        container.classList.remove('has-visits')
         
         // 创建并挂载 SiteVisits 组件
         siteVisitsApp = createApp(SiteVisits)

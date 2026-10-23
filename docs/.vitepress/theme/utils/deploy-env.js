@@ -45,3 +45,15 @@ export function primaryUrl(path = '/') {
   // A route can never replace the canonical origin.
   return PRIMARY_ORIGIN + '/' + String(path).replace(/^\/+/, '')
 }
+
+/** Strict JSON requests with a bounded wait; never interpret a static-host HTML fallback as data. */
+export async function backendJson(url, options = {}) {
+  if (!(await hasBackend())) throw new Error('Backend unavailable')
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), 3000)
+  try {
+    const response = await fetch(url, { ...options, signal: controller.signal })
+    if (!response.ok || !(response.headers.get('content-type') || '').includes('application/json')) throw new Error('Invalid backend response')
+    return await response.json()
+  } finally { clearTimeout(timer) }
+}
