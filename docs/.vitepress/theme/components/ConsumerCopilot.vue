@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isGitHubPages" class="consumer-copilot">
+  <div v-if="isApiAvailable" class="consumer-copilot">
     <!-- 标题区域 -->
     <div class="copilot-header">
       <h2>🤖 消费决策助手</h2>
@@ -102,10 +102,12 @@
       </div>
     </Transition>
   </div>
+  <RequiresBackendNotice v-else-if="isGitHubPages" />
 </template>
 
 <script setup>
 import { ref, computed, onMounted, nextTick, watch } from 'vue';
+import { getDeployTarget, hasBackend } from '../utils/deploy-env.js';
 
 // 状态管理
 const conversation = ref([]);
@@ -135,6 +137,7 @@ onMounted(async () => {
   }
   
   await checkApiAvailability();
+  if (!isApiAvailable.value) { isGitHubPages.value = true; return; }
   await loadKnowledgeBase();
   // 动态加载marked
   try {
@@ -150,63 +153,13 @@ onMounted(async () => {
 });
 
 // 检测当前环境（Netlify 或 GitHub Pages）
-const detectEnvironment = () => {
-  if (typeof window === 'undefined') return null;
-  
-  const hostname = window.location.hostname;
-  
-  // GitHub Pages 域名判断（www.poeticcoder.cn）
-  if (hostname.includes('poeticcoder.cn')) {
-    return 'github';
-  }
-  
-  // Netlify 域名判断（其他所有域名）
-  // 包括：poeticcoder.com、shuyixiao.cn、netlify.app 等
-  if (hostname.includes('poeticcoder.com') || 
-      hostname.includes('shuyixiao.cn') ||
-      hostname.includes('netlify.app')) {
-    return 'netlify';
-  }
-  
-  // 默认视为 Netlify（如果域名不匹配，默认支持完整功能）
-  return 'netlify';
-};
-
-// 检测是否为 GitHub Pages 环境
+const detectEnvironment = getDeployTarget;
 const checkGitHubPages = () => {
-  const env = detectEnvironment();
-  if (env === 'github') {
-    isGitHubPages.value = true;
-    return true;
-  }
-  isGitHubPages.value = false;
-  return false;
+  isGitHubPages.value = ['cloudflare', 'github'].includes(detectEnvironment());
+  return isGitHubPages.value;
 };
-
-// 检测API是否可用
 const checkApiAvailability = async () => {
-  const env = detectEnvironment();
-  
-  // 如果是明确的 GitHub Pages 环境，直接标记为不可用
-  if (env === 'github') {
-    isApiAvailable.value = false;
-    // 不显示提示，因为页面级组件会处理跳转
-    return;
-  }
-  
-  try {
-    const response = await fetch('/api/chat', { method: 'OPTIONS' });
-    isApiAvailable.value = response.status === 204;
-    if (!isApiAvailable.value && env !== 'github') {
-      showToast('AI功能仅在Netlify部署环境可用', 'info');
-    }
-  } catch {
-    isApiAvailable.value = false;
-    // 如果是未知环境且API失败，可能是 GitHub Pages
-    if (!env) {
-      // 不显示提示，等待页面级组件处理
-    }
-  }
+  isApiAvailable.value = await hasBackend();
 };
 
 // 加载知识库

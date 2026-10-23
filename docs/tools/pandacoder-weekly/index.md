@@ -6,19 +6,13 @@ date: '2025-12-25'
 ---
 
 <script setup>
-import { ref, onMounted, computed, nextTick } from 'vue'
+import { ref, onMounted, onUnmounted, nextTick } from 'vue'
 
 const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const showRedirect = ref(false)
-const netlifyUrl = 'https://www.poeticcoder.com/tools/pandacoder-weekly/'
-
-// 检测当前环境
-const isGitHubPages = computed(() => {
-  if (typeof window === 'undefined') return false
-  const hostname = window.location.hostname
-  return hostname.includes('poeticcoder.cn') || hostname.includes('github.io')
-})
-
+const backend = ref(false)
+import { hasBackend } from '../../.vitepress/theme/utils/deploy-env.js'
+let curtainObserver
 // 隐藏页面中的遮罩元素
 const hideAsideCurtain = () => {
   // 移除当前页面的遮罩元素
@@ -64,12 +58,13 @@ const observeCurtain = () => {
   return observer
 }
 
-onMounted(() => {
+onMounted(async () => {
   console.log('🐼 PandaCoder 周报页面加载')
   console.log('📍 当前域名:', window.location.hostname)
   
   // 如果是 GitHub Pages 环境，显示跳转提示
-  if (isGitHubPages.value) {
+  backend.value = await hasBackend()
+  if (!backend.value) {
     showRedirect.value = true
     console.log('⚠️ 检测到 GitHub Pages 环境，显示跳转提示')
   } else {
@@ -97,7 +92,7 @@ onMounted(() => {
     hideAsideCurtain()
     
     // 启动持续监听
-    const observer = observeCurtain()
+    curtainObserver = observeCurtain()
     
     // 延迟尝试隐藏遮罩元素
     nextTick(() => {
@@ -108,9 +103,7 @@ onMounted(() => {
   }
 })
 
-const handleRedirect = () => {
-  window.location.href = netlifyUrl
-}
+onUnmounted(() => curtainObserver?.disconnect())
 
 // 监听 iframe 加载完成事件
 onMounted(() => {
@@ -123,27 +116,10 @@ onMounted(() => {
 
 <template>
   <!-- GitHub Pages 环境：显示跳转提示 -->
-  <div v-if="showRedirect" class="redirect-container">
-    <div class="redirect-card">
-      <div class="redirect-icon">🐼</div>
-      <h1 class="redirect-title">PandaCoder 周报功能</h1>
-      <p class="redirect-message">
-        当前页面部署在 GitHub Pages 环境，该功能需要在 Netlify 环境中使用。
-      </p>
-      <p class="redirect-hint">
-        请访问 Netlify 部署版本以获得完整功能体验：
-      </p>
-      <div class="redirect-url">
-        <a :href="netlifyUrl" class="redirect-link">{{ netlifyUrl }}</a>
-      </div>
-      <button @click="handleRedirect" class="redirect-button">
-        立即跳转到主域名版本
-      </button>
-    </div>
-  </div>
+  <RequiresBackendNotice v-if="showRedirect" />
 
   <!-- Netlify 环境：正常显示 iframe -->
-  <div v-else class="pandacoder-container">
+  <div v-if="backend" class="pandacoder-container">
     <iframe
       :src="frontendUrl"
       frameborder="0"

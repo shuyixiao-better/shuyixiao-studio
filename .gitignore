@@ -53,3 +53,5 @@ Thumbs.db
 .netlify
 .claude
 .cursor
+# 本地视觉验收截图
+.ui-refresh-shots/

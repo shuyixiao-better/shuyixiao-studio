@@ -24,15 +24,16 @@
 <script setup>
 import { computed } from 'vue';
 import { useRoute } from 'vitepress';
+import { primaryUrl } from '../utils/deploy-env.js';
 
 const route = useRoute();
 
 // Netlify 站点 URL
-const NETLIFY_BASE = 'https://www.poeticcoder.com';
+// Canonical URLs are owned by deploy-env.js.
 
 // 生成 Netlify 版本的完整 URL
 const netlifyUrl = computed(() => {
-  return `${NETLIFY_BASE}${route.path}#评论区`;
+  return primaryUrl(route.path) + '#评论区';
 });
 </script>
 

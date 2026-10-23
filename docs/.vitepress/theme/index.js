@@ -1,5 +1,5 @@
 // .vitepress/theme/index.js
-import { h, createApp } from 'vue'
+import { h, createApp, defineComponent, ref } from 'vue'
 import { onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
 import { useRoute } from 'vitepress'
@@ -24,34 +24,35 @@ import UpdateNotification from './components/UpdateNotification.vue'
 import TechPhilosophy from './components/TechPhilosophy.vue'
 import Comments from './components/Comments.vue'
 import CommentsPlaceholder from './components/CommentsPlaceholder.vue'
+import { getDeployTarget, hasBackend } from './utils/deploy-env.js'
+import RequiresBackendNotice from './components/RequiresBackendNotice.vue'
 import EasterEgg from './components/EasterEgg.vue'
 import GoogleAdsense from './components/GoogleAdsense.vue'
 
 export default {
   extends: DefaultTheme,
   // 通过 Layout 插槽自定义布局
-  Layout() {
-    // 检测是否为 Netlify 环境（支持评论功能）
-    const isNetlify = typeof window !== 'undefined' && 
-      (window.location.hostname.includes('netlify') || 
-       window.location.hostname === 'www.poeticcoder.com' ||
-       window.location.hostname === 'localhost');
-    
-    return h(DefaultTheme.Layout, null, {
-      // 404 页面
-      'not-found': () => h(NotFound),
-      // 文档内容顶部（标题后，目录前）自动插入统计组件
-      'doc-top': () => h(ArticleStats),
-      // 文档内容底部添加评论组件（根据环境选择）
-      'doc-after': () => isNetlify ? h(Comments) : h(CommentsPlaceholder),
-      // 在布局底部添加反馈组件和彩蛋（全局可见）
-      'layout-bottom': () => [h(FeedbackWidget), h(EasterEgg)],
-      // 在布局顶部添加更新通知组件（全局可见）
-      'layout-top': () => h(UpdateNotification)
-    })
-  },
+  Layout: defineComponent({
+    setup() {
+      // SSR and the first client render share the placeholder; switch only after mount.
+      const backend = ref(false)
+      onMounted(async () => {
+        const target = getDeployTarget()
+        backend.value = target === 'netlify' ? true :
+          ['cloudflare', 'github'].includes(target) ? false : await hasBackend()
+      })
+      return () => h(DefaultTheme.Layout, null, {
+        'not-found': () => h(NotFound),
+        'doc-top': () => h(ArticleStats),
+        'doc-after': () => backend.value ? h(Comments) : h(CommentsPlaceholder),
+        'layout-bottom': () => [h(FeedbackWidget), h(EasterEgg)],
+        'layout-top': () => h(UpdateNotification)
+      })
+    }
+  }),
   enhanceApp({ app, router, siteData }) {
     // 注册全局组件
+    app.component('RequiresBackendNotice', RequiresBackendNotice)
     app.component('RecentPosts', RecentPosts)
     app.component('ArticleList', ArticleList)
     app.component('JobsQuotes', JobsQuotes)
