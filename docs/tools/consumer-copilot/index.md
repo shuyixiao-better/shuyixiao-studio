@@ -105,27 +105,24 @@ onMounted(async () => { backend.value = await hasBackend(); ready.value = true }
 如果你有使用建议或发现bug，欢迎通过网站右下角的反馈按钮联系我！
 
 <style scoped>
-/* 消费决策助手组件样式优化 */
 :deep(.consumer-copilot) {
-  margin: 2rem 0;
+  margin: var(--sp-32) 0;
   width: 100%;
   box-sizing: border-box;
 }
-
-/* 在移动端优化显示 */
 @media (max-width: 640px) {
   :deep(.consumer-copilot) {
-    margin: 1rem 0;
-    padding: 1rem !important;
+    margin: var(--sp-16) 0;
+    padding: var(--sp-16);
   }
 
   :deep(.copilot-header) {
-    padding-bottom: 1rem !important;
+    padding-bottom: var(--sp-16);
   }
 
   :deep(.messages-container) {
-    min-height: 300px !important;
-    max-height: 400px !important;
+    min-height: var(--ui-size-300);
+    max-height: var(--ui-size-400);
   }
 }
 </style>

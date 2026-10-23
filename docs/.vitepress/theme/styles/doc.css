@@ -7,8 +7,8 @@
 .vp-doc blockquote { border-left: var(--ui-focus) solid var(--vp-c-divider); background: none; color: var(--vp-c-text-2); padding-left: var(--sp-20); }
 .vp-doc a { color: var(--vp-c-brand-1); text-decoration: none; }
 .vp-doc a:hover { text-decoration: underline; }
-.vp-doc :not(pre) > code { background: var(--vp-c-bg-soft); border-radius: var(--ui-radius-tag); font-family: var(--vp-font-family-mono); }
-.vp-doc div[class*='language-'] { border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-input); background: var(--vp-c-bg-soft); }
+.vp-doc :not(pre) > code { background: var(--vp-c-bg-soft); border-radius: var(--ui-radius-tag); font-family: var(--vp-font-family-mono); font-size: var(--ui-inline-code-size); }
+.vp-doc div[class*='language-'] { border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-input); background: var(--vp-c-bg-soft); margin-inline: 0; }
 .vp-doc th { background: var(--vp-c-bg-soft); }
 .vp-doc td, .vp-doc th { border-color: var(--vp-c-divider); }
 .VPDocAsideOutline .outline-link { font-size: var(--ui-text-meta); white-space: normal; line-height: var(--ui-leading-body); }
@@ -24,3 +24,5 @@
 .wechat-intro, .qrcode-container { max-width: 100%; }
 .wechat-qrcode { max-width: 100%; margin-inline: auto; }
 @media (min-width: 1440px) { .vp-doc { font-size: var(--ui-text-body-large); } }
+
+#VPContent .vp-doc .vp-block { margin-inline: 0; }

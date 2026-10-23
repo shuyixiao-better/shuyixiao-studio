@@ -24,4 +24,6 @@ onUnmounted(() => {
 })
 </script>
 <template><span v-if="visits !== null" class="site-visits">本站总访问：{{ visits.toLocaleString('zh-CN') }} 次</span></template>
-<style scoped>.site-visits { font-size: inherit; color: inherit; font-variant-numeric: tabular-nums; }</style>
+<style scoped>
+.site-visits { font-size: inherit; color: inherit; font-variant-numeric: tabular-nums; }
+</style>

@@ -8,18 +8,18 @@
         <div class="day-of-week">星期{{ dayOfWeek }}</div>
       </div>
       <button class="refresh-btn" @click="refreshFortune" :disabled="isRefreshing">
-        <span :class="{ spinning: isRefreshing }">🔄</span>
+        <span :class="{ spinning: isRefreshing }"></span>
         {{ isRefreshing ? '刷新中...' : '换个运势' }}
       </button>
     </div>
 
     <!-- 运势指数 -->
     <div class="fortune-section">
-      <h3 class="section-title">📊 今日运势指数</h3>
+      <h3 class="section-title"> 今日运势指数</h3>
       <div class="fortune-bars">
         <div v-for="item in fortuneIndexes" :key="item.name" class="fortune-item">
           <div class="fortune-label">
-            <span class="fortune-icon">{{ item.icon }}</span>
+            <span class="fortune-icon"><LineIcon name="tools" /></span>
             <span class="fortune-name">{{ item.name }}</span>
           </div>
           <div class="fortune-bar-wrapper">
@@ -27,7 +27,7 @@
               class="fortune-bar" 
               :style="{ 
                 width: item.value + '%', 
-                background: item.color 
+                background: 'var(--vp-c-text-2)'
               }"
             >
               <span class="fortune-value">{{ item.value }}%</span>
@@ -40,10 +40,10 @@
     <!-- 黄历 -->
     <div class="almanac-section">
       <div class="almanac-column good">
-        <h3 class="almanac-title">✅ 宜</h3>
+        <h3 class="almanac-title"> 宜</h3>
         <ul class="almanac-list">
           <li v-for="(item, index) in goodActivities" :key="index" class="almanac-item">
-            <span class="item-icon">{{ item.icon }}</span>
+            <span class="item-icon"><LineIcon name="tools" /></span>
             <div class="item-content">
               <div class="item-name">{{ item.name }}</div>
               <div class="item-desc">{{ item.desc }}</div>
@@ -53,10 +53,10 @@
       </div>
 
       <div class="almanac-column bad">
-        <h3 class="almanac-title">❌ 忌</h3>
+        <h3 class="almanac-title"> 忌</h3>
         <ul class="almanac-list">
           <li v-for="(item, index) in badActivities" :key="index" class="almanac-item">
-            <span class="item-icon">{{ item.icon }}</span>
+            <span class="item-icon"><LineIcon name="tools" /></span>
             <div class="item-content">
               <div class="item-name">{{ item.name }}</div>
               <div class="item-desc">{{ item.desc }}</div>
@@ -68,7 +68,7 @@
 
     <!-- 幸运元素 -->
     <div class="lucky-section">
-      <h3 class="section-title">🍀 今日幸运元素</h3>
+      <h3 class="section-title"> 今日幸运元素</h3>
       <div class="lucky-items">
         <div class="lucky-item">
           <div class="lucky-label">幸运语言</div>
@@ -91,14 +91,14 @@
 
     <!-- 今日箴言 -->
     <div class="quote-section">
-      <div class="quote-icon">💬</div>
+      <div class="quote-icon"><LineIcon name="tools" /></div>
       <div class="quote-text">{{ dailyQuote.text }}</div>
       <div class="quote-author">—— {{ dailyQuote.author }}</div>
     </div>
 
     <!-- 幸运数字 -->
     <div class="numbers-section">
-      <h3 class="section-title">🎲 今日幸运数字</h3>
+      <h3 class="section-title"> 今日幸运数字</h3>
       <div class="lucky-numbers">
         <div v-for="num in luckyNumbers" :key="num" class="lucky-number">
           {{ num }}
@@ -292,66 +292,62 @@ onMounted(() => {
 
 <style scoped>
 .dev-fortune-container {
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border-radius: 24px;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: var(--ui-size-1000);
+  margin: var(--sp-32) auto;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-card);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
-
-/* 日期部分 */
 .date-section {
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  border-radius: 16px;
-  margin-bottom: 2rem;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  margin-bottom: var(--sp-32);
   position: relative;
-  color: white;
-  box-shadow: 0 8px 24px rgba(62, 175, 124, 0.3);
+  color: var(--vp-c-text-2);
+  box-shadow: none;
 }
 
 .date-main {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-24);
 }
 
 .lunar-date {
-  font-size: 0.9rem;
+  font-size: var(--ui-text-sm);
   opacity: 0.9;
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--sp-8);
 }
 
 .gregorian-date {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 0.25rem;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
+  margin-bottom: var(--sp-4);
 }
 
 .day-of-week {
-  font-size: 1.1rem;
+  font-size: var(--ui-text-lg);
   opacity: 0.9;
 }
 
 .refresh-btn {
-  padding: 0.75rem 2rem;
-  border: 2px solid white;
-  border-radius: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: var(--sp-12) var(--sp-32);
+  border: var(--ui-focus) solid white;
+  border-radius: var(--ui-radius-input);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: var(--ui-transition);
 }
 
 .refresh-btn:hover:not(:disabled) {
-  background: white;
+  background: var(--vp-c-bg-soft);
   color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+  box-shadow: none;
 }
 
 .refresh-btn:disabled {
@@ -361,109 +357,99 @@ onMounted(() => {
 
 .spinning {
   display: inline-block;
-  animation: spin 0.6s linear infinite;
 }
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* 运势指数 */
 .fortune-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .section-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
+  margin-bottom: var(--sp-24);
   color: var(--vp-c-text-1);
 }
 
 .fortune-bars {
   display: grid;
-  gap: 1rem;
+  gap: var(--sp-16);
 }
 
 .fortune-item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--sp-8);
 }
 
 .fortune-label {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
+  gap: var(--sp-8);
+  font-weight: var(--ui-weight-medium);
   color: var(--vp-c-text-1);
 }
 
 .fortune-icon {
-  font-size: 1.2rem;
+  font-size: var(--ui-text-quote);
 }
 
 .fortune-bar-wrapper {
   position: relative;
-  height: 32px;
+  height: var(--sp-32);
   background: var(--vp-c-bg-soft);
-  border-radius: 16px;
+  border-radius: var(--ui-radius-input);
   overflow: hidden;
 }
 
 .fortune-bar {
   height: 100%;
-  border-radius: 16px;
+  border-radius: var(--ui-radius-input);
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 1rem;
-  transition: width 0.8s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 0 var(--sp-16);
+  transition: var(--ui-transition);
+  box-shadow: none;
 }
 
 .fortune-value {
-  color: white;
-  font-weight: 600;
-  font-size: 0.9rem;
+  color: var(--vp-c-text-2);
+  font-weight: var(--ui-weight-heading);
+  font-size: var(--ui-text-sm);
 }
-
-/* 黄历 */
 .almanac-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: var(--sp-32);
+  margin-bottom: var(--sp-32);
 }
 
 .almanac-column {
   background: var(--vp-c-bg-soft);
-  border-radius: 16px;
-  padding: 1.5rem;
+  border-radius: var(--ui-radius-input);
+  padding: var(--sp-24);
 }
 
 .almanac-column.good {
-  border: 2px solid #10b981;
+  border: var(--ui-focus) solid var(--vp-c-divider);
 }
 
 .almanac-column.bad {
-  border: 2px solid #ef4444;
+  border: var(--ui-focus) solid var(--vp-c-divider);
 }
 
 .almanac-title {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
+  margin-bottom: var(--sp-16);
   text-align: center;
 }
 
 .almanac-column.good .almanac-title {
-  color: #10b981;
+  color: var(--vp-c-text-1);
 }
 
 .almanac-column.bad .almanac-title {
-  color: #ef4444;
+  color: var(--vp-c-text-1);
 }
 
 .almanac-list {
@@ -474,20 +460,20 @@ onMounted(() => {
 
 .almanac-item {
   display: flex;
-  gap: 0.75rem;
-  padding: 0.75rem;
-  margin-bottom: 0.5rem;
+  gap: var(--sp-12);
+  padding: var(--sp-12);
+  margin-bottom: var(--sp-8);
   background: var(--vp-c-bg);
-  border-radius: 12px;
-  transition: transform 0.2s ease;
+  border-radius: var(--ui-radius-input);
+  transition: var(--ui-transition);
 }
 
 .almanac-item:hover {
-  transform: translateX(4px);
+  transform: translateX(var(--sp-4));
 }
 
 .item-icon {
-  font-size: 1.5rem;
+  font-size: var(--ui-text-section);
   flex-shrink: 0;
 }
 
@@ -496,129 +482,118 @@ onMounted(() => {
 }
 
 .item-name {
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--sp-4);
 }
 
 .item-desc {
-  font-size: 0.85rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
 }
-
-/* 幸运元素 */
 .lucky-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .lucky-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--ui-size-200), 1fr));
+  gap: var(--sp-16);
 }
 
 .lucky-item {
   text-align: center;
-  padding: 1.5rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 16px;
-  transition: all 0.3s ease;
+  padding: var(--sp-24);
+  background: var(--vp-c-bg-soft);
+  border: var(--ui-focus) solid var(--vp-c-brand-1);
+  border-radius: var(--ui-radius-input);
+  transition: var(--ui-transition);
 }
 
 .lucky-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(62, 175, 124, 0.2);
+  box-shadow: none;
 }
 
 .lucky-label {
-  font-size: 0.85rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--sp-8);
 }
 
 .lucky-value {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-brand-1);
 }
-
-/* 箴言 */
 .quote-section {
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  border-radius: 16px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.2);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  margin-bottom: var(--sp-32);
+  box-shadow: none;
 }
 
 .quote-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--ui-text-display);
+  margin-bottom: var(--sp-16);
 }
 
 .quote-text {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #78350f;
-  margin-bottom: 1rem;
-  line-height: 1.6;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-medium);
+  color: var(--vp-c-text-2);
+  margin-bottom: var(--sp-16);
+  line-height: var(--ui-leading-body);
 }
 
 .quote-author {
-  font-size: 0.95rem;
-  color: #92400e;
+  font-size: var(--ui-text-base);
+  color: var(--vp-c-text-2);
   font-style: italic;
 }
-
-/* 幸运数字 */
 .numbers-section {
-  margin-bottom: 1rem;
+  margin-bottom: var(--sp-16);
 }
 
 .lucky-numbers {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: var(--sp-16);
   flex-wrap: wrap;
 }
 
 .lucky-number {
-  width: 60px;
-  height: 60px;
+  width: var(--sp-60);
+  height: var(--sp-60);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: white;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
-  transition: transform 0.3s ease;
-}
-
-.lucky-number:hover {
-  transform: scale(1.1) rotate(5deg);
+  font-size: var(--ui-text-section);
+  font-weight: var(--ui-weight-heading);
+  color: var(--vp-c-text-2);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  box-shadow: none;
+  transition: var(--ui-transition);
 }
 
 @media (max-width: 768px) {
   .dev-fortune-container {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
   
   .date-section {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
   
   .gregorian-date {
-    font-size: 1.5rem;
+    font-size: var(--ui-text-section);
   }
   
   .almanac-section {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--sp-16);
   }
   
   .lucky-items {
@@ -626,13 +601,13 @@ onMounted(() => {
   }
   
   .quote-text {
-    font-size: 1rem;
+    font-size: var(--ui-text-base);
   }
   
   .lucky-number {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: var(--sp-52);
+    height: var(--sp-52);
+    font-size: var(--ui-text-quote);
   }
 }
 </style>

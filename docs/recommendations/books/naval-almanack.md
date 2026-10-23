@@ -223,48 +223,48 @@ date: '2025-12-31'
 <style scoped>
 .book-header {
   display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
-  border-radius: 16px;
-  margin-bottom: 2rem;
+  gap: var(--sp-32);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  margin-bottom: var(--sp-32);
 }
 
 .book-cover {
-  font-size: 5rem;
-  width: 120px;
-  height: 160px;
+  font-size: var(--ui-text-hero);
+  width: var(--sp-120);
+  height: var(--sp-160);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
-  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
   flex-shrink: 0;
 }
 
 .book-meta h2 {
-  margin: 0 0 1rem;
-  font-size: 1.8rem;
+  margin: 0 0 var(--sp-16);
+  font-size: var(--ui-text-title);
   color: var(--vp-c-text-1);
 }
 
 .book-meta p {
-  margin: 0.5rem 0;
+  margin: var(--sp-8) 0;
   color: var(--vp-c-text-2);
 }
 
 .author {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: var(--ui-text-lg);
+  font-weight: var(--ui-weight-heading);
 }
 
 .rating {
-  font-size: 1.2rem;
+  font-size: var(--ui-text-quote);
 }
 
 .category {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-3);
+  font-size: var(--ui-text-sm);
+  color: var(--ui-muted);
 }
 
 @media (max-width: 768px) {
@@ -275,9 +275,9 @@ date: '2025-12-31'
   }
   
   .book-cover {
-    width: 100px;
-    height: 130px;
-    font-size: 4rem;
+    width: var(--sp-100);
+    height: var(--sp-132);
+    font-size: var(--ui-text-hero);
   }
 }
 </style>

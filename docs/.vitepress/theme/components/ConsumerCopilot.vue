@@ -2,7 +2,7 @@
   <div v-if="isApiAvailable" class="consumer-copilot">
     <!-- 标题区域 -->
     <div class="copilot-header">
-      <h2>🤖 消费决策助手</h2>
+      <h2> 消费决策助手</h2>
       <p class="subtitle">理性消费，看穿套路</p>
       <button v-if="conversation.length > 0" class="clear-btn" @click="clearConversation">
         清空对话
@@ -18,7 +18,7 @@
       >
         <div class="message-avatar">
           <img v-if="msg.role === 'user'" src="/images/我的头像.jpg" alt="用户头像" class="avatar-img" />
-          <span v-else>🤖</span>
+          <LineIcon v-else name="message" />
         </div>
         <div class="message-content">
           <div v-if="msg.role === 'assistant'" class="markdown-content" v-html="renderMarkdownSync(msg.content)"></div>
@@ -31,11 +31,9 @@
 
       <!-- 加载状态 -->
       <div v-if="isLoading" class="message assistant loading">
-        <div class="message-avatar">
-          🤖
-        </div>
+        <div class="message-avatar"><LineIcon name="book" /></div>
         <div class="message-content">
-          <div class="typing-indicator">
+          <div class="typing-indicator" role="status">正在思考…
             <span></span>
             <span></span>
             <span></span>
@@ -45,23 +43,23 @@
 
       <!-- 欢迎消息 -->
       <div v-if="conversation.length === 0 && !isLoading" class="welcome-message">
-        <div class="welcome-icon">💡</div>
+        <div class="welcome-icon"><LineIcon name="book" /></div>
         <h3>开始你的理性消费之旅</h3>
         <p>输入商品信息或消费问题，AI将帮你分析：</p>
         <ul class="features-list">
-          <li>✅ 是否值得购买</li>
-          <li>✅ 可能的促销套路</li>
-          <li>✅ 替代方案建议</li>
-          <li>✅ 价格合理性分析</li>
+          <li> 是否值得购买</li>
+          <li> 可能的促销套路</li>
+          <li> 替代方案建议</li>
+          <li> 价格合理性分析</li>
         </ul>
         <div class="example-questions">
-          <p class="example-title">💬 示例问题：</p>
-          <div class="example-btn" @click="sendExample('Nike 工装裤 699 军绿色值得买吗？')">
+          <p class="example-title"> 示例问题：</p>
+          <button type="button" class="example-btn" @click="sendExample('Nike 工装裤 699 军绿色值得买吗？')">
             Nike 工装裤 699 军绿色值得买吗？
-          </div>
-          <div class="example-btn" @click="sendExample('滔博的Nike黑色为什么不参与65折？')">
+          </button>
+          <button type="button" class="example-btn" @click="sendExample('滔博的Nike黑色为什么不参与65折？')">
             滔博的Nike黑色为什么不参与65折？
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -467,90 +465,69 @@ const showToast = (message, type = 'info') => {
 .consumer-copilot {
   width: 100%;
   max-width: 100%;
-  margin: 2rem 0;
-  padding: 2rem;
-  min-height: 600px;
+  margin: var(--sp-32) 0;
+  padding: var(--sp-32);
+  min-height: var(--ui-size-600);
   display: flex;
   flex-direction: column;
   background: var(--vp-c-bg);
-  border-radius: 16px;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
-
-/* 标题区域 */
 .copilot-header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
   position: relative;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+  padding-bottom: var(--sp-24);
+  border-bottom: var(--ui-border) solid var(--vp-c-divider);
 }
 
 .copilot-header h2 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.75rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin: 0 0 var(--sp-8) 0;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
+  background: var(--vp-c-bg-soft);
 }
 
 .subtitle {
   margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: 0.95rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--ui-text-base);
 }
 
 .clear-btn {
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0.5rem 1rem;
+  padding: var(--sp-8) var(--sp-16);
   background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 6px;
+  border: var(--ui-border) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
-  transition: all 0.2s;
+  transition: var(--ui-transition);
 }
 
 .clear-btn:hover {
   background: var(--vp-c-bg-mute);
   color: var(--vp-c-text-1);
 }
-
-/* 消息容器 */
 .messages-container {
   flex: 1;
   overflow-y: auto;
-  padding: 1rem;
+  padding: var(--sp-16);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
-  margin-bottom: 1rem;
-  min-height: 400px;
-  max-height: 500px;
+  border-radius: var(--ui-radius-card);
+  margin-bottom: var(--sp-16);
+  min-height: var(--ui-size-400);
+  max-height: var(--ui-size-500);
 }
-
-/* 消息样式 */
 .message {
   display: flex;
-  gap: 0.75rem;
-  margin-bottom: 1.5rem;
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-24);
 }
 
 .message.user {
@@ -558,32 +535,32 @@ const showToast = (message, type = 'info') => {
 }
 
 .message-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: var(--sp-36);
+  height: var(--sp-36);
+  border-radius: var(--ui-radius-circle);
   background: var(--vp-c-bg-mute);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem;
+  font-size: var(--ui-text-quote);
   flex-shrink: 0;
 }
 
 .message.user .message-avatar {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  padding: 2px;
+  background: var(--vp-c-bg-soft);
+  padding: var(--sp-4);
 }
 
 .avatar-img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--ui-radius-circle);
   object-fit: cover;
 }
 
 .message-content {
   flex: 1;
-  max-width: calc(100% - 50px);
+  max-width: calc(100% - var(--sp-52));
 }
 
 .message.user .message-content {
@@ -592,79 +569,75 @@ const showToast = (message, type = 'info') => {
 
 .text-content {
   background: var(--vp-c-bg);
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
+  padding: var(--sp-12) var(--sp-16);
+  border-radius: var(--ui-radius-input);
   display: inline-block;
   max-width: 100%;
   word-wrap: break-word;
 }
 
 .message.user .text-content {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .message.assistant .text-content {
-  border: 1px solid var(--vp-c-divider);
+  border: var(--ui-border) solid var(--vp-c-divider);
 }
-
-/* Markdown内容样式 */
 .markdown-content {
   background: var(--vp-c-bg);
-  padding: 1rem;
-  border-radius: 12px;
-  border: 1px solid var(--vp-c-divider);
-  line-height: 1.6;
+  padding: var(--sp-16);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  line-height: var(--ui-leading-body);
 }
 
 .markdown-content :deep(h1),
 .markdown-content :deep(h2),
 .markdown-content :deep(h3) {
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  margin-top: var(--sp-16);
+  margin-bottom: var(--sp-8);
+  font-weight: var(--ui-weight-heading);
 }
 
 .markdown-content :deep(p) {
-  margin: 0.5rem 0;
+  margin: var(--sp-8) 0;
 }
 
 .markdown-content :deep(code) {
   background: var(--vp-c-bg-soft);
-  padding: 0.2rem 0.4rem;
-  border-radius: 4px;
-  font-size: 0.9em;
+  padding: var(--sp-4) var(--sp-8);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-sm);
 }
 
 .markdown-content :deep(pre) {
   background: var(--vp-c-bg-alt);
-  padding: 1rem;
-  border-radius: 8px;
+  padding: var(--sp-16);
+  border-radius: var(--ui-radius-input);
   overflow-x: auto;
-  margin: 0.5rem 0;
+  margin: var(--sp-8) 0;
 }
 
 .markdown-content :deep(ul),
 .markdown-content :deep(ol) {
-  margin: 0.5rem 0;
-  padding-left: 1.5rem;
+  margin: var(--sp-8) 0;
+  padding-left: var(--sp-24);
 }
 
 .markdown-content :deep(li) {
-  margin: 0.25rem 0;
+  margin: var(--sp-4) 0;
 }
 
 .markdown-content :deep(strong) {
   color: var(--vp-c-brand-1);
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
 }
 
 .message-usage {
-  margin-top: 0.5rem;
+  margin-top: var(--sp-8);
   opacity: 0.6;
 }
-
-/* 加载状态 */
 .message.loading .message-content {
   display: flex;
   align-items: center;
@@ -672,87 +645,65 @@ const showToast = (message, type = 'info') => {
 
 .typing-indicator {
   display: flex;
-  gap: 0.3rem;
-  padding: 0.75rem 1rem;
+  gap: var(--sp-4);
+  padding: var(--sp-12) var(--sp-16);
 }
 
 .typing-indicator span {
-  width: 8px;
-  height: 8px;
-  background: var(--vp-c-brand-1);
-  border-radius: 50%;
-  animation: typing 1.4s infinite;
+  width: var(--sp-8);
+  height: var(--sp-8);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
 }
-
-.typing-indicator span:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.typing-indicator span:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes typing {
-  0%, 60%, 100% {
-    transform: translateY(0);
-    opacity: 0.7;
-  }
-  30% {
-    transform: translateY(-10px);
-    opacity: 1;
-  }
-}
-
-/* 欢迎消息 */
 .welcome-message {
   text-align: center;
-  padding: 3rem 1rem;
+  padding: var(--sp-48) var(--sp-16);
   color: var(--vp-c-text-2);
 }
 
 .welcome-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
+  font-size: var(--ui-text-hero);
+  margin-bottom: var(--sp-16);
 }
 
 .welcome-message h3 {
-  margin: 0 0 1rem 0;
+  margin: 0 0 var(--sp-16) 0;
   color: var(--vp-c-text-1);
 }
 
 .features-list {
   list-style: none;
   padding: 0;
-  margin: 1.5rem auto;
-  max-width: 300px;
+  margin: var(--sp-24) auto;
+  max-width: var(--ui-size-300);
   text-align: left;
 }
 
 .features-list li {
-  margin: 0.5rem 0;
+  margin: var(--sp-8) 0;
   color: var(--vp-c-text-2);
 }
 
 .example-questions {
-  margin-top: 2rem;
+  margin-top: var(--sp-32);
 }
 
 .example-title {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-sm);
+  margin-bottom: var(--sp-8);
+  color: var(--vp-c-text-1);
 }
 
 .example-btn {
   display: inline-block;
-  margin: 0.5rem;
-  padding: 0.6rem 1.2rem;
+  margin: var(--sp-8);
+  padding: var(--sp-8) var(--sp-20);
   background: var(--vp-c-bg-soft);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border: var(--ui-border) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: all 0.2s;
+  font-size: var(--ui-text-sm);
+  transition: var(--ui-transition);
   color: var(--vp-c-text-1);
 }
 
@@ -761,11 +712,9 @@ const showToast = (message, type = 'info') => {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
 }
-
-/* 输入区域 */
 .input-container {
   display: flex;
-  gap: 0.75rem;
+  gap: var(--sp-12);
   align-items: flex-end;
 }
 
@@ -775,22 +724,22 @@ const showToast = (message, type = 'info') => {
 
 .message-input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  padding: var(--sp-12) var(--sp-16);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
   resize: vertical;
-  transition: all 0.2s;
+  transition: var(--ui-transition);
 }
 
 .message-input:focus {
   outline: none;
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-bg);
-  box-shadow: 0 0 0 3px rgba(62, 175, 124, 0.1);
+  box-shadow: none;
 }
 
 .message-input:disabled {
@@ -801,27 +750,26 @@ const showToast = (message, type = 'info') => {
 .input-footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--vp-c-text-3);
+  margin-top: var(--sp-8);
+  font-size: var(--ui-text-xs);
+  color: var(--ui-muted);
 }
 
 .send-button {
-  padding: 0.75rem 2rem;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  color: white;
+  padding: var(--sp-12) var(--sp-32);
+  background: var(--vp-c-brand-1);
+  color: var(--ui-on-brand);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
+  font-weight: var(--ui-weight-medium);
+  transition: var(--ui-transition);
   white-space: nowrap;
   height: fit-content;
 }
 
 .send-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  box-shadow: none;
 }
 
 .send-button:disabled {
@@ -833,20 +781,18 @@ const showToast = (message, type = 'info') => {
 .sending {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-8);
 }
-
-/* 提示消息 */
 .toast {
   position: fixed;
-  bottom: 20px;
+  bottom: var(--sp-20);
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: var(--sp-12) var(--sp-24);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
+  box-shadow: none;
   z-index: 10000;
   white-space: pre-line;
   text-align: center;
@@ -854,126 +800,121 @@ const showToast = (message, type = 'info') => {
 }
 
 .toast-info {
-  background: var(--vp-c-brand-1);
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .toast-error {
-  background: #ef4444;
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .toast-enter-active,
 .toast-leave-active {
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translateX(-50%) translateY(10px);
 }
-
-/* 响应式设计 */
 @media (max-width: 960px) {
   .consumer-copilot {
-    padding: 1.5rem;
-    margin: 1rem 0;
+    padding: var(--sp-24);
+    margin: var(--sp-16) 0;
   }
 
   .messages-container {
-    min-height: 350px;
-    max-height: 450px;
+    min-height: var(--ui-size-352);
+    max-height: var(--ui-size-452);
   }
 }
 
 @media (max-width: 640px) {
   .consumer-copilot {
-    padding: 1rem;
-    margin: 0.5rem 0;
-    border-radius: 12px;
+    padding: var(--sp-16);
+    margin: var(--sp-8) 0;
+    border-radius: var(--ui-radius-input);
   }
 
   .copilot-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
+    margin-bottom: var(--sp-24);
+    padding-bottom: var(--sp-16);
   }
 
   .copilot-header h2 {
-    font-size: 1.5rem;
+    font-size: var(--ui-text-section);
   }
 
   .subtitle {
-    font-size: 0.85rem;
+    font-size: var(--ui-text-sm);
   }
 
   .clear-btn {
     position: static;
-    margin-top: 0.5rem;
+    margin-top: var(--sp-8);
     display: inline-block;
     width: 100%;
-    max-width: 200px;
+    max-width: var(--ui-size-200);
   }
 
   .messages-container {
-    min-height: 300px;
-    max-height: 400px;
-    padding: 0.75rem;
+    min-height: var(--ui-size-300);
+    max-height: var(--ui-size-400);
+    padding: var(--sp-12);
   }
 
   .input-container {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: var(--sp-12);
   }
 
   .message-input {
-    font-size: 16px; /* 防止iOS自动缩放 */
+    font-size: var(--ui-text-base);
   }
 
   .send-button {
     width: 100%;
-    padding: 0.875rem 2rem;
+    padding: var(--sp-16) var(--sp-32);
   }
 
   .message-content {
-    max-width: calc(100% - 45px);
+    max-width: calc(100% - var(--sp-44));
   }
 
   .message-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 1rem;
+    width: var(--sp-32);
+    height: var(--sp-32);
+    font-size: var(--ui-text-base);
   }
 
   .example-btn {
     display: block;
-    margin: 0.5rem 0;
+    margin: var(--sp-8) 0;
     text-align: left;
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    padding: var(--sp-8) var(--sp-16);
+    font-size: var(--ui-text-sm);
   }
 
   .welcome-message {
-    padding: 2rem 0.5rem;
+    padding: var(--sp-32) var(--sp-8);
   }
 
   .welcome-icon {
-    font-size: 3rem;
+    font-size: var(--ui-text-display);
   }
 
   .features-list {
     max-width: 100%;
-    font-size: 0.9rem;
+    font-size: var(--ui-text-sm);
   }
 }
-
-/* 暗色模式优化 */
 .dark .markdown-content {
   background: var(--vp-c-bg-alt);
 }
 
 .dark .message.user .message-avatar {
-  box-shadow: 0 2px 8px rgba(66, 211, 146, 0.3);
+  box-shadow: none;
 }
 </style>
 

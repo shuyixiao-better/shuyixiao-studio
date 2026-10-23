@@ -36,136 +36,118 @@ date: '2025-12-25'
 </div>
 
 <div class="coming-soon">
-<div class="coming-icon">🚀</div>
+<div class="coming-icon"><LineIcon name="book" /></div>
 <p>更多智慧人物持续更新中...</p>
 </div>
 
 <style scoped>
 .wisdom-intro {
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.05), 
-    rgba(139, 92, 246, 0.08));
-  border-radius: 16px;
-  border-left: 4px solid #6366f1;
-  margin: 2rem 0 3rem;
-  font-size: 1.1rem;
-  line-height: 1.8;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border-left: var(--sp-4) solid var(--vp-c-divider);
+  margin: var(--sp-32) 0 var(--sp-48);
+  font-size: var(--ui-text-lg);
+  line-height: var(--ui-leading-body);
   color: var(--vp-c-text-2);
 }
 
 .wisdom-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
+  grid-template-columns: repeat(auto-fill, minmax(var(--ui-size-320), 1fr));
+  gap: var(--sp-32);
+  margin: var(--sp-48) 0;
 }
 
 .wisdom-card {
-  padding: 2.5rem 2rem;
+  padding: var(--sp-40) var(--sp-32);
   background: var(--vp-c-bg-soft);
-  border-radius: 20px;
-  border: 2px solid var(--vp-c-divider);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--ui-radius-card);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
   text-align: center;
 }
 
 .wisdom-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
-  border-color: #6366f1;
+  box-shadow: none;
+  border-color: var(--vp-c-divider);
 }
 
 .wisdom-avatar {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  font-size: var(--ui-text-hero);
+  margin-bottom: var(--sp-24);
 }
 
 .wisdom-card h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.6rem;
+  margin: 0 0 var(--sp-8);
+  font-size: var(--ui-text-section);
 }
 
 .wisdom-card h3 a {
   color: var(--vp-c-text-1);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .wisdom-card h3 a:hover {
-  color: #6366f1;
+  color: var(--vp-c-text-1);
 }
 
 .wisdom-title {
-  color: var(--vp-c-text-2);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-  font-weight: 500;
+  color: var(--vp-c-text-1);
+  font-size: var(--ui-text-sm);
+  margin-bottom: var(--sp-24);
+  font-weight: var(--ui-weight-medium);
 }
 
 .wisdom-desc {
   color: var(--vp-c-text-2);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  line-height: var(--ui-leading-body);
+  margin-bottom: var(--sp-24);
   text-align: left;
 }
 
 .wisdom-tags {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--sp-8);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .tag {
-  padding: 0.4rem 1rem;
-  background: linear-gradient(135deg, 
-    rgba(99, 102, 241, 0.1), 
-    rgba(139, 92, 246, 0.15));
-  color: #6366f1;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  transition: all 0.3s ease;
+  padding: var(--sp-8) var(--sp-16);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border-radius: var(--ui-radius-tag);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
 }
 
 .tag:hover {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
-  transform: translateY(-2px);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
 }
 
 .coming-soon {
-  margin: 4rem 0;
+  margin: var(--sp-64) 0;
   text-align: center;
-  padding: 3rem;
+  padding: var(--sp-48);
   background: var(--vp-c-bg-soft);
-  border-radius: 20px;
-  border: 2px dashed var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-focus) dashed var(--vp-c-divider);
 }
 
 .coming-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+  font-size: var(--ui-text-display);
+  margin-bottom: var(--sp-16);
 }
 
 .coming-soon p {
-  font-size: 1.1rem;
+  font-size: var(--ui-text-lg);
   color: var(--vp-c-text-2);
-  font-weight: 500;
+  font-weight: var(--ui-weight-medium);
 }
 
 @media (max-width: 768px) {
@@ -174,17 +156,17 @@ date: '2025-12-25'
   }
   
   .wisdom-card {
-    padding: 2rem 1.5rem;
+    padding: var(--sp-32) var(--sp-24);
   }
 }
 
 .dark .wisdom-card {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 
 .dark .wisdom-card:hover {
-  border-color: #8b5cf6;
+  border-color: var(--vp-c-divider);
 }
 </style>
 

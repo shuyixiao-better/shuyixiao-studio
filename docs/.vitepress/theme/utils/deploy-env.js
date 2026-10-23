@@ -5,7 +5,8 @@ export function resolveDeployTarget(hostname = '') {
   const host = hostname.toLowerCase().replace(/\.$/, '')
   if (host === 'localhost' || host === '127.0.0.1') return 'local'
   for (const [target, domains] of Object.entries(HOSTS)) {
-    if (domains.some(domain => host === domain || host.endsWith('.' + domain))) return target
+    const [domain, preview] = domains
+    if (host === domain || host.endsWith('.' + domain) || host.endsWith('.' + preview)) return target
   }
   return 'unknown'
 }

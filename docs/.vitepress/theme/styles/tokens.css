@@ -47,6 +47,7 @@
   --ui-fast: 180ms;
   --ui-ease: ease-out;
   --ui-transition: color var(--ui-fast) var(--ui-ease), background-color var(--ui-fast) var(--ui-ease), border-color var(--ui-fast) var(--ui-ease), opacity var(--ui-fast) var(--ui-ease);
+  --ui-inline-code-size: .9em;
   --ui-text-xs: 12px;
   --ui-text-meta: 13px;
   --ui-text-sm: 14px;
@@ -137,4 +138,32 @@
   --sp-152: 152px;
   --sp-156: 156px;
   --sp-160: 160px;
+}
+
+/* Shared dimensions retained by embedded page and interactive component layouts. */
+:root {
+  --ui-size-1200: 1200px;
+  --ui-size-180: 180px;
+  --ui-size-200: 200px;
+  --ui-size-252: 252px;
+  --ui-size-260: 260px;
+  --ui-size-280: 280px;
+  --ui-size-300: 300px;
+  --ui-size-320: 320px;
+  --ui-size-352: 352px;
+  --ui-size-400: 400px;
+  --ui-size-420: 420px;
+  --ui-size-452: 452px;
+  --ui-size-480: 480px;
+  --ui-size-500: 500px;
+  --ui-size-560: 560px;
+  --ui-size-600: 600px;
+  --ui-size-900: 900px;
+  --ui-size-952: 952px;
+}
+
+/* Shared dimensions retained by embedded page and interactive component layouts. */
+:root {
+  --ui-size-1000: 1000px;
+  --ui-size-256: 256px;
 }

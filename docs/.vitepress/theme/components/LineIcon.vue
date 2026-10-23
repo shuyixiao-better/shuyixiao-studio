@@ -1,6 +1,10 @@
 <script setup>
 defineProps({ name: { type: String, default: 'book' } })
 const paths = {
+ close: 'm6 6 12 12M18 6 6 18',
+ search: 'M21 21l-5-5M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0',
+ lock: 'M6 10h12v11H6V10zm3 0V6a3 3 0 0 1 6 0v4',
+ person: 'M4 21v-3a8 8 0 0 1 16 0v3M16 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0',
  chart: 'M4 4v16h16M8 15l4-5 4 3 4-8',
  network: 'M12 3v5m0 8v5M3 12h5m8 0h5M7 7l3 3m4 4 3 3M7 17l3-3m4-4 3-3',
  fitness: 'M3 8v8m3-11v14m12-14v14m3-11v8M6 12h12',

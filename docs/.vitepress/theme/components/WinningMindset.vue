@@ -10,7 +10,7 @@
     
     <div class="winning-grid">
       <div class="winning-item" v-for="item in items" :key="item.title">
-        <span class="item-icon">{{ item.icon }}</span>
+        <span class="item-icon"><LineIcon name="book" /></span>
         <span class="item-label">{{ item.title }}</span>
       </div>
     </div>
@@ -29,45 +29,37 @@ const items = [
 
 <style scoped>
 .winning-mindset-compact {
-  max-width: 900px;
-  margin: 3rem auto;
-  padding: 2rem 2.5rem;
-  background: linear-gradient(135deg,
-    rgba(16, 185, 129, 0.03) 0%,
-    rgba(5, 150, 105, 0.06) 50%,
-    rgba(16, 185, 129, 0.03) 100%);
-  border-radius: 20px;
-  border: 1px solid rgba(16, 185, 129, 0.15);
-  box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08);
-  transition: all 0.3s ease;
+  max-width: var(--ui-size-900);
+  margin: var(--sp-48) auto;
+  padding: var(--sp-32) var(--sp-40);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
+  transition: var(--ui-transition);
 }
 
 .winning-mindset-compact:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(16, 185, 129, 0.12);
-  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: none;
+  border-color: var(--vp-c-divider);
 }
 
 .winning-header {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px dashed rgba(16, 185, 129, 0.2);
+  gap: var(--sp-24);
+  margin-bottom: var(--sp-24);
+  padding-bottom: var(--sp-24);
+  border-bottom: var(--ui-border) dashed var(--vp-c-divider);
 }
 
 .winning-char {
-  font-size: 4rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, #10b981, #047857);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: var(--ui-text-hero);
+  font-weight: var(--ui-weight-heading);
+  background: var(--vp-c-bg-soft);
   font-family: "STKaiti", "KaiTi", "楷体", serif;
-  line-height: 1;
+  line-height: var(--ui-leading-body);
   flex-shrink: 0;
-  filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.3));
 }
 
 .winning-text {
@@ -75,116 +67,92 @@ const items = [
 }
 
 .winning-motto {
-  margin: 0 0 0.5rem;
-  font-size: 1.6rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #10b981, #047857);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1px;
+  margin: 0 0 var(--sp-8);
+  font-size: var(--ui-text-section);
+  font-weight: var(--ui-weight-heading);
+  background: var(--vp-c-bg-soft);
+  letter-spacing: normal;
 }
 
 .winning-dedication {
   margin: 0;
-  font-size: 1rem;
+  font-size: var(--ui-text-base);
   color: var(--vp-c-text-2);
   font-style: italic;
-  letter-spacing: 0.5px;
+  letter-spacing: normal;
 }
 
 .winning-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  gap: var(--sp-16);
 }
 
 .winning-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 0.75rem;
-  background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(255, 255, 255, 0.8) 100%);
-  border-radius: 12px;
-  border: 1px solid rgba(16, 185, 129, 0.1);
-  transition: all 0.3s ease;
+  gap: var(--sp-8);
+  padding: var(--sp-16) var(--sp-12);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
   cursor: default;
 }
 
 .winning-item:hover {
-  transform: translateY(-4px);
-  border-color: rgba(16, 185, 129, 0.3);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.15);
-  background: linear-gradient(135deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.95) 100%);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
+  background: var(--vp-c-bg-soft);
 }
 
 .item-icon {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s ease;
-}
-
-.winning-item:hover .item-icon {
-  transform: scale(1.15);
+  font-size: var(--ui-text-title);
+  transition: var(--ui-transition);
 }
 
 .item-label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #10b981;
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-heading);
+  color: var(--vp-c-text-2);
   text-align: center;
-  letter-spacing: 0.3px;
-  transition: color 0.3s ease;
+  letter-spacing: normal;
+  transition: var(--ui-transition);
 }
 
 .winning-item:hover .item-label {
-  color: #047857;
+  color: var(--vp-c-brand-1);
 }
-
-/* 暗色模式 */
 .dark .winning-mindset-compact {
-  background: linear-gradient(135deg,
-    rgba(16, 185, 129, 0.06) 0%,
-    rgba(5, 150, 105, 0.1) 50%,
-    rgba(16, 185, 129, 0.06) 100%);
-  border-color: rgba(16, 185, 129, 0.25);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .dark .winning-mindset-compact:hover {
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: none;
+  border-color: var(--vp-c-divider);
 }
 
 .dark .winning-header {
-  border-bottom-color: rgba(16, 185, 129, 0.25);
+  border-bottom-color: var(--vp-c-divider);
 }
 
 .dark .winning-item {
-  background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.08) 0%,
-    rgba(255, 255, 255, 0.04) 100%);
-  border-color: rgba(16, 185, 129, 0.2);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 
 .dark .winning-item:hover {
-  background: linear-gradient(135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.08) 100%);
-  border-color: rgba(16, 185, 129, 0.4);
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.2);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
 }
-
-/* 响应式 - 平板 */
 @media (max-width: 1024px) {
   .winning-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
+    gap: var(--sp-12);
   }
   
   .winning-item:nth-child(4),
@@ -192,37 +160,35 @@ const items = [
     grid-column: span 1;
   }
 }
-
-/* 响应式 - 手机 */
 @media (max-width: 768px) {
   .winning-mindset-compact {
-    margin: 2rem 1rem;
-    padding: 1.5rem 1.25rem;
+    margin: var(--sp-32) var(--sp-16);
+    padding: var(--sp-24) var(--sp-20);
   }
   
   .winning-header {
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1.25rem;
+    gap: var(--sp-16);
+    margin-bottom: var(--sp-20);
+    padding-bottom: var(--sp-20);
   }
   
   .winning-char {
-    font-size: 3rem;
+    font-size: var(--ui-text-display);
   }
   
   .winning-motto {
-    font-size: 1.3rem;
+    font-size: var(--ui-text-quote);
   }
   
   .winning-dedication {
-    font-size: 0.9rem;
+    font-size: var(--ui-text-sm);
   }
   
   .winning-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: var(--sp-12);
   }
   
   .winning-item:last-child {
@@ -230,15 +196,15 @@ const items = [
   }
   
   .winning-item {
-    padding: 0.9rem 0.6rem;
+    padding: var(--sp-16) var(--sp-8);
   }
   
   .item-icon {
-    font-size: 1.75rem;
+    font-size: var(--ui-text-title);
   }
   
   .item-label {
-    font-size: 0.85rem;
+    font-size: var(--ui-text-sm);
   }
 }
 

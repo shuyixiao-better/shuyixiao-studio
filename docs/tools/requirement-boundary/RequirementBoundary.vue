@@ -2,11 +2,11 @@
   <div class="requirement-boundary-container">
     <!-- 头部提示 -->
     <div class="header-section">
-      <div class="header-icon">🛡️</div>
+      <div class="header-icon"><LineIcon name="tools" /></div>
       <h2 class="header-title">需求边界守卫者</h2>
       <p class="header-desc">在动手之前，先明确需求的边界范围，避免做无用功</p>
       <div class="warning-badge">
-        <span>⚠️</span>
+        <span></span>
         <span>今日反思：在没有明确需求边界前就动手，导致做了多余的工作</span>
       </div>
     </div>
@@ -14,7 +14,7 @@
     <!-- 需求输入区域 -->
     <div class="input-section">
       <div class="input-group">
-        <label for="requirement-title">📋 需求标题</label>
+        <label for="requirement-title"> 需求标题</label>
         <input
           id="requirement-title"
           v-model="requirementTitle"
@@ -23,9 +23,9 @@
           @input="updateBoundary"
         />
       </div>
-      
+
       <div class="input-group full-width">
-        <label for="requirement-desc">📝 需求描述</label>
+        <label for="requirement-desc"> 需求描述</label>
         <textarea
           id="requirement-desc"
           v-model="requirementDesc"
@@ -39,7 +39,7 @@
     <!-- 边界定义区域 -->
     <div class="boundary-section">
       <div class="section-title">
-        <span>🎯</span>
+        <span></span>
         <span>定义需求边界</span>
         <span class="subtitle">在开始之前，明确哪些是在范围内，哪些是范围外</span>
       </div>
@@ -48,13 +48,13 @@
         <!-- 边界内 -->
         <div class="boundary-card in-scope">
           <div class="card-header">
-            <span class="card-icon">✅</span>
+            <span class="card-icon"><LineIcon name="tools" /></span>
             <h3 class="card-title">在范围内</h3>
             <span class="item-count">({{ inScopeItems.length }})</span>
           </div>
           <div class="card-body">
-            <div 
-              v-for="(item, index) in inScopeItems" 
+            <div
+              v-for="(item, index) in inScopeItems"
               :key="index"
               class="scope-item"
             >
@@ -65,16 +65,16 @@
                 class="item-input"
                 @input="updateBoundary"
               />
-              <button 
+              <button
                 class="remove-btn"
                 @click="removeItem('in', index)"
                 v-if="inScopeItems.length > 1"
               >
-                ✕
+
               </button>
             </div>
             <button class="add-btn" @click="addItem('in')">
-              ➕ 添加项
+               添加项
             </button>
           </div>
         </div>
@@ -82,13 +82,13 @@
         <!-- 边界外 -->
         <div class="boundary-card out-scope">
           <div class="card-header">
-            <span class="card-icon">❌</span>
+            <span class="card-icon"><LineIcon name="tools" /></span>
             <h3 class="card-title">范围外（无需做）</h3>
             <span class="item-count">({{ outScopeItems.length }})</span>
           </div>
           <div class="card-body">
-            <div 
-              v-for="(item, index) in outScopeItems" 
+            <div
+              v-for="(item, index) in outScopeItems"
               :key="index"
               class="scope-item"
             >
@@ -99,16 +99,16 @@
                 class="item-input"
                 @input="updateBoundary"
               />
-              <button 
+              <button
                 class="remove-btn"
                 @click="removeItem('out', index)"
                 v-if="outScopeItems.length > 1"
               >
-                ✕
+
               </button>
             </div>
             <button class="add-btn" @click="addItem('out')">
-              ➕ 添加项
+               添加项
             </button>
           </div>
         </div>
@@ -118,13 +118,13 @@
     <!-- 澄清清单 -->
     <div class="checklist-section">
       <div class="section-title">
-        <span>📋</span>
+        <span></span>
         <span>需求澄清清单</span>
         <span class="subtitle">在动手前，回答这些问题</span>
       </div>
       <div class="checklist-items">
-        <label 
-          v-for="(check, index) in checklist" 
+        <label
+          v-for="(check, index) in checklist"
           :key="index"
           class="checklist-item"
           :class="{ checked: check.checked }"
@@ -144,7 +144,7 @@
     <!-- 历史案例 -->
     <div class="case-section">
       <div class="section-title">
-        <span>💡</span>
+        <span></span>
         <span>今日反思案例</span>
       </div>
       <div class="case-card">
@@ -156,11 +156,11 @@
           <h4 class="case-title">预览服务鸿蒙字体适配</h4>
           <div class="case-scope">
             <div class="case-scope-item">
-              <span class="scope-label">✅ 实际需求：</span>
+              <span class="scope-label"> 实际需求：</span>
               <span>预览服务渲染时需要支持鸿蒙字体</span>
             </div>
             <div class="case-scope-item">
-              <span class="scope-label">❌ 多余工作：</span>
+              <span class="scope-label"> 多余工作：</span>
               <span>认为预览页面也需要适配鸿蒙字体，但这不是必需的</span>
             </div>
           </div>
@@ -174,19 +174,19 @@
     <!-- 操作按钮 -->
     <div class="action-section">
       <button class="action-btn primary" @click="saveBoundary">
-        💾 保存当前边界定义
+         保存当前边界定义
       </button>
       <button class="action-btn secondary" @click="clearAll">
-        🗑️ 清空重来
+         清空重来
       </button>
       <button class="action-btn secondary" @click="loadExample">
-        📖 加载示例
+         加载示例
       </button>
     </div>
 
     <!-- 保存提示 -->
     <div v-if="showSaveTip" class="save-tip">
-      ✅ 边界定义已保存到本地存储
+       边界定义已保存到本地存储
     </div>
   </div>
 </template>
@@ -218,10 +218,10 @@ const showSaveTip = ref(false)
 // 当前日期
 const todayDate = computed(() => {
   const now = new Date()
-  return now.toLocaleDateString('zh-CN', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  return now.toLocaleDateString('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   })
 })
 
@@ -263,9 +263,9 @@ const saveBoundary = () => {
     checklist: checklist.value,
     timestamp: new Date().toISOString()
   }
-  
+
   localStorage.setItem('requirement-boundary', JSON.stringify(boundaryData))
-  
+
   showSaveTip.value = true
   setTimeout(() => {
     showSaveTip.value = false
@@ -327,72 +327,62 @@ onMounted(() => {
 
 <style scoped>
 .requirement-boundary-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border-radius: 24px;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: var(--ui-size-1200);
+  margin: var(--sp-32) auto;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-card);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
-
-/* 头部区域 */
 .header-section {
   text-align: center;
-  padding: 2rem;
-  margin-bottom: 2rem;
+  padding: var(--sp-32);
+  margin-bottom: var(--sp-32);
 }
 
 .header-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  filter: drop-shadow(0 4px 8px rgba(62, 175, 124, 0.2));
+  font-size: var(--ui-text-hero);
+  margin-bottom: var(--sp-16);
 }
 
 .header-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0.5rem 0;
-  background: linear-gradient(135deg, 
-    var(--vp-c-brand-1) 0%, 
-    var(--vp-c-brand-3) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
+  margin: var(--sp-8) 0;
+  background: var(--vp-c-bg-soft);
 }
 
 .header-desc {
-  font-size: 1rem;
+  font-size: var(--ui-text-base);
   color: var(--vp-c-text-2);
-  margin: 0.5rem 0 1rem;
+  margin: var(--sp-8) 0 var(--sp-16);
 }
 
 .warning-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  border: 2px solid #f59e0b;
-  border-radius: 50px;
-  color: #78350f;
-  font-size: 0.9rem;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
+  gap: var(--sp-8);
+  padding: var(--sp-12) var(--sp-24);
+  background: var(--vp-c-bg-soft);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-tag);
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
+  box-shadow: none;
 }
-
-/* 输入区域 */
 .input-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: var(--sp-16);
 }
 
 .input-group {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--sp-8);
 }
 
 .input-group.full-width {
@@ -400,152 +390,149 @@ onMounted(() => {
 }
 
 .input-group label {
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 .input-group input,
 .input-group textarea {
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
+  padding: var(--sp-12) var(--sp-16);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
+  font-size: var(--ui-text-base);
+  transition: var(--ui-transition);
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
   outline: none;
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(62, 175, 124, 0.1);
+  box-shadow: none;
 }
 
 .input-group textarea {
   resize: vertical;
   font-family: inherit;
 }
-
-/* 边界定义区域 */
 .boundary-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .section-title {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  gap: var(--sp-8);
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
+  margin-bottom: var(--sp-24);
   color: var(--vp-c-text-1);
 }
 
 .section-title .subtitle {
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-body);
+  color: var(--vp-c-text-1);
   margin-left: auto;
 }
 
 .boundary-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: var(--sp-32);
 }
 
 .boundary-card {
   background: var(--vp-c-bg);
-  border-radius: 16px;
-  padding: 1.5rem;
-  border: 2px solid var(--vp-c-divider);
-  transition: all 0.3s ease;
+  border-radius: var(--ui-radius-card);
+  padding: var(--sp-24);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
 }
 
 .boundary-card.in-scope {
-  border-color: #10b981;
+  border-color: var(--vp-c-divider);
 }
 
 .boundary-card.out-scope {
-  border-color: #ef4444;
+  border-color: var(--vp-c-divider);
 }
 
 .boundary-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .card-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--vp-c-divider);
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-16);
+  padding-bottom: var(--sp-16);
+  border-bottom: var(--ui-focus) solid var(--vp-c-divider);
 }
 
 .card-icon {
-  font-size: 1.5rem;
+  font-size: var(--ui-text-section);
 }
 
 .card-title {
-  font-size: 1.2rem;
-  font-weight: 600;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
   margin: 0;
   color: var(--vp-c-text-1);
 }
 
 .item-count {
-  font-size: 0.85rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
   margin-left: auto;
-  padding: 0.25rem 0.75rem;
+  padding: var(--sp-4) var(--sp-12);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+  border-radius: var(--ui-radius-input);
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--sp-12);
 }
 
 .scope-item {
   display: flex;
-  gap: 0.5rem;
+  gap: var(--sp-8);
   align-items: center;
 }
 
 .item-input {
   flex: 1;
-  padding: 0.6rem 0.9rem;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  padding: var(--sp-8) var(--sp-16);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  font-size: var(--ui-text-sm);
+  transition: var(--ui-transition);
 }
 
 .item-input:focus {
   outline: none;
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 2px rgba(62, 175, 124, 0.1);
+  box-shadow: none;
 }
 
 .remove-btn {
-  width: 28px;
-  height: 28px;
+  width: var(--sp-28);
+  height: var(--sp-28);
   padding: 0;
   border: none;
-  border-radius: 6px;
-  background: #ef4444;
-  color: white;
-  font-size: 1rem;
+  border-radius: var(--ui-radius-input);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-base);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: var(--ui-transition);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -553,194 +540,186 @@ onMounted(() => {
 }
 
 .remove-btn:hover {
-  background: #dc2626;
-  transform: scale(1.1);
+  background: var(--vp-c-bg-soft);
 }
 
 .add-btn {
-  padding: 0.6rem 1rem;
-  border: 2px dashed var(--vp-c-divider);
-  border-radius: 8px;
+  padding: var(--sp-8) var(--sp-16);
+  border: var(--ui-focus) dashed var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: transparent;
   color: var(--vp-c-text-2);
-  font-size: 0.9rem;
+  font-size: var(--ui-text-sm);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   text-align: center;
 }
 
 .add-btn:hover {
   border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
-  background: rgba(62, 175, 124, 0.05);
+  background: var(--vp-c-bg-soft);
 }
-
-/* 澄清清单 */
 .checklist-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .checklist-items {
   display: grid;
-  gap: 0.75rem;
+  gap: var(--sp-12);
 }
 
 .checklist-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  padding: 1rem;
+  gap: var(--sp-12);
+  padding: var(--sp-16);
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .checklist-item:hover {
   border-color: var(--vp-c-brand-1);
-  transform: translateX(4px);
+  transform: translateX(var(--sp-4));
 }
 
 .checklist-item.checked {
-  border-color: #10b981;
-  background: rgba(16, 185, 129, 0.05);
+  border-color: var(--vp-c-divider);
+  background: var(--vp-c-bg-soft);
 }
 
 .checkbox-input {
-  width: 20px;
-  height: 20px;
+  width: var(--sp-20);
+  height: var(--sp-20);
   cursor: pointer;
-  margin-top: 2px;
+  margin-top: var(--sp-4);
   flex-shrink: 0;
 }
 
 .check-text {
   flex: 1;
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: var(--ui-text-base);
+  line-height: var(--ui-leading-body);
 }
 
 .checklist-item.checked .check-text {
   color: var(--vp-c-text-1);
-  font-weight: 500;
+  font-weight: var(--ui-weight-medium);
 }
-
-/* 案例区域 */
 .case-section {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .case-card {
   background: var(--vp-c-bg);
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 16px;
-  padding: 1.5rem;
-  transition: all 0.3s ease;
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-card);
+  padding: var(--sp-24);
+  transition: var(--ui-transition);
 }
 
 .case-card:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .case-header {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 2px solid var(--vp-c-divider);
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-16);
+  padding-bottom: var(--sp-16);
+  border-bottom: var(--ui-focus) solid var(--vp-c-divider);
 }
 
 .case-date {
-  font-size: 0.9rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
 }
 
 .case-tag {
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 500;
+  padding: var(--sp-4) var(--sp-12);
+  border-radius: var(--ui-radius-tag);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
 }
 
 .case-tag.warning {
-  background: #fef3c7;
-  color: #78350f;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
   margin-left: auto;
 }
 
 .case-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin: 0 0 1rem;
+  font-size: var(--ui-text-quote);
+  font-weight: var(--ui-weight-heading);
+  margin: 0 0 var(--sp-16);
   color: var(--vp-c-text-1);
 }
 
 .case-scope {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  gap: var(--sp-12);
+  margin-bottom: var(--sp-16);
+  padding: var(--sp-16);
   background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+  border-radius: var(--ui-radius-input);
 }
 
 .case-scope-item {
   display: flex;
-  gap: 0.5rem;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  gap: var(--sp-8);
+  font-size: var(--ui-text-base);
+  line-height: var(--ui-leading-body);
 }
 
 .scope-label {
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
   flex-shrink: 0;
 }
 
 .case-lesson {
-  padding: 1rem;
-  background: linear-gradient(135deg, #fef3c7, #fde68a);
-  border-left: 4px solid #f59e0b;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #78350f;
+  padding: var(--sp-16);
+  background: var(--vp-c-bg-soft);
+  border-left: var(--sp-4) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  line-height: var(--ui-leading-body);
+  color: var(--vp-c-text-2);
 }
 
 .case-lesson strong {
-  color: #92400e;
+  color: var(--vp-c-text-2);
 }
-
-/* 操作按钮 */
 .action-section {
   display: flex;
-  gap: 1rem;
+  gap: var(--sp-16);
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .action-btn {
-  padding: 0.75rem 2rem;
-  border: 2px solid var(--vp-c-brand-1);
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: var(--sp-12) var(--sp-32);
+  border: var(--ui-focus) solid var(--vp-c-brand-1);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .action-btn.primary {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .action-btn.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(62, 175, 124, 0.3);
+  box-shadow: none;
 }
 
 .action-btn.secondary {
@@ -749,73 +728,56 @@ onMounted(() => {
 }
 
 .action-btn.secondary:hover {
-  background: rgba(62, 175, 124, 0.1);
-  transform: translateY(-2px);
+  background: var(--vp-c-bg-soft);
 }
-
-/* 保存提示 */
 .save-tip {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
-  animation: slideIn 0.3s ease;
+  bottom: var(--sp-32);
+  right: var(--sp-32);
+  padding: var(--sp-16) var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border-radius: var(--ui-radius-input);
+  box-shadow: none;
   z-index: 1000;
 }
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-/* 响应式设计 */
 @media (max-width: 768px) {
   .requirement-boundary-container {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
-  
+
   .header-title {
-    font-size: 1.5rem;
+    font-size: var(--ui-text-section);
   }
-  
+
   .boundary-cards {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: var(--sp-24);
   }
-  
+
   .section-title {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.25rem;
+    gap: var(--sp-4);
   }
-  
+
   .section-title .subtitle {
     margin-left: 0;
   }
-  
+
   .action-section {
     flex-direction: column;
   }
-  
+
   .action-btn {
     width: 100%;
   }
-  
+
   .save-tip {
-    bottom: 1rem;
-    right: 1rem;
-    left: 1rem;
-    padding: 0.75rem 1rem;
+    bottom: var(--sp-16);
+    right: var(--sp-16);
+    left: var(--sp-16);
+    padding: var(--sp-12) var(--sp-16);
   }
 }
 </style>

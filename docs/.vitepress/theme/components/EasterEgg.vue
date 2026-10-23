@@ -1,20 +1,20 @@
 <template>
-  <div class="easter-egg-container">
-    <div 
+  <div class="easter-egg-container" @keydown.esc="hideMessage">
+    <button type="button" aria-label="发现一句话"
       class="easter-egg-trigger" 
       @click="showMessage"
       :title="hintText"
     >
-      {{ emoji }}
-    </div>
+      <LineIcon name="moon" />
+    </button>
     
     <Transition name="fade">
       <div v-if="isVisible" class="easter-egg-message" @click="hideMessage">
         <div class="message-content">
-          <div class="message-icon">✨</div>
+          <div class="message-icon"><LineIcon name="book" /></div>
           <p class="message-text">如果你看到这里，说明你很细心</p>
           <p class="message-subtext">细心的人值得被珍惜</p>
-          <div class="message-close">点击任意处关闭</div>
+          <button type="button" class="message-close" @click="hideMessage">关闭</button>
         </div>
       </div>
     </Transition>
@@ -25,7 +25,6 @@
 import { ref } from 'vue'
 
 const isVisible = ref(false)
-const emoji = ref('🌙')
 const hintText = ref('发现了什么？')
 
 const showMessage = () => {
@@ -40,41 +39,29 @@ const hideMessage = () => {
 <style scoped>
 .easter-egg-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: var(--sp-20);
+  right: var(--sp-20);
   z-index: 9999;
 }
 
 .easter-egg-trigger {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(59, 130, 246, 0.3);
+  width: var(--sp-48);
+  height: var(--sp-48);
+  border-radius: var(--ui-radius-input);
+  background: var(--vp-c-bg-soft);
+  border: var(--ui-focus) solid var(--vp-c-divider);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: var(--ui-text-section);
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
-  animation: float 3s ease-in-out infinite;
+  transition: var(--ui-transition);
+  box-shadow: none;
 }
 
 .easter-egg-trigger:hover {
-  transform: scale(1.1) rotate(10deg);
-  box-shadow: 0 6px 30px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 51, 234, 0.25));
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+  box-shadow: none;
+  background: var(--vp-c-bg-soft);
 }
 
 .easter-egg-message {
@@ -83,8 +70,7 @@ const hideMessage = () => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px);
+  background: var(--vp-c-bg-soft);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,72 +79,46 @@ const hideMessage = () => {
 }
 
 .message-content {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.95), 
-    rgba(147, 51, 234, 0.95));
-  padding: 3rem 2.5rem;
-  border-radius: 24px;
+  background: var(--vp-c-bg-soft);
+  padding: var(--sp-48) var(--sp-40);
+  border-radius: var(--ui-radius-input);
   text-align: center;
-  max-width: 500px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  animation: slideIn 0.4s ease-out;
-}
-
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-30px) scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  max-width: var(--ui-size-500);
+  box-shadow: none;
+  border: var(--ui-focus) solid var(--vp-c-divider);
 }
 
 .message-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  animation: sparkle 2s ease-in-out infinite;
-}
-
-@keyframes sparkle {
-  0%, 100% {
-    transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-  }
-  50% {
-    transform: scale(1.2) rotate(180deg);
-    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.8));
-  }
+  font-size: var(--ui-text-display);
+  margin-bottom: var(--sp-24);
 }
 
 .message-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: white;
-  margin: 0 0 1rem 0;
-  line-height: 1.6;
+  font-size: var(--ui-text-section);
+  font-weight: var(--ui-weight-heading);
+  color: var(--vp-c-text-2);
+  margin: 0 0 var(--sp-16) 0;
+  line-height: var(--ui-leading-body);
 }
 
 .message-subtext {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0 0 2rem 0;
+  font-size: var(--ui-text-quote);
+  color: var(--vp-c-text-2);
+  margin: 0 0 var(--sp-32) 0;
   font-style: italic;
 }
 
 .message-close {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: var(--ui-text-sm);
+  color: var(--vp-c-text-2);
+  margin-top: var(--sp-24);
+  padding-top: var(--sp-16);
+  border-top: var(--ui-border) solid var(--vp-c-divider);
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .fade-enter-from,
@@ -168,25 +128,34 @@ const hideMessage = () => {
 
 @media (max-width: 768px) {
   .easter-egg-trigger {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    bottom: 15px;
-    right: 15px;
+    width: var(--sp-40);
+    height: var(--sp-40);
+    font-size: var(--ui-text-quote);
+    bottom: var(--sp-16);
+    right: var(--sp-16);
   }
   
   .message-content {
-    padding: 2rem 1.5rem;
-    margin: 1rem;
-    max-width: calc(100% - 2rem);
+    padding: var(--sp-32) var(--sp-24);
+    margin: var(--sp-16);
+    max-width: calc(100% - var(--sp-32));
   }
   
   .message-text {
-    font-size: 1.2rem;
+    font-size: var(--ui-text-quote);
   }
   
   .message-subtext {
-    font-size: 1rem;
+    font-size: var(--ui-text-base);
   }
 }
+
+.easter-egg-container { right: var(--sp-20); bottom: var(--sp-20); z-index: 99; }
+.easter-egg-trigger { width: var(--ui-float-size); height: var(--ui-float-size); border-radius: var(--ui-radius-circle); background: var(--ui-surface); color: var(--vp-c-text-2); border: var(--ui-border) solid var(--vp-c-divider); padding: 0; box-shadow: none; }
+.easter-egg-trigger:hover { background: var(--ui-surface); color: var(--vp-c-brand-1); }
+.easter-egg-trigger .ui-icon { width: var(--sp-20); height: var(--sp-20); }
+.easter-egg-message { background: var(--ui-overlay); }
+.message-content { background: var(--ui-surface); color: var(--vp-c-text-1); border: var(--ui-border) solid var(--vp-c-divider); box-shadow: var(--ui-shadow); }
+.message-text { color: var(--vp-c-text-1); }
+.message-subtext, .message-close { color: var(--vp-c-text-2); }
 </style>

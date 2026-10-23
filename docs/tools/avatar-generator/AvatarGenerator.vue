@@ -22,17 +22,17 @@
             :class="['style-btn', { active: currentStyle === style.id }]"
             @click="selectStyle(style.id)"
           >
-            {{ style.icon }} {{ style.name }}
+            {{ style.name }}
           </button>
         </div>
       </div>
 
       <div class="action-buttons">
         <button class="btn-primary" @click="randomGenerate">
-          🎲 随机生成
+           随机生成
         </button>
         <button class="btn-secondary" @click="downloadAvatar">
-          💾 下载头像
+           下载头像
         </button>
       </div>
     </div>
@@ -2094,77 +2094,77 @@ const downloadAvatar = () => {
 
 <style scoped>
 .avatar-generator {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border-radius: 24px;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: var(--ui-size-900);
+  margin: var(--sp-32) auto;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-circle);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .control-panel {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .input-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-24);
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
+  margin-bottom: var(--sp-8);
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 .input-group input {
   width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
-  font-size: 1rem;
+  padding: var(--sp-12) var(--sp-16);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   box-sizing: border-box;
 }
 
 .input-group input:focus {
   outline: none;
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(62, 175, 124, 0.1);
+  box-shadow: none;
 }
 
 .style-selector {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-24);
 }
 
 .style-selector label {
   display: block;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
+  margin-bottom: var(--sp-12);
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 .style-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--sp-120), 1fr));
+  gap: var(--sp-12);
 }
 
 .style-btn {
-  padding: 0.65rem 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
+  padding: var(--sp-12) var(--sp-16);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   white-space: nowrap;
   text-align: center;
 }
@@ -2173,81 +2173,74 @@ const downloadAvatar = () => {
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
 }
 
 .style-btn.active {
   border-color: var(--vp-c-brand-1);
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
+  box-shadow: none;
 }
 
 .action-buttons {
   display: flex;
-  gap: 1rem;
+  gap: var(--sp-16);
   flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
   flex: 1;
-  min-width: 150px;
-  padding: 0.85rem 1.5rem;
+  min-width: var(--sp-152);
+  padding: var(--sp-12) var(--sp-24);
   border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   white-space: nowrap;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-brand-1);
+  color: var(--ui-on-brand);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(62, 175, 124, 0.4);
+  box-shadow: none;
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--vp-c-brand-1);
-  border: 2px solid var(--vp-c-brand-1);
+  border: var(--ui-focus) solid var(--vp-c-brand-1);
 }
 
 .btn-secondary:hover {
-  background: var(--vp-c-brand-1);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
+  box-shadow: none;
 }
 
 .preview-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  padding: var(--sp-32);
   background: var(--vp-c-bg);
-  border-radius: 20px;
-  border: 2px dashed var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-focus) dashed var(--vp-c-divider);
 }
 
 .avatar-preview {
-  width: 256px;
-  height: 256px;
-  border-radius: 20px;
+  width: var(--ui-size-256);
+  height: var(--ui-size-256);
+  border-radius: var(--ui-radius-circle);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
-}
-
-.avatar-preview:hover {
-  transform: scale(1.05);
+  box-shadow: none;
+  transition: var(--ui-transition);
 }
 
 .avatar-preview svg {
@@ -2257,25 +2250,25 @@ const downloadAvatar = () => {
 }
 
 .preview-label {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+  margin-top: var(--sp-16);
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
-  font-weight: 500;
+  font-weight: var(--ui-weight-medium);
 }
 
 @media (max-width: 768px) {
   .avatar-generator {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
   
   .style-buttons {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(var(--sp-100), 1fr));
+    gap: var(--sp-8);
   }
   
   .style-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
+    padding: var(--sp-8) var(--sp-12);
+    font-size: var(--ui-text-meta);
   }
   
   .action-buttons {
@@ -2288,8 +2281,8 @@ const downloadAvatar = () => {
   }
   
   .avatar-preview {
-    width: 200px;
-    height: 200px;
+    width: var(--ui-size-200);
+    height: var(--ui-size-200);
   }
 }
 </style>

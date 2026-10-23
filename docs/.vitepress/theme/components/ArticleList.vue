@@ -4,7 +4,7 @@
     <div class="page-header">
       <div class="header-content">
         <h1 class="page-title">
-          <span class="title-icon">📚</span>
+          <span class="title-icon"><LineIcon name="book" /></span>
           技术博文
         </h1>
         <p class="page-subtitle">探索技术深度，记录成长轨迹</p>
@@ -33,14 +33,14 @@
     <!-- 搜索和筛选 -->
     <div class="filter-section">
       <div class="search-box">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon"><LineIcon name="search" /></span>
         <input 
           type="text" 
           v-model="searchQuery" 
           placeholder="搜索文章标题、描述、标签或作者（支持多关键词）..." 
           class="search-input"
         />
-        <button v-if="searchQuery" @click="searchQuery = ''" class="clear-btn">✕</button>
+        <button v-if="searchQuery" @click="searchQuery = ''" class="clear-btn" aria-label="清空搜索"><LineIcon name="close" /></button>
       </div>
       
       <div class="tag-filter">
@@ -67,7 +67,7 @@
     <div class="wechat-card">
       <div class="wechat-background"></div>
       <div class="wechat-info">
-        <div class="wechat-badge">✨ 推荐关注</div>
+        <div class="wechat-badge"> 推荐关注</div>
         <h3 class="wechat-title">关注我的微信公众号</h3>
         <h2 class="wechat-name">舒一笑的架构笔记</h2>
         <p class="wechat-desc">分享更多Java、架构设计、微服务等原创技术内容</p>
@@ -95,11 +95,11 @@
         <div class="card-content">
           <div class="article-header">
             <div class="article-date">
-              <span class="date-icon">📅</span>
+              <span class="date-icon"><LineIcon name="book" /></span>
               <span>{{ formatDate(post.date) }}</span>
             </div>
             <div class="article-read-time">
-              <span class="time-icon">⏱️</span>
+              <span class="time-icon"><LineIcon name="book" /></span>
               <span>{{ estimateReadTime(post.wordCount) }} 分钟阅读</span>
             </div>
           </div>
@@ -130,7 +130,7 @@
       
       <!-- 空状态 -->
       <div v-if="currentPosts.length === 0" class="empty-state">
-        <div class="empty-icon">🔍</div>
+        <div class="empty-icon"><LineIcon name="book" /></div>
         <p class="empty-text">没有找到相关文章</p>
         <button @click="resetFilters" class="reset-btn">重置筛选</button>
       </div>
@@ -384,8 +384,8 @@ watch(pageSize, () => {
 .article-header { display: flex; gap: var(--sp-16); flex-wrap: wrap; font-size: var(--ui-text-meta); color: var(--ui-muted); font-variant-numeric: tabular-nums; }
 .article-title { margin: var(--sp-8) 0; font-size: var(--ui-text-base); font-weight: var(--ui-weight-medium); }
 .article-title a { display: flex; justify-content: space-between; gap: var(--sp-16); color: var(--vp-c-text-1); }
-.article-title a:hover { color: var(--vp-c-brand-1); text-decoration: none; }
-.title-arrow { color: var(--ui-muted); }
+.article-title a:hover { color: var(--vp-c-text-1); text-decoration: none; }
+.title-arrow { color: var(--vp-c-text-1); }
 .article-desc { font-size: var(--ui-text-sm); color: var(--vp-c-text-2); }
 .article-tags { display: flex; gap: var(--sp-8); flex-wrap: wrap; margin-top: var(--sp-12); }
 .article-tag, .more-tags { font-size: var(--ui-text-xs); color: var(--ui-muted); }

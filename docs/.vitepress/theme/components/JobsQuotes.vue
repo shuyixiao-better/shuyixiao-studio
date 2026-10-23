@@ -1,7 +1,7 @@
 <template>
   <div class="jobs-quotes-section">
     <div class="jobs-quotes-card">
-      <div class="card-icon">🍎</div>
+      <div class="card-icon"><LineIcon name="book" /></div>
       <h2 class="card-title">智慧启迪 · 乔布斯的人生哲学</h2>
       <div class="card-content">
         <div class="quote-carousel">
@@ -24,7 +24,7 @@
       </div>
       <div class="card-footer">
         <a href="/insights/wisdom/steve-jobs" class="explore-link">
-          <span class="footer-icon">✨</span>
+          <span class="footer-icon"><LineIcon name="book" /></span>
           <span>探索完整智慧</span>
           <span class="arrow">→</span>
         </a>
@@ -84,6 +84,7 @@ const nextQuote = () => {
 }
 
 const startAutoPlay = () => {
+  if (typeof window === 'undefined' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
   interval = setInterval(nextQuote, 5000) // 每5秒切换一次
 }
 
@@ -100,108 +101,51 @@ onUnmounted(() => {
 
 <style scoped>
 .jobs-quotes-section {
-  margin: 5rem auto;
-  padding: 0 2rem;
-  max-width: 950px;
+  margin: var(--sp-80) auto;
+  padding: 0 var(--sp-32);
+  max-width: var(--ui-size-952);
   position: relative;
   z-index: 10;
 }
 
 .jobs-quotes-card {
   position: relative;
-  padding: 3.5rem 3rem;
-  background: linear-gradient(135deg,
-    rgba(255, 87, 34, 0.05) 0%,
-    rgba(255, 152, 0, 0.08) 50%,
-    rgba(255, 87, 34, 0.05) 100%);
-  border-radius: 28px;
+  padding: var(--sp-56) var(--sp-48);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-card);
   box-shadow: 
-    0 25px 70px rgba(255, 87, 34, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 87, 34, 0.2);
+    none;
+  border: var(--ui-border) solid var(--vp-c-divider);
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.jobs-quotes-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg,
-    transparent,
-    rgba(255, 87, 34, 0.8),
-    rgba(255, 152, 0, 0.8),
-    rgba(255, 87, 34, 0.8),
-    transparent);
-}
-
-.jobs-quotes-card::after {
-  content: '💡';
-  position: absolute;
-  bottom: 2rem;
-  right: 2.5rem;
-  font-size: 5rem;
-  opacity: 0.06;
-  transform: rotate(-15deg);
-  pointer-events: none;
+  transition: var(--ui-transition);
 }
 
 .jobs-quotes-card:hover {
-  transform: translateY(-8px);
   box-shadow: 
-    0 35px 90px rgba(255, 87, 34, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 87, 34, 0.35);
+    none;
+  border-color: var(--vp-c-divider);
 }
 
 .card-icon {
-  font-size: 3.5rem;
+  font-size: var(--ui-text-hero);
   text-align: center;
-  margin-bottom: 1.5rem;
-  filter: drop-shadow(0 8px 16px rgba(255, 87, 34, 0.3));
-  animation: float-icon 3s ease-in-out infinite;
-}
-
-@keyframes float-icon {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-10px) rotate(5deg); }
+  margin-bottom: var(--sp-24);
 }
 
 .card-title {
-  margin: 0 0 2rem;
+  margin: 0 0 var(--sp-32);
   text-align: center;
-  font-size: 2.2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, 
-    #ff5722 0%,
-    #ff9800 50%,
-    #ff5722 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
+  background: var(--vp-c-bg-soft);
   position: relative;
-  letter-spacing: 1.5px;
-}
-
-.card-title::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  width: 70px;
-  height: 3px;
-  background: linear-gradient(90deg, #ff5722, #ff9800);
-  transform: translateX(-50%);
-  border-radius: 2px;
+  letter-spacing: normal;
 }
 
 .card-content {
   position: relative;
   z-index: 2;
-  min-height: 200px;
+  min-height: var(--ui-size-200);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -210,95 +154,81 @@ onUnmounted(() => {
 
 .quote-carousel {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .quote-item {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: var(--sp-32) var(--sp-16);
 }
 
 .quote-text {
-  font-size: 1.35rem;
-  line-height: 1.8;
+  font-size: var(--ui-text-quote);
+  line-height: var(--ui-leading-body);
   color: var(--vp-c-text-1);
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  font-weight: var(--ui-weight-medium);
+  margin-bottom: var(--sp-24);
   position: relative;
-  padding: 0 2rem;
+  padding: 0 var(--sp-32);
   font-style: italic;
-}
-
-.quote-text::before,
-.quote-text::after {
-  content: '"';
-  font-size: 3rem;
-  color: #ff5722;
-  opacity: 0.3;
-  line-height: 0;
-  position: absolute;
-  font-family: Georgia, serif;
 }
 
 .quote-text::before {
   left: 0;
-  top: 20px;
+  top: var(--sp-20);
 }
 
 .quote-text::after {
   right: 0;
-  bottom: -10px;
+  bottom: calc(-1 * var(--sp-12));
 }
 
 .quote-category {
   display: inline-block;
-  padding: 0.5rem 1.5rem;
-  background: linear-gradient(135deg,
-    rgba(255, 87, 34, 0.1),
-    rgba(255, 152, 0, 0.15));
-  border-radius: 20px;
-  border: 1px solid rgba(255, 87, 34, 0.3);
-  color: #ff5722;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+  padding: var(--sp-8) var(--sp-24);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-heading);
+  letter-spacing: normal;
 }
 
 .quotes-navigation {
   display: flex;
-  gap: 0.8rem;
+  gap: var(--sp-12);
   justify-content: center;
   align-items: center;
 }
 
 .nav-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255, 87, 34, 0.2);
-  border: 2px solid rgba(255, 87, 34, 0.3);
+  width: var(--sp-12);
+  height: var(--sp-12);
+  border-radius: var(--ui-radius-circle);
+  background: var(--vp-c-bg-soft);
+  border: var(--ui-focus) solid var(--vp-c-divider);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   padding: 0;
   outline: none;
 }
 
 .nav-dot:hover {
-  background: rgba(255, 87, 34, 0.4);
-  transform: scale(1.2);
+  background: var(--vp-c-bg-soft);
 }
 
 .nav-dot.active {
-  width: 32px;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #ff5722, #ff9800);
-  border-color: #ff5722;
+  width: var(--sp-32);
+  border-radius: var(--ui-radius-circle);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 
 .card-footer {
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 2px dashed rgba(255, 87, 34, 0.2);
+  margin-top: var(--sp-40);
+  padding-top: var(--sp-32);
+  border-top: var(--ui-focus) dashed var(--vp-c-divider);
   display: flex;
   justify-content: center;
 }
@@ -306,29 +236,18 @@ onUnmounted(() => {
 .explore-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.8rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, #ff5722, #ff9800);
-  color: white;
+  gap: var(--sp-12);
+  padding: var(--sp-16) var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
   text-decoration: none;
-  border-radius: 50px;
-  font-size: 1.05rem;
-  font-weight: 600;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 25px rgba(255, 87, 34, 0.3);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
+  transition: var(--ui-transition);
+  box-shadow: none;
   position: relative;
   overflow: hidden;
-}
-
-.explore-link::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s ease;
 }
 
 .explore-link:hover::before {
@@ -336,151 +255,125 @@ onUnmounted(() => {
 }
 
 .explore-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(255, 87, 34, 0.4);
+  box-shadow: none;
 }
 
 .footer-icon {
-  font-size: 1.3rem;
-  animation: pulse-glow 2s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
+  font-size: var(--ui-text-quote);
 }
 
 .arrow {
-  font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  font-size: var(--ui-text-quote);
+  transition: var(--ui-transition);
 }
 
 .explore-link:hover .arrow {
-  transform: translateX(5px);
+  transform: translateX(var(--sp-4));
 }
-
-/* 过渡动画 */
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: var(--ui-transition);
 }
 
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(20px);
 }
 
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
 }
-
-/* 响应式 */
 @media (max-width: 768px) {
   .jobs-quotes-section {
-    margin: 3rem auto;
-    padding: 0 1rem;
+    margin: var(--sp-48) auto;
+    padding: 0 var(--sp-16);
   }
   
   .jobs-quotes-card {
-    padding: 2.5rem 1.5rem;
-    border-radius: 20px;
+    padding: var(--sp-40) var(--sp-24);
+    border-radius: var(--ui-radius-card);
   }
   
   .jobs-quotes-card::after {
-    font-size: 3.5rem;
-    bottom: 1.5rem;
-    right: 1.5rem;
+    font-size: var(--ui-text-hero);
+    bottom: var(--sp-24);
+    right: var(--sp-24);
   }
   
   .card-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: var(--ui-text-display);
+    margin-bottom: var(--sp-16);
   }
   
   .card-title {
-    font-size: 1.6rem;
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
+    font-size: var(--ui-text-section);
+    letter-spacing: normal;
+    margin-bottom: var(--sp-24);
   }
   
   .quote-text {
-    font-size: 1.05rem;
-    padding: 0 1rem;
-    line-height: 1.7;
+    font-size: var(--ui-text-base);
+    padding: 0 var(--sp-16);
+    line-height: var(--ui-leading-body);
   }
   
   .quote-text::before,
   .quote-text::after {
-    font-size: 2rem;
+    font-size: var(--ui-text-title);
   }
   
   .quote-category {
-    font-size: 0.8rem;
-    padding: 0.4rem 1.2rem;
+    font-size: var(--ui-text-meta);
+    padding: var(--sp-8) var(--sp-20);
   }
   
   .nav-dot {
-    width: 10px;
-    height: 10px;
+    width: var(--sp-12);
+    height: var(--sp-12);
   }
   
   .nav-dot.active {
-    width: 28px;
+    width: var(--sp-28);
   }
   
   .explore-link {
-    font-size: 0.95rem;
-    padding: 0.9rem 1.75rem;
+    font-size: var(--ui-text-base);
+    padding: var(--sp-16) var(--sp-28);
   }
   
   .card-footer {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: var(--sp-32);
+    padding-top: var(--sp-24);
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
   .jobs-quotes-card {
-    padding: 3rem 2.5rem;
+    padding: var(--sp-48) var(--sp-40);
   }
   
   .card-title {
-    font-size: 2rem;
+    font-size: var(--ui-text-title);
   }
   
   .quote-text {
-    font-size: 1.2rem;
+    font-size: var(--ui-text-quote);
   }
 }
-
-/* 暗色模式优化 */
 .dark .jobs-quotes-card {
-  background: linear-gradient(135deg,
-    rgba(255, 87, 34, 0.08) 0%,
-    rgba(255, 152, 0, 0.12) 50%,
-    rgba(255, 87, 34, 0.08) 100%);
-  border-color: rgba(255, 87, 34, 0.3);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
   box-shadow:
-    0 25px 70px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    none;
 }
 
 .dark .jobs-quotes-card:hover {
-  border-color: rgba(255, 87, 34, 0.45);
+  border-color: var(--vp-c-divider);
   box-shadow:
-    0 35px 90px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    none;
 }
 
 .dark .quote-category {
-  background: linear-gradient(135deg,
-    rgba(255, 87, 34, 0.15),
-    rgba(255, 152, 0, 0.2));
-  border-color: rgba(255, 87, 34, 0.4);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 </style>
 

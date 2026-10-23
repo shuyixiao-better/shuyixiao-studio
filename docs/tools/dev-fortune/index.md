@@ -139,23 +139,23 @@ import DevFortune from './DevFortune.vue'
 <style scoped>
 .tool-footer {
   text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border-radius: 12px;
-  border: 1px solid var(--vp-c-divider);
+  margin-top: var(--sp-48);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
 }
 
 .tool-footer p {
-  margin: 0.5rem 0;
+  margin: var(--sp-8) 0;
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 .tool-footer .disclaimer {
-  font-size: 0.85rem;
+  font-size: var(--ui-text-sm);
   color: var(--vp-c-text-2);
-  margin-top: 1rem;
+  margin-top: var(--sp-16);
 }
 </style>
 

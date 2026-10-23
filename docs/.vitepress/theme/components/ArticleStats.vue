@@ -80,7 +80,6 @@ watch(currentPath, () => { if (mounted) load() })
 </template>
 <style scoped>
 .article-stats { display: flex; align-items: baseline; flex-wrap: wrap; margin-block: var(--sp-16) var(--sp-24); color: var(--ui-muted); font-size: var(--ui-text-meta); }
-.article-stats > * + *::before { content: '·'; display: inline-block; margin-inline: var(--sp-8); color: var(--ui-muted); }
 .article-stats button { font: inherit; color: inherit; cursor: pointer; }
 .article-stats button:hover, .article-stats button[aria-pressed='true'] { color: var(--vp-c-brand-1); }
 </style>

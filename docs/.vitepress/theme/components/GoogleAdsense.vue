@@ -48,13 +48,13 @@ onMounted(() => {
 
 <style scoped>
 .google-adsense-wrapper {
-  margin: 20px 0;
-  padding: 10px 0;
+  margin: var(--sp-20) 0;
+  padding: var(--sp-12) 0;
   text-align: center;
 }
 
 .adsbygoogle {
   display: block;
-  min-height: 100px;
+  min-height: var(--sp-100);
 }
 </style>

@@ -9,3 +9,16 @@
 .requires-backend-notice a { flex-shrink: 0; }
 .ui-card { padding: var(--sp-24); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); background: var(--ui-surface); }
 .ui-icon { width: var(--ui-icon-size); height: var(--ui-icon-size); flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Shared embedded page patterns. :where leaves room for local layout rules. */
+:where(.personal-intro-card, .book-info, .book-info-card, .tool-card, .recommendation-card) { background: var(--ui-surface); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); padding: var(--sp-24); }
+/* The recommendation disclosure has legacy inline decoration: override only its visual surface. */
+.vp-doc div[style*="linear-gradient"] { background: var(--vp-c-bg-soft) !important; color: var(--vp-c-text-1) !important; /* Required to override author inline style without changing page content. */ }
+/* Floating actions share a single stack, independent of backend capability. */
+.feedback-button, .easter-egg-trigger { width: var(--ui-float-size); height: var(--ui-float-size); display: flex; align-items: center; justify-content: center; padding: 0; border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-circle); background: var(--ui-surface); color: var(--vp-c-text-2); box-shadow: none; cursor: pointer; }
+.feedback-button { position: fixed; right: var(--sp-20); bottom: var(--sp-72); z-index: 99; }
+.easter-egg-container { position: fixed; right: var(--sp-20); bottom: var(--sp-20); z-index: 99; }
+.feedback-button:hover, .easter-egg-trigger:hover { color: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
+
+/* Required: retain page inline markup while making its secondary text meet AA. */
+.vp-doc [style*="--vp-c-text-3"] { color: var(--ui-muted) !important; }

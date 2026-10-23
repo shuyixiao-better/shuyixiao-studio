@@ -63,99 +63,87 @@ onUnmounted(() => {
 <style scoped>
 .font-load-indicator {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: var(--sp-20);
+  right: var(--sp-20);
   z-index: 10000;
   pointer-events: none;
 }
 
 .indicator-content {
-  background: rgba(16, 185, 129, 0.95);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  padding: var(--sp-12) var(--sp-20);
+  border-radius: var(--ui-radius-input);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  min-width: 200px;
-  backdrop-filter: blur(10px);
+  gap: var(--sp-8);
+  min-width: var(--ui-size-200);
 }
 
 .loading-spinner {
-  width: 20px;
-  height: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: var(--sp-20);
+  height: var(--sp-20);
+  border: var(--ui-focus) solid var(--vp-c-divider);
   border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+  border-radius: var(--ui-radius-input);
 }
 
 .loading-text {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
   white-space: nowrap;
 }
 
 .progress-bar {
   width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
+  height: var(--sp-4);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: white;
-  transition: width 0.3s ease;
-  border-radius: 2px;
+  background: var(--vp-c-bg-soft);
+  transition: var(--ui-transition);
+  border-radius: var(--ui-radius-input);
 }
 
 .progress-text {
-  font-size: 12px;
+  font-size: var(--ui-text-xs);
   opacity: 0.9;
 }
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .fade-enter-from {
   opacity: 0;
-  transform: translateY(-10px);
 }
 
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
 }
-
-/* 深色模式适配 */
 .dark .indicator-content {
-  background: rgba(5, 150, 105, 0.95);
+  background: var(--vp-c-bg-soft);
 }
-
-/* 移动端适配 */
 @media (max-width: 768px) {
   .font-load-indicator {
-    top: 10px;
-    right: 10px;
+    top: var(--sp-12);
+    right: var(--sp-12);
   }
   
   .indicator-content {
-    padding: 10px 16px;
-    min-width: 180px;
+    padding: var(--sp-12) var(--sp-16);
+    min-width: var(--ui-size-180);
   }
   
   .loading-text {
-    font-size: 13px;
+    font-size: var(--ui-text-meta);
   }
 }
 </style>

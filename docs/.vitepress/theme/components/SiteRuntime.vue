@@ -41,10 +41,10 @@ onUnmounted(() => {
 <style scoped>
 .site-runtime {
   display: inline-block;
-  font-size: 0.9em;
+  font-size: var(--ui-text-sm);
   opacity: 0.8;
-  letter-spacing: 1px;
-  margin-left: 20px;
+  letter-spacing: normal;
+  margin-left: var(--sp-20);
   color: var(--vp-c-text-1);
 }
 
@@ -52,7 +52,7 @@ onUnmounted(() => {
   .site-runtime {
     display: block;
     margin-left: 0;
-    margin-top: 8px;
+    margin-top: var(--sp-8);
   }
 }
 </style>

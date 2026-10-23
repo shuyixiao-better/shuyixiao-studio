@@ -1,3 +1,4 @@
+import LineIcon from './components/LineIcon.vue'
 import HomeHero from './components/home/HomeHero.vue'
 import NowExploring from './components/home/NowExploring.vue'
 import HomeNav from './components/home/HomeNav.vue'
@@ -47,7 +48,7 @@ export default {
       })
       return () => h(DefaultTheme.Layout, null, {
         'not-found': () => h(NotFound),
-        'doc-top': () => h(ArticleStats),
+        'doc-before': () => h(ArticleStats),
         'doc-after': () => backend.value ? h(Comments) : h(CommentsPlaceholder),
         'layout-bottom': () => [h(FeedbackWidget), h(EasterEgg)],
         'layout-top': () => h(UpdateNotification)
@@ -55,6 +56,7 @@ export default {
     }
   }),
   enhanceApp({ app, router, siteData }) {
+    app.component('LineIcon', LineIcon)
     app.component('HomeHero', HomeHero)
     app.component('NowExploring', NowExploring)
     app.component('HomeNav', HomeNav)

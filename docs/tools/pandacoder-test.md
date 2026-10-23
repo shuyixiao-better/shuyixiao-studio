@@ -7,6 +7,9 @@ date: '2025-12-25'
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { hasBackend } from '../.vitepress/theme/utils/deploy-env.js'
+const backend = ref(false)
+const ready = ref(false)
 
 const iframeUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
 const loading = ref(true)
@@ -23,13 +26,16 @@ const handleError = (e) => {
   console.error('❌ iframe 加载失败', e)
 }
 
-onMounted(() => {
+onMounted(async () => {
+  backend.value = await hasBackend()
+  ready.value = true
   console.log('🔍 测试 iframe URL:', iframeUrl.value)
 })
 </script>
 
-<template>
-  <div style="padding: 20px;">
+<div class="pandacoder-test-page">
+  <RequiresBackendNotice v-if="ready && !backend" />
+  <div v-if="backend" style="padding: 20px;">
     <h1>🧪 PandaCoder iframe 测试</h1>
     
     <div v-if="loading" style="padding: 40px; text-align: center;">
@@ -56,5 +62,5 @@ onMounted(() => {
       <p><strong>提示:</strong> 打开浏览器 F12 控制台查看详细日志</p>
     </div>
   </div>
-</template>
+</div>
 

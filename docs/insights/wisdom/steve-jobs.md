@@ -52,19 +52,19 @@ date: '2025-12-25'
 <div class="innovation-grid">
 
 <div class="innovation-item">
-<div class="item-icon">🎯</div>
+<div class="item-icon"><LineIcon name="book" /></div>
 <h4>追求极致</h4>
 <p>对细节的极致追求和对完美的不懈坚持，是苹果产品成功的关键。</p>
 </div>
 
 <div class="innovation-item">
-<div class="item-icon">🔄</div>
+<div class="item-icon"><LineIcon name="book" /></div>
 <h4>跨界思维</h4>
 <p>将技术与人文艺术结合，创造出既有强大功能又有优雅设计的产品。</p>
 </div>
 
 <div class="innovation-item">
-<div class="item-icon">⚡</div>
+<div class="item-icon"><LineIcon name="book" /></div>
 <h4>颠覆勇气</h4>
 <p>不惧挑战现状，敢于推翻传统观念，创造全新的用户体验。</p>
 </div>
@@ -136,7 +136,7 @@ date: '2025-12-25'
 <div class="quotes-collection">
 
 <div class="quote-item-large">
-<div class="quote-icon">💎</div>
+<div class="quote-icon"><LineIcon name="book" /></div>
 <blockquote>
 "Stay hungry, stay foolish."<br/>
 保持饥饿，保持愚蠢。
@@ -145,7 +145,7 @@ date: '2025-12-25'
 </div>
 
 <div class="quote-item-large">
-<div class="quote-icon">🚀</div>
+<div class="quote-icon"><LineIcon name="book" /></div>
 <blockquote>
 "Innovation distinguishes between a leader and a follower."<br/>
 创新区分了领导者和追随者。
@@ -154,7 +154,7 @@ date: '2025-12-25'
 </div>
 
 <div class="quote-item-large">
-<div class="quote-icon">✨</div>
+<div class="quote-icon"><LineIcon name="book" /></div>
 <blockquote>
 "Design is not just what it looks like and feels like. Design is how it works."<br/>
 设计不仅仅是外观和感觉，设计是它如何工作。
@@ -163,7 +163,7 @@ date: '2025-12-25'
 </div>
 
 <div class="quote-item-large">
-<div class="quote-icon">🎯</div>
+<div class="quote-icon"><LineIcon name="book" /></div>
 <blockquote>
 "Quality is more important than quantity. One home run is much better than two doubles."<br/>
 质量比数量更重要。一个全垒打远胜于两个二垒打。
@@ -182,7 +182,7 @@ date: '2025-12-25'
 <div class="takeaway-grid">
 
 <div class="takeaway-item">
-<span class="takeaway-icon">❤️</span>
+<span class="takeaway-icon"><LineIcon name="book" /></span>
 <span class="takeaway-text">热爱你所做的事</span>
 </div>
 
@@ -192,22 +192,22 @@ date: '2025-12-25'
 </div>
 
 <div class="takeaway-item">
-<span class="takeaway-icon">🎨</span>
+<span class="takeaway-icon"><LineIcon name="book" /></span>
 <span class="takeaway-text">追求简洁与优雅</span>
 </div>
 
 <div class="takeaway-item">
-<span class="takeaway-icon">🔥</span>
+<span class="takeaway-icon"><LineIcon name="book" /></span>
 <span class="takeaway-text">勇于打破常规</span>
 </div>
 
 <div class="takeaway-item">
-<span class="takeaway-icon">👥</span>
+<span class="takeaway-icon"><LineIcon name="book" /></span>
 <span class="takeaway-text">重视团队协作</span>
 </div>
 
 <div class="takeaway-item">
-<span class="takeaway-icon">🌟</span>
+<span class="takeaway-icon"><LineIcon name="book" /></span>
 <span class="takeaway-text">活着就是改变世界</span>
 </div>
 
@@ -225,254 +225,233 @@ date: '2025-12-25'
 
 <style scoped>
 .jobs-wisdom-page {
-  max-width: 900px;
+  max-width: var(--ui-size-900);
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: var(--sp-32) var(--sp-16);
 }
 
 .page-intro {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: var(--ui-text-lg);
+  line-height: var(--ui-leading-body);
   color: var(--vp-c-text-2);
-  margin-bottom: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    rgba(255, 87, 34, 0.05), 
-    rgba(255, 152, 0, 0.08));
-  border-radius: 16px;
-  border-left: 4px solid #ff5722;
+  margin-bottom: var(--sp-48);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border-left: var(--sp-4) solid var(--vp-c-divider);
 }
 
 .philosophy-table {
-  margin: 2rem 0;
+  margin: var(--sp-32) 0;
   overflow-x: auto;
 }
 
 .wisdom-section {
-  margin: 3rem 0;
-  padding: 2.5rem;
+  margin: var(--sp-48) 0;
+  padding: var(--sp-40);
   background: var(--vp-c-bg-soft);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border-radius: var(--ui-radius-input);
+  box-shadow: none;
 }
 
 .wisdom-section h3 {
-  color: #ff5722;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--ui-text-title);
+  margin-bottom: var(--sp-24);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--sp-8);
 }
 
 .quote-box {
-  margin: 2rem 0;
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    rgba(255, 87, 34, 0.08), 
-    rgba(255, 152, 0, 0.12));
-  border-left: 5px solid #ff5722;
-  border-radius: 12px;
-  font-size: 1.15rem;
-  line-height: 1.8;
+  margin: var(--sp-32) 0;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-left: var(--sp-4) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-lg);
+  line-height: var(--ui-leading-body);
   font-style: italic;
   color: var(--vp-c-text-1);
   position: relative;
 }
 
-.quote-box::before {
-  content: '"';
-  position: absolute;
-  top: 10px;
-  left: 15px;
-  font-size: 3rem;
-  color: #ff5722;
-  opacity: 0.2;
-  font-family: Georgia, serif;
-}
-
 .innovation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(var(--ui-size-252), 1fr));
+  gap: var(--sp-32);
+  margin: var(--sp-32) 0;
 }
 
 .innovation-item {
-  padding: 2rem;
+  padding: var(--sp-32);
   background: var(--vp-c-bg);
-  border-radius: 16px;
-  border: 2px solid rgba(255, 87, 34, 0.2);
-  transition: all 0.3s ease;
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
   text-align: center;
 }
 
 .innovation-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(255, 87, 34, 0.2);
-  border-color: #ff5722;
+  box-shadow: none;
+  border-color: var(--vp-c-divider);
 }
 
 .item-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  font-size: var(--ui-text-display);
+  margin-bottom: var(--sp-16);
 }
 
 .innovation-item h4 {
-  color: #ff5722;
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--ui-text-quote);
+  margin-bottom: var(--sp-16);
 }
 
 .innovation-item p {
   color: var(--vp-c-text-2);
-  line-height: 1.6;
+  line-height: var(--ui-leading-body);
 }
 
 .application-section {
-  margin: 3rem 0;
+  margin: var(--sp-48) 0;
 }
 
 .application-card {
   display: flex;
-  gap: 2rem;
+  gap: var(--sp-32);
   align-items: flex-start;
-  margin: 2rem 0;
-  padding: 2rem;
+  margin: var(--sp-32) 0;
+  padding: var(--sp-32);
   background: var(--vp-c-bg-soft);
-  border-radius: 16px;
-  border-left: 4px solid #ff5722;
-  transition: all 0.3s ease;
+  border-radius: var(--ui-radius-card);
+  border-left: var(--sp-4) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
 }
 
 .application-card:hover {
-  transform: translateX(8px);
-  box-shadow: 0 8px 24px rgba(255, 87, 34, 0.15);
+  transform: translateX(var(--sp-8));
+  box-shadow: none;
 }
 
 .card-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #ff5722;
+  font-size: var(--ui-text-display);
+  font-weight: var(--ui-weight-heading);
+  color: var(--vp-c-text-2);
   opacity: 0.3;
-  min-width: 60px;
+  min-width: var(--sp-60);
 }
 
 .card-content-area h4 {
-  color: #ff5722;
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--ui-text-quote);
+  margin-bottom: var(--sp-12);
 }
 
 .card-content-area p {
   color: var(--vp-c-text-2);
-  line-height: 1.7;
+  line-height: var(--ui-leading-body);
 }
 
 .quotes-collection {
-  margin: 3rem 0;
+  margin: var(--sp-48) 0;
   display: grid;
-  gap: 2rem;
+  gap: var(--sp-32);
 }
 
 .quote-item-large {
-  padding: 2.5rem;
-  background: linear-gradient(135deg, 
-    var(--vp-c-bg-soft), 
-    var(--vp-c-bg));
-  border-radius: 20px;
-  border: 2px solid rgba(255, 87, 34, 0.15);
-  transition: all 0.3s ease;
+  padding: var(--sp-40);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
 }
 
 .quote-item-large:hover {
-  border-color: #ff5722;
-  box-shadow: 0 12px 40px rgba(255, 87, 34, 0.2);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .quote-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--ui-text-display);
+  margin-bottom: var(--sp-16);
   text-align: center;
 }
 
 .quote-item-large blockquote {
-  font-size: 1.2rem;
-  line-height: 1.7;
+  font-size: var(--ui-text-quote);
+  line-height: var(--ui-leading-body);
   color: var(--vp-c-text-1);
   font-style: italic;
-  margin: 1rem 0;
+  margin: var(--sp-16) 0;
   padding: 0;
   border: none;
 }
 
 .quote-context {
-  margin-top: 1rem;
+  margin-top: var(--sp-16);
   color: var(--vp-c-text-2);
-  font-size: 0.95rem;
-  line-height: 1.6;
+  font-size: var(--ui-text-base);
+  line-height: var(--ui-leading-body);
 }
 
 .conclusion-section {
-  margin: 4rem 0;
-  padding: 3rem;
-  background: linear-gradient(135deg, 
-    rgba(255, 87, 34, 0.05), 
-    rgba(255, 152, 0, 0.08));
-  border-radius: 24px;
+  margin: var(--sp-64) 0;
+  padding: var(--sp-48);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
   text-align: center;
 }
 
 .takeaway-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(var(--ui-size-200), 1fr));
+  gap: var(--sp-24);
+  margin: var(--sp-32) 0;
 }
 
 .takeaway-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  padding: 1.5rem;
+  gap: var(--sp-12);
+  padding: var(--sp-24);
   background: var(--vp-c-bg);
-  border-radius: 16px;
-  border: 2px solid rgba(255, 87, 34, 0.2);
-  transition: all 0.3s ease;
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  transition: var(--ui-transition);
 }
 
 .takeaway-item:hover {
-  transform: translateY(-5px);
-  border-color: #ff5722;
-  box-shadow: 0 8px 24px rgba(255, 87, 34, 0.2);
+  border-color: var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .takeaway-icon {
-  font-size: 2rem;
+  font-size: var(--ui-text-title);
 }
 
 .takeaway-text {
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
 }
 
 .final-quote {
-  margin-top: 3rem;
-  font-size: 1.25rem;
-  line-height: 2;
-  color: #ff5722;
-  font-weight: 500;
+  margin-top: var(--sp-48);
+  font-size: var(--ui-text-quote);
+  line-height: var(--ui-leading-body);
+  color: var(--vp-c-text-2);
+  font-weight: var(--ui-weight-medium);
   font-style: italic;
 }
 
 @media (max-width: 768px) {
   .jobs-wisdom-page {
-    padding: 1rem 0.5rem;
+    padding: var(--sp-16) var(--sp-8);
   }
   
   .wisdom-section {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
   
   .innovation-grid {
@@ -481,11 +460,11 @@ date: '2025-12-25'
   
   .application-card {
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--sp-16);
   }
   
   .card-number {
-    font-size: 2rem;
+    font-size: var(--ui-text-title);
   }
   
   .takeaway-grid {
@@ -493,11 +472,11 @@ date: '2025-12-25'
   }
   
   .conclusion-section {
-    padding: 2rem 1.5rem;
+    padding: var(--sp-32) var(--sp-24);
   }
   
   .final-quote {
-    font-size: 1.1rem;
+    font-size: var(--ui-text-lg);
   }
 }
 
@@ -505,12 +484,12 @@ date: '2025-12-25'
 .dark .innovation-item,
 .dark .application-card,
 .dark .quote-item-large {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 87, 34, 0.3);
+  background: var(--vp-c-bg-soft);
+  border-color: var(--vp-c-divider);
 }
 
 .dark .takeaway-item {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--vp-c-bg-soft);
 }
 </style>
 

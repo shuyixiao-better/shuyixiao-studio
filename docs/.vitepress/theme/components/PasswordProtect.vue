@@ -1,7 +1,7 @@
 <template>
   <div v-if="!isUnlocked" class="password-protect">
     <div class="password-protect-container">
-      <div class="lock-icon">🔒</div>
+      <div class="lock-icon"><LineIcon name="lock" /></div>
       <h2 class="title">此内容已加密</h2>
       <p class="description">请输入密码以查看内容</p>
       
@@ -15,7 +15,7 @@
           autofocus
         />
         <button @click="checkPassword" class="unlock-button">
-          <span v-if="!isChecking">🔓 解锁</span>
+          <span v-if="!isChecking"> 解锁</span>
           <span v-else>验证中...</span>
         </button>
       </div>
@@ -23,14 +23,14 @@
       <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
       
       <div class="hint">
-        <p>💡 提示：如果你忘记了密码，请联系作者获取访问权限</p>
+        <p> 提示：如果你忘记了密码，请联系作者获取访问权限</p>
       </div>
     </div>
   </div>
   
   <div v-else class="password-protect-content">
     <div class="unlock-banner">
-      <span class="unlock-icon">✅</span>
+      <span class="unlock-icon"><LineIcon name="book" /></span>
       <span class="unlock-text">内容已解锁</span>
     </div>
     <slot></slot>
@@ -69,6 +69,7 @@ const hashPassword = (password) => {
 
 // 检查密码
 const checkPassword = () => {
+  if (typeof window === 'undefined') return
   if (!inputPassword.value.trim()) {
     errorMessage.value = '请输入密码'
     return
@@ -93,7 +94,7 @@ const checkPassword = () => {
       
       // 成功提示
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
       }, 100)
     } else {
       errorMessage.value = '❌ 密码错误，请重试'
@@ -130,162 +131,130 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  background: linear-gradient(135deg, 
-    rgba(66, 153, 225, 0.05) 0%,
-    rgba(159, 122, 234, 0.05) 100%);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
 }
 
 .password-protect-container {
-  max-width: 480px;
+  max-width: var(--ui-size-480);
   width: 100%;
-  padding: 3rem 2.5rem;
+  padding: var(--sp-48) var(--sp-40);
   background: var(--vp-c-bg);
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-  border: 2px solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-card);
+  box-shadow: none;
+  border: var(--ui-focus) solid var(--vp-c-divider);
   text-align: center;
 }
 
 .lock-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  animation: lock-bounce 2s ease-in-out infinite;
-}
-
-@keyframes lock-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  font-size: var(--ui-text-hero);
+  margin-bottom: var(--sp-24);
 }
 
 .title {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #4299e1, #9f7aea);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: var(--sp-8);
+  background: var(--vp-c-bg-soft);
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: var(--ui-text-lg);
   color: var(--vp-c-text-2);
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .password-input-wrapper {
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: var(--sp-8);
+  margin-bottom: var(--sp-16);
 }
 
 .password-input {
   flex: 1;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
+  padding: var(--sp-16) var(--sp-24);
+  font-size: var(--ui-text-base);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   outline: none;
 }
 
 .password-input:focus {
   border-color: var(--vp-c-brand-1);
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+  box-shadow: none;
 }
 
 .unlock-button {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: white;
-  background: linear-gradient(135deg, #4299e1, #9f7aea);
+  padding: var(--sp-16) var(--sp-32);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
+  color: var(--ui-on-brand);
+  background: var(--vp-c-brand-1);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   white-space: nowrap;
 }
 
 .unlock-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
-}
-
-.unlock-button:active {
-  transform: translateY(0);
+  box-shadow: none;
 }
 
 .error-message {
-  color: #f56565;
-  font-size: 0.95rem;
-  margin-top: 1rem;
-  animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-10px); }
-  75% { transform: translateX(10px); }
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-base);
+  margin-top: var(--sp-16);
 }
 
 .hint {
-  margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--vp-c-divider);
+  margin-top: var(--sp-32);
+  padding-top: var(--sp-32);
+  border-top: var(--ui-border) solid var(--vp-c-divider);
 }
 
 .hint p {
-  font-size: 0.9rem;
-  color: var(--vp-c-text-3);
-  line-height: 1.6;
-}
-
-.password-protect-content {
-  animation: fadeIn 0.5s ease-in;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  font-size: var(--ui-text-sm);
+  color: var(--ui-muted);
+  line-height: var(--ui-leading-body);
 }
 
 .unlock-banner {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #48bb78, #38a169);
-  color: white;
-  border-radius: 12px;
-  font-weight: 600;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+  gap: var(--sp-8);
+  padding: var(--sp-12) var(--sp-24);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border-radius: var(--ui-radius-input);
+  font-weight: var(--ui-weight-heading);
+  margin-bottom: var(--sp-32);
+  box-shadow: none;
 }
 
 .unlock-icon {
-  font-size: 1.2rem;
+  font-size: var(--ui-text-quote);
 }
 
 .unlock-text {
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 @media (max-width: 640px) {
   .password-protect {
-    padding: 1rem;
+    padding: var(--sp-16);
   }
   
   .password-protect-container {
-    padding: 2rem 1.5rem;
+    padding: var(--sp-32) var(--sp-24);
   }
   
   .title {
-    font-size: 1.5rem;
+    font-size: var(--ui-text-section);
   }
   
   .password-input-wrapper {
@@ -298,7 +267,7 @@ onMounted(() => {
 }
 
 .dark .password-protect-container {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 }
 </style>
 

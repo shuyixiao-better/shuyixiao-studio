@@ -100,9 +100,9 @@ date: '2025-12-31'
 </div>
 
 <style scoped>
-.book-header { display: flex; gap: 2rem; padding: 2rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1)); border-radius: 16px; margin-bottom: 2rem; }
-.book-cover { font-size: 5rem; width: 120px; height: 160px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2)); border-radius: 12px; flex-shrink: 0; }
-.book-meta h2 { margin: 0 0 1rem; font-size: 1.8rem; color: var(--vp-c-text-1); }
-.book-meta p { margin: 0.5rem 0; color: var(--vp-c-text-2); }
+.book-header { display: flex; gap: var(--sp-32); padding: var(--sp-32); background: var(--vp-c-bg-soft); border-radius: var(--ui-radius-input); margin-bottom: var(--sp-32); }
+.book-cover { font-size: var(--ui-text-hero); width: var(--sp-120); height: var(--sp-160); display: flex; align-items: center; justify-content: center; background: var(--vp-c-bg-soft); border-radius: var(--ui-radius-input); flex-shrink: 0; }
+.book-meta h2 { margin: 0 0 var(--sp-16); font-size: var(--ui-text-title); color: var(--vp-c-text-1); }
+.book-meta p { margin: var(--sp-8) 0; color: var(--vp-c-text-2); }
 @media (max-width: 768px) { .book-header { flex-direction: column; align-items: center; text-align: center; } }
 </style>

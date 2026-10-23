@@ -108,20 +108,20 @@ const wrapperStyle = computed(() => {
 
 <style scoped>
 .bilibili-video-container {
-  margin: 20px 0;
-  border-radius: 8px;
+  margin: var(--sp-20) 0;
+  border-radius: var(--ui-radius-card);
   overflow: hidden;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  box-shadow: none;
+  transition: var(--ui-transition);
 }
 
 .bilibili-video-container:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: none;
 }
 
 .video-wrapper {
   width: 100%;
-  background: #000;
+  background: var(--vp-c-bg-soft);
 }
 
 .video-wrapper iframe {
@@ -132,41 +132,35 @@ const wrapperStyle = computed(() => {
   height: 100%;
   border: none;
 }
-
-/* 当height不是auto时的样式 */
 .video-wrapper:not([style*="position: relative"]) iframe {
   position: static;
 }
 
 .video-title {
-  padding: 12px 16px;
+  padding: var(--sp-12) var(--sp-16);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  font-size: 14px;
-  font-weight: 500;
-  border-top: 1px solid var(--vp-c-divider);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
+  border-top: var(--ui-border) solid var(--vp-c-divider);
 }
-
-/* 响应式设计 */
 @media (max-width: 768px) {
   .bilibili-video-container {
-    margin: 15px -24px;
-    border-radius: 0;
+    margin: var(--sp-16) calc(-1 * var(--sp-24));
+    border-radius: var(--ui-radius-card);
   }
   
   .video-title {
-    font-size: 13px;
-    padding: 10px 14px;
+    font-size: var(--ui-text-meta);
+    padding: var(--sp-12) var(--sp-16);
   }
 }
-
-/* 暗色主题适配 */
 .dark .bilibili-video-container {
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: none;
 }
 
 .dark .bilibili-video-container:hover {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: none;
 }
 </style>
 

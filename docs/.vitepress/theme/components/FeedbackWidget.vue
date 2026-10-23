@@ -1,17 +1,17 @@
 <template>
   <Teleport to="body">
     <!-- 悬浮按钮 - 仅在支持 API 的环境显示 -->
-    <div 
+    <button type="button"
       v-if="!isModalOpen && isApiAvailable" 
       class="feedback-button" 
       @click="openModal"
       :class="{ 'feedback-button-hidden': isScrollingUp }"
-      title="给作者留言"
+      title="给作者留言" aria-label="给作者留言"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
       </svg>
-    </div>
+    </button>
 
     <!-- 反馈弹窗 -->
     <Transition name="modal">
@@ -19,7 +19,7 @@
         <div class="feedback-modal" @click.stop>
           <!-- 关闭按钮 -->
           <button class="close-button" @click="closeModal" aria-label="关闭">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -27,7 +27,7 @@
 
           <!-- 标题 -->
           <div class="modal-header">
-            <h3>💌 给作者留言</h3>
+            <h3> 给作者留言</h3>
             <p class="modal-subtitle">您的反馈对我很重要</p>
           </div>
 
@@ -94,7 +94,7 @@
             <!-- 当前文章信息（自动获取） -->
             <div v-if="currentArticle" class="current-article-info">
               <div class="article-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                   <polyline points="14 2 14 8 20 8"></polyline>
                 </svg>
@@ -140,6 +140,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { hasBackend } from '../utils/deploy-env.js';
 import { useData, useRoute } from 'vitepress';
 
 const { frontmatter, page } = useData();
@@ -274,6 +275,7 @@ const showToast = (message, type = 'success') => {
 
 // 提交反馈
 const submitFeedback = async () => {
+  if (typeof window === 'undefined') return;
   if (isSubmitting.value || !formData.value.content.trim()) {
     return;
   }
@@ -407,30 +409,7 @@ const submitFeedback = async () => {
 
 // 检测 API 是否可用（检测是否为 Netlify 环境）
 const checkApiAvailability = async () => {
-  if (typeof window === 'undefined') return;
-  
-  try {
-    // 尝试访问反馈 API（使用 OPTIONS 方法进行预检，不会真正发送邮件）
-    const response = await fetch('/api/feedback', {
-      method: 'OPTIONS',
-      cache: 'no-cache'
-    });
-    
-    // Netlify Functions 的 OPTIONS 请求会返回 204 (No Content)
-    // GitHub Pages 等静态网站会返回 404 (Not Found) 或 405 (Method Not Allowed)
-    if (response.status === 204) {
-      isApiAvailable.value = true;
-      console.log('✅ 反馈功能可用（Netlify 环境）');
-    } else {
-      // 404、405 或其他状态码都视为不支持
-      isApiAvailable.value = false;
-      console.log(`ℹ️ 反馈功能不可用（状态码: ${response.status}，可能是 GitHub Pages 等静态环境）`);
-    }
-  } catch (error) {
-    // 网络错误、CORS 错误或接口不存在，视为静态环境
-    isApiAvailable.value = false;
-    console.log('ℹ️ 无法检测 API 可用性，隐藏反馈按钮（可能是不支持 API 的静态环境）');
-  }
+  isApiAvailable.value = await hasBackend();
 };
 
 // 监听ESC键关闭弹窗
@@ -460,156 +439,138 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* 悬浮按钮 */
 .feedback-button {
   position: fixed;
-  bottom: 80px;
-  right: 30px;
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  border-radius: 50%;
+  bottom: var(--sp-80);
+  right: var(--sp-32);
+  width: var(--sp-56);
+  height: var(--sp-56);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.4);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: none;
+  transition: var(--ui-transition);
   z-index: 999;
-  color: white;
+  color: var(--vp-c-text-2);
 }
 
 .feedback-button:hover {
-  transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 8px 24px rgba(62, 175, 124, 0.5);
+  box-shadow: none;
 }
 
 .feedback-button-hidden {
-  transform: translateY(100px);
   opacity: 0;
   pointer-events: none;
 }
 
 .feedback-button svg {
-  width: 24px;
-  height: 24px;
+  width: var(--sp-24);
+  height: var(--sp-24);
 }
-
-/* 弹窗遮罩 */
 .feedback-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: var(--ui-overlay);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  padding: 20px;
+  padding: var(--sp-20);
 }
-
-/* 弹窗主体 */
 .feedback-modal {
   background: var(--vp-c-bg);
-  border-radius: 16px;
-  max-width: 560px;
+  border-radius: var(--ui-radius-card);
+  max-width: var(--ui-size-560);
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   position: relative;
-  padding: 32px;
+  padding: var(--sp-32);
 }
-
-/* 关闭按钮 */
 .close-button {
   position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 32px;
-  height: 32px;
+  top: var(--sp-16);
+  right: var(--sp-16);
+  width: var(--sp-32);
+  height: var(--sp-32);
   border: none;
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
+  border-radius: var(--ui-radius-input);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--ui-transition);
   color: var(--vp-c-text-2);
 }
 
 .close-button:hover {
   background: var(--vp-c-bg-mute);
   color: var(--vp-c-text-1);
-  transform: scale(1.1);
 }
-
-/* 弹窗标题 */
 .modal-header {
-  margin-bottom: 24px;
+  margin-bottom: var(--sp-24);
   text-align: center;
 }
 
 .modal-header h3 {
-  margin: 0 0 8px 0;
-  font-size: 24px;
-  font-weight: 600;
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin: 0 0 var(--sp-8) 0;
+  font-size: var(--ui-text-section);
+  font-weight: var(--ui-weight-heading);
+  background: var(--vp-c-bg-soft);
 }
 
 .modal-subtitle {
   margin: 0;
-  font-size: 14px;
-  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-sm);
+  color: var(--vp-c-text-1);
 }
-
-/* 表单样式 */
 .feedback-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--sp-20);
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--sp-8);
 }
 
 .form-group label {
-  font-size: 14px;
-  font-weight: 500;
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
   color: var(--vp-c-text-1);
 }
 
 .optional {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
-  font-weight: 400;
+  font-size: var(--ui-text-xs);
+  color: var(--ui-muted);
+  font-weight: var(--ui-weight-body);
 }
 
 .required {
-  color: #ff4757;
-  margin-left: 4px;
+  color: var(--vp-c-text-2);
+  margin-left: var(--sp-4);
 }
 
 .form-group input,
 .form-group textarea {
-  padding: 12px;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  padding: var(--sp-12);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-1);
-  font-size: 14px;
+  font-size: var(--ui-text-sm);
   font-family: inherit;
-  transition: all 0.2s;
+  transition: var(--ui-transition);
 }
 
 .form-group input:focus,
@@ -617,33 +578,31 @@ onUnmounted(() => {
   outline: none;
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-bg);
-  box-shadow: 0 0 0 3px rgba(62, 175, 124, 0.1);
+  box-shadow: none;
 }
 
 .form-group textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: var(--sp-120);
 }
 
 .char-count {
-  font-size: 12px;
-  color: var(--vp-c-text-3);
+  font-size: var(--ui-text-xs);
+  color: var(--ui-muted);
   text-align: right;
 }
-
-/* 当前文章信息 */
 .current-article-info {
-  padding: 12px;
+  padding: var(--sp-12);
   background: var(--vp-c-bg-soft);
-  border-radius: 8px;
-  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: var(--ui-radius-input);
+  border-left: var(--sp-4) solid var(--vp-c-brand-1);
 }
 
 .article-badge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: var(--sp-8);
+  font-size: var(--ui-text-meta);
   color: var(--vp-c-text-2);
 }
 
@@ -651,27 +610,25 @@ onUnmounted(() => {
   color: var(--vp-c-brand-1);
   flex-shrink: 0;
 }
-
-/* 表单操作按钮 */
 .form-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 8px;
+  gap: var(--sp-12);
+  margin-top: var(--sp-8);
 }
 
 .btn {
   flex: 1;
-  padding: 12px 24px;
+  padding: var(--sp-12) var(--sp-24);
   border: none;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: var(--ui-transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--sp-8);
 }
 
 .btn-cancel {
@@ -684,51 +641,41 @@ onUnmounted(() => {
 }
 
 .btn-submit {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2));
-  color: white;
+  background: var(--vp-c-brand-1);
+  color: var(--ui-on-brand);
 }
 
 .btn-submit:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  box-shadow: none;
 }
 
 .btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
-
-/* 加载动画 */
 .loading-text {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--sp-8);
 }
 
 .spinner {
-  width: 14px;
-  height: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: var(--sp-16);
+  height: var(--sp-16);
+  border: var(--ui-focus) solid var(--vp-c-divider);
   border-top-color: white;
-  border-radius: 50%;
-  animation: spin 0.6s linear infinite;
+  border-radius: var(--ui-radius-input);
 }
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* 提示消息 */
 .toast {
   position: absolute;
-  bottom: 20px;
+  bottom: var(--sp-20);
   left: 50%;
   transform: translateX(-50%);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: var(--sp-12) var(--sp-24);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
+  box-shadow: none;
   z-index: 10000;
   white-space: pre-line;
   text-align: center;
@@ -736,24 +683,22 @@ onUnmounted(() => {
 }
 
 .toast-success {
-  background: #10b981;
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .toast-error {
-  background: #ef4444;
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
 
 .toast-info {
-  background: var(--vp-c-brand-1);
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
 }
-
-/* 动画效果 */
 .modal-enter-active,
 .modal-leave-active {
-  transition: opacity 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .modal-enter-from,
@@ -763,46 +708,38 @@ onUnmounted(() => {
 
 .modal-enter-active .feedback-modal,
 .modal-leave-active .feedback-modal {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.modal-enter-from .feedback-modal,
-.modal-leave-to .feedback-modal {
-  transform: scale(0.9) translateY(20px);
+  transition: var(--ui-transition);
 }
 
 .toast-enter-active,
 .toast-leave-active {
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
 }
 
 .toast-enter-from,
 .toast-leave-to {
   opacity: 0;
-  transform: translateX(-50%) translateY(10px);
 }
-
-/* 响应式设计 */
 @media (max-width: 640px) {
   .feedback-button {
-    bottom: 60px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
+    bottom: var(--sp-60);
+    right: var(--sp-20);
+    width: var(--sp-52);
+    height: var(--sp-52);
   }
 
   .feedback-button svg {
-    width: 20px;
-    height: 20px;
+    width: var(--sp-20);
+    height: var(--sp-20);
   }
 
   .feedback-modal {
-    padding: 24px;
+    padding: var(--sp-24);
     max-height: 85vh;
   }
 
   .modal-header h3 {
-    font-size: 20px;
+    font-size: var(--ui-text-quote);
   }
 
   .form-actions {
@@ -813,18 +750,22 @@ onUnmounted(() => {
     width: 100%;
   }
 }
-
-/* 暗色模式优化 */
 .dark .feedback-button {
-  box-shadow: 0 4px 12px rgba(66, 211, 146, 0.3);
+  box-shadow: none;
 }
 
 .dark .feedback-button:hover {
-  box-shadow: 0 8px 24px rgba(66, 211, 146, 0.4);
+  box-shadow: none;
 }
 
 .dark .feedback-modal {
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  box-shadow: none;
 }
+
+.feedback-button { width: var(--ui-float-size); height: var(--ui-float-size); right: var(--sp-20); bottom: var(--sp-72); border-radius: var(--ui-radius-circle); background: var(--ui-surface); color: var(--vp-c-text-2); border: var(--ui-border) solid var(--vp-c-divider); padding: 0; box-shadow: none; z-index: 99; }
+.feedback-button:hover { background: var(--ui-surface); color: var(--vp-c-brand-1); }
+.feedback-button svg { width: var(--sp-20); height: var(--sp-20); }
+.feedback-modal-overlay { background: var(--ui-overlay); }
+.feedback-modal { background: var(--ui-surface); border: var(--ui-border) solid var(--vp-c-divider); box-shadow: var(--ui-shadow); }
 </style>
 

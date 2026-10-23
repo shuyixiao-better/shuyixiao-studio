@@ -5,7 +5,8 @@ button, input, select, textarea { font: inherit; }
 button, a, input, textarea, select { transition: var(--ui-transition); }
 a { overflow-wrap: anywhere; }
 img, video, iframe { max-width: 100%; }
-:focus-visible { outline: var(--ui-focus) solid var(--vp-c-brand-1); outline-offset: var(--sp-4); }
+/* Required to override VitePress button:focus-visible and scoped input outline resets. */
+:focus-visible { outline: var(--ui-focus) solid var(--vp-c-brand-1) !important; outline-offset: var(--sp-4) !important; }
 ::selection { background: var(--vp-c-brand-soft); }
 @media (prefers-reduced-motion: reduce) {
   /* Accessibility override must also neutralize VitePress and scoped transitions. */

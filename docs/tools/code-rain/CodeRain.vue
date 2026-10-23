@@ -48,13 +48,13 @@
 
       <div class="action-buttons">
         <button class="btn-primary" @click="toggleRain">
-          {{ isRaining ? '⏸️ 暂停' : '▶️ 开始' }}
+          {{ isRaining ? '⏸ 暂停' : '▶ 开始' }}
         </button>
         <button class="btn-secondary" @click="resetRain">
-          🔄 重置
+           重置
         </button>
         <button class="btn-secondary" @click="toggleFullscreen">
-          {{ isFullscreen ? '🔙 退出全屏' : '🖥️ 全屏模式' }}
+          {{ isFullscreen ? ' 退出全屏' : ' 全屏模式' }}
         </button>
       </div>
     </div>
@@ -371,41 +371,41 @@ onUnmounted(() => {
 
 <style scoped>
 .code-rain-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background: linear-gradient(135deg, var(--vp-c-bg-soft), var(--vp-c-bg));
-  border-radius: 24px;
-  border: 1px solid var(--vp-c-divider);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  max-width: var(--ui-size-1200);
+  margin: var(--sp-32) auto;
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-card);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .control-panel {
-  margin-bottom: 2rem;
+  margin-bottom: var(--sp-32);
 }
 
 .control-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--sp-24);
 }
 
 .control-group label {
   display: block;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
+  margin-bottom: var(--sp-12);
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-text-1);
-  font-size: 0.95rem;
+  font-size: var(--ui-text-base);
 }
 
 .slider-group {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: var(--sp-16);
 }
 
 .slider {
   flex: 1;
-  height: 8px;
-  border-radius: 4px;
+  height: var(--sp-8);
+  border-radius: var(--ui-radius-input);
   outline: none;
   -webkit-appearance: none;
   background: var(--vp-c-divider);
@@ -414,47 +414,47 @@ onUnmounted(() => {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--vp-c-brand-1);
+  width: var(--sp-20);
+  height: var(--sp-20);
+  border-radius: var(--ui-radius-input);
+  background: var(--vp-c-bg-soft);
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(62, 175, 124, 0.4);
+  box-shadow: none;
 }
 
 .slider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--vp-c-brand-1);
+  width: var(--sp-20);
+  height: var(--sp-20);
+  border-radius: var(--ui-radius-input);
+  background: var(--vp-c-bg-soft);
   cursor: pointer;
   border: none;
-  box-shadow: 0 2px 8px rgba(62, 175, 124, 0.4);
+  box-shadow: none;
 }
 
 .slider-value {
-  min-width: 30px;
+  min-width: var(--sp-32);
   text-align: center;
-  font-weight: 600;
+  font-weight: var(--ui-weight-heading);
   color: var(--vp-c-brand-1);
 }
 
 .theme-buttons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--sp-120), 1fr));
+  gap: var(--sp-12);
 }
 
 .theme-btn {
-  padding: 0.65rem 1rem;
-  border: 2px solid var(--vp-c-divider);
-  border-radius: 12px;
+  padding: var(--sp-12) var(--sp-16);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
   background: var(--vp-c-bg);
   color: var(--vp-c-text-1);
-  font-size: 0.85rem;
-  font-weight: 500;
+  font-size: var(--ui-text-sm);
+  font-weight: var(--ui-weight-medium);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   white-space: nowrap;
   text-align: center;
 }
@@ -463,87 +463,84 @@ onUnmounted(() => {
   border-color: var(--vp-c-brand-1);
   background: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
 }
 
 .theme-btn.active {
   border-color: var(--vp-c-brand-1);
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
-  box-shadow: 0 4px 12px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
+  box-shadow: none;
 }
 
 .action-buttons {
   display: flex;
-  gap: 1rem;
+  gap: var(--sp-16);
   flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
   flex: 1;
-  min-width: 120px;
-  padding: 0.85rem 1.5rem;
+  min-width: var(--sp-120);
+  padding: var(--sp-12) var(--sp-24);
   border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--ui-transition);
   white-space: nowrap;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-3));
-  color: white;
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-brand-1);
+  color: var(--ui-on-brand);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(62, 175, 124, 0.4);
+  box-shadow: none;
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--vp-c-brand-1);
-  border: 2px solid var(--vp-c-brand-1);
+  border: var(--ui-focus) solid var(--vp-c-brand-1);
 }
 
 .btn-secondary:hover {
-  background: var(--vp-c-brand-1);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(62, 175, 124, 0.3);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand-1);
+  box-shadow: none;
 }
 
 .canvas-wrapper {
   position: relative;
   width: 100%;
-  height: 400px;
-  border-radius: 16px;
+  height: var(--ui-size-400);
+  border-radius: var(--ui-radius-input);
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-  background: #000000;
+  box-shadow: none;
+  background: var(--vp-c-bg-soft);
 }
 
 .canvas-wrapper.fullscreen {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
-  width: 100vw !important;
-  height: 100vh !important;
-  max-width: 100vw !important;
-  max-height: 100vh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 99999 !important;
-  border-radius: 0 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: 99999;
+  border-radius: var(--ui-radius-input);
   cursor: pointer;
-  background-color: #000000 !important;
-  box-shadow: none !important;
+  background-color: var(--vp-c-bg-soft);
+  box-shadow: none;
 }
 
 .canvas-wrapper.fullscreen::before {
@@ -553,7 +550,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #000000;
+  background-color: var(--vp-c-bg-soft);
   z-index: -1;
 }
 
@@ -562,56 +559,43 @@ onUnmounted(() => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: #000000;
+  background-color: var(--vp-c-bg-soft);
   image-rendering: crisp-edges;
   image-rendering: -webkit-optimize-contrast;
 }
 
 .fullscreen-tip {
   position: absolute;
-  top: 30px;
+  top: var(--sp-32);
   left: 50%;
   transform: translateX(-50%);
-  padding: 1rem 2rem;
-  background: rgba(0, 0, 0, 0.8);
-  color: #00ff00;
-  border: 2px solid #00ff00;
-  border-radius: 30px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: var(--sp-16) var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
+  border: var(--ui-focus) solid var(--vp-c-divider);
+  border-radius: var(--ui-radius-input);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   font-family: 'Courier New', monospace;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.1);
-  animation: fadeInOut 3s ease-in-out infinite;
-  backdrop-filter: blur(10px);
+  box-shadow: none;
   z-index: 1000;
   pointer-events: none;
-  letter-spacing: 1px;
-}
-
-@keyframes fadeInOut {
-  0%, 100% { 
-    opacity: 0.4; 
-    transform: translateX(-50%) scale(0.98);
-  }
-  50% { 
-    opacity: 1; 
-    transform: translateX(-50%) scale(1);
-  }
+  letter-spacing: normal;
 }
 
 @media (max-width: 768px) {
   .code-rain-container {
-    padding: 1.5rem;
+    padding: var(--sp-24);
   }
   
   .theme-buttons {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+    gap: var(--sp-8);
   }
   
   .theme-btn {
-    padding: 0.5rem 0.75rem;
-    font-size: 0.8rem;
+    padding: var(--sp-8) var(--sp-12);
+    font-size: var(--ui-text-meta);
   }
   
   .action-buttons {
@@ -624,13 +608,13 @@ onUnmounted(() => {
   }
   
   .canvas-wrapper {
-    height: 300px;
+    height: var(--ui-size-300);
   }
   
   .fullscreen-tip {
-    top: 20px;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.85rem;
+    top: var(--sp-20);
+    padding: var(--sp-12) var(--sp-24);
+    font-size: var(--ui-text-sm);
     max-width: 90%;
   }
 }

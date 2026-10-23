@@ -6,131 +6,41 @@ date: '2025-12-25'
 ---
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-
-const frontendUrl = ref('/api/pandacoder-proxy?type=frontend&path=/')
-const showRedirect = ref(false)
-const backend = ref(false)
+import { ref, onMounted, nextTick } from 'vue'
 import { hasBackend } from '../../.vitepress/theme/utils/deploy-env.js'
-let curtainObserver
-// 隐藏页面中的遮罩元素
+const backend = ref(false)
+const ready = ref(false)
+const frame = ref(null)
+const frontendUrl = '/api/pandacoder-proxy?type=frontend&path=/'
 const hideAsideCurtain = () => {
-  // 移除当前页面的遮罩元素
-  const curtains = document.querySelectorAll('.aside-curtain, [class*="aside-curtain"], [data-v-3a82ddb3]')
-  curtains.forEach(curtain => {
-    if (curtain.classList.contains('aside-curtain') || 
-        curtain.className.includes('aside-curtain')) {
-      curtain.remove()
-      console.log('✅ 已移除页面遮罩元素')
-    }
-  })
-  
-  // 尝试隐藏 iframe 中的遮罩元素
-  const iframe = document.querySelector('.pandacoder-container iframe')
-  if (iframe && iframe.contentWindow) {
-    try {
-      const iframeDoc = iframe.contentWindow.document
-      const asideCurtain = iframeDoc.querySelector('.aside-curtain')
-      if (asideCurtain) {
-        asideCurtain.style.display = 'none'
-        asideCurtain.style.visibility = 'hidden'
-        asideCurtain.style.opacity = '0'
-        console.log('✅ 已隐藏 iframe 中的遮罩元素')
-      }
-    } catch (e) {
-      // 跨域限制，无法直接操作 iframe 内容
-      console.log('⚠️ 无法直接操作 iframe 内容（跨域限制）')
-    }
-  }
+  if (typeof window === 'undefined') return
+  try {
+    const curtain = frame.value?.contentDocument?.querySelector('.aside-curtain')
+    if (curtain) curtain.style.display = 'none'
+  } catch { /* The proxy may embed cross-origin content. */ }
 }
-
-// 持续监听并移除遮罩元素
-const observeCurtain = () => {
-  const observer = new MutationObserver(() => {
-    hideAsideCurtain()
-  })
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  })
-  
-  return observer
-}
-
 onMounted(async () => {
-  console.log('🐼 PandaCoder 周报页面加载')
-  console.log('📍 当前域名:', window.location.hostname)
-  
-  // 如果是 GitHub Pages 环境，显示跳转提示
   backend.value = await hasBackend()
-  if (!backend.value) {
-    showRedirect.value = true
-    console.log('⚠️ 检测到 GitHub Pages 环境，显示跳转提示')
-  } else {
-    console.log('✅ 检测到 Netlify 环境，正常加载')
-    
-    // 在 Netlify 环境中，取消注册可能存在的 Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(registrations => {
-        registrations.forEach(registration => {
-          // 如果注册了 pandacoder-proxy-sw，取消注册
-          if (registration.scope.includes('pandacoder-proxy-sw') || 
-              registration.active?.scriptURL?.includes('pandacoder-proxy-sw')) {
-            console.log('🗑️ 取消注册 Service Worker:', registration.scope)
-            registration.unregister().then(success => {
-              if (success) {
-                console.log('✅ Service Worker 已取消注册')
-              }
-            })
-          }
-        })
-      })
-    }
-    
-    // 立即移除遮罩元素
-    hideAsideCurtain()
-    
-    // 启动持续监听
-    curtainObserver = observeCurtain()
-    
-    // 延迟尝试隐藏遮罩元素
-    nextTick(() => {
-      setTimeout(hideAsideCurtain, 500)
-      setTimeout(hideAsideCurtain, 1000)
-      setTimeout(hideAsideCurtain, 2000)
-    })
+  ready.value = true
+  if (!backend.value) return
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(registrations => {
+      registrations.filter(registration => registration.scope.includes('pandacoder-proxy-sw') || registration.active?.scriptURL?.includes('pandacoder-proxy-sw')).forEach(registration => registration.unregister())
+    }).catch(() => { /* Service worker access is optional. */ })
   }
-})
-
-onUnmounted(() => curtainObserver?.disconnect())
-
-// 监听 iframe 加载完成事件
-onMounted(() => {
-  const iframe = document.querySelector('.pandacoder-container iframe')
-  if (iframe) {
-    iframe.addEventListener('load', hideAsideCurtain)
-  }
+  await nextTick()
+  hideAsideCurtain()
 })
 </script>
 
-<template>
-  <!-- GitHub Pages 环境：显示跳转提示 -->
-  <RequiresBackendNotice v-if="showRedirect" />
-
-  <!-- Netlify 环境：正常显示 iframe -->
+<div class="weekly-page">
+  <RequiresBackendNotice v-if="ready && !backend" />
   <div v-if="backend" class="pandacoder-container">
-    <iframe
-      :src="frontendUrl"
-      frameborder="0"
-      allowfullscreen
-      allow="clipboard-read; clipboard-write"
-    />
+    <iframe ref="frame" :src="frontendUrl" title="PandaCoder 周报" frameborder="0" allowfullscreen allow="clipboard-read; clipboard-write" @load="hideAsideCurtain" />
   </div>
-</template>
+</div>
 
 <style scoped>
-/* 跳转提示样式 */
 .redirect-container {
   position: fixed;
   top: 0;
@@ -142,98 +52,91 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: var(--vp-c-bg-soft);
+  padding: var(--sp-20);
 }
 
 .redirect-card {
-  background: white;
-  border-radius: 16px;
-  padding: 40px;
-  max-width: 600px;
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-card);
+  padding: var(--sp-40);
+  max-width: var(--ui-size-600);
   width: 100%;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   text-align: center;
 }
 
 .redirect-icon {
-  font-size: 64px;
-  margin-bottom: 20px;
+  font-size: var(--ui-text-hero);
+  margin-bottom: var(--sp-20);
 }
 
 .redirect-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 16px;
+  font-size: var(--ui-text-title);
+  font-weight: var(--ui-weight-heading);
+  color: var(--vp-c-text-1);
+  margin-bottom: var(--sp-16);
 }
 
 .redirect-message {
-  font-size: 16px;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 12px;
+  font-size: var(--ui-text-base);
+  color: var(--vp-c-text-2);
+  line-height: var(--ui-leading-body);
+  margin-bottom: var(--sp-12);
 }
 
 .redirect-hint {
-  font-size: 14px;
-  color: #888;
-  margin-bottom: 20px;
+  font-size: var(--ui-text-sm);
+  color: var(--vp-c-text-2);
+  margin-bottom: var(--sp-20);
 }
 
 .redirect-url {
-  background: #f5f5f5;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 24px;
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  padding: var(--sp-16);
+  margin-bottom: var(--sp-24);
 }
 
 .redirect-link {
-  color: #667eea;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
-  font-size: 16px;
+  font-size: var(--ui-text-base);
   word-break: break-all;
-  transition: color 0.3s;
+  transition: var(--ui-transition);
 }
 
 .redirect-link:hover {
-  color: #764ba2;
+  color: var(--vp-c-brand-1);
   text-decoration: underline;
 }
 
 .redirect-button {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-2);
   border: none;
-  border-radius: 8px;
-  padding: 14px 32px;
-  font-size: 16px;
-  font-weight: 600;
+  border-radius: var(--ui-radius-input);
+  padding: var(--sp-16) var(--sp-32);
+  font-size: var(--ui-text-base);
+  font-weight: var(--ui-weight-heading);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  transition: var(--ui-transition);
+  box-shadow: none;
 }
 
 .redirect-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+  box-shadow: none;
 }
-
-.redirect-button:active {
-  transform: translateY(0);
-}
-
-/* iframe 容器样式 */
 .pandacoder-container {
   position: fixed;
-  top: var(--vp-nav-height, 64px); /* 为导航栏留出空间 */
+  top: var(--vp-nav-height, var(--sp-64));
   left: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  height: calc(100vh - var(--vp-nav-height, 64px)); /* 减去导航栏高度 */
+  height: calc(100vh - var(--vp-nav-height, var(--sp-64)));
   overflow: hidden;
-  background: #ffffff;
+  background: var(--vp-c-bg-soft);
 }
 
 .pandacoder-container iframe {
@@ -242,48 +145,44 @@ onMounted(() => {
   border: none;
   display: block;
 }
-
-/* 暗色模式支持 */
 @media (prefers-color-scheme: dark) {
   .redirect-card {
-    background: #1e1e1e;
+    background: var(--vp-c-bg-soft);
   }
 
   .redirect-title {
-    color: #fff;
+    color: var(--vp-c-text-1);
   }
 
   .redirect-message {
-    color: #ccc;
+    color: var(--vp-c-text-2);
   }
 
   .redirect-hint {
-    color: #999;
+    color: var(--vp-c-text-2);
   }
 
   .redirect-url {
-    background: #2a2a2a;
+    background: var(--vp-c-bg-soft);
   }
 
   .pandacoder-container {
-    background: #1e1e1e;
+    background: var(--vp-c-bg-soft);
   }
 }
-
-/* 强制隐藏所有 aside-curtain 遮罩 */
 .aside-curtain,
 div.aside-curtain,
 [class*="aside-curtain"],
 [data-v-3a82ddb3].aside-curtain,
 .aside-curtain[data-v-3a82ddb3] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  position: absolute !important;
-  z-index: -9999 !important;
-  width: 0 !important;
-  height: 0 !important;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: -9999;
+  width: 0;
+  height: 0;
 }
 </style>
 

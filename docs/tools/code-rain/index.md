@@ -86,26 +86,26 @@ import CodeRain from './CodeRain.vue'
 <style scoped>
 .tool-footer {
   text-align: center;
-  margin-top: 3rem;
-  padding: 2rem;
-  background: linear-gradient(135deg, #000000, #001a00);
-  border-radius: 12px;
-  border: 1px solid #00ff00;
-  box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+  margin-top: var(--sp-48);
+  padding: var(--sp-32);
+  background: var(--vp-c-bg-soft);
+  border-radius: var(--ui-radius-input);
+  border: var(--ui-border) solid var(--vp-c-divider);
+  box-shadow: none;
 }
 
 .tool-footer p {
-  margin: 0.5rem 0;
-  color: #00ff00;
-  font-size: 0.95rem;
+  margin: var(--sp-8) 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--ui-text-base);
   font-family: 'Courier New', monospace;
 }
 
 .tool-footer .quote {
   font-style: italic;
   opacity: 0.8;
-  font-size: 0.85rem;
-  margin-top: 1rem;
+  font-size: var(--ui-text-sm);
+  margin-top: var(--sp-16);
 }
 </style>
 
