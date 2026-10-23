@@ -7,7 +7,7 @@ import AboutBlog from './components/home/AboutBlog.vue'
 import { h, createApp, defineComponent, ref } from 'vue'
 import { onMounted, watch, nextTick } from 'vue'
 import DefaultTheme from 'vitepress/theme'
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import './custom.css'
 import fontLoader from './font-loader'  // 切换回本地方案（解决 CORS 问题）
 import NotFound from './NotFound.vue'
@@ -28,6 +28,8 @@ import RSSFeedCard from './components/RSSFeedCard.vue'
 import UpdateNotification from './components/UpdateNotification.vue'
 import TechPhilosophy from './components/TechPhilosophy.vue'
 import Comments from './components/Comments.vue'
+import CommentSection from './components/comments/CommentSection.vue'
+import { shouldShowComments } from './utils/comments-core.js'
 import CommentsPlaceholder from './components/CommentsPlaceholder.vue'
 import { getDeployTarget, hasBackend } from './utils/deploy-env.js'
 import RequiresBackendNotice from './components/RequiresBackendNotice.vue'
@@ -39,6 +41,8 @@ export default {
   // 通过 Layout 插槽自定义布局
   Layout: defineComponent({
     setup() {
+      const route = useRoute()
+      const { page, frontmatter } = useData()
       // SSR and the first client render share the placeholder; switch only after mount.
       const backend = ref(false)
       onMounted(async () => {
@@ -49,7 +53,9 @@ export default {
       return () => h(DefaultTheme.Layout, null, {
         'not-found': () => h(NotFound),
         'doc-before': () => h(ArticleStats),
-        'doc-after': () => backend.value ? h(Comments) : h(CommentsPlaceholder),
+        'doc-after': () => shouldShowComments({ path: route.path, relativePath: page.value.relativePath, frontmatter: frontmatter.value })
+          ? backend.value ? h(CommentSection, { key: route.path, path: route.path }) : h(CommentsPlaceholder)
+          : null,
         'layout-bottom': () => [h(FeedbackWidget), h(EasterEgg)],
         'layout-top': () => h(UpdateNotification)
       })

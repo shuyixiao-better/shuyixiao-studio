@@ -13,6 +13,7 @@
   --vp-c-text-3: #8F8B82;
   /* The supplied text-3 palette is reserved for non-text decoration: AA text uses muted. */
   --ui-muted: #706C64;
+  --ui-danger: #A34F4B;
   --vp-c-brand-1: #1F6F54;
   --vp-c-brand-2: #185A44;
   --vp-c-brand-3: #1F6F54;
@@ -87,6 +88,7 @@
   --vp-c-text-2: #A6A29A;
   --vp-c-text-3: #75726B;
   --ui-muted: #99958C;
+  --ui-danger: #D88E87;
   --vp-c-brand-1: #5DB592;
   --vp-c-brand-2: #79C7A6;
   --vp-c-brand-3: #5DB592;
