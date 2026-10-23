@@ -267,7 +267,7 @@ export default {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
         const seconds = Math.floor((diff % (1000 * 60)) / 1000)
         
-        element.textContent = `| 本站运行：${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`
+        element.textContent = `本站运行：${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`
       }
       
       // 避免重复创建定时器

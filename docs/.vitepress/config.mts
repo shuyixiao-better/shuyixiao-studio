@@ -18,7 +18,7 @@ export default withMermaid(defineConfig({
   },
 
   title: "舒一笑不秃头的博客",
-  description: "IDEA插件-PandaCoder工具宇宙作者 ｜ 生成式AI应用工程师(高级)认证 | 专注于AI工程化落地 | 阿里云博客专家 | Java应用开发职业技能等级认证 | HarmonyOS应用开发者基础认证",
+  description: "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。",
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
     // JetBrains Mono 字体用于代码显示
@@ -43,11 +43,14 @@ export default withMermaid(defineConfig({
     // 导航栏
     nav: [
       { text: '首页', link: '/' },
-      { text: '关注公众号', link: '/about/wechat/' },
-      {
-        text: '专栏教程',
-        items: [
+      { text: '文章', link: '/articles/' },
+      { text: '专栏', items: [
+        { text: '思考与人生', items: [
           { text: '代码与人生', link: '/tutorials/insights/' },
+          { text: '漫思录', link: '/tutorials/musings/' },
+          { text: '拾遗录', link: '/tutorials/explorations/' }
+        ] },
+        { text: '技术专栏', items: [
           { text: 'Java核心', link: '/tutorials/java/' },
           { text: 'Spring全家桶', link: '/tutorials/spring/' },
           { text: '微服务架构', link: '/tutorials/microservice/' },
@@ -55,28 +58,30 @@ export default withMermaid(defineConfig({
           { text: 'Elasticsearch', link: '/tutorials/es/' },
           { text: 'RAG从入门到精通', link: '/tutorials/rag/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
-          { text: '拾遗录', link: '/tutorials/explorations/' },
           { text: '筑·匠', link: '/tutorials/architecture/' },
-          { text: '漫思录', link: '/tutorials/musings/' },
           { text: '登科录', link: '/tutorials/certifications/' }
-        ]
-      },
-      { text: '实战项目', link: '/projects/' },
-      { text: '拾珍录', link: '/tutorials/treasures/' },
-      { text: '面试宝典', link: '/interview/' },
-      { text: '我的工具', link: '/tools/' },
-      { text: '书单推荐', link: '/recommendations/' },
-      { text: 'RSS 订阅', link: '/rss/' },
-      {
-        text: '网站政策',
-        items: [
+        ] }
+      ] },
+      { text: '作品', items: [
+        { text: '实战项目', link: '/projects/' },
+        { text: '我的工具', link: '/tools/' }
+      ] },
+      { text: '收藏', items: [
+        { text: '拾珍录', link: '/tutorials/treasures/' },
+        { text: '书单推荐', link: '/recommendations/' },
+        { text: '面试宝典', link: '/interview/' }
+      ] },
+      { text: '关于', items: [
+        { text: '关于我', link: '/about/' },
+        { text: '关注公众号', link: '/about/wechat/' },
+        { text: 'RSS 订阅', link: '/rss/' },
+        { text: '网站政策', items: [
           { text: '隐私政策', link: '/policies/privacy-policy' },
           { text: '服务条款', link: '/policies/terms' },
           { text: '免责声明', link: '/policies/disclaimer' },
           { text: '联系我们', link: '/policies/contact' }
-        ]
-      },
-      { text: '关于我', link: '/about/' }
+        ] }
+      ] }
     ],
 
     // 侧边栏
@@ -931,8 +936,8 @@ export default withMermaid(defineConfig({
 
     // 页脚
     footer: {
-      message: '用代码书写人生 | <a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">This site is powered by Netlify</a>',
-      copyright: 'Copyright © 2023-present 舒一笑不秃头<br><span style="font-size: 0.9em; opacity: 0.8; letter-spacing: 2px;">云卷云舒 创无止境 焕然一新 ｜ 境界在思考中拓宽 光彩在行动中焕发<span id="site-runtime" style="margin-left: 20px;"></span><span id="site-visits-container" style="margin-left: 20px;"></span></span><br><span style="font-size: 0.9em; opacity: 0.75; letter-spacing: 3px; font-style: italic; background: linear-gradient(135deg, var(--vp-c-brand-1), var(--vp-c-brand-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: 8px; display: inline-block;">他日卧龙终得雨 今朝放鹤且冲天</span>'
+      message: '代码之外，探索人生更多可能 · Powered by VitePress',
+      copyright: 'Copyright © 2023-present 舒一笑不秃头<span id="site-runtime"></span><span id="site-visits-container"></span><span class="footer-motto">他日卧龙终得雨 今朝放鹤且冲天</span>'
     },
 
     // 搜索
@@ -996,7 +1001,7 @@ export default withMermaid(defineConfig({
     // 2. Open Graph (社交媒体分享)
     head.push(['meta', { property: 'og:url', content: url }])
     head.push(['meta', { property: 'og:title', content: pageData.title || "舒一笑不秃头的博客" }])
-    head.push(['meta', { property: 'og:description', content: pageData.description || "专注于AI工程化落地的技术博客" }])
+    head.push(['meta', { property: 'og:description', content: pageData.description || "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
     // 使用默认封面图，如果有文章特定封面图可以在 frontmatter 中指定 cover 字段
     const image = pageData.frontmatter.cover || 'https://www.poeticcoder.com/logo.png'
     head.push(['meta', { property: 'og:image', content: image }])
@@ -1004,7 +1009,7 @@ export default withMermaid(defineConfig({
     // 3. Twitter Card
     head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
     head.push(['meta', { name: 'twitter:title', content: pageData.title || "舒一笑不秃头的博客" }])
-    head.push(['meta', { name: 'twitter:description', content: pageData.description || "专注于AI工程化落地的技术博客" }])
+    head.push(['meta', { name: 'twitter:description', content: pageData.description || "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
     head.push(['meta', { name: 'twitter:image', content: image }])
 
     // 4. JSON-LD (结构化数据)
