@@ -1,0 +1,11 @@
+/* Shared component patterns; component-specific layouts stay scoped. */
+.ui-button, .VPButton { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-8); min-height: var(--sp-40); padding: var(--sp-8) var(--sp-16); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-input); font-size: var(--ui-text-sm); font-weight: var(--ui-weight-medium); text-decoration: none; }
+.ui-button.primary { color: var(--ui-on-brand); background: var(--vp-c-brand-1); border-color: var(--vp-c-brand-1); }
+.ui-button.primary:hover { background: var(--vp-c-brand-2); }
+.ui-button.secondary { color: var(--vp-c-text-1); background: transparent; }
+.ui-button.secondary:hover { border-color: var(--vp-c-brand-1); color: var(--vp-c-brand-1); }
+.requires-backend-notice { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-20); flex-wrap: wrap; margin-block: var(--sp-32); padding: var(--sp-24); background: var(--vp-c-bg-soft); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); font-size: var(--ui-text-sm); color: var(--vp-c-text-2); }
+.requires-backend-notice p { margin: 0; }
+.requires-backend-notice a { flex-shrink: 0; }
+.ui-card { padding: var(--sp-24); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); background: var(--ui-surface); }
+.ui-icon { width: var(--ui-icon-size); height: var(--ui-icon-size); flex-shrink: 0; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }

@@ -1,0 +1,7 @@
+/* Navigation keeps the default theme's accessible menus and keyboard behavior. */
+.VPNavBar { height: var(--ui-nav-height); border-bottom: var(--ui-border) solid var(--vp-c-divider); background: var(--vp-c-bg); }
+.VPNavBar .title { font-size: var(--ui-text-base); font-weight: var(--ui-weight-heading); }
+.VPNavBarMenuLink, .VPNavBarMenuGroup .text { font-size: var(--ui-text-sm); font-weight: var(--ui-weight-medium); }
+.VPNavBarMenuLink.active, .VPNavBarMenuGroup.active .text { color: var(--vp-c-brand-1); }
+.VPNavBar .VPMenu { background: var(--ui-surface); border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-card); box-shadow: var(--ui-shadow); }
+.VPNavScreen { background: var(--vp-c-bg); }

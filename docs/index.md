@@ -78,7 +78,6 @@ features:
   </div>
 </div>
 
-<WaveDivider position="bottom" />
 
 <div class="learning-investment-section">
   <div class="learning-card">
@@ -100,11 +99,9 @@ features:
   </div>
 </div>
 
-<WaveDivider position="top" />
 
 <TechPhilosophy />
 
-<WaveDivider position="bottom" />
 
 <div class="why-write-section">
   <div class="why-write-container">
@@ -121,18 +118,14 @@ features:
   </div>
 </div>
 
-<WaveDivider position="top" />
 
 <FeaturedTools />
 
-<WaveDivider position="bottom" />
 
 <PremiumRecommend />
 
-<WaveDivider position="top" />
 
 <RecentPosts />
 
-<WaveDivider position="bottom" />
 
 <RSSFeedCard />

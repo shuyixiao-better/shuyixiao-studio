@@ -1,0 +1,13 @@
+html { font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--vp-font-family-base); font-weight: var(--ui-weight-body); line-height: var(--ui-leading-body); }
+*, *::before, *::after { box-sizing: border-box; }
+button, input, select, textarea { font: inherit; }
+button, a, input, textarea, select { transition: var(--ui-transition); }
+a { overflow-wrap: anywhere; }
+img, video, iframe { max-width: 100%; }
+:focus-visible { outline: var(--ui-focus) solid var(--vp-c-brand-1); outline-offset: var(--sp-4); }
+::selection { background: var(--vp-c-brand-soft); }
+@media (prefers-reduced-motion: reduce) {
+  /* Accessibility override must also neutralize VitePress and scoped transitions. */
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

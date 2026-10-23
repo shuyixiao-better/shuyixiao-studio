@@ -1,0 +1,26 @@
+/* Consolidated document and outline rules; no forced aside widths. */
+.vp-doc { font-size: var(--ui-text-base); line-height: var(--ui-leading-body); }
+.vp-doc h1, .vp-doc h2, .vp-doc h3, .vp-doc h4 { font-weight: var(--ui-weight-heading); line-height: var(--ui-leading-heading); letter-spacing: normal; color: var(--vp-c-text-1); }
+.vp-doc h1 { font-size: var(--ui-text-title); }
+.vp-doc h2 { font-size: var(--ui-text-section); margin-top: var(--sp-48); border-top: 0; padding-top: 0; }
+.vp-doc h3 { font-size: var(--ui-text-lg); }
+.vp-doc blockquote { border-left: var(--ui-focus) solid var(--vp-c-divider); background: none; color: var(--vp-c-text-2); padding-left: var(--sp-20); }
+.vp-doc a { color: var(--vp-c-brand-1); text-decoration: none; }
+.vp-doc a:hover { text-decoration: underline; }
+.vp-doc :not(pre) > code { background: var(--vp-c-bg-soft); border-radius: var(--ui-radius-tag); font-family: var(--vp-font-family-mono); }
+.vp-doc div[class*='language-'] { border: var(--ui-border) solid var(--vp-c-divider); border-radius: var(--ui-radius-input); background: var(--vp-c-bg-soft); }
+.vp-doc th { background: var(--vp-c-bg-soft); }
+.vp-doc td, .vp-doc th { border-color: var(--vp-c-divider); }
+.VPDocAsideOutline .outline-link { font-size: var(--ui-text-meta); white-space: normal; line-height: var(--ui-leading-body); }
+.VPDocAsideOutline .outline-link.active { color: var(--vp-c-brand-1); }
+.VPDocAsideOutline .outline-marker { width: var(--ui-border); background: var(--vp-c-brand-1); }
+/* Keep zoom overlays above the fixed navigation without changing zoom behavior. */
+.medium-zoom-overlay { z-index: 100; }
+.medium-zoom-image--opened { z-index: 101; cursor: zoom-out; }
+.main img:not(.no-zoom), .mermaid-zoom-enabled { cursor: zoom-in; }
+.vp-doc [class*='mermaid'] { overflow-x: auto; }
+.vp-doc [class*='mermaid'] svg { max-width: 100%; height: auto; }
+.article-footer { margin-top: var(--sp-48); padding-top: var(--sp-24); border-top: var(--ui-border) solid var(--vp-c-divider); color: var(--vp-c-text-2); }
+.wechat-intro, .qrcode-container { max-width: 100%; }
+.wechat-qrcode { max-width: 100%; margin-inline: auto; }
+@media (min-width: 1440px) { .vp-doc { font-size: var(--ui-text-body-large); } }

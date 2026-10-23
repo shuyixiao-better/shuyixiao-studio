@@ -1,0 +1,23 @@
+/* Let VitePress own sidebar positioning; constrain only the content reading measure. */
+:root { --vp-layout-max-width: var(--ui-content-width); --vp-nav-height: var(--ui-nav-height); }
+.VPHome { margin-bottom: var(--sp-64); }
+.VPHome .vp-doc { padding: 0; }
+.VPDoc:not(:has(.article-list-page)) .content-container { max-width: var(--ui-reading-width); margin-inline: auto; }
+.VPDoc:has(.article-list-page) .container,
+.VPDoc:has(.article-list-page) .content,
+.VPDoc:has(.article-list-page) .content-container { width: 100%; max-width: var(--ui-content-width); min-width: 0; margin-inline: auto; }
+.VPDoc:has(.article-list-page) .aside { display: none; }
+.VPDoc:has(.article-list-page) .content { padding-inline: 0; }
+/* These pages must never show the aside's scroll curtain over interactive content. */
+.VPDoc:has(.article-list-page) .aside-curtain,
+.VPDoc:has(.pandacoder-container) .aside-curtain,
+.VPDoc:has(.requires-backend-notice) .aside-curtain { display: none; }
+.VPFooter { border-top: var(--ui-border) solid var(--vp-c-divider); background: var(--vp-c-bg); }
+.VPFooter .message, .VPFooter .copyright { color: var(--ui-muted); font-size: var(--ui-text-xs); }
+.footer-motto { display: block; margin-top: var(--sp-8); font-style: normal; }
+#site-runtime:not(:empty)::before,
+#site-visits-container.has-visits::before { content: ' · '; white-space: pre; }
+#site-runtime:empty, #site-visits-container:not(.has-visits) { display: none; }
+@media (max-width: 639px) {
+  .VPDoc { padding-inline: var(--ui-page-gutter); }
+}

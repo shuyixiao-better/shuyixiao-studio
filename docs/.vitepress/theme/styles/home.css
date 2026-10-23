@@ -1,0 +1,5 @@
+/* Legacy homepage sections were removed from the homepage; their component sources remain. */
+.VPHome .home-shell { width: 100%; max-width: var(--ui-content-width); margin: 0 auto; padding-inline: var(--ui-page-gutter); }
+.home-section { margin-block: 0 var(--ui-section-gap); }
+.home-section h2 { font-size: var(--ui-text-section); font-weight: var(--ui-weight-heading); line-height: var(--ui-leading-heading); margin: 0 0 var(--sp-8); border: 0; padding: 0; }
+.home-section .section-description { color: var(--vp-c-text-2); font-size: var(--ui-text-sm); margin: 0 0 var(--sp-32); }
