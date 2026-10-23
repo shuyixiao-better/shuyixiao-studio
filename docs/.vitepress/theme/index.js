@@ -1,3 +1,7 @@
+import HomeHero from './components/home/HomeHero.vue'
+import NowExploring from './components/home/NowExploring.vue'
+import HomeNav from './components/home/HomeNav.vue'
+import AboutBlog from './components/home/AboutBlog.vue'
 // .vitepress/theme/index.js
 import { h, createApp, defineComponent, ref } from 'vue'
 import { onMounted, watch, nextTick } from 'vue'
@@ -51,6 +55,10 @@ export default {
     }
   }),
   enhanceApp({ app, router, siteData }) {
+    app.component('HomeHero', HomeHero)
+    app.component('NowExploring', NowExploring)
+    app.component('HomeNav', HomeNav)
+    app.component('AboutBlog', AboutBlog)
     // 注册全局组件
     app.component('RequiresBackendNotice', RequiresBackendNotice)
     app.component('RecentPosts', RecentPosts)

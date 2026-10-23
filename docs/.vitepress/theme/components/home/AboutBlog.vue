@@ -1,0 +1,1 @@
+<template><section class="home-section about-blog" aria-labelledby="about-blog-title"><h2 id="about-blog-title">关于这个博客</h2><p class="section-description">从代码出发，走向更广阔的生活</p><blockquote>人生是一个长期项目，值得认真记录。</blockquote><p>每一篇笔记，都是时光的印记。从多年工程实践到生活里的新尝试，我希望留下真实的观察与思考。</p><p>并非每次投入都能立竿见影，但持续记录、认真复盘，时间会给出答案。也愿这些文字，为同行的你提供一点参考。</p><p class="signature">—— 舒一笑不秃头</p></section></template>
