@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 文档解析技术
-description: # 文档解析技术
+description: '文档解析是RAG系统的第一步，也是至关重要的一步。不同的文档格式需要不同的解析策略，解析质量直接影响后续的向量化和检索效果。本文将深入探讨各种文档格式的解析技术，帮助你构建高质量的文档处理管道。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

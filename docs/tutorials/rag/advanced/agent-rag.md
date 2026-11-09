@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: Agent与RAG结合
-description: # Agent与RAG结合
+description: 'Agent与RAG结合是人工智能领域的重要发展方向，通过将RAG技术集成到智能代理中，可以实现更智能、更自主的AI系统。本文将深入探讨Agent与RAG结合的实现原理、技术架构和实际应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

@@ -143,26 +143,11 @@ date: '2025-12-25'
 **挑战**：满足等保、GDPR等合规要求  
 **解决方案**：完善的审计日志、数据加密、隐私保护
 
-## 系列文章导航
+## 系列文章
 
-本专栏将涵盖以下内容，帮助你全面掌握认证授权体系的设计与实现：
+- [SSO 单点网页内嵌登录设计](/tutorials/architecture/security/auth-system/SSO单点网页内嵌登录设计)：网页内嵌场景下的单点登录方案，包含交互流程、令牌传递与安全注意事项
 
-### 基础认证机制
-1. [Session认证机制](/tutorials/architecture/security/auth-system/session-auth) - 传统但经典的认证方式
-2. [JWT令牌认证实践](/tutorials/architecture/security/auth-system/jwt-auth) - 现代应用的主流选择
-3. [OAuth2.0授权框架](/tutorials/architecture/security/auth-system/oauth2) - 标准化的授权协议
-
-### 高级认证方案
-4. [SSO单点登录设计](/tutorials/architecture/security/auth-system/sso) - 企业级统一认证
-5. [多因素认证(MFA)](/tutorials/architecture/security/auth-system/mfa) - 增强安全性的必选方案
-6. [第三方登录集成](/tutorials/architecture/security/auth-system/third-party-login) - 社交登录实战
-
-### 权限控制模型
-7. [RBAC权限模型设计](/tutorials/architecture/security/auth-system/rbac) - 最常用的权限模型
-8. [ABAC属性访问控制](/tutorials/architecture/security/auth-system/abac) - 灵活的细粒度控制
-
-### 架构实战
-9. [微服务认证授权方案](/tutorials/architecture/security/auth-system/microservice-auth) - 分布式环境下的实践
+Session、JWT、OAuth2.0、RBAC/ABAC 等方案的取舍已在上文「技术选型考虑」中说明；各主题的独立深度文章会在写完并验证后再加入本系列。
 
 ## 学习路线建议
 

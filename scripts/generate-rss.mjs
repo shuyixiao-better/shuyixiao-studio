@@ -12,6 +12,7 @@ import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 import { globby } from 'globby'
 import matter from 'gray-matter'
+import { isUnpublished } from '../docs/.vitepress/publishing.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -22,8 +23,8 @@ const RSS_CONFIG = {
   link: 'https://www.poeticcoder.com',
   description: '专注于AI工程化落地的技术博客 | IDEA插件-PandaCoder作者 | 持续输出优质技术内容',
   language: 'zh-CN',
-  managingEditor: 'shuyixiao@example.com (境焕说AI)',
-  webMaster: 'shuyixiao@example.com (境焕说AI)',
+  managingEditor: 'yixiaoshu88@163.com (境焕说AI)',
+  webMaster: 'yixiaoshu88@163.com (境焕说AI)',
   copyright: 'Copyright © 2023-present 境焕说AI',
   ttl: 60,
   generator: 'VitePress RSS Generator',
@@ -118,6 +119,8 @@ async function getPostsData() {
     ], { cwd: docsPath })
     
     for (const file of files) {
+      // 未发布页面（占位稿、模板、测试页等）不进入 RSS
+      if (isUnpublished(file)) continue
       const filePath = path.join(docsPath, file)
       
       try {

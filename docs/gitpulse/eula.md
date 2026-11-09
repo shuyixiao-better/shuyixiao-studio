@@ -1,12 +1,10 @@
 ---
 layout: doc
 title: END USER LICENSE AGREEMENT (EULA)
-description: # END USER LICENSE AGREEMENT (EULA)
+description: 'GitPulse 插件最终用户许可协议（EULA）。'
 date: '2025-12-31'
 tags:
   - AI
-  - Elasticsearch
-  - Git
 author: 境焕说AI
 ---
 # END USER LICENSE AGREEMENT (EULA)

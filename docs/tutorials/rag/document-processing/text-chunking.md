@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 文本分块策略
-description: # 文本分块策略
+description: '文本分块是RAG系统中的关键步骤，直接影响检索的准确性和生成质量。合理的分块策略能够保持语义完整性，提高检索效果。本文将深入探讨各种文本分块策略，帮助你选择最适合的分块方法。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

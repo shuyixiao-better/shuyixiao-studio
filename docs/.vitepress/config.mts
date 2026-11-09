@@ -1,5 +1,97 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { UNPUBLISHED_PAGES, isUnpublished } from './publishing.mjs'
+
+// ---------------------------------------------------------------------------
+// 发布控制（AdSense 内容质量）
+// ---------------------------------------------------------------------------
+// docs 目录的绝对路径
+const DOCS_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+
+// 不对外发布的页面列表见 ./publishing.mjs
+
+// 把站内链接解析为 docs 下的 Markdown 文件；外链返回 'external'，找不到返回 null
+function resolveLink(link: string): string | null {
+  if (!link.startsWith('/')) return 'external'
+  let route = link.split('#')[0].split('?')[0]
+  try { route = decodeURI(route) } catch { /* keep raw */ }
+  if (route === '') return 'external'
+  if (/\.[a-z0-9]+$/i.test(route) && !route.endsWith('.html')) {
+    // 静态资源（如 /rss.xml）
+    return fs.existsSync(path.join(DOCS_DIR, 'public', route)) ? 'external' : null
+  }
+  route = route.replace(/\.html$/, '').replace(/^\//, '')
+  const candidates = route === '' || route.endsWith('/')
+    ? [`${route}index.md`]
+    : [`${route}.md`, `${route}/index.md`]
+  return candidates.find(c => fs.existsSync(path.join(DOCS_DIR, c))) ?? null
+}
+
+const isPublishedLink = (link: string) => {
+  const file = resolveLink(link)
+  return file === 'external' || (file !== null && !isUnpublished(file))
+}
+
+// 移除导航/侧边栏中指向未发布或不存在页面的条目，避免死链和空壳入口
+function pruneItems<T extends { link?: string; items?: T[] }>(items: T[]): T[] {
+  const result: T[] = []
+  for (const item of items) {
+    const next = { ...item }
+    if (next.items) next.items = pruneItems(next.items)
+    const linkOk = !next.link || isPublishedLink(next.link)
+    const hasChildren = !!next.items && next.items.length > 0
+    if (next.link && !linkOk) {
+      if (!hasChildren) continue
+      delete next.link
+    }
+    if (next.items && !hasChildren && !next.link) continue
+    result.push(next)
+  }
+  return result
+}
+
+const pruneNav = <T extends { link?: string; items?: T[] }>(nav: T[]) => pruneItems(nav)
+
+function pruneSidebar<T extends { link?: string; items?: T[] }>(sidebar: Record<string, T[]>) {
+  const result: Record<string, T[]> = {}
+  for (const [base, groups] of Object.entries(sidebar)) {
+    const pruned = pruneItems(groups)
+    if (pruned.length > 0) result[base] = pruned
+  }
+  return result
+}
+
+// 读取 frontmatter 中标记了 noindex: true 的页面（转成站点路由）
+function collectNoindexRoutes(): Set<string> {
+  const routes = new Set<string>()
+  const walk = (dir: string) => {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (entry.name.startsWith('.') || entry.name === 'public' || entry.name === 'node_modules') continue
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) { walk(full); continue }
+      if (!entry.name.endsWith('.md')) continue
+      const text = fs.readFileSync(full, 'utf-8')
+      const fm = text.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+      if (fm && /^noindex:\s*true\s*$/m.test(fm[1])) {
+        routes.add(path.relative(DOCS_DIR, full).split(path.sep).join('/'))
+      }
+    }
+  }
+  walk(DOCS_DIR)
+  return routes
+}
+const NOINDEX_PAGES = collectNoindexRoutes()
+
+// sitemap 中的 url（如 'tutorials/es/' 或 'articles/foo'）→ 对应的 md 相对路径
+function sitemapUrlToFile(url: string): string {
+  let route = url.replace(/^https?:\/\/[^/]+/, '').replace(/^\//, '').replace(/\.html$/, '')
+  try { route = decodeURIComponent(route) } catch { /* keep raw */ }
+  return route === '' || route.endsWith('/') ? `${route}index.md` : `${route}.md`
+}
+
 
 // 根据部署环境自动设置 base 路径
 // GitHub Pages 使用自定义域名: www.poeticcoder.cn
@@ -13,8 +105,13 @@ export default withMermaid(defineConfig({
 
   // SEO 优化配置
   cleanUrls: true,
+  // 未完成/测试/模板页面不参与构建，也就不会出现在网站和 sitemap 中
+  srcExclude: UNPUBLISHED_PAGES,
+
   sitemap: {
-    hostname: 'https://www.poeticcoder.com'
+    hostname: 'https://www.poeticcoder.com',
+    // sitemap 中排除 noindex 页面
+    transformItems: (items) => items.filter(item => !NOINDEX_PAGES.has(sitemapUrlToFile(item.url)))
   },
 
   title: "境焕说AI的博客",
@@ -41,7 +138,7 @@ export default withMermaid(defineConfig({
     // 网站logo
     logo: '/logo.png',
     // 导航栏
-    nav: [
+    nav: pruneNav([
       { text: '首页', link: '/' },
       { text: '文章', link: '/articles/' },
       { text: '专栏', items: [
@@ -74,7 +171,7 @@ export default withMermaid(defineConfig({
       ] },
       { text: '关于', items: [
         { text: '关于我', link: '/about/' },
-        { text: '关注公众号', link: '/about/wechat/' },
+        { text: '关注公众号', link: '/about/wechat' },
         { text: 'RSS 订阅', link: '/rss/' },
         { text: '网站政策', items: [
           { text: '隐私政策', link: '/policies/privacy-policy' },
@@ -83,10 +180,10 @@ export default withMermaid(defineConfig({
           { text: '联系我们', link: '/policies/contact' }
         ] }
       ] }
-    ],
+    ]),
 
-    // 侧边栏
-    sidebar: {
+    // 侧边栏（自动剔除未发布/不存在的页面）
+    sidebar: pruneSidebar({
       '/articles/MyBatis-Log-Panda': [
         {
           text: '版本日志',
@@ -933,7 +1030,7 @@ export default withMermaid(defineConfig({
           ]
         }
       ],
-    },
+    }),
 
     // 社交链接
     socialLinks: [
@@ -947,7 +1044,7 @@ export default withMermaid(defineConfig({
 
     // 页脚
     footer: {
-      message: '代码之外，探索人生更多可能 · Powered by VitePress',
+      message: '代码之外，探索人生更多可能 · <a href="/about/">关于我</a> · <a href="/policies/privacy-policy">隐私政策</a> · <a href="/policies/terms">服务条款</a> · <a href="/policies/disclaimer">免责声明</a> · <a href="/policies/contact">联系我们</a>',
       copyright: 'Copyright © 2023-present 境焕说AI<span id="site-runtime"></span><span id="site-visits-container"></span><span class="footer-motto">他日卧龙终得雨 今朝放鹤且冲天</span>'
     },
 
@@ -1002,6 +1099,11 @@ export default withMermaid(defineConfig({
   // 动态注入 SEO 元数据
   transformHead({ pageData }) {
     const head: any[] = []
+
+    // 0. noindex：frontmatter 中设置 noindex: true 的页面告诉搜索引擎不要收录
+    if (pageData.frontmatter.noindex) {
+      head.push(['meta', { name: 'robots', content: 'noindex, follow' }])
+    }
 
     // 1. Canonical URL (规范链接)
     // 移除 .md 后缀，处理 index.md

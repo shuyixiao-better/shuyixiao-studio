@@ -76,4 +76,3 @@ title: 论文写作技巧与模板
 
 ---
 
-*更多范文请参考：[历年真题范文赏析](/tutorials/certifications/system-architect/thesis/sample-papers)*

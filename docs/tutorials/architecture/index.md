@@ -38,52 +38,15 @@ date: '2025-12-25'
 ### 4. 可落地的最佳实践
 分享踩过的坑、总结的经验，让你少走弯路，快速成长。
 
-## 内容导航
-
-### 🏗️ 系统架构设计
-- [分布式系统架构设计](/tutorials/architecture/system/distributed-system)
-- [微服务架构设计实践](/tutorials/architecture/system/microservice-design)
-- [高并发系统架构方案](/tutorials/architecture/system/high-concurrency)
-- [领域驱动设计(DDD)实战](/tutorials/architecture/system/ddd-practice)
-
-### 💡 技术选型与方案
-- [缓存架构设计](/tutorials/architecture/solution/cache-architecture)
-- [消息队列选型与实践](/tutorials/architecture/solution/message-queue)
-- [数据库架构设计](/tutorials/architecture/solution/database-architecture)
-- [搜索引擎架构方案](/tutorials/architecture/solution/search-engine)
-
-### ⚡ 性能优化实战
-- [JVM性能调优实践](/tutorials/architecture/performance/jvm-tuning)
-- [数据库性能优化方案](/tutorials/architecture/performance/database-optimization)
-- [接口性能优化实战](/tutorials/architecture/performance/api-optimization)
-- [前端性能优化方案](/tutorials/architecture/performance/frontend-optimization)
-
-### 🛡️ 稳定性保障
-- [限流降级熔断设计](/tutorials/architecture/stability/rate-limit-downgrade)
-- [灰度发布方案设计](/tutorials/architecture/stability/gray-release)
-- [容灾与高可用设计](/tutorials/architecture/stability/disaster-recovery)
-- [监控告警体系建设](/tutorials/architecture/stability/monitoring-system)
+## 已发布文章
 
 ### 🔐 安全架构设计
-- [认证授权体系设计](/tutorials/architecture/security/auth-system/)
-  - [Session认证机制](/tutorials/architecture/security/auth-system/session-auth)
-  - [JWT令牌认证实践](/tutorials/architecture/security/auth-system/jwt-auth)
-  - [OAuth2.0授权框架](/tutorials/architecture/security/auth-system/oauth2)
-  - [SSO单点登录设计](/tutorials/architecture/security/auth-system/sso)
-  - [RBAC权限模型设计](/tutorials/architecture/security/auth-system/rbac)
-  - [ABAC属性访问控制](/tutorials/architecture/security/auth-system/abac)
-  - [多因素认证(MFA)](/tutorials/architecture/security/auth-system/mfa)
-  - [第三方登录集成](/tutorials/architecture/security/auth-system/third-party-login)
-  - [微服务认证授权方案](/tutorials/architecture/security/auth-system/microservice-auth)
-- [数据加密方案设计](/tutorials/architecture/security/data-encryption)
-- [接口安全防护方案](/tutorials/architecture/security/api-security)
-- [安全审计系统设计](/tutorials/architecture/security/audit-system)
+- [认证授权体系设计概述](/tutorials/architecture/security/auth-system/)：认证、授权、会话管理的核心概念，以及 Session、JWT、OAuth2.0、RBAC/ABAC 的选型思路
+- [SSO 单点网页内嵌登录设计](/tutorials/architecture/security/auth-system/SSO单点网页内嵌登录设计)：一次真实项目中网页内嵌场景下的单点登录方案设计与实现
 
-### 📦 项目实战案例
-- [电商系统架构设计](/tutorials/architecture/cases/ecommerce-system)
-- [社交平台架构方案](/tutorials/architecture/cases/social-platform)
-- [支付系统架构设计](/tutorials/architecture/cases/payment-system)
-- [内容管理系统设计](/tutorials/architecture/cases/cms-system)
+## 后续写作方向
+
+专栏只发布完整写完、经过自己实践验证的文章。接下来计划覆盖的方向包括：分布式与微服务架构、缓存与消息队列选型、JVM 与接口性能优化、限流降级与灰度发布，以及电商、支付等业务系统的架构复盘。
 
 ## 写作风格
 

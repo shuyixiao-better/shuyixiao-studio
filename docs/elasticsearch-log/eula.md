@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: END USER LICENSE AGREEMENT (EULA)
-description: # END USER LICENSE AGREEMENT (EULA)
+description: 'Elasticsearch Log 插件最终用户许可协议（EULA）。'
 date: '2025-12-31'
 tags:
   - AI

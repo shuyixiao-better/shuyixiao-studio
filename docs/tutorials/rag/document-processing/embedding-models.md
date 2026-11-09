@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 向量化模型选择
-description: # 向量化模型选择
+description: '向量化模型是RAG系统的核心组件，负责将文本转换为高维向量表示。选择合适的向量化模型对RAG系统的性能至关重要。本文将深入探讨各种向量化模型的特点、选择标准和使用方法。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

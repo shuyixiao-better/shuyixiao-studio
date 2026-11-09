@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAG的核心组件
-description: # RAG的核心组件
+description: 'RAG系统虽然概念简单，但其实现涉及多个复杂的组件。理解这些核心组件及其相互关系，是构建高质量RAG系统的关键。本文将详细介绍RAG系统的各个核心组件。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

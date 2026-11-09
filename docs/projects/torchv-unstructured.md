@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: TorchV Unstructured：强大的文档解析库
-description: '> 专为 RAG 应用优化的 Java 文档解析库，基于 Apache Tika、Apache POI 和 PDFBox，提供智能表格结构识别和内容提取能力。'
+description: '专为 RAG 应用优化的 Java 文档解析库，基于 Apache Tika、Apache POI 和 PDFBox，提供智能表格结构识别和内容提取能力。'
 date: '2025-01-27'
 tags:
   - Java

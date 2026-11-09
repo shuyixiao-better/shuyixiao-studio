@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 开源RAG框架对比
-description: # 开源RAG框架对比
+description: '随着RAG技术的快速发展，出现了许多优秀的开源RAG框架。本文将深入对比分析主流RAG框架的特点、优势和适用场景，帮助开发者选择最适合的框架。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

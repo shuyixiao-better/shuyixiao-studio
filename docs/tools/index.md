@@ -299,7 +299,7 @@ date: '2025-12-25'
 
 ## 🎯 更多工具
 
-正在持续开发中，敬请期待...
+新工具会在功能稳定、文档写完后加入这里。如果你有想要的小工具，欢迎通过[联系我们](/policies/contact)告诉我。
 
 <script setup>
 import { onMounted } from 'vue';

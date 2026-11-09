@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 监控与运维
-description: # 监控与运维
+description: 'RAG系统的监控与运维是确保系统稳定运行、快速定位问题和持续优化性能的关键。随着RAG系统复杂度的增加，建立完善的监控和运维体系变得越来越重要。本文将深入探讨RAG系统的监控策略、运维实践、故障处理和性能调优等方面。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

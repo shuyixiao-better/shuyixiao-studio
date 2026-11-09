@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: 重排序技术
-description: # 重排序技术
+description: '重排序（Reranking）是RAG系统中的重要优化技术，它通过对初始检索结果进行重新排序来提升最终结果的质量。重排序技术能够弥补初始检索的不足，显著提高检索的准确性和相关性。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # 重排序技术

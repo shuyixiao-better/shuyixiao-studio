@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 幻觉问题解决
-description: # 幻觉问题解决
+description: '幻觉问题是RAG系统面临的重要挑战之一。当AI模型生成看似合理但实际错误的信息时，就会产生幻觉。在RAG系统中，幻觉问题可能导致用户获得不准确的信息，影响系统的可信度和实用性。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

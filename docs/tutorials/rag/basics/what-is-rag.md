@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: 什么是RAG
-description: # 什么是RAG
+description: '在人工智能快速发展的今天，RAG（Retrieval-Augmented Generation，检索增强生成）技术正在成为连接大语言模型与现实世界知识的重要桥梁。'
 date: '2025-12-31'
 tags:
   - RAG

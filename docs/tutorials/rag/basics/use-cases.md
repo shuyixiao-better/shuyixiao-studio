@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAG的应用场景
-description: # RAG的应用场景
+description: 'RAG技术作为连接大语言模型与现实世界知识的重要桥梁，正在各个领域展现出巨大的应用潜力。本文将深入探讨RAG在不同行业和场景中的实际应用，帮助你理解RAG技术的广阔前景。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

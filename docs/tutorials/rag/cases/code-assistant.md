@@ -1,14 +1,13 @@
 ---
 layout: doc
 title: 代码助手实现
-description: # 代码助手实现
+description: '代码助手是基于RAG技术构建的智能编程辅助工具，能够理解开发者的编程需求，从代码库、文档和最佳实践中检索相关信息，生成高质量的代码建议和解决方案。本文将深入探讨代码助手的实现原理、技术架构和实际应用。'
 date: '2025-12-31'
 tags:
   - Java
   - Python
   - RAG
   - AI
-  - Elasticsearch
 author: 境焕说AI
 ---
 # 代码助手实现

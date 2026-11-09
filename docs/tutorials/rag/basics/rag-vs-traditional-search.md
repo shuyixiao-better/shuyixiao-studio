@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAG vs 传统搜索
-description: # RAG vs 传统搜索
+description: '在信息检索领域，传统搜索技术已经发展了几十年，而RAG作为新兴技术，正在重新定义我们获取和处理信息的方式。本文将深入对比RAG与传统搜索的差异，帮助你理解何时选择哪种技术方案。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

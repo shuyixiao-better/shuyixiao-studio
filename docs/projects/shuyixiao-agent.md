@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: shuyixiao-agent：基于 LangGraph 的智能 Agent 项目
-description: '> 一个基于现代 AI Agent 框架 LangGraph 和码云 AI 的智能 Agent 项目，提供清晰的代码结构、详细的文档和丰富的示例。'
+description: '一个基于现代 AI Agent 框架 LangGraph 和码云 AI 的智能 Agent 项目，提供清晰的代码结构、详细的文档和丰富的示例。'
 date: '2025-10-13'
 tags:
   - 算法

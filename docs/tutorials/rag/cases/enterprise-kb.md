@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 企业知识库问答
-description: # 企业知识库问答
+description: '企业知识库问答是RAG技术在企业中的典型应用场景。通过构建智能化的企业知识库问答系统，企业可以快速获取内部知识、提高员工工作效率、降低知识获取成本。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

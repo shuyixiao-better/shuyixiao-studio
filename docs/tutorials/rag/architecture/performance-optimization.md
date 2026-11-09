@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 性能优化策略
-description: # 性能优化策略
+description: 'RAG系统的性能优化是确保系统高效运行的关键。随着数据量的增长和用户需求的提升，性能优化变得越来越重要。本文将深入探讨RAG系统的性能优化策略，包括检索优化、生成优化、缓存策略、并发处理和系统调优等方面。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

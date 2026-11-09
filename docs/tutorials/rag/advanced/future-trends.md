@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAG未来发展趋势
-description: # RAG未来发展趋势
+description: 'RAG技术作为人工智能领域的重要发展方向，正在快速演进。本文将深入探讨RAG技术的未来发展趋势，包括技术发展方向、应用前景和挑战。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

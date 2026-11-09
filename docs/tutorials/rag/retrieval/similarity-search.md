@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: 相似度检索算法
-description: # 相似度检索算法
+description: '相似度检索是RAG系统的核心功能，决定了系统能否准确找到与用户查询最相关的文档片段。不同的相似度算法有不同的特点和适用场景。本文将深入探讨各种相似度检索算法的原理、实现和应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # 相似度检索算法

@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: 信号量（Semaphore）深度解析：从原理到实战
-description: # 信号量（Semaphore）深度解析：从原理到实战
+description: '基于 TorchV 知识运营系统的并发控制实践：信号量的定义与核心原理、项目代码逐行解析，以及与其他语言实现的对比。'
 date: '2025-12-31'
 tags:
   - Java

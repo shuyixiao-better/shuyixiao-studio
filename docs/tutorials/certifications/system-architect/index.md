@@ -110,28 +110,10 @@ title: 系统架构设计师（高级）- 考试概述与备考规划
 
 ## 章节导航
 
-### 综合知识
-- [计算机组成与体系结构](/tutorials/certifications/system-architect/comprehensive/computer-architecture)
-- [操作系统](/tutorials/certifications/system-architect/comprehensive/operating-system)
-- [数据库系统](/tutorials/certifications/system-architect/comprehensive/database-system)
-- [计算机网络](/tutorials/certifications/system-architect/comprehensive/computer-network)
-- [系统安全](/tutorials/certifications/system-architect/comprehensive/system-security)
-- [软件工程](/tutorials/certifications/system-architect/comprehensive/software-engineering)
-- [项目管理](/tutorials/certifications/system-architect/comprehensive/project-management)
-
-### 案例分析
-- [系统架构设计案例](/tutorials/certifications/system-architect/case-study/system-design)
-- [软件架构设计案例](/tutorials/certifications/system-architect/case-study/software-architecture)
-- [数据库设计案例](/tutorials/certifications/system-architect/case-study/database-design)
-- [网络架构设计案例](/tutorials/certifications/system-architect/case-study/network-architecture)
-
 ### 论文写作
 - [论文写作技巧与模板](/tutorials/certifications/system-architect/thesis/writing-skills)
-- [历年真题范文赏析](/tutorials/certifications/system-architect/thesis/sample-papers)
 
-### 历年真题
-- [综合知识真题](/tutorials/certifications/system-architect/exam-papers/comprehensive)
-- [案例分析真题](/tutorials/certifications/system-architect/exam-papers/case-study)
+综合知识、案例分析与历年真题的学习笔记正在随备考进度整理，每整理完一个章节再单独发布。
 
 ---
 

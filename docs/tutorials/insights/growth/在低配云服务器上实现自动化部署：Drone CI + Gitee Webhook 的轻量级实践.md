@@ -1,11 +1,10 @@
 ---
 layout: doc
 title: 在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践
-description: # 在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践
+description: '深夜改完最后一行代码，长舒一口气，然后——又要手动登录服务器、拉代码、打包、重启服务……'
 date: '2025-12-31'
 tags:
   - AI
-  - Elasticsearch
   - Git
   - 架构设计
   - 教程

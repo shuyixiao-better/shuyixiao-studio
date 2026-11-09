@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 检索优化技巧
-description: # 检索优化技巧
+description: '检索优化是RAG系统性能提升的关键环节。通过合理的优化策略，可以在保持检索质量的同时显著提升系统性能。本文将深入探讨各种检索优化技巧，包括索引优化、查询优化、缓存策略和系统调优等方面。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

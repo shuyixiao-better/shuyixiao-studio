@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAG系统架构模式
-description: # RAG系统架构模式
+description: 'RAG系统的架构设计是确保系统高效、可扩展和可维护的关键。不同的架构模式适用于不同的应用场景和需求。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

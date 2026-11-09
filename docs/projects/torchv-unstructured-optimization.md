@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: TorchV Unstructured 项目优化建议
-description: '> 基于对 TorchV Unstructured 项目的深入分析，提出针对 Word 解析功能的优化建议和改进方案，旨在提升项目的功能完整性和用户体验。'
+description: '基于对 TorchV Unstructured 项目的深入分析，提出针对 Word 解析功能的优化建议和改进方案，旨在提升项目的功能完整性和用户体验。'
 date: '2025-01-27'
 tags:
   - Java

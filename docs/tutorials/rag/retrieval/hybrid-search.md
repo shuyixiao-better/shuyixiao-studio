@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 混合检索策略
-description: # 混合检索策略
+description: '在实际应用中，单一的检索方法往往无法满足所有需求。混合检索策略通过结合多种检索方法的优势，能够显著提升RAG系统的检索效果。本文将深入探讨各种混合检索策略的原理、实现和优化方法。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

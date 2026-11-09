@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 上下文管理
-description: # 上下文管理
+description: '上下文管理是RAG系统中的关键技术，直接影响生成质量和系统性能。有效的上下文管理能够在有限的输入长度内最大化信息价值，确保模型获得最相关的信息来生成准确回答。本文将深入探讨上下文管理的策略、技术和最佳实践。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

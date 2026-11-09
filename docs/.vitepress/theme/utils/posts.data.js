@@ -1,4 +1,5 @@
 import { createContentLoader } from 'vitepress'
+import { isUnpublishedUrl } from '../../publishing.mjs'
 
 export default createContentLoader('**/*.md', {
   includeSrc: true,  // 包含文章源内容以计算字数
@@ -11,6 +12,11 @@ export default createContentLoader('**/*.md', {
         const url = page.url
         const frontmatter = page.frontmatter
         
+        // 未发布页面（占位稿、模板、测试页等）不进入文章列表
+        if (isUnpublishedUrl(url)) {
+          return false
+        }
+
         // 必须有title才算是文章
         if (!frontmatter.title) {
           return false

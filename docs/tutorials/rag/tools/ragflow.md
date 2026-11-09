@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: RAGFlow使用指南
-description: # RAGFlow使用指南
+description: 'RAGFlow是一个开源的RAG应用开发平台，提供了可视化的界面和丰富的功能来构建RAG应用。本文将深入探讨RAGFlow的使用方法、功能特性和实战应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - Git
 author: 境焕说AI
 ---

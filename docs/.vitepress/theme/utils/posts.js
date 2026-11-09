@@ -2,6 +2,7 @@ import { globby } from 'globby'
 import matter from 'gray-matter'
 import fs from 'fs'
 import path from 'path'
+import { isUnpublished } from '../../publishing.mjs'
 
 /**
  * 获取所有文章数据
@@ -21,6 +22,7 @@ export async function getPosts() {
   const posts = []
 
   for (const filePath of paths) {
+    if (isUnpublished(filePath.replace(/^docs\//, ''))) continue
     const content = fs.readFileSync(filePath, 'utf-8')
     const { data, content: markdownContent } = matter(content)
     const stats = fs.statSync(filePath)

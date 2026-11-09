@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: LangChain实战
-description: # LangChain实战
+description: 'LangChain是一个强大的RAG应用开发框架，提供了丰富的组件和工具来构建复杂的RAG系统。本文将深入探讨LangChain的核心概念、使用方法和实战应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # LangChain实战

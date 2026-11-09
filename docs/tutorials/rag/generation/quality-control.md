@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: 生成质量控制
-description: # 生成质量控制
+description: '生成质量控制是RAG系统确保输出质量的关键环节。通过有效的质量控制机制，可以减少幻觉问题，提高回答的准确性、相关性和一致性。本文将深入探讨生成质量控制的技术、方法和最佳实践。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # 生成质量控制

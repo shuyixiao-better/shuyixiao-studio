@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 文档智能分析
-description: # 文档智能分析
+description: '文档智能分析是基于RAG技术构建的智能文档处理系统，能够理解文档内容，提取关键信息，生成摘要和洞察。本文将深入探讨文档智能分析的实现原理、技术架构和实际应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

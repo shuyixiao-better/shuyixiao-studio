@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 提示工程实践
-description: # 提示工程实践
+description: '提示工程（Prompt Engineering）是RAG系统中连接检索结果和生成模型的关键技术。良好的提示设计能够显著提升生成质量，减少幻觉问题，提高回答的准确性和相关性。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 教程
 author: 境焕说AI
 ---

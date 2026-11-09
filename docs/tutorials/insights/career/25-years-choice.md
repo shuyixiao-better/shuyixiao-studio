@@ -323,8 +323,6 @@ author: 境焕说AI
 
 ---
 
-![](/Users/shuyixiao/Library/Application Support/typora-user-images/image-20251108180652315.png)
-
 ## 结语：你不是在消耗时间，你是在收集未来自己的燃料
 
 你25岁，精力充沛、有技术、有思考、有输出意识——**这已经超过了80%的人**。

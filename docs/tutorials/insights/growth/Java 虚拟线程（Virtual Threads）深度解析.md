@@ -1,7 +1,7 @@
 ---
 layout: doc
 title: Java 虚拟线程（Virtual Threads）深度解析
-description: # Java 虚拟线程（Virtual Threads）深度解析
+description: '基于 TorchV_server 项目的实战：虚拟线程是什么、与传统线程有何不同、底层原理，以及项目中的配置与代码分析。'
 date: '2025-12-31'
 tags:
   - Java

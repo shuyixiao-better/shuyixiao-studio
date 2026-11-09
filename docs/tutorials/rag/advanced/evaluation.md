@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: RAG评估体系
-description: # RAG评估体系
+description: 'RAG评估体系是确保RAG系统质量和性能的重要工具。本文将深入探讨RAG评估的各个方面，包括评估指标、评估方法、评估工具和最佳实践。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # RAG评估体系

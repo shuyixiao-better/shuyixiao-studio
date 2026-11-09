@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 向量数据库选型
-description: # 向量数据库选型
+description: '向量数据库是RAG系统中存储和检索向量数据的关键组件。选择合适的向量数据库对系统性能、可扩展性和成本效益至关重要。本文将深入探讨主流向量数据库的特点、选型标准和使用方法。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

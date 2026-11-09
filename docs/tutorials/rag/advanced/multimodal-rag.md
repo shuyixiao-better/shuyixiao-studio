@@ -1,14 +1,12 @@
 ---
 layout: doc
 title: 多模态RAG
-description: # 多模态RAG
+description: '多模态RAG是RAG技术的重要发展方向，能够处理文本、图像、音频、视频等多种模态的数据。本文将深入探讨多模态RAG的实现原理、技术架构和实际应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - IDEA插件
-  - Elasticsearch
 author: 境焕说AI
 ---
 # 多模态RAG

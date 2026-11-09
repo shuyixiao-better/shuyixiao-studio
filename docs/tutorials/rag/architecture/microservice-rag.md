@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 微服务RAG架构
-description: # 微服务RAG架构
+description: '微服务RAG架构是将RAG系统拆分为多个独立的微服务，每个服务负责特定的功能。这种架构模式提供了更好的可扩展性、可维护性和技术多样性。本文将深入探讨微服务RAG架构的设计原则、服务拆分策略、通信机制和部署方案。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---

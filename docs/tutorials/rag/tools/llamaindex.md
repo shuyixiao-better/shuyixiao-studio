@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: LlamaIndex应用
-description: # LlamaIndex应用
+description: 'LlamaIndex是一个专门为RAG应用设计的框架，提供了强大的数据连接、索引构建和查询处理能力。本文将深入探讨LlamaIndex的核心概念、使用方法和实战应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 开发工具
 author: 境焕说AI
 ---

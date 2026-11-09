@@ -1,13 +1,12 @@
 ---
 layout: doc
 title: 客服机器人
-description: # 客服机器人
+description: '客服机器人是基于RAG技术构建的智能客服系统，能够理解用户问题，从知识库中检索相关信息，生成准确、友好的回答。本文将深入探讨客服机器人的实现原理、技术架构和实际应用。'
 date: '2025-12-31'
 tags:
   - Python
   - RAG
   - AI
-  - Elasticsearch
   - 架构设计
 author: 境焕说AI
 ---
