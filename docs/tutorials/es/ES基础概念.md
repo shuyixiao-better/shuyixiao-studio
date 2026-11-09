@@ -5,7 +5,7 @@ description: 想象一下，你开了一家超大的网店，每天有海量包�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 ## Elastic Stack 四大金刚
 

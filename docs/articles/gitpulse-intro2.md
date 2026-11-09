@@ -4,7 +4,7 @@ title: GitPulse：让代码的故事自己讲述（第二版）
 description: 周报催交时快速生成工作量证明，面试时用数据展示编码能力
 date: '2025-11-27'
 tags: ['IDEA插件', 'Git', '开发工具', '效率提升']
-author: 舒一笑不秃头
+author: 境焕说AI
 noindex: true
 ---
 
@@ -209,7 +209,7 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
   <table>
     <tr>
       <td align="center">
-        <img src="https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20251205164750295.png" width="280" alt="舒一笑不秃头微信">
+        <img src="https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20251205164750295.png" width="280" alt="境焕说AI微信">
         <br>
         <sub>扫码添加微信好友，备注 <strong>PandaCoder工具宇宙交流</strong>，可以拉你进微信交流群</sub>
       </td>
@@ -249,4 +249,4 @@ GitPulse 的使命，就是让这些**被忽视的价值**，重新被看见：
 
 
 **立即体验**：JetBrains Marketplace 搜索 **GitPulse**  
-**作者**：舒一笑不秃头｜[poeticcoder.com](https://www.poeticcoder.com)｜yixiaoshu88@163.com
+**作者**：境焕说AI｜[poeticcoder.com](https://www.poeticcoder.com)｜yixiaoshu88@163.com

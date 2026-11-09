@@ -50,7 +50,7 @@ date: '2025-10-11'
 tags:
   - 算法
   - Java
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 ```
 
@@ -141,7 +141,7 @@ author: 舒一笑不秃头
 ```javascript
 const DEFAULT_CONFIG = {
   layout: 'doc',              // 布局类型
-  author: '舒一笑不秃头',      // 默认作者
+  author: '境焕说AI',      // 默认作者
   defaultTags: ['算法', 'Java'], // 默认标签
 };
 ```

@@ -11,7 +11,7 @@ tags:
   - Recall@K
   - MRR
   - NDCG
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 ![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/image-20260417101306635.png)
 

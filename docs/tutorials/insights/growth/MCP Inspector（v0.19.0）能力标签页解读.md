@@ -11,7 +11,7 @@ tags:
   - MCP
   - Claude
   - 开发工具
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 ![](https://shuyixiao.oss-cn-hangzhou.aliyuncs.com/BlogPicture/image-20260130174210858.png)

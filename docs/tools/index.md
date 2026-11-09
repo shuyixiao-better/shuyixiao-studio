@@ -68,7 +68,7 @@ date: '2025-12-25'
     <h3 class="tool-title">GitPulse</h3>
     <p class="tool-desc">周报催交时快速生成工作量证明,面试时用数据展示编码能力,帮你把代码提交转化为职场竞争力</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">IDEA 插件</span>
       <span class="tool-tag">免费</span>
     </div>
@@ -79,7 +79,7 @@ date: '2025-12-25'
     <h3 class="tool-title">MyBatisLog Panda Log</h3>
     <p class="tool-desc">线上故障时 5 秒定位问题 SQL,避免因调试耗时被领导质疑能力。每次使用平均节省 15 分钟排查时间</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">IDEA 插件</span>
       <span class="tool-tag">轻量付费</span>
     </div>
@@ -90,7 +90,7 @@ date: '2025-12-25'
     <h3 class="tool-title">Elasticsearch Log</h3>
     <p class="tool-desc">复杂查询调试不再抓瞎,DSL 提取即用即测。减少 70% 的日志分析时间,让你准点下班</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">IDEA 插件</span>
       <span class="tool-tag">轻量付费</span>
     </div>
@@ -101,7 +101,7 @@ date: '2025-12-25'
     <h3 class="tool-title">PipelineLens</h3>
     <p class="tool-desc">在 IDEA 中编写 Jenkinsfile 再也不用反复切浏览器查语法。智能补全 + 语法高亮让 CI/CD 流水线编写效率提升 50%,告别拼写错误导致的构建失败</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">IDEA 插件</span>
       <span class="tool-tag">DevOps</span>
     </div>
@@ -112,7 +112,7 @@ date: '2025-12-25'
     <h3 class="tool-title">GitPulse 周报</h3>
     <p class="tool-desc">把碎片化的代码提交整理成可复用的技术资产。晋升答辩时拿出数据说话,跳槽时用项目经历打动面试官。内测阶段,抢先体验请私信</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">内测体验</span>
       <span class="tool-tag">知识库</span>
     </div>
@@ -174,7 +174,7 @@ date: '2025-12-25'
     <h3 class="tool-title">StrLoom</h3>
     <p class="tool-desc">处理复杂 JSON 接口时不再手忙脚乱,智能解析 + 类型识别让你比同事快 10 分钟定位数据问题。提升调试效率就是在为自己涨工资</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">在线工具</span>
       <span class="tool-tag">免费</span>
     </div>
@@ -185,7 +185,7 @@ date: '2025-12-25'
     <h3 class="tool-title">Xin2U</h3>
     <p class="tool-desc">不会说情话?用代码表白让你显得既真诚又特别。比花 199 买玫瑰更能打动程序员/理工科对象,成功率实测提升 40%</p>
     <div class="tool-tags">
-      <span class="tool-tag">舒一笑不秃头自研</span>
+      <span class="tool-tag">境焕说AI自研</span>
       <span class="tool-tag">表白神器</span>
       <span class="tool-tag">浪漫</span>
     </div>

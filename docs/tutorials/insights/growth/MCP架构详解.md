@@ -10,7 +10,7 @@ tags:
   - 系统架构
   - 协议设计
   - Claude
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # Model Context Protocol (MCP) 架构详解

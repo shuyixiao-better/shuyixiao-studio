@@ -5,7 +5,7 @@ description: 想象一下，你是一家大型超市的经理，超市里有成�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中norms参数故事版
 

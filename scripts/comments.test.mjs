@@ -43,7 +43,7 @@ test('validation trims, removes controls, collapses newlines and handles boundar
   assert.ok(validateComment({ author: 12, content: {} }).error)
 })
 test('reserved nicknames cannot impersonate the author', () => {
-  for (const name of ['舒一笑不秃头', '站 长', '我是博主', '作 者', 'ADMin123']) {
+  for (const name of ['境焕说AI', '舒一笑不秃头', '站 长', '我是博主', '作 者', 'ADMin123']) {
     assert.equal(isReservedName(name), true)
     assert.equal(validateComment({ author: name, content: 'hello' }).error, '该昵称为保留昵称')
   }
@@ -130,7 +130,7 @@ test('admin login, reply rules, chronological replies, cascading deletion', asyn
   assert.ok(token)
   const reply1 = await app.request('POST', { path: PATH, parentId: parent.id, content: '站长回复' }, { token })
   assert.equal(reply1.status, 201)
-  assert.equal(reply1.data.comment.author, '舒一笑不秃头')
+  assert.equal(reply1.data.comment.author, '境焕说AI')
   assert.equal(reply1.data.comment.isAuthor, true)
   app.advance(1000)
   const reply2 = await app.request('POST', { path: PATH, parentId: parent.id, content: '第二条回复' }, { token })

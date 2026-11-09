@@ -3,7 +3,7 @@ import { withMermaid } from 'vitepress-plugin-mermaid'
 
 export default withMermaid(
   defineConfig({
-    title: '舒一笑不秃头',
+    title: '境焕说AI',
     description: '技术博客与学习笔记',
 
     // Mermaid配置

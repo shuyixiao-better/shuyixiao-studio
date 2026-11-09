@@ -5,7 +5,7 @@ description: 想象一下，你有两个图书馆：
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES字段数据类型讲解基础版
 

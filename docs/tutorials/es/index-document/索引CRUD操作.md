@@ -5,7 +5,7 @@ description: '**将 JSON 文档添加到指定的数据流或索引并使其可�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 索引CRUD操作
 

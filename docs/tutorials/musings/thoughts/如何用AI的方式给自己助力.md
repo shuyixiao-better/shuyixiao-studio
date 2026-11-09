@@ -7,7 +7,7 @@ tags:
   - AI
   - 测试
   - 开发技巧
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # 如何用AI的方式给自己助力

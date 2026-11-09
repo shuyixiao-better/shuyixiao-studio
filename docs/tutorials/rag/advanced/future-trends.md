@@ -9,7 +9,7 @@ tags:
   - AI
   - Elasticsearch
   - 架构设计
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # RAG未来发展趋势
 

@@ -5,7 +5,7 @@ description: 咱们继续数字村的奇幻之旅！这次村里要处理更复�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES常用对象类型故事版
 

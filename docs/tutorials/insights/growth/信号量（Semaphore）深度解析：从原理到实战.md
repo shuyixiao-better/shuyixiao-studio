@@ -7,7 +7,7 @@ tags:
   - Java
   - 虚拟线程
   - 教程
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 信号量（Semaphore）深度解析：从原理到实战
 

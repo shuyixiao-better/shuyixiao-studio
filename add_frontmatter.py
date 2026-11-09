@@ -19,7 +19,7 @@ FILES_CONFIG = [
             'description': '基于深入分析的 TorchV Unstructured 项目改进建议',
             'date': '2025-01-27',
             'tags': ['Java', '文档解析', 'RAG', '优化建议'],
-            'author': '舒一笑不秃头'
+            'author': '境焕说AI'
         }
     },
     {
@@ -30,7 +30,7 @@ FILES_CONFIG = [
             'description': 'TorchV 框架解析 Word 文档的实践指南',
             'date': '2025-01-27',
             'tags': ['Java', '文档解析', 'Word', 'TorchV'],
-            'author': '舒一笑不秃头'
+            'author': '境焕说AI'
         }
     },
     # tools 目录

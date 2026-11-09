@@ -11,7 +11,7 @@ tags:
   - Windows
   - 全局搜索
   - 效率工具
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 **重磅！Google 昨晚官宣桌面神器：Alt + Space 一键召唤 AI + 全局搜索，Windows 用户直接起飞！**
 

@@ -8,7 +8,7 @@ tags:
   - AI
   - 架构设计
   - 教程
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 什么是RAG
 

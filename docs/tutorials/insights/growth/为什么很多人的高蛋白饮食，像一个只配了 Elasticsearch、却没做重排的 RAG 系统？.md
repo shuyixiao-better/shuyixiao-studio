@@ -10,7 +10,7 @@ tags:
   - RAG
   - 技术类比
   - 健康管理
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 **为什么很多人的高蛋白饮食，像一个只配了 Elasticsearch、却没做重排的 RAG 系统？**  

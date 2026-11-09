@@ -5,7 +5,7 @@ description: 想象数字村就像一个快速发展的城市，而 `dynamic` �
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中Dynamic 参数故事版
 

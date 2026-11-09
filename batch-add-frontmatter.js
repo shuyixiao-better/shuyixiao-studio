@@ -118,7 +118,7 @@ function inferTags(content, filePath) {
 /**
  * 生成 frontmatter
  */
-function generateFrontmatter(title, description, tags = [], author = '舒一笑不秃头') {
+function generateFrontmatter(title, description, tags = [], author = '境焕说AI') {
   let lines = ['---'];
   lines.push('layout: doc');
   lines.push(`title: ${title}`);

@@ -5,7 +5,7 @@ description: '> 探索未知，记录初心'
 date: '2025-10-13'
 tags:
   - 探索
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 拾遗录
 

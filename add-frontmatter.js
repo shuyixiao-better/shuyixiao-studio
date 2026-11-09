@@ -26,7 +26,7 @@ const filesToProcess = [
       title: 'Google AdSense 广告展示示例',
       description: '演示如何在文章中使用 Google AdSense 广告的示例文章',
       tags: ['AdSense', '广告', '示例'],
-      author: '舒一笑不秃头'
+      author: '境焕说AI'
     }
   },
   {
@@ -37,7 +37,7 @@ const filesToProcess = [
       description: 'IDEA插件，让Elasticsearch查询变得透明可见，提升开发效率',
       date: '2025-10-15',
       tags: ['IDEA插件', 'Elasticsearch', '开发工具', '效率提升'],
-      author: '舒一笑不秃头'
+      author: '境焕说AI'
     }
   },
   {
@@ -48,7 +48,7 @@ const filesToProcess = [
       description: '周报催交时快速生成工作量证明，面试时用数据展示编码能力',
       date: '2025-11-27',
       tags: ['IDEA插件', 'Git', '开发工具', '效率提升'],
-      author: '舒一笑不秃头'
+      author: '境焕说AI'
     }
   },
   {
@@ -59,7 +59,7 @@ const filesToProcess = [
       description: 'MyBatis日志格式化工具，让SQL调试变得简单高效',
       date: '2025-11-25',
       tags: ['IDEA插件', 'MyBatis', 'SQL', '开发工具'],
-      author: '舒一笑不秃头'
+      author: '境焕说AI'
     }
   }
 ];

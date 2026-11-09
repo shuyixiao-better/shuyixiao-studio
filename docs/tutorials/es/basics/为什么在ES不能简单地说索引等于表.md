@@ -5,7 +5,7 @@ description: '**为什么说 ES 的索引不简单等同于 MySQL 的表？**'
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 为什么在ES不能简单地说索引等于表
 

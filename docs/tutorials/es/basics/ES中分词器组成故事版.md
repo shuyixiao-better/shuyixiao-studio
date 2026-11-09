@@ -5,7 +5,7 @@ description: 想象数字村的文字厨房里有一条**智能食材加工流�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中分词器组成故事版
 

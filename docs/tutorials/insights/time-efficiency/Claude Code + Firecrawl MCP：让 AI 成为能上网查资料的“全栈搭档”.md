@@ -10,7 +10,7 @@ tags:
   - Firecrawl
   - 效率提升
   - 网页爬虫
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 ### **Claude Code + Firecrawl MCP：让 AI 成为能上网查资料的“全栈搭档”**

@@ -7,7 +7,7 @@ tags:
   - 技术探索
   - Java
   - AI
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 如何使用LangGraph开发Agent
 

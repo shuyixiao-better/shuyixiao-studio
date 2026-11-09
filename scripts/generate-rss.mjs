@@ -18,17 +18,17 @@ const __dirname = dirname(__filename)
 
 // 配置
 const RSS_CONFIG = {
-  title: '舒一笑不秃头的技术博客',
+  title: '境焕说AI的技术博客',
   link: 'https://www.poeticcoder.com',
   description: '专注于AI工程化落地的技术博客 | IDEA插件-PandaCoder作者 | 持续输出优质技术内容',
   language: 'zh-CN',
-  managingEditor: 'shuyixiao@example.com (舒一笑不秃头)',
-  webMaster: 'shuyixiao@example.com (舒一笑不秃头)',
-  copyright: 'Copyright © 2023-present 舒一笑不秃头',
+  managingEditor: 'shuyixiao@example.com (境焕说AI)',
+  webMaster: 'shuyixiao@example.com (境焕说AI)',
+  copyright: 'Copyright © 2023-present 境焕说AI',
   ttl: 60,
   generator: 'VitePress RSS Generator',
   maxItems: 50,
-  author: '舒一笑不秃头'
+  author: '境焕说AI'
 }
 
 // 格式化日期为 RSS 标准格式

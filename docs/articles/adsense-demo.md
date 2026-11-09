@@ -4,7 +4,7 @@ title: Google AdSense 广告展示示例
 description: 演示如何在文章中使用 Google AdSense 广告的示例文章
 date: '2025-12-31'
 tags: ['AdSense', '广告', '示例']
-author: 舒一笑不秃头
+author: 境焕说AI
 noindex: true
 ---
 

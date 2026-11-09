@@ -7,7 +7,7 @@ description: >-
 date: '2025-10-13'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # Markdown Extension Examples
 

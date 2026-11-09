@@ -9,7 +9,7 @@ tags:
   - AI
   - Elasticsearch
   - 教程
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 向量化模型选择
 

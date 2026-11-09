@@ -11,7 +11,7 @@ tags:
   - 工作流自动化
   - 技能工程
   - MCP
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # Claude Skills 深度解析报告：AI 代理生态中的新积木与工作流革命

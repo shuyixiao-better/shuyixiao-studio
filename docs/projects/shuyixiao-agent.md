@@ -6,7 +6,7 @@ date: '2025-10-13'
 tags:
   - 算法
   - Java
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # shuyixiao-agent：基于 LangGraph 的智能 Agent 项目
 
@@ -394,7 +394,7 @@ Web 服务提供以下 RESTful API：
 
 ## 📧 联系方式
 
-- **作者**：舒一笑不秃头
+- **作者**：境焕说AI
 - **邮箱**：yixiaoshu88@163.com
 - **GitHub**：[@shuyixiao-better](https://github.com/shuyixiao-better)
 - **Gitee**：[@shuyixiao-only](https://gitee.com/shuyixiao-only)

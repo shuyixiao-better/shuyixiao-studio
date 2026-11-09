@@ -10,7 +10,7 @@ tags:
   - OpenAI
   - Anthropic
   - AI 工程化
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 **技术圈爆火新词：Harness 工程，OpenAI 和 Anthropic 都在卷这个！**

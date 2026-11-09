@@ -5,7 +5,7 @@ description: 我们继续数字村的故事！这次村里新开了三家神奇�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES常用基本数据类型故事版
 

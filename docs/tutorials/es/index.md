@@ -5,7 +5,7 @@ description: 欢迎来到 Elasticsearch 专栏！这里将分享 Elasticsearch �
 date: '2025-10-13'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # Elasticsearch 专栏
 

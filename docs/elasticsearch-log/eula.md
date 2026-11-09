@@ -6,13 +6,13 @@ date: '2025-12-31'
 tags:
   - AI
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # END USER LICENSE AGREEMENT (EULA)
 
 ## Elasticsearch Log Plugin
 
-**Copyright (c) 2025 舒一笑不秃头 (Shu Yixiao)**  
+**Copyright (c) 2025 境焕说AI (Shu Yixiao)**  
 **Website:** [https://www.poeticcoder.com](https://www.poeticcoder.com)  
 **Email:** yixiaoshu88@163.com
 

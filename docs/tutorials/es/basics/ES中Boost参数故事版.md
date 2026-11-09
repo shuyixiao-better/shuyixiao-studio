@@ -8,7 +8,7 @@ date: '2025-10-09'
 tags:
   - Elasticsearch
   - Java
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中Boost参数故事版
 

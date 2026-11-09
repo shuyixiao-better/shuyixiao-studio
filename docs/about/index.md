@@ -12,7 +12,7 @@ date: '2025-12-25'
 <div class="personal-intro-card">
 <div class="intro-header">
 <div class="intro-icon"><LineIcon name="book" /></div>
-<h3 class="intro-title">你好，我是舒一笑不秃头</h3>
+<h3 class="intro-title">你好，我是境焕说AI</h3>
 </div>
 
 <div class="intro-content">
@@ -163,7 +163,7 @@ date: '2025-12-25'
 <div class="story-section">
 <div class="section-title">"Poetic" 是我面对世界的姿态</div>
 <div class="section-content">
-<p>哪怕经济寒冬、哪怕技术内卷，我依然相信"慢即是快"，相信"他日卧龙终得雨，今朝放鹤且冲天"的从容。我用"舒一笑不秃头"自嘲，却在每一行 Java 代码、每一个 RAG 检索、每一次轻量级产品验证中，践行着一种<strong>克制而坚定的诗意</strong>。</p>
+<p>哪怕经济寒冬、哪怕技术内卷，我依然相信"慢即是快"，相信"他日卧龙终得雨，今朝放鹤且冲天"的从容。我用"境焕说AI"自嘲，却在每一行 Java 代码、每一个 RAG 检索、每一次轻量级产品验证中，践行着一种<strong>克制而坚定的诗意</strong>。</p>
 </div>
 </div>
 

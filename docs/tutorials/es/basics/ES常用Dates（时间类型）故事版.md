@@ -5,7 +5,7 @@ description: 咱们继续用数字村的故事，这次村里要处理“时间�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES常用Dates（时间类型）故事版
 

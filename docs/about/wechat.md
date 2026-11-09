@@ -9,7 +9,7 @@ tags:
   - 微服务
   - 架构设计
   - AI
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # 关注我的微信公众号
@@ -50,7 +50,7 @@ author: 舒一笑不秃头
 <table>
   <tr>
     <td align="center">
-        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <img src="/images/境焕说AI微信.jpg" width="280" alt="境焕说AI微信">
         <br>
         <sub>扫码添加微信，一起聊技术、聊生活、聊有趣的事（备注：<strong>唠唠嗑</strong>）</sub>
       </td>

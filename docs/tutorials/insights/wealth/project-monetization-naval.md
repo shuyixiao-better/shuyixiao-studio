@@ -8,7 +8,7 @@ tags:
   - 营利模式
   - 创业思维
   - 被动收入
-author: 舒一笑不秃头
+author: 境焕说AI
 encrypted: true
 ---
 
@@ -1262,7 +1262,7 @@ graph LR
 
 ---
 
-**作者**: 舒一笑不秃头  
+**作者**: 境焕说AI  
 **日期**: 2025-10-17  
 **版权**: 本文采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议
 

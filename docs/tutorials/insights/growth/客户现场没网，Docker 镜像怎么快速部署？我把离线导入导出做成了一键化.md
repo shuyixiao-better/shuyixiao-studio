@@ -11,7 +11,7 @@ tags:
   - 镜像交付
   - 交付流程
   - DevOps
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 ## 客户现场没有外网，Docker 服务怎么部署？

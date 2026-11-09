@@ -4,7 +4,7 @@ title: MyBatis Log Panda：重构开发者的认知地图
 description: MyBatis日志格式化工具，让SQL调试变得简单高效
 date: '2025-11-25'
 tags: ['IDEA插件', 'MyBatis', 'SQL', '开发工具']
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # 信息的建筑学：MyBatis Log Panda 如何重构开发者的认知地图
@@ -265,7 +265,7 @@ MyBatis Log Panda 的价值不在于它让你"更快"，而在于它让你**更�
 - **零干扰**：轻量级设计，不影响应用性能
 - **零学习成本**：直观的界面，不需要阅读手册
 
-作为开发者，我（舒一笑不秃头）的承诺：
+作为开发者，我（境焕说AI）的承诺：
 
 - 持续改进
 - 倾听反馈
@@ -337,7 +337,7 @@ MyBatis Log Panda 不是终点，它是起点。
 
 🔗 **官方网站**: [https://www.poeticcoder.com](https://www.poeticcoder.com)  
 📧 **联系作者**: yixiaoshu88@163.com  
-👨‍💻 **开发者**: 舒一笑不秃头  
+👨‍💻 **开发者**: 境焕说AI  
 🐼 **下载试用**: 在 JetBrains Marketplace 搜索 "MyBatis Log Panda"
 
 ---
@@ -404,7 +404,7 @@ logging.level.com.example.demo.mapper=debug
   <table>
     <tr>
       <td align="center">
-        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <img src="/images/境焕说AI微信.jpg" width="280" alt="境焕说AI微信">
         <br>
         <sub>扫码添加微信好友，备注 <strong>PandaCoder工具宇宙交流</strong>，可以拉你进微信交流群</sub>
       </td>

@@ -14,7 +14,7 @@ tags:
   - OpenClaw
   - AI Agent
   - 多智能体协作
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # Windows + WSL2 完整复现 Avernet WAIC 6 Bot 协作演示

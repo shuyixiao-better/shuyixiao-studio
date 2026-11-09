@@ -9,7 +9,7 @@ tags:
   - 技术探索
   - Java
   - Rust
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 初探 Rust：系统编程语言的诗与远方
 

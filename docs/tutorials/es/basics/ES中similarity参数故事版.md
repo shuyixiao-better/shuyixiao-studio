@@ -5,7 +5,7 @@ description: 想象数字村每年举办一次**美食评分大赛**，三位风
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中similarity参数故事版
 

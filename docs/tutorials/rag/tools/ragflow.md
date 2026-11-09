@@ -9,7 +9,7 @@ tags:
   - AI
   - Elasticsearch
   - Git
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # RAGFlow使用指南
 

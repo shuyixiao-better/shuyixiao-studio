@@ -50,7 +50,7 @@ def extract_description(content):
             return desc
     return None
 
-def generate_frontmatter(title, description, tags=None, author='舒一笑不秃头', date=None):
+def generate_frontmatter(title, description, tags=None, author='境焕说AI', date=None):
     """生成 frontmatter"""
     lines = ['---']
     lines.append('layout: doc')

@@ -5,7 +5,7 @@ description: 好的，我们来用图书馆的比喻，把这些分片策略规�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # Elasticsearch分片的基本策略
 

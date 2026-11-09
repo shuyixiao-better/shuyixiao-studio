@@ -1,6 +1,6 @@
 // Shared by the browser and the Netlify function. Keep this module platform independent.
 const ALLOWED = /^\/(articles|tutorials|insights|series|interview|projects)\//
-const RESERVED = ['舒一笑不秃头', '站长', '博主', '作者', 'admin']
+const RESERVED = ['境焕说ai', '舒一笑不秃头', '站长', '博主', '作者', 'admin']
 
 export function normalizePath(input) {
   if (typeof input !== 'string' || !input.trim()) throw new Error('文章路径无效')

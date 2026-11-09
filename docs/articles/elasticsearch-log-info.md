@@ -4,12 +4,12 @@ title: Elasticsearch Log：让 ES 查询变得透明可见
 description: IDEA插件，让Elasticsearch查询变得透明可见，提升开发效率
 date: '2025-10-15'
 tags: ['IDEA插件', 'Elasticsearch', '开发工具', '效率提升']
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # Elasticsearch Log：让 ES 查询变得透明可见
 
-> 作者：舒一笑不秃头  
+> 作者：境焕说AI  
 > 理念：先给予价值，再谈论工具
 
 ---
@@ -355,7 +355,7 @@ author: 舒一笑不秃头
 
 ## 关于作者
 
-我是**舒一笑不秃头**，一名热爱编程的开发者。
+我是**境焕说AI**，一名热爱编程的开发者。
 
 - 📧 邮箱：yixiaoshu88@163.com
 - 🌐 博客：https://www.poeticcoder.com
@@ -399,7 +399,7 @@ author: 舒一笑不秃头
   <table>
     <tr>
       <td align="center">
-        <img src="/images/舒一笑不秃头微信.jpg" width="280" alt="舒一笑不秃头微信">
+        <img src="/images/境焕说AI微信.jpg" width="280" alt="境焕说AI微信">
         <br>
         <sub>扫码添加微信好友，备注 <strong>PandaCoder工具宇宙交流</strong>，可以拉你进微信交流群</sub>
       </td>
@@ -464,4 +464,4 @@ author: 舒一笑不秃头
 - ✅ 优化许可证到期时间提示信息
 - ✅ 增加插件相关信息介绍
 
-*Made with ❤️ by 舒一笑不秃头*
+*Made with ❤️ by 境焕说AI*

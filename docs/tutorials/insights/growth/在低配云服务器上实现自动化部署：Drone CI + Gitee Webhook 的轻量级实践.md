@@ -9,7 +9,7 @@ tags:
   - Git
   - 架构设计
   - 教程
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 在低配云服务器上实现自动化部署：Drone CI + Gitee Webhook 的轻量级实践
 
@@ -122,5 +122,5 @@ Drone CI + Gitee Webhook，就是这样一个“小而美”的答案。
 
 ---
 
-**署名**：舒一笑不秃头  
+**署名**：境焕说AI  
 （一个不愿再为部署熬夜的开发者）

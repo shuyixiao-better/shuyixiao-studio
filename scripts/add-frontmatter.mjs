@@ -16,7 +16,7 @@ import { globby } from 'globby';
 // 默认配置
 const DEFAULT_CONFIG = {
   layout: 'doc',
-  author: '舒一笑不秃头',
+  author: '境焕说AI',
   defaultTags: ['技术'], // 改为更通用的默认标签
 };
 

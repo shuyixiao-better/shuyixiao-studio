@@ -9,7 +9,7 @@ tags:
   - AI
   - Elasticsearch
   - 开发工具
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # LlamaIndex应用
 

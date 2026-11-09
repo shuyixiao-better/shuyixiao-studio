@@ -9,7 +9,7 @@ tags:
   - AI
   - IDEA插件
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 多模态RAG
 

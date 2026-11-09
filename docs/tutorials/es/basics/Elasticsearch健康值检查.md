@@ -5,7 +5,7 @@ description: 好的，我们来用大白话和比喻解释一下 `GET _cat/healt
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # Elasticsearch健康值检查
 

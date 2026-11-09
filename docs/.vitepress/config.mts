@@ -17,14 +17,14 @@ export default withMermaid(defineConfig({
     hostname: 'https://www.poeticcoder.com'
   },
 
-  title: "舒一笑不秃头的博客",
-  description: "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。",
+  title: "境焕说AI的博客",
+  description: "境焕说AI的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。",
   head: [
     ['link', { rel: 'icon', href: `${base}favicon.svg` }],
     // JetBrains Mono 字体用于代码显示
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap' }],
     // RSS Feed
-    ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '舒一笑不秃头的技术博客 RSS Feed' }],
+    ['link', { rel: 'alternate', type: 'application/rss+xml', href: 'https://www.poeticcoder.com/rss.xml', title: '境焕说AI的技术博客 RSS Feed' }],
     // Google AdSense
     ['script', {
       async: '',
@@ -937,7 +937,7 @@ export default withMermaid(defineConfig({
     // 页脚
     footer: {
       message: '代码之外，探索人生更多可能 · Powered by VitePress',
-      copyright: 'Copyright © 2023-present 舒一笑不秃头<span id="site-runtime"></span><span id="site-visits-container"></span><span class="footer-motto">他日卧龙终得雨 今朝放鹤且冲天</span>'
+      copyright: 'Copyright © 2023-present 境焕说AI<span id="site-runtime"></span><span id="site-visits-container"></span><span class="footer-motto">他日卧龙终得雨 今朝放鹤且冲天</span>'
     },
 
     // 搜索
@@ -1000,16 +1000,16 @@ export default withMermaid(defineConfig({
 
     // 2. Open Graph (社交媒体分享)
     head.push(['meta', { property: 'og:url', content: url }])
-    head.push(['meta', { property: 'og:title', content: pageData.title || "舒一笑不秃头的博客" }])
-    head.push(['meta', { property: 'og:description', content: pageData.description || "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
+    head.push(['meta', { property: 'og:title', content: pageData.title || "境焕说AI的博客" }])
+    head.push(['meta', { property: 'og:description', content: pageData.description || "境焕说AI的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
     // 使用默认封面图，如果有文章特定封面图可以在 frontmatter 中指定 cover 字段
     const image = pageData.frontmatter.cover || 'https://www.poeticcoder.com/logo.png'
     head.push(['meta', { property: 'og:image', content: image }])
 
     // 3. Twitter Card
     head.push(['meta', { name: 'twitter:card', content: 'summary_large_image' }])
-    head.push(['meta', { name: 'twitter:title', content: pageData.title || "舒一笑不秃头的博客" }])
-    head.push(['meta', { name: 'twitter:description', content: pageData.description || "舒一笑不秃头的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
+    head.push(['meta', { name: 'twitter:title', content: pageData.title || "境焕说AI的博客" }])
+    head.push(['meta', { name: 'twitter:description', content: pageData.description || "境焕说AI的个人博客：写过多年 Java 与 AI 工程，如今探索量化交易、Web3、健身与薄肌理论，记录实践与复盘。" }])
     head.push(['meta', { name: 'twitter:image', content: image }])
 
     // 4. JSON-LD (结构化数据)
@@ -1023,7 +1023,7 @@ export default withMermaid(defineConfig({
         "dateModified": pageData.lastUpdated ? new Date(pageData.lastUpdated).toISOString() : undefined,
         "author": [{
           "@type": "Person",
-          "name": pageData.frontmatter.author || "舒一笑不秃头",
+          "name": pageData.frontmatter.author || "境焕说AI",
           "url": "https://www.poeticcoder.com/about/"
         }]
       }

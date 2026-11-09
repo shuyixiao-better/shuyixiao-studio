@@ -5,7 +5,7 @@ description: 好的，咱们继续数字村的故事！这次村里要处理一�
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES常用Keywords类型故事版
 > * keyword：keyword类型适用于索引结构化的字段，可以用于过滤、排序和聚合。该类型的字段只能通过精确值搜索到，不会进行分词或变换。适合存储一些不需要分词处理的字段，比如ID、姓名等。

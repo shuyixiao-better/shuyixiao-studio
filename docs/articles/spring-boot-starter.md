@@ -4,7 +4,7 @@ title: 手把手教你开发一个Spring Boot Starter
 description: Spring Boot Starter机制详解，从零开始开发自己的Starter组件
 date: 2025-09-27
 tags: ['Spring Boot', 'Java', '组件开发']
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # 手把手教你开发一个Spring Boot Starter

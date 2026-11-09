@@ -4,7 +4,7 @@ title: PandaCoder 的解构与新生：为中文开发者造一束专注的光
 description: PandaCoder插件的重构之路，从大而全到专注精简
 date: '2025-11-23'
 tags: ['IDEA插件', 'PandaCoder', '产品思考', '重构']
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 ### PandaCoder 的解构与新生：为中文开发者造一束专注的光

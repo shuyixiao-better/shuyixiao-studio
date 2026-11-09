@@ -10,7 +10,7 @@ const shots = new URL('../.comments-shots/', import.meta.url)
 await mkdir(shots, { recursive: true })
 const results = [], warnings = [], alerts = []
 const sample = () => [
-  { id: 'sample-a', path: article, parentId: null, author: '读者甲', content: '这篇文章很有启发，谢谢分享。', createdAt: new Date(Date.now() - 300000).toISOString(), isAuthor: false, replies: [{ id: 'reply-a', path: article, parentId: 'sample-a', author: '舒一笑不秃头', content: '谢谢，欢迎交流实践经验。', isAuthor: true, createdAt: new Date().toISOString() }] },
+  { id: 'sample-a', path: article, parentId: null, author: '读者甲', content: '这篇文章很有启发，谢谢分享。', createdAt: new Date(Date.now() - 300000).toISOString(), isAuthor: false, replies: [{ id: 'reply-a', path: article, parentId: 'sample-a', author: '境焕说AI', content: '谢谢，欢迎交流实践经验。', isAuthor: true, createdAt: new Date().toISOString() }] },
   { id: 'sample-b', path: article, parentId: null, author: '读者乙', content: '延伸阅读：https://developer.mozilla.org/zh-CN/\n欢迎交流。', isAuthor: false, createdAt: new Date(Date.now() - 86400000).toISOString(), replies: [] },
   { id: 'sample-c', path: article, parentId: null, author: '安全测试', content: '<img src=x onerror=alert(1)>\n<script>alert(2)</script> javascript:alert(3)', isAuthor: false, createdAt: '2025-01-01T00:00:00.000Z', replies: [] }
 ]
@@ -47,7 +47,7 @@ async function prepare({ width = 1440, dark = false, state = 'empty', admin = fa
       return route.fulfill({ json: { success: true } })
     }
     if (state === 'rate-limit') return route.fulfill({ status: 429, json: { error: 'too frequent' } })
-    if (body.parentId) return route.fulfill({ status: 201, json: { success: true, comment: { id: 'mock-reply', path: article, parentId: body.parentId, author: '舒一笑不秃头', content: body.content, createdAt: new Date().toISOString(), isAuthor: true } } })
+    if (body.parentId) return route.fulfill({ status: 201, json: { success: true, comment: { id: 'mock-reply', path: article, parentId: body.parentId, author: '境焕说AI', content: body.content, createdAt: new Date().toISOString(), isAuthor: true } } })
     const comment = { id: 'mock-created', path: article, parentId: null, author: body.author, content: body.content, createdAt: new Date().toISOString(), isAuthor: false }
     return route.fulfill({ status: 201, json: { success: true, comment } })
   })

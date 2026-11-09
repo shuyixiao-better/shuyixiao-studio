@@ -9,7 +9,7 @@ tags:
   - Elasticsearch
   - Git
   - 架构设计
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 告别 Windows 原生桌面的平庸：深度解析 Seelen UI —— 为效率与颜值而生的开源桌面革命
 

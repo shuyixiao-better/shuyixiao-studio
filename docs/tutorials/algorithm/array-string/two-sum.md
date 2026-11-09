@@ -6,7 +6,7 @@ date: '2025-10-09'
 tags:
   - 算法
   - Java
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 两数之和
 

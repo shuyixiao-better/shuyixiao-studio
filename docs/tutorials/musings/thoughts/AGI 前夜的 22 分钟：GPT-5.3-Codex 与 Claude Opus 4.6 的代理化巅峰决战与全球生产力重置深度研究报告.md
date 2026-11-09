@@ -12,7 +12,7 @@ tags:
   - LLM
   - 人工智能
   - 技术趋势
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # AGI 前夜的 22 分钟：GPT-5.3-Codex 与 Claude Opus 4.6 的代理化巅峰决战与全球生产力重置深度研究报告

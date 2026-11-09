@@ -10,7 +10,7 @@ tags:
   - 开发工具
   - 调试
   - 大模型
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 ##  MCP 是啥

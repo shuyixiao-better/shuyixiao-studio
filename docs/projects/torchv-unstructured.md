@@ -8,7 +8,7 @@ tags:
   - 文档解析
   - RAG
   - Apache Tika
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 
 # TorchV Unstructured：强大的文档解析库

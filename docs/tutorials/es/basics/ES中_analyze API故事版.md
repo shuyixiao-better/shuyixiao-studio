@@ -7,7 +7,7 @@ description: >-
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES中_analyze API故事版
 

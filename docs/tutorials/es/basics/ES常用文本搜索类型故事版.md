@@ -6,7 +6,7 @@ description: >-
 date: '2025-10-09'
 tags:
   - Elasticsearch
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # ES常用文本搜索类型故事版
 

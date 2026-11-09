@@ -6,7 +6,7 @@ date: '2025-10-09'
 tags:
   - 技术探索
   - Java
-author: 舒一笑不秃头
+author: 境焕说AI
 noindex: true
 ---
 # 【示例】初探某技术

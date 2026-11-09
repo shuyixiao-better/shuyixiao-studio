@@ -4,7 +4,7 @@ import nodemailer from 'nodemailer'
 import { normalizePath, validateComment } from '../../docs/.vitepress/theme/utils/comments-core.js'
 
 export const config = { path: ['/api/comments', '/api/comments/admin-login'] }
-const AUTHOR = '舒一笑不秃头'
+const AUTHOR = '境焕说AI'
 const MAX_READ = 300
 const headers = { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }
 const json = (body, status = 200) => new Response(JSON.stringify(body), { status, headers })

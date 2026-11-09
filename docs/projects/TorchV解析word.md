@@ -9,7 +9,7 @@ tags:
   - AI
   - Elasticsearch
   - 架构设计
-author: 舒一笑不秃头
+author: 境焕说AI
 ---
 # 分析项目功能和效果
 _Exported on 2025/10/27 at GMT+8 23:37:33 from Cursor (1.7.54)_
