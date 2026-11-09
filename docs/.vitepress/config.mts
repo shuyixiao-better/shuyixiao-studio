@@ -59,7 +59,8 @@ export default withMermaid(defineConfig({
           { text: 'RAG从入门到精通', link: '/tutorials/rag/' },
           { text: '每周一道算法题', link: '/tutorials/algorithm/' },
           { text: '筑·匠', link: '/tutorials/architecture/' },
-          { text: '登科录', link: '/tutorials/certifications/' }
+          { text: '登科录', link: '/tutorials/certifications/' },
+          { text: '境焕说AI', link: '/tutorials/jinghuan-ai/' }
         ] }
       ] },
       { text: '作品', items: [
@@ -816,6 +817,16 @@ export default withMermaid(defineConfig({
                 }
               ]
             }
+          ]
+        }
+      ],
+      '/tutorials/jinghuan-ai/': [
+        {
+          text: '境焕说AI',
+          collapsed: false,
+          items: [
+            { text: '专栏介绍', link: '/tutorials/jinghuan-ai/' },
+            { text: 'ChatGPT Images 2.6 到咪咪的生活日记', link: '/tutorials/jinghuan-ai/mimi-sticker-making' }
           ]
         }
       ],
